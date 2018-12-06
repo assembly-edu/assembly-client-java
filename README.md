@@ -1,4 +1,6 @@
-# assembly-client-java
+# Java SDK for the Assembly API 
+## Description
+The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
 
 ## Requirements
 
@@ -57,68 +59,36 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-/*
- * assembly-client-java 1.1.0
- *
- * Copyright (c) 2018 Assembly
- * http://assembly.education
- * help@assembly.education
- *
- * Licensed under MIT (https://spdx.org/licenses/MIT.html)
- *
- * NOTE: This class has been automatically generated, do not edit manually.
- */
-
-
-package education.assembly.platform.spring;
 
 import education.assembly.platform.spring.*;
+import education.assembly.platform.spring.auth.*;
 import education.assembly.platform.spring.models.*;
 import education.assembly.platform.spring.AssemblyApi;
+
+import java.io.File;
+import java.util.*;
 
 public class AssemblyApiExample {
 
     public static void main(String[] args) {
-        // Optional. Send requests through Fiddler
-        // Requires the Fiddler certificate in a trust store, to do this follow these instructions:
-        // https://stackoverflow.com/questions/8549749/how-to-capture-https-with-fiddler-in-java#answer-8588914
-        // System.setProperty("http.proxyHost", "127.0.0.1");
-        // System.setProperty("https.proxyHost", "127.0.0.1");
-        // System.setProperty("http.proxyPort", "8888");
-        // System.setProperty("https.proxyPort", "8888");
-        // System.setProperty("javax.net.ssl.trustStore", "C:\\dev\\fiddler\\FiddlerKeystore");
-        // System.setProperty("javax.net.ssl.trustStorePassword", "password");
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure HTTP basic authorization: bearerAuth
+        HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setUsername("YOUR USERNAME");
+        bearerAuth.setPassword("YOUR PASSWORD");
 
-        // Create a configuration object with your credentials
-        Configuration config = new Configuration(
-            AssemblyEnvironment.Sandbox,
-            "YOUR CLIENT ID",
-            "YOUR CLIENT SECRET",
-            "YOUR BASE64 ENCODED ACCESS TOKEN",
-            "YOUR REFRESH TOKEN"
-        );
-
-        ApiClient client = new ApiClient(config);
-
-        // Recommended. Set your application's name and version as the user agent, e.g.
-        client.setUserAgent("AssemblyExampleClient-1.0");
-
-        // Optional. Enable debugging
-        // client.setDebugging(true);
-
-        // Create an API instance and start using it:
-        AssemblyApi api = new AssemblyApi(client);
+        AssemblyApi apiInstance = new AssemblyApi();
         Integer id = 56; // Integer | id of the entity
         try {
-            AcademicYear result = api.findAcademicYear(id);
+            AcademicYear result = apiInstance.findAcademicYear(id);
             System.out.println(result);
-        } catch (Exception e) {
+        } catch (ApiException e) {
             System.err.println("Exception when calling AssemblyApi#findAcademicYear");
             e.printStackTrace();
         }
     }
 }
-
 
 ```
 
