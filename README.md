@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>education.assembly</groupId>
     <artifactId>assembly-client-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.0.0"
+compile "education.assembly:assembly-client-java:1.1.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.0.0.jar
+* target/assembly-client-java-1.1.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -58,7 +58,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -110,10 +110,10 @@ public class AssemblyApiExample {
         AssemblyApi api = new AssemblyApi(client);
         Integer id = 56; // Integer | id of the entity
         try {
-            AcademicYear result = api.find(id);
+            AcademicYear result = api.findAcademicYear(id);
             System.out.println(result);
         } catch (Exception e) {
-            System.err.println("Exception when calling AssemblyApi#find");
+            System.err.println("Exception when calling AssemblyApi#findAcademicYear");
             e.printStackTrace();
         }
     }
@@ -128,40 +128,39 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssemblyApi* | [**find**](docs/AssemblyApi.md#find) | **GET** /academic_years/{id} | View an Academic Year
-*AssemblyApi* | [**find_0**](docs/AssemblyApi.md#find_0) | **GET** /assessment_points/{id} | View an Assessment Point
-*AssemblyApi* | [**find_1**](docs/AssemblyApi.md#find_1) | **GET** /assessments/{id} | View an Assessment
-*AssemblyApi* | [**find_2**](docs/AssemblyApi.md#find_2) | **GET** /facets/{id} | View a Facet
-*AssemblyApi* | [**find_3**](docs/AssemblyApi.md#find_3) | **GET** /registration_groups/{id} | View a Registration Group
-*AssemblyApi* | [**find_4**](docs/AssemblyApi.md#find_4) | **GET** /staff_members/{id} | View a Staff Member
-*AssemblyApi* | [**find_5**](docs/AssemblyApi.md#find_5) | **GET** /students/{id} | View a Student
-*AssemblyApi* | [**find_6**](docs/AssemblyApi.md#find_6) | **GET** /teaching_groups/{id} | View a Teaching Group
-*AssemblyApi* | [**find_7**](docs/AssemblyApi.md#find_7) | **GET** /year_groups/{id} | View a Year Group
-*AssemblyApi* | [**get**](docs/AssemblyApi.md#get) | **GET** /academic_years | List Academic Years
-*AssemblyApi* | [**get_0**](docs/AssemblyApi.md#get_0) | **GET** /assessment_points | List Assessment Points
-*AssemblyApi* | [**get_1**](docs/AssemblyApi.md#get_1) | **GET** /assessments | List Assessments
-*AssemblyApi* | [**get_10**](docs/AssemblyApi.md#get_10) | **GET** /staff_contracts | List Staff Contracts
-*AssemblyApi* | [**get_11**](docs/AssemblyApi.md#get_11) | **GET** /staff_members | List Staff Members
-*AssemblyApi* | [**get_12**](docs/AssemblyApi.md#get_12) | **GET** /students | List Students
-*AssemblyApi* | [**get_13**](docs/AssemblyApi.md#get_13) | **GET** /subjects | List Subjects
-*AssemblyApi* | [**get_14**](docs/AssemblyApi.md#get_14) | **GET** /teaching_groups | List Teaching Groups
-*AssemblyApi* | [**get_15**](docs/AssemblyApi.md#get_15) | **GET** /year_groups | List Year Groups
-*AssemblyApi* | [**get_2**](docs/AssemblyApi.md#get_2) | **GET** /attendances | List Attendances
-*AssemblyApi* | [**get_3**](docs/AssemblyApi.md#get_3) | **GET** /calendar_events | List Calendar Events
-*AssemblyApi* | [**get_4**](docs/AssemblyApi.md#get_4) | **GET** /contacts | List Contacts
-*AssemblyApi* | [**get_5**](docs/AssemblyApi.md#get_5) | **GET** /exclusions | List Exclusions
-*AssemblyApi* | [**get_6**](docs/AssemblyApi.md#get_6) | **GET** /facets | List Facets
-*AssemblyApi* | [**get_7**](docs/AssemblyApi.md#get_7) | **GET** /registration_groups | List Registration Group
-*AssemblyApi* | [**get_8**](docs/AssemblyApi.md#get_8) | **GET** /results | List Results
-*AssemblyApi* | [**get_9**](docs/AssemblyApi.md#get_9) | **GET** /staff_absences | List Staff Absences
-*AssemblyApi* | [**gradeSet**](docs/AssemblyApi.md#gradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
-*AssemblyApi* | [**left**](docs/AssemblyApi.md#left) | **GET** /students/left | List Left Students
-*AssemblyApi* | [**results**](docs/AssemblyApi.md#results) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
-*AssemblyApi* | [**results_0**](docs/AssemblyApi.md#results_0) | **GET** /assessments/{id}/results | View Results for an Assessment
-*AssemblyApi* | [**show**](docs/AssemblyApi.md#show) | **GET** /school_details | List School Details
-*AssemblyApi* | [**students**](docs/AssemblyApi.md#students) | **GET** /registration_groups/{id}/students | List Students for Registration Group
-*AssemblyApi* | [**students_0**](docs/AssemblyApi.md#students_0) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
-*AssemblyApi* | [**students_1**](docs/AssemblyApi.md#students_1) | **GET** /year_groups/{id}/students | List Students for Year Group
+*AssemblyApi* | [**findAcademicYear**](docs/AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
+*AssemblyApi* | [**findAssessment**](docs/AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
+*AssemblyApi* | [**findAssessmentGradeSet**](docs/AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
+*AssemblyApi* | [**findAssessmentPoint**](docs/AssemblyApi.md#findAssessmentPoint) | **GET** /assessment_points/{id} | View an Assessment Point
+*AssemblyApi* | [**findFacet**](docs/AssemblyApi.md#findFacet) | **GET** /facets/{id} | View a Facet
+*AssemblyApi* | [**findRegistrationGroup**](docs/AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
+*AssemblyApi* | [**findStaffMember**](docs/AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
+*AssemblyApi* | [**findStudent**](docs/AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
+*AssemblyApi* | [**findTeachingGroup**](docs/AssemblyApi.md#findTeachingGroup) | **GET** /teaching_groups/{id} | View a Teaching Group
+*AssemblyApi* | [**findYearGroup**](docs/AssemblyApi.md#findYearGroup) | **GET** /year_groups/{id} | View a Year Group
+*AssemblyApi* | [**getAcademicYears**](docs/AssemblyApi.md#getAcademicYears) | **GET** /academic_years | List Academic Years
+*AssemblyApi* | [**getAssessmentPointResults**](docs/AssemblyApi.md#getAssessmentPointResults) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
+*AssemblyApi* | [**getAssessmentPoints**](docs/AssemblyApi.md#getAssessmentPoints) | **GET** /assessment_points | List Assessment Points
+*AssemblyApi* | [**getAssessmentResults**](docs/AssemblyApi.md#getAssessmentResults) | **GET** /assessments/{id}/results | View Results for an Assessment
+*AssemblyApi* | [**getAssessments**](docs/AssemblyApi.md#getAssessments) | **GET** /assessments | List Assessments
+*AssemblyApi* | [**getAttendances**](docs/AssemblyApi.md#getAttendances) | **GET** /attendances | List Attendances
+*AssemblyApi* | [**getCalendarEvents**](docs/AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | List Calendar Events
+*AssemblyApi* | [**getContacts**](docs/AssemblyApi.md#getContacts) | **GET** /contacts | List Contacts
+*AssemblyApi* | [**getExclusions**](docs/AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
+*AssemblyApi* | [**getFacets**](docs/AssemblyApi.md#getFacets) | **GET** /facets | List Facets
+*AssemblyApi* | [**getLeftStudents**](docs/AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
+*AssemblyApi* | [**getRegistrationGroupStudents**](docs/AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
+*AssemblyApi* | [**getRegistrationGroups**](docs/AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Group
+*AssemblyApi* | [**getResults**](docs/AssemblyApi.md#getResults) | **GET** /results | List Results
+*AssemblyApi* | [**getStaffAbsences**](docs/AssemblyApi.md#getStaffAbsences) | **GET** /staff_absences | List Staff Absences
+*AssemblyApi* | [**getStaffContracts**](docs/AssemblyApi.md#getStaffContracts) | **GET** /staff_contracts | List Staff Contracts
+*AssemblyApi* | [**getStaffMembers**](docs/AssemblyApi.md#getStaffMembers) | **GET** /staff_members | List Staff Members
+*AssemblyApi* | [**getStudents**](docs/AssemblyApi.md#getStudents) | **GET** /students | List Students
+*AssemblyApi* | [**getSubjects**](docs/AssemblyApi.md#getSubjects) | **GET** /subjects | List Subjects
+*AssemblyApi* | [**getTeachingGroupStudents**](docs/AssemblyApi.md#getTeachingGroupStudents) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
+*AssemblyApi* | [**getTeachingGroups**](docs/AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | List Teaching Groups
+*AssemblyApi* | [**getYearGroupStudents**](docs/AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
+*AssemblyApi* | [**getYearGroups**](docs/AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 
 
 ## Documentation for Models
@@ -169,6 +168,7 @@ Class | Method | HTTP request | Description
  - [AcademicYear](docs/AcademicYear.md)
  - [AcademicYearTerms](docs/AcademicYearTerms.md)
  - [Assessment](docs/Assessment.md)
+ - [AssessmentMisAssessments](docs/AssessmentMisAssessments.md)
  - [AssessmentPoint](docs/AssessmentPoint.md)
  - [Attendance](docs/Attendance.md)
  - [CalendarEvent](docs/CalendarEvent.md)
@@ -182,7 +182,6 @@ Class | Method | HTTP request | Description
  - [MisSubject](docs/MisSubject.md)
  - [RegistrationGroup](docs/RegistrationGroup.md)
  - [Result](docs/Result.md)
- - [SchoolDetails](docs/SchoolDetails.md)
  - [SenNeed](docs/SenNeed.md)
  - [StaffAbsence](docs/StaffAbsence.md)
  - [StaffAllowance](docs/StaffAllowance.md)

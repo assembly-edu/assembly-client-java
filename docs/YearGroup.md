@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **supervisorIds** | **List&lt;Integer&gt;** |  |  [optional]
 **studentIds** | **List&lt;Integer&gt;** |  |  [optional]
-**subject** | [**Subject**](Subject.md) |  |  [optional]
 
 
 

@@ -21,73 +21,31 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Grade
+ * AssessmentMisAssessments
  */
 
-public class Grade implements Serializable {
+public class AssessmentMisAssessments implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("id")
-  private Integer id = null;
+  @JsonProperty("type")
+  private String type = null;
 
-  @JsonProperty("name")
-  private String name = null;
-
-  @JsonProperty("value")
-  private Integer value = null;
-
-  public Grade id(Integer id) {
-    this.id = id;
+  public AssessmentMisAssessments type(String type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get type
+   * @return type
   **/
   @ApiModelProperty(value = "")
-  public Integer getId() {
-    return id;
+  public String getType() {
+    return type;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public Grade name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @ApiModelProperty(value = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Grade value(Integer value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * Get value
-   * @return value
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getValue() {
-    return value;
-  }
-
-  public void setValue(Integer value) {
-    this.value = value;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -99,26 +57,22 @@ public class Grade implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Grade grade = (Grade) o;
-    return Objects.equals(this.id, grade.id) &&
-        Objects.equals(this.name, grade.name) &&
-        Objects.equals(this.value, grade.value);
+    AssessmentMisAssessments assessmentMisAssessments = (AssessmentMisAssessments) o;
+    return Objects.equals(this.type, assessmentMisAssessments.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, value);
+    return Objects.hash(type);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Grade {\n");
+    sb.append("class AssessmentMisAssessments {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

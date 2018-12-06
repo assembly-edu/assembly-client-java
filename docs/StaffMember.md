@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **includedInCensus** | **Boolean** |  |  [optional]
 **startDate** | **String** |  |  [optional]
 **endDate** | **String** |  |  [optional]
-**demographics** | [**List&lt;StaffMemberDemographics&gt;**](StaffMemberDemographics.md) |  |  [optional]
-**qualificationInfo** | [**List&lt;StaffMemberQualificationInfo&gt;**](StaffMemberQualificationInfo.md) |  |  [optional]
+**demographics** | [**StaffMemberDemographics**](StaffMemberDemographics.md) |  |  [optional]
+**qualificationInfo** | [**StaffMemberQualificationInfo**](StaffMemberQualificationInfo.md) |  |  [optional]
 
 
 

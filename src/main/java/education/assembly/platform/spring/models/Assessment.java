@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,8 +16,11 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.AssessmentMisAssessments;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 
 /**
@@ -38,6 +41,9 @@ public class Assessment implements Serializable {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("mis_assessments")
+  private List<AssessmentMisAssessments> misAssessments = null;
 
   public Assessment familyId(Integer familyId) {
     this.familyId = familyId;
@@ -111,6 +117,32 @@ public class Assessment implements Serializable {
     this.name = name;
   }
 
+  public Assessment misAssessments(List<AssessmentMisAssessments> misAssessments) {
+    this.misAssessments = misAssessments;
+    return this;
+  }
+
+  public Assessment addMisAssessmentsItem(AssessmentMisAssessments misAssessmentsItem) {
+    if (this.misAssessments == null) {
+      this.misAssessments = new ArrayList<AssessmentMisAssessments>();
+    }
+    this.misAssessments.add(misAssessmentsItem);
+    return this;
+  }
+
+   /**
+   * Get misAssessments
+   * @return misAssessments
+  **/
+  @ApiModelProperty(value = "")
+  public List<AssessmentMisAssessments> getMisAssessments() {
+    return misAssessments;
+  }
+
+  public void setMisAssessments(List<AssessmentMisAssessments> misAssessments) {
+    this.misAssessments = misAssessments;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -124,12 +156,13 @@ public class Assessment implements Serializable {
     return Objects.equals(this.familyId, assessment.familyId) &&
         Objects.equals(this.familyName, assessment.familyName) &&
         Objects.equals(this.id, assessment.id) &&
-        Objects.equals(this.name, assessment.name);
+        Objects.equals(this.name, assessment.name) &&
+        Objects.equals(this.misAssessments, assessment.misAssessments);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(familyId, familyName, id, name);
+    return Objects.hash(familyId, familyName, id, name, misAssessments);
   }
 
 
@@ -142,6 +175,7 @@ public class Assessment implements Serializable {
     sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    misAssessments: ").append(toIndentedString(misAssessments)).append("\n");
     sb.append("}");
     return sb.toString();
   }

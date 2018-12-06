@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,7 +16,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.Subject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -48,9 +47,6 @@ public class YearGroup implements Serializable {
 
   @JsonProperty("student_ids")
   private List<Integer> studentIds = null;
-
-  @JsonProperty("subject")
-  private Subject subject = null;
 
   public YearGroup id(Integer id) {
     this.id = id;
@@ -176,24 +172,6 @@ public class YearGroup implements Serializable {
     this.studentIds = studentIds;
   }
 
-  public YearGroup subject(Subject subject) {
-    this.subject = subject;
-    return this;
-  }
-
-   /**
-   * Get subject
-   * @return subject
-  **/
-  @ApiModelProperty(value = "")
-  public Subject getSubject() {
-    return subject;
-  }
-
-  public void setSubject(Subject subject) {
-    this.subject = subject;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -209,13 +187,12 @@ public class YearGroup implements Serializable {
         Objects.equals(this.startDate, yearGroup.startDate) &&
         Objects.equals(this.endDate, yearGroup.endDate) &&
         Objects.equals(this.supervisorIds, yearGroup.supervisorIds) &&
-        Objects.equals(this.studentIds, yearGroup.studentIds) &&
-        Objects.equals(this.subject, yearGroup.subject);
+        Objects.equals(this.studentIds, yearGroup.studentIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, startDate, endDate, supervisorIds, studentIds, subject);
+    return Objects.hash(id, name, startDate, endDate, supervisorIds, studentIds);
   }
 
 
@@ -230,7 +207,6 @@ public class YearGroup implements Serializable {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    supervisorIds: ").append(toIndentedString(supervisorIds)).append("\n");
     sb.append("    studentIds: ").append(toIndentedString(studentIds)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("}");
     return sb.toString();
   }

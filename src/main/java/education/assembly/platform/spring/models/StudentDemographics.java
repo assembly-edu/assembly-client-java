@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -62,6 +62,9 @@ public class StudentDemographics implements Serializable {
 
   @JsonProperty("looked_after")
   private Boolean lookedAfter = null;
+
+  @JsonProperty("in_care")
+  private Boolean inCare = null;
 
   @JsonProperty("ever_in_care")
   private Boolean everInCare = null;
@@ -278,6 +281,24 @@ public class StudentDemographics implements Serializable {
     this.lookedAfter = lookedAfter;
   }
 
+  public StudentDemographics inCare(Boolean inCare) {
+    this.inCare = inCare;
+    return this;
+  }
+
+   /**
+   * Get inCare
+   * @return inCare
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isgetInCare() {
+    return inCare;
+  }
+
+  public void setInCare(Boolean inCare) {
+    this.inCare = inCare;
+  }
+
   public StudentDemographics everInCare(Boolean everInCare) {
     this.everInCare = everInCare;
     return this;
@@ -361,6 +382,7 @@ public class StudentDemographics implements Serializable {
         Objects.equals(this.fsmReviewDate, studentDemographics.fsmReviewDate) &&
         Objects.equals(this.isFsm, studentDemographics.isFsm) &&
         Objects.equals(this.lookedAfter, studentDemographics.lookedAfter) &&
+        Objects.equals(this.inCare, studentDemographics.inCare) &&
         Objects.equals(this.everInCare, studentDemographics.everInCare) &&
         Objects.equals(this.serviceChild, studentDemographics.serviceChild) &&
         Objects.equals(this.senNeeds, studentDemographics.senNeeds);
@@ -368,7 +390,7 @@ public class StudentDemographics implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, lookedAfter, everInCare, serviceChild, senNeeds);
+    return Objects.hash(ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, lookedAfter, inCare, everInCare, serviceChild, senNeeds);
   }
 
 
@@ -388,6 +410,7 @@ public class StudentDemographics implements Serializable {
     sb.append("    fsmReviewDate: ").append(toIndentedString(fsmReviewDate)).append("\n");
     sb.append("    isFsm: ").append(toIndentedString(isFsm)).append("\n");
     sb.append("    lookedAfter: ").append(toIndentedString(lookedAfter)).append("\n");
+    sb.append("    inCare: ").append(toIndentedString(inCare)).append("\n");
     sb.append("    everInCare: ").append(toIndentedString(everInCare)).append("\n");
     sb.append("    serviceChild: ").append(toIndentedString(serviceChild)).append("\n");
     sb.append("    senNeeds: ").append(toIndentedString(senNeeds)).append("\n");

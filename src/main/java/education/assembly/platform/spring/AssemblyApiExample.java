@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -51,10 +51,10 @@ public class AssemblyApiExample {
         AssemblyApi api = new AssemblyApi(client);
         Integer id = 56; // Integer | id of the entity
         try {
-            AcademicYear result = api.find(id);
+            AcademicYear result = api.findAcademicYear(id);
             System.out.println(result);
         } catch (Exception e) {
-            System.err.println("Exception when calling AssemblyApi#find");
+            System.err.println("Exception when calling AssemblyApi#findAcademicYear");
             e.printStackTrace();
         }
     }

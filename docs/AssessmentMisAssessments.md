@@ -1,13 +1,10 @@
 
-# Email
+# AssessmentMisAssessments
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**email** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
-**isPrimary** | **Boolean** |  |  [optional]
 
 
 

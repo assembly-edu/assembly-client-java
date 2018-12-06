@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -32,6 +32,9 @@ public class Email implements Serializable {
 
   @JsonProperty("email")
   private String email = null;
+
+  @JsonProperty("type")
+  private String type = null;
 
   @JsonProperty("is_primary")
   private Boolean isPrimary = null;
@@ -72,6 +75,24 @@ public class Email implements Serializable {
     this.email = email;
   }
 
+  public Email type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
   public Email isPrimary(Boolean isPrimary) {
     this.isPrimary = isPrimary;
     return this;
@@ -102,12 +123,13 @@ public class Email implements Serializable {
     Email email = (Email) o;
     return Objects.equals(this.id, email.id) &&
         Objects.equals(this.email, email.email) &&
+        Objects.equals(this.type, email.type) &&
         Objects.equals(this.isPrimary, email.isPrimary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, email, isPrimary);
+    return Objects.hash(id, email, type, isPrimary);
   }
 
 
@@ -118,6 +140,7 @@ public class Email implements Serializable {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    isPrimary: ").append(toIndentedString(isPrimary)).append("\n");
     sb.append("}");
     return sb.toString();

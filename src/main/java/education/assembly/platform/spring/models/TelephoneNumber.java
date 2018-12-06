@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -30,6 +30,9 @@ public class TelephoneNumber implements Serializable {
   @JsonProperty("id")
   private Integer id = null;
 
+  @JsonProperty("type")
+  private String type = null;
+
   @JsonProperty("telephone_number")
   private String telephoneNumber = null;
 
@@ -52,6 +55,24 @@ public class TelephoneNumber implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public TelephoneNumber type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public TelephoneNumber telephoneNumber(String telephoneNumber) {
@@ -101,13 +122,14 @@ public class TelephoneNumber implements Serializable {
     }
     TelephoneNumber telephoneNumber = (TelephoneNumber) o;
     return Objects.equals(this.id, telephoneNumber.id) &&
+        Objects.equals(this.type, telephoneNumber.type) &&
         Objects.equals(this.telephoneNumber, telephoneNumber.telephoneNumber) &&
         Objects.equals(this.isPrimary, telephoneNumber.isPrimary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, telephoneNumber, isPrimary);
+    return Objects.hash(id, type, telephoneNumber, isPrimary);
   }
 
 
@@ -117,6 +139,7 @@ public class TelephoneNumber implements Serializable {
     sb.append("class TelephoneNumber {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    telephoneNumber: ").append(toIndentedString(telephoneNumber)).append("\n");
     sb.append("    isPrimary: ").append(toIndentedString(isPrimary)).append("\n");
     sb.append("}");

@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.0.0
+ * assembly-client-java 1.1.0
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -20,8 +20,6 @@ import education.assembly.platform.spring.models.StaffMemberDemographics;
 import education.assembly.platform.spring.models.StaffMemberQualificationInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
@@ -81,10 +79,10 @@ public class StaffMember implements Serializable {
   private String endDate = null;
 
   @JsonProperty("demographics")
-  private List<StaffMemberDemographics> demographics = null;
+  private StaffMemberDemographics demographics = null;
 
   @JsonProperty("qualification_info")
-  private List<StaffMemberQualificationInfo> qualificationInfo = null;
+  private StaffMemberQualificationInfo qualificationInfo = null;
 
   public StaffMember id(Integer id) {
     this.id = id;
@@ -374,16 +372,8 @@ public class StaffMember implements Serializable {
     this.endDate = endDate;
   }
 
-  public StaffMember demographics(List<StaffMemberDemographics> demographics) {
+  public StaffMember demographics(StaffMemberDemographics demographics) {
     this.demographics = demographics;
-    return this;
-  }
-
-  public StaffMember addDemographicsItem(StaffMemberDemographics demographicsItem) {
-    if (this.demographics == null) {
-      this.demographics = new ArrayList<StaffMemberDemographics>();
-    }
-    this.demographics.add(demographicsItem);
     return this;
   }
 
@@ -392,24 +382,16 @@ public class StaffMember implements Serializable {
    * @return demographics
   **/
   @ApiModelProperty(value = "")
-  public List<StaffMemberDemographics> getDemographics() {
+  public StaffMemberDemographics getDemographics() {
     return demographics;
   }
 
-  public void setDemographics(List<StaffMemberDemographics> demographics) {
+  public void setDemographics(StaffMemberDemographics demographics) {
     this.demographics = demographics;
   }
 
-  public StaffMember qualificationInfo(List<StaffMemberQualificationInfo> qualificationInfo) {
+  public StaffMember qualificationInfo(StaffMemberQualificationInfo qualificationInfo) {
     this.qualificationInfo = qualificationInfo;
-    return this;
-  }
-
-  public StaffMember addQualificationInfoItem(StaffMemberQualificationInfo qualificationInfoItem) {
-    if (this.qualificationInfo == null) {
-      this.qualificationInfo = new ArrayList<StaffMemberQualificationInfo>();
-    }
-    this.qualificationInfo.add(qualificationInfoItem);
     return this;
   }
 
@@ -418,11 +400,11 @@ public class StaffMember implements Serializable {
    * @return qualificationInfo
   **/
   @ApiModelProperty(value = "")
-  public List<StaffMemberQualificationInfo> getQualificationInfo() {
+  public StaffMemberQualificationInfo getQualificationInfo() {
     return qualificationInfo;
   }
 
-  public void setQualificationInfo(List<StaffMemberQualificationInfo> qualificationInfo) {
+  public void setQualificationInfo(StaffMemberQualificationInfo qualificationInfo) {
     this.qualificationInfo = qualificationInfo;
   }
 

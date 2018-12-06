@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **fsmReviewDate** | **String** |  |  [optional]
 **isFsm** | **Boolean** |  |  [optional]
 **lookedAfter** | **Boolean** |  |  [optional]
+**inCare** | **Boolean** |  |  [optional]
 **everInCare** | **Boolean** |  |  [optional]
 **serviceChild** | **Boolean** |  |  [optional]
 **senNeeds** | [**List&lt;SenNeed&gt;**](SenNeed.md) |  |  [optional]
