@@ -21,50 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Demographic information about a staff member.
+ * StaffMemberDemographics
  */
-@ApiModel(description = "Demographic information about a staff member.")
 
 public class StaffMemberDemographics implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  /**
-   * The gender of a staff member *Values*  |Value|Description| |---|---| |&#x60;F&#x60;|Female| |&#x60;M&#x60;|Male| 
-   */
-  public enum GenderEnum {
-    F("F"),
-    
-    M("M");
-
-    private String value;
-
-    GenderEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static GenderEnum fromValue(String text) {
-      for (GenderEnum b : GenderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("gender")
-  private GenderEnum gender = null;
 
   @JsonProperty("ethnicity_code")
   private String ethnicityCode = null;
@@ -72,26 +33,11 @@ public class StaffMemberDemographics implements Serializable {
   @JsonProperty("ethnicity_group")
   private String ethnicityGroup = null;
 
+  @JsonProperty("gender")
+  private String gender = null;
+
   @JsonProperty("disability")
   private String disability = null;
-
-  public StaffMemberDemographics gender(GenderEnum gender) {
-    this.gender = gender;
-    return this;
-  }
-
-   /**
-   * The gender of a staff member *Values*  |Value|Description| |---|---| |&#x60;F&#x60;|Female| |&#x60;M&#x60;|Male| 
-   * @return gender
-  **/
-  @ApiModelProperty(example = "M", value = "The gender of a staff member *Values*  |Value|Description| |---|---| |`F`|Female| |`M`|Male| ")
-  public GenderEnum getGender() {
-    return gender;
-  }
-
-  public void setGender(GenderEnum gender) {
-    this.gender = gender;
-  }
 
   public StaffMemberDemographics ethnicityCode(String ethnicityCode) {
     this.ethnicityCode = ethnicityCode;
@@ -99,10 +45,10 @@ public class StaffMemberDemographics implements Serializable {
   }
 
    /**
-   * A detailed, Dfe standardised way of categorising the ethnicity of a student 
+   * Get ethnicityCode
    * @return ethnicityCode
   **/
-  @ApiModelProperty(example = "MOTH", value = "A detailed, Dfe standardised way of categorising the ethnicity of a student ")
+  @ApiModelProperty(value = "")
   public String getEthnicityCode() {
     return ethnicityCode;
   }
@@ -117,10 +63,10 @@ public class StaffMemberDemographics implements Serializable {
   }
 
    /**
-   * A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
+   * Get ethnicityGroup
    * @return ethnicityGroup
   **/
-  @ApiModelProperty(example = "Mixed/ Dual Background", value = "A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections")
+  @ApiModelProperty(value = "")
   public String getEthnicityGroup() {
     return ethnicityGroup;
   }
@@ -129,16 +75,34 @@ public class StaffMemberDemographics implements Serializable {
     this.ethnicityGroup = ethnicityGroup;
   }
 
+  public StaffMemberDemographics gender(String gender) {
+    this.gender = gender;
+    return this;
+  }
+
+   /**
+   * Get gender
+   * @return gender
+  **/
+  @ApiModelProperty(value = "")
+  public String getGender() {
+    return gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
   public StaffMemberDemographics disability(String disability) {
     this.disability = disability;
     return this;
   }
 
    /**
-   * The disability status of a staff member
+   * Get disability
    * @return disability
   **/
-  @ApiModelProperty(example = "No", value = "The disability status of a staff member")
+  @ApiModelProperty(value = "")
   public String getDisability() {
     return disability;
   }
@@ -157,15 +121,15 @@ public class StaffMemberDemographics implements Serializable {
       return false;
     }
     StaffMemberDemographics staffMemberDemographics = (StaffMemberDemographics) o;
-    return Objects.equals(this.gender, staffMemberDemographics.gender) &&
-        Objects.equals(this.ethnicityCode, staffMemberDemographics.ethnicityCode) &&
+    return Objects.equals(this.ethnicityCode, staffMemberDemographics.ethnicityCode) &&
         Objects.equals(this.ethnicityGroup, staffMemberDemographics.ethnicityGroup) &&
+        Objects.equals(this.gender, staffMemberDemographics.gender) &&
         Objects.equals(this.disability, staffMemberDemographics.disability);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gender, ethnicityCode, ethnicityGroup, disability);
+    return Objects.hash(ethnicityCode, ethnicityGroup, gender, disability);
   }
 
 
@@ -174,9 +138,9 @@ public class StaffMemberDemographics implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffMemberDemographics {\n");
     
-    sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    ethnicityCode: ").append(toIndentedString(ethnicityCode)).append("\n");
     sb.append("    ethnicityGroup: ").append(toIndentedString(ethnicityGroup)).append("\n");
+    sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    disability: ").append(toIndentedString(disability)).append("\n");
     sb.append("}");
     return sb.toString();

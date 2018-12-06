@@ -16,51 +16,31 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.SubjectMisSubjects;
+import education.assembly.platform.spring.models.MisSubject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 
 /**
- * A subject object represents an Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school&#39;s MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.
+ * Subject
  */
-@ApiModel(description = "A subject object represents an Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school's MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.")
 
 public class Subject implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("object")
-  private String object = null;
-
   @JsonProperty("id")
   private Integer id = null;
-
-  @JsonProperty("name")
-  private String name = null;
 
   @JsonProperty("code")
   private String code = null;
 
+  @JsonProperty("name")
+  private String name = null;
+
   @JsonProperty("mis_subjects")
-  private SubjectMisSubjects misSubjects = null;
-
-  public Subject object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "subject", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
+  private List<MisSubject> misSubjects = null;
 
   public Subject id(Integer id) {
     this.id = id;
@@ -68,10 +48,10 @@ public class Subject implements Serializable {
   }
 
    /**
-   * Internal stable ID given to all subjects in the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "22", value = "Internal stable ID given to all subjects in the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -80,34 +60,16 @@ public class Subject implements Serializable {
     this.id = id;
   }
 
-  public Subject name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Full name of subject 
-   * @return name
-  **/
-  @ApiModelProperty(example = "Mathematics", value = "Full name of subject ")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public Subject code(String code) {
     this.code = code;
     return this;
   }
 
    /**
-   * Shortened code of subject
+   * Get code
    * @return code
   **/
-  @ApiModelProperty(example = "MAT", value = "Shortened code of subject")
+  @ApiModelProperty(value = "")
   public String getCode() {
     return code;
   }
@@ -116,8 +78,34 @@ public class Subject implements Serializable {
     this.code = code;
   }
 
-  public Subject misSubjects(SubjectMisSubjects misSubjects) {
+  public Subject name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Subject misSubjects(List<MisSubject> misSubjects) {
     this.misSubjects = misSubjects;
+    return this;
+  }
+
+  public Subject addMisSubjectsItem(MisSubject misSubjectsItem) {
+    if (this.misSubjects == null) {
+      this.misSubjects = new ArrayList<MisSubject>();
+    }
+    this.misSubjects.add(misSubjectsItem);
     return this;
   }
 
@@ -126,11 +114,11 @@ public class Subject implements Serializable {
    * @return misSubjects
   **/
   @ApiModelProperty(value = "")
-  public SubjectMisSubjects getMisSubjects() {
+  public List<MisSubject> getMisSubjects() {
     return misSubjects;
   }
 
-  public void setMisSubjects(SubjectMisSubjects misSubjects) {
+  public void setMisSubjects(List<MisSubject> misSubjects) {
     this.misSubjects = misSubjects;
   }
 
@@ -144,16 +132,15 @@ public class Subject implements Serializable {
       return false;
     }
     Subject subject = (Subject) o;
-    return Objects.equals(this.object, subject.object) &&
-        Objects.equals(this.id, subject.id) &&
-        Objects.equals(this.name, subject.name) &&
+    return Objects.equals(this.id, subject.id) &&
         Objects.equals(this.code, subject.code) &&
+        Objects.equals(this.name, subject.name) &&
         Objects.equals(this.misSubjects, subject.misSubjects);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, code, misSubjects);
+    return Objects.hash(id, code, name, misSubjects);
   }
 
 
@@ -162,10 +149,9 @@ public class Subject implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Subject {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    misSubjects: ").append(toIndentedString(misSubjects)).append("\n");
     sb.append("}");
     return sb.toString();

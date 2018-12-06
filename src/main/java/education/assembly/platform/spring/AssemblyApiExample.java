@@ -49,13 +49,12 @@ public class AssemblyApiExample {
 
         // Create an API instance and start using it:
         AssemblyApi api = new AssemblyApi(client);
-        Integer page = 1; // Integer | Page number to return
-        Integer perPage = 100; // Integer | Number of results to return
+        Integer id = 56; // Integer | id of the entity
         try {
-            AcademicYearList result = api.getAcademicYears(page, perPage);
+            AcademicYear result = api.find(id);
             System.out.println(result);
         } catch (Exception e) {
-            System.err.println("Exception when calling AssemblyApi#getAcademicYears");
+            System.err.println("Exception when calling AssemblyApi#find");
             e.printStackTrace();
         }
     }

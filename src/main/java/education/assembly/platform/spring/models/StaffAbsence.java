@@ -22,15 +22,11 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * Details of staff absences recorded on the MIS.
+ * StaffAbsence
  */
-@ApiModel(description = "Details of staff absences recorded on the MIS.")
 
 public class StaffAbsence implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -45,7 +41,7 @@ public class StaffAbsence implements Serializable {
   private OffsetDateTime endDate = null;
 
   @JsonProperty("working_days_lost")
-  private Float workingDaysLost = null;
+  private String workingDaysLost = null;
 
   @JsonProperty("absence_category")
   private String absenceCategory = null;
@@ -56,34 +52,16 @@ public class StaffAbsence implements Serializable {
   @JsonProperty("pay_rate")
   private String payRate = null;
 
-  public StaffAbsence object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "staff_absence", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public StaffAbsence id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Internal stable ID given to all absences on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "12", value = "Internal stable ID given to all absences on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -98,10 +76,10 @@ public class StaffAbsence implements Serializable {
   }
 
    /**
-   * The ID of the staff member who the absence is for
+   * Get staffMemberId
    * @return staffMemberId
   **/
-  @ApiModelProperty(example = "112", value = "The ID of the staff member who the absence is for")
+  @ApiModelProperty(value = "")
   public Integer getStaffMemberId() {
     return staffMemberId;
   }
@@ -116,10 +94,10 @@ public class StaffAbsence implements Serializable {
   }
 
    /**
-   * The start date of the absence
+   * Get startDate
    * @return startDate
   **/
-  @ApiModelProperty(example = "2017-09-06T14:00:00.000Z", value = "The start date of the absence")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -134,10 +112,10 @@ public class StaffAbsence implements Serializable {
   }
 
    /**
-   * The end date of the absence
+   * Get endDate
    * @return endDate
   **/
-  @ApiModelProperty(example = "2017-09-06T16:27:00.000Z", value = "The end date of the absence")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -146,21 +124,21 @@ public class StaffAbsence implements Serializable {
     this.endDate = endDate;
   }
 
-  public StaffAbsence workingDaysLost(Float workingDaysLost) {
+  public StaffAbsence workingDaysLost(String workingDaysLost) {
     this.workingDaysLost = workingDaysLost;
     return this;
   }
 
    /**
-   * Number of working days that were lost during the absence
+   * Get workingDaysLost
    * @return workingDaysLost
   **/
-  @ApiModelProperty(example = "0.5", value = "Number of working days that were lost during the absence")
-  public Float getWorkingDaysLost() {
+  @ApiModelProperty(value = "")
+  public String getWorkingDaysLost() {
     return workingDaysLost;
   }
 
-  public void setWorkingDaysLost(Float workingDaysLost) {
+  public void setWorkingDaysLost(String workingDaysLost) {
     this.workingDaysLost = workingDaysLost;
   }
 
@@ -170,10 +148,10 @@ public class StaffAbsence implements Serializable {
   }
 
    /**
-   * The category of the absence
+   * Get absenceCategory
    * @return absenceCategory
   **/
-  @ApiModelProperty(example = "OTH", value = "The category of the absence")
+  @ApiModelProperty(value = "")
   public String getAbsenceCategory() {
     return absenceCategory;
   }
@@ -188,10 +166,10 @@ public class StaffAbsence implements Serializable {
   }
 
    /**
-   * If the absence category was &#39;Illness&#39;, the specific code
+   * Get illnessCategory
    * @return illnessCategory
   **/
-  @ApiModelProperty(value = "If the absence category was 'Illness', the specific code")
+  @ApiModelProperty(value = "")
   public String getIllnessCategory() {
     return illnessCategory;
   }
@@ -206,10 +184,10 @@ public class StaffAbsence implements Serializable {
   }
 
    /**
-   * Whether or not the staff member was paid for the absence, and at what rate
+   * Get payRate
    * @return payRate
   **/
-  @ApiModelProperty(value = "Whether or not the staff member was paid for the absence, and at what rate")
+  @ApiModelProperty(value = "")
   public String getPayRate() {
     return payRate;
   }
@@ -228,8 +206,7 @@ public class StaffAbsence implements Serializable {
       return false;
     }
     StaffAbsence staffAbsence = (StaffAbsence) o;
-    return Objects.equals(this.object, staffAbsence.object) &&
-        Objects.equals(this.id, staffAbsence.id) &&
+    return Objects.equals(this.id, staffAbsence.id) &&
         Objects.equals(this.staffMemberId, staffAbsence.staffMemberId) &&
         Objects.equals(this.startDate, staffAbsence.startDate) &&
         Objects.equals(this.endDate, staffAbsence.endDate) &&
@@ -241,7 +218,7 @@ public class StaffAbsence implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, staffMemberId, startDate, endDate, workingDaysLost, absenceCategory, illnessCategory, payRate);
+    return Objects.hash(id, staffMemberId, startDate, endDate, workingDaysLost, absenceCategory, illnessCategory, payRate);
   }
 
 
@@ -250,7 +227,6 @@ public class StaffAbsence implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffAbsence {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    staffMemberId: ").append(toIndentedString(staffMemberId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

@@ -14,36 +14,26 @@ package education.assembly.platform.spring;
 
 import education.assembly.platform.spring.ApiClient;
 
-import education.assembly.platform.spring.models.AcademicYearList;
+import education.assembly.platform.spring.models.AcademicYear;
 import education.assembly.platform.spring.models.Assessment;
-import education.assembly.platform.spring.models.AssessmentList;
 import education.assembly.platform.spring.models.AssessmentPoint;
-import education.assembly.platform.spring.models.AssessmentPointList;
-import education.assembly.platform.spring.models.AttendanceList;
-import education.assembly.platform.spring.models.CalendarEventList;
-import education.assembly.platform.spring.models.ContactList;
-import education.assembly.platform.spring.models.Error;
-import education.assembly.platform.spring.models.ExclusionList;
+import education.assembly.platform.spring.models.Attendance;
+import education.assembly.platform.spring.models.CalendarEvent;
+import education.assembly.platform.spring.models.Contact;
+import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
-import education.assembly.platform.spring.models.FacetList;
-import education.assembly.platform.spring.models.Gradeset;
+import education.assembly.platform.spring.models.GradeSet;
+import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
-import education.assembly.platform.spring.models.RegistrationGroupList;
 import education.assembly.platform.spring.models.Result;
-import education.assembly.platform.spring.models.ResultList;
 import education.assembly.platform.spring.models.SchoolDetails;
-import education.assembly.platform.spring.models.StaffAbsenceList;
-import education.assembly.platform.spring.models.StaffContractList;
+import education.assembly.platform.spring.models.StaffAbsence;
+import education.assembly.platform.spring.models.StaffContract;
 import education.assembly.platform.spring.models.StaffMember;
-import education.assembly.platform.spring.models.StaffMemberList;
 import education.assembly.platform.spring.models.Student;
-import education.assembly.platform.spring.models.StudentList;
-import education.assembly.platform.spring.models.SubjectList;
+import education.assembly.platform.spring.models.Subject;
 import education.assembly.platform.spring.models.TeachingGroup;
-import education.assembly.platform.spring.models.TeachingGroupList;
-import education.assembly.platform.spring.models.UpdateMultipleResultResponse;
 import education.assembly.platform.spring.models.YearGroup;
-import education.assembly.platform.spring.models.YearGroupList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,18 +73,396 @@ public class AssemblyApi {
     }
 
     /**
-     * 
-     * Returns a list of academic years for the school associated with the provided access_token. The dates of these academic years can be used to filter data in other API endpoints.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @return AcademicYearList
+     * View an Academic Year
+     * Returns a single academic year for the school associated with the provided access_token.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return AcademicYear
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public AcademicYearList getAcademicYears(Integer page, Integer perPage) throws RestClientException {
+    public AcademicYear find(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/academic_years/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<AcademicYear> returnType = new ParameterizedTypeReference<AcademicYear>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View an Assessment Point
+     * Returns a single assessment point for the given rank.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return AssessmentPoint
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public AssessmentPoint find_0(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_0");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/assessment_points/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<AssessmentPoint> returnType = new ParameterizedTypeReference<AssessmentPoint>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View an Assessment
+     * Returns a single assessment for the given id.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return Assessment
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Assessment find_1(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_1");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/assessments/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<Assessment> returnType = new ParameterizedTypeReference<Assessment>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Facet
+     * Returns a single facet for the given id.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return Facet
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Facet find_2(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_2");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/facets/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<Facet> returnType = new ParameterizedTypeReference<Facet>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Registration Group
+     * Returns a list of registration groups that match the given set of filters.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * @return RegistrationGroup
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public RegistrationGroup find_3(Integer id, OffsetDateTime date, Integer academicYearId) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_3");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/registration_groups/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<RegistrationGroup> returnType = new ParameterizedTypeReference<RegistrationGroup>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Staff Member
+     * Returns an individual staff member record for the given ID.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @param demographics include demographics data
+     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * @return StaffMember
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public StaffMember find_4(Integer id, Boolean demographics, Boolean qualifications) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_4");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/staff_members/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<StaffMember> returnType = new ParameterizedTypeReference<StaffMember>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Student
+     * Returns an individual student record for the given ID.  **Note:** the response shown includes student demographics, contacts, student SEN needs, student addresses, photo and student care data but these will only be present if you have permission to access it and pass &#x60;demographics&#x60;, &#x60;contacts&#x60;, &#x60;sen_needs&#x60;, &#x60;addresses&#x60;, &#x60;photo&#x60;, &#x60;care&#x60; and &#x60;ever_in_care&#x60; respectively  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).  ### Photo Notes When requesting photo information the response includes a &#x60;photo.url&#x60; property, this URL should be treated as confidential and used to download the students photo to your storage system of choice. The URL is *not designed for hotlinking directly in the browser* for end users. URLs are signed and only valid for 1 hour after which time you will receive a 400 error.  Once downloaded to avoid repeatedly syncing unchanged photos you should code your application to compare the &#x60;photo.hash&#x60; property to detect changes in student photos since your last sync, it is guaranteed that changes in a photo will change the hash, however the hash is only intended to be used to detect photo changes and is not guaranteed to match a checksum of the files contents.  Photos are currently provided on an \&quot;as is\&quot; basis straight from the source MIS, this means the format, quality, metadata and dimensions are not guaranteed. We reserve the right to normalise this data in the future but your application should be resistant to differing photo formats. 
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @param demographics include demographics data
+     * @param contacts include contacts data
+     * @param senNeeds include SEN needs data
+     * @param addresses include student address data
+     * @param care include student care data (you must also supply the demographics parameter)
+     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages include student language data
+     * @param photo include student photo data
+     * @return Student
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Student find_5(Integer id, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_5");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/students/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<Student> returnType = new ParameterizedTypeReference<Student>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Teaching Group
+     * Returns a list of teaching groups that match the given set of filters.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * @param groupId a group_id to filter by
+     * @return TeachingGroup
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public TeachingGroup find_6(Integer id, OffsetDateTime date, Integer academicYearId, Integer groupId) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_6");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/teaching_groups/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "group_id", groupId));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<TeachingGroup> returnType = new ParameterizedTypeReference<TeachingGroup>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Year Group
+     * Returns a list of year groups that match the given set of filters.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * @return YearGroup
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public YearGroup find_7(Integer id, OffsetDateTime date, Integer academicYearId) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling find_7");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/year_groups/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<YearGroup> returnType = new ParameterizedTypeReference<YearGroup>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Academic Years
+     * Returns a list of academic years for the school associated with the provided access_token. The dates of these academic years can be used to filter data in other API endpoints.
+     * <p><b>200</b> - success
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;AcademicYear&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<AcademicYear> get(Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/academic_years").build().toUriString();
@@ -103,38 +471,31 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<AcademicYearList> returnType = new ParameterizedTypeReference<AcademicYearList>() {};
+        ParameterizedTypeReference<List<AcademicYear>> returnType = new ParameterizedTypeReference<List<AcademicYear>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a list of assessment points. An assessment_point object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the &#x60;assessment_point_rank&#x60; should be used - this will remain constant across all environments.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param yearCode Filter by a specific NC year code
-     * @param type Filter by assessment point type
-     * @param page Page number to return
+     * List Assessment Points
+     * Returns a list of assessment points. An assessment_point object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the assessment_point_rank should be used - this will remain constant across all environments.
+     * <p><b>200</b> - success
      * @param perPage Number of results to return
-     * @return AssessmentPointList
+     * @param page Page number to return
+     * @return List&lt;AssessmentPoint&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public AssessmentPointList getAssessmentPoints(String yearCode, String type, Integer page, Integer perPage) throws RestClientException {
+    public List<AssessmentPoint> get_0(Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/assessment_points").build().toUriString();
@@ -143,130 +504,31 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<AssessmentPointList> returnType = new ParameterizedTypeReference<AssessmentPointList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a single assessment point for the given rank.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param assessmentPointRank The rank of the assessment point as an Integer
-     * @return AssessmentPoint
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public AssessmentPoint getAssessmentPointsAssessmentPointRank(String assessmentPointRank) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'assessmentPointRank' is set
-        if (assessmentPointRank == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentPointRank' when calling getAssessmentPointsAssessmentPointRank");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("assessment_point_rank", assessmentPointRank);
-        String path = UriComponentsBuilder.fromPath("/assessment_points/{assessment_point_rank}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<AssessmentPoint> returnType = new ParameterizedTypeReference<AssessmentPoint>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of results for the given assessment_point_rank and students.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param assessmentPointRank The rank of the assessment point as an Integer
-     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @return ResultList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public ResultList getAssessmentPointsAssessmentPointRankResults(String assessmentPointRank, String students, Integer page, Integer perPage) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'assessmentPointRank' is set
-        if (assessmentPointRank == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentPointRank' when calling getAssessmentPointsAssessmentPointRankResults");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("assessment_point_rank", assessmentPointRank);
-        String path = UriComponentsBuilder.fromPath("/assessment_points/{assessment_point_rank}/results").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "students", students));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<ResultList> returnType = new ParameterizedTypeReference<ResultList>() {};
+        ParameterizedTypeReference<List<AssessmentPoint>> returnType = new ParameterizedTypeReference<List<AssessmentPoint>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a list of assessment objects.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param misMappings Includes the names of any MIS components to this object
-     * @param page Page number to return
+     * List Assessments
+     * Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result.
+     * <p><b>200</b> - success
      * @param perPage Number of results to return
-     * @return AssessmentList
+     * @param page Page number to return
+     * @return List&lt;Assessment&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public AssessmentList getAssessments(Boolean misMappings, Integer page, Integer perPage) throws RestClientException {
+    public List<Assessment> get_1(Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/assessments").build().toUriString();
@@ -275,717 +537,37 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "mis_mappings", misMappings));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<AssessmentList> returnType = new ParameterizedTypeReference<AssessmentList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a single assessment for the given ID.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param assessmentId ID of the assessment as an Integer.
-     * @return Assessment
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public Assessment getAssessmentsAssessmentId(String assessmentId) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'assessmentId' is set
-        if (assessmentId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentId' when calling getAssessmentsAssessmentId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("assessment_id", assessmentId);
-        String path = UriComponentsBuilder.fromPath("/assessments/{assessment_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<Assessment> returnType = new ParameterizedTypeReference<Assessment>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a gradeset (an acceptable list of values) for the assessment identified by the assessment_id. Grades should be written back to the Platform using the grade_id.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param assessmentId ID of the assessment as an Integer.
-     * @return Gradeset
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public Gradeset getAssessmentsAssessmentIdGradeSet(String assessmentId) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'assessmentId' is set
-        if (assessmentId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentId' when calling getAssessmentsAssessmentIdGradeSet");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("assessment_id", assessmentId);
-        String path = UriComponentsBuilder.fromPath("/assessments/{assessment_id}/grade_set").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<Gradeset> returnType = new ParameterizedTypeReference<Gradeset>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of results for the given assessment_id and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this support article.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param assessmentId ID of the assessment as an Integer.
-     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-     * @return Result
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public Result getAssessmentsAssessmentIdResults(String assessmentId, String students) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'assessmentId' is set
-        if (assessmentId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentId' when calling getAssessmentsAssessmentIdResults");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("assessment_id", assessmentId);
-        String path = UriComponentsBuilder.fromPath("/assessments/{assessment_id}/results").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "students", students));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<Result> returnType = new ParameterizedTypeReference<Result>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of attendances, filtered by date, student, or registration group. By default, attendances are returned from the start to the end of the current week.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param studentId ID of the Student as an Integer
-     * @param registrationGroupId ID of the registration group as an Integer
-     * @param startDate The start date of the period to return data for
-     * @param endDate The end date of the period to return data for
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return AttendanceList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public AttendanceList getAttendances(Integer studentId, Integer registrationGroupId, String startDate, String endDate, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/attendances").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<AttendanceList> returnType = new ParameterizedTypeReference<AttendanceList>() {};
+        ParameterizedTypeReference<List<Assessment>> returnType = new ParameterizedTypeReference<List<Assessment>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a list of calendar events from the school calendar. We strongly recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param eventType Return a calendar object type from the underlying MIS
-     * @param page Page number to return
+     * List Staff Contracts
+     * Returns a list of staff member contracts for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.contracts&#x60; scope is required to access staff member contract information.
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param staffMemberId show only absences fot the specified staff member
+     * @param date returns results for a specific date
+     * @param roles return roles information along with a staff contract
+     * @param salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it)
+     * @param allowances return allowances information along with a staff contract (requires staff_members.salaries scope)
      * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return CalendarEventList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public CalendarEventList getCalendarEvents(String eventType, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/calendar_events").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "event_type", eventType));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<CalendarEventList> returnType = new ParameterizedTypeReference<CalendarEventList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of contacts that match the given set of filters.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param studentId ID of the Student as an Integer
      * @param page Page number to return
-     * @param perPage Number of results to return
-     * @return ContactList
+     * @return List&lt;StaffContract&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ContactList getContacts(Integer studentId, Integer page, Integer perPage) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/contacts").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<ContactList> returnType = new ParameterizedTypeReference<ContactList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of exclusions. By default, exclusions are returned that occurred during the current academic year.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param startDate The start date of the period to return data for
-     * @param endDate The end date of the period to return data for
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @return ExclusionList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public ExclusionList getExclusions(String startDate, String endDate, Integer page, Integer perPage) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/exclusions").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<ExclusionList> returnType = new ParameterizedTypeReference<ExclusionList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of exclusions for a given student. By default, exclusions are returned that occurred during the current academic year.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param studentId ID of the Student as an Integer
-     * @param startDate The start date of the period to return data for
-     * @param endDate The end date of the period to return data for
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @return ExclusionList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public ExclusionList getExclusionsStudentId(String studentId, String startDate, String endDate, Integer page, Integer perPage) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'studentId' is set
-        if (studentId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'studentId' when calling getExclusionsStudentId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("student_id", studentId);
-        String path = UriComponentsBuilder.fromPath("/exclusions/{student_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<ExclusionList> returnType = new ParameterizedTypeReference<ExclusionList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a single facet for the given ID.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param facetId ID of the facet as an Integer.
-     * @return Facet
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public Facet getFacetFacetId(String facetId) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'facetId' is set
-        if (facetId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'facetId' when calling getFacetFacetId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("facet_id", facetId);
-        String path = UriComponentsBuilder.fromPath("/facet/{facet_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<Facet> returnType = new ParameterizedTypeReference<Facet>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @return FacetList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public FacetList getFacets(Integer page, Integer perPage) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/facets").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<FacetList> returnType = new ParameterizedTypeReference<FacetList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of registration groups that match the given set of filters.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param yearCode Filter by a specific NC year code
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return RegistrationGroupList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public RegistrationGroupList getRegistrationGroups(String yearCode, String date, Integer academicYearId, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/registration_groups").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<RegistrationGroupList> returnType = new ParameterizedTypeReference<RegistrationGroupList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a single registration group whose code matches the provided group_id. Additionally includes a list of all the student identifiers that are present in the group.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param groupId ID of the Year Group as an Integer
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return RegistrationGroup
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public RegistrationGroup getRegistrationGroupsGroupId(String groupId, String date, Integer academicYearId, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'groupId' when calling getRegistrationGroupsGroupId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("group_id", groupId);
-        String path = UriComponentsBuilder.fromPath("/registration_groups/{group_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<RegistrationGroup> returnType = new ParameterizedTypeReference<RegistrationGroup>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of all the students that are present in the registration group identified by group_id.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param groupId ID of the Year Group as an Integer
-     * @param yearCode Filter by a specific NC year code
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param demographics Return demographic information along with the person (requires appropriate scope)
-     * @param care Return care information along with this object, depends on inclusion of demographics
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StudentList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public StudentList getRegistrationGroupsGroupIdStudents(String groupId, String yearCode, String date, Integer academicYearId, Boolean demographics, Boolean care, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'groupId' when calling getRegistrationGroupsGroupIdStudents");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("group_id", groupId);
-        String path = UriComponentsBuilder.fromPath("/registration_groups/{group_id}/students").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<StudentList> returnType = new ParameterizedTypeReference<StudentList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns details for the school associated with the provided access_token.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @return SchoolDetails
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public SchoolDetails getSchoolDetails() throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/school_details").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<SchoolDetails> returnType = new ParameterizedTypeReference<SchoolDetails>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of staff member absences for the school accociated with the provided access_token. A school level access token with the staff_members.absences scope is required to access staff member absence information.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param startDate The start date of the period to return data for
-     * @param endDate The end date of the period to return data for
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StaffAbsenceList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public StaffAbsenceList getStaffAbsences(String startDate, String endDate, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/staff_absences").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<StaffAbsenceList> returnType = new ParameterizedTypeReference<StaffAbsenceList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of staff member contracts for the school accociated with the provided access_token. A school level access token with the staff_members.contracts scope is required to access staff member contract information.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param date Filter for a specific date
-     * @param roles Return roles information along with this object
-     * @param salaries Return salary information along with this object
-     * @param allowances Return allowances information along with this object
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StaffContractList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public StaffContractList getStaffContracts(String date, Boolean roles, Boolean salaries, Boolean allowances, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
+    public List<StaffContract> get_10(OffsetDateTime ifModifiedSince, Integer staffMemberId, Boolean date, Boolean roles, Boolean salaries, Boolean allowances, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_contracts").build().toUriString();
@@ -994,106 +576,43 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "staff_member_id", staffMemberId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "roles", roles));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "salaries", salaries));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "allowances", allowances));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<StaffContractList> returnType = new ParameterizedTypeReference<StaffContractList>() {};
+        ParameterizedTypeReference<List<StaffContract>> returnType = new ParameterizedTypeReference<List<StaffContract>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a list of staff member contracts for the school accociated with the provided access_token. A school level access token with the staff_members.contracts scope is required to access staff member contract information.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param staffMemberId ID of the Staff Member as an Integer
-     * @param date Filter for a specific date
-     * @param roles Return roles information along with this object
-     * @param salaries Return salary information along with this object
-     * @param allowances Return allowances information along with this object
-     * @param page Page number to return
+     * List Staff Members
+     * Returns a list of staff members for the school accociated with the provided &#x60;access_token&#x60;.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param teachersOnly return only staff who are teachers
+     * @param demographics include demographics data
+     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StaffContractList
+     * @param page Page number to return
+     * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public StaffContractList getStaffContractsStaffMemberId(String staffMemberId, String date, Boolean roles, Boolean salaries, Boolean allowances, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'staffMemberId' is set
-        if (staffMemberId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'staffMemberId' when calling getStaffContractsStaffMemberId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("staff_member_id", staffMemberId);
-        String path = UriComponentsBuilder.fromPath("/staff_contracts/{staff_member_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "roles", roles));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "salaries", salaries));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "allowances", allowances));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<StaffContractList> returnType = new ParameterizedTypeReference<StaffContractList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of staff members for the school accociated with the provided access_token.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param teachersOnly Return only staff who are teachers
-     * @param demographics Return demographic information along with the person (requires appropriate scope)
-     * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires appropriate scope)
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StaffMemberList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public StaffMemberList getStaffMembers(Boolean teachersOnly, Boolean demographics, Boolean qualifications, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
+    public List<StaffMember> get_11(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_members").build().toUriString();
@@ -1105,100 +624,46 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "teachers_only", teachersOnly));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<StaffMemberList> returnType = new ParameterizedTypeReference<StaffMemberList>() {};
+        ParameterizedTypeReference<List<StaffMember>> returnType = new ParameterizedTypeReference<List<StaffMember>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns an individual staff member record for the given ID.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param staffMemberId ID of the Staff Member as an Integer
-     * @param demographics Return demographic information along with the person (requires appropriate scope)
-     * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires appropriate scope)
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StaffMember
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public StaffMember getStaffMembersStaffMemberId(String staffMemberId, Boolean demographics, Boolean qualifications, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'staffMemberId' is set
-        if (staffMemberId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'staffMemberId' when calling getStaffMembersStaffMemberId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("staff_member_id", staffMemberId);
-        String path = UriComponentsBuilder.fromPath("/staff_members/{staff_member_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<StaffMember> returnType = new ParameterizedTypeReference<StaffMember>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of students for the school associated with the provided access_token.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param yearCode Filter by a specific NC year code
+     * List Students
+     * Returns a list of students for the school associated with the provided &#x60;access_token.&#x60; **Note:** the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-     * @param date Filter for a specific date
-     * @param demographics Return demographic information along with the person (requires appropriate scope)
-     * @param contacts Return contact information along with this object
-     * @param senNeeds Return Special Educational Need information along with this object
-     * @param addresses Return address information along with this object
-     * @param care Return care information along with this object, depends on inclusion of demographics
-     * @param languages Return language information along with this object
-     * @param page Page number to return
+     * @param date returns results for a specific date
+     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
+     * @param demographics include demographics data
+     * @param contacts include contacts data
+     * @param senNeeds include SEN needs data
+     * @param addresses include student address data
+     * @param care include student care data (you must also supply the demographics parameter)
+     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages include student language data
+     * @param photo include student photo data
      * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StudentList
+     * @param page Page number to return
+     * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public StudentList getStudents(String yearCode, String students, String date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean languages, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
+    public List<Student> get_12(OffsetDateTime ifModifiedSince, List<Integer> students, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/students").build().toUriString();
@@ -1207,110 +672,45 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "students", students));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<StudentList> returnType = new ParameterizedTypeReference<StudentList>() {};
+        ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns an individual student record for the given ID. Note: the response shown includes student demographics, contacts, student SEN needs, student addresses and student care data but these will only be present if you have permission to access it and pass demographics&#x3D;true, contacts&#x3D;true, sen_needs&#x3D;true, addresses&#x3D;true and care&#x3D;true respectively
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param studentId ID of the Student as an Integer
-     * @param date Filter for a specific date
-     * @param demographics Return demographic information along with the person (requires appropriate scope)
-     * @param contacts Return contact information along with this object
-     * @param senNeeds Return Special Educational Need information along with this object
-     * @param addresses Return address information along with this object
-     * @param care Return care information along with this object, depends on inclusion of demographics
-     * @param languages Return language information along with this object
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return Student
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public Student getStudentsStudentId(String studentId, String date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean languages, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'studentId' is set
-        if (studentId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'studentId' when calling getStudentsStudentId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("student_id", studentId);
-        String path = UriComponentsBuilder.fromPath("/students/{student_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<Student> returnType = new ParameterizedTypeReference<Student>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
+     * List Subjects
      * Returns a list of the Assembly Platform&#39;s subjects.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param misMappings Includes the names of any MIS components to this object
-     * @param page Page number to return
+     * <p><b>200</b> - success
      * @param perPage Number of results to return
-     * @return SubjectList
+     * @param page Page number to return
+     * @return List&lt;Subject&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public SubjectList getSubjects(Boolean misMappings, Integer page, Integer perPage) throws RestClientException {
+    public List<Subject> get_13(Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/subjects").build().toUriString();
@@ -1319,41 +719,36 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "mis_mappings", misMappings));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<SubjectList> returnType = new ParameterizedTypeReference<SubjectList>() {};
+        ParameterizedTypeReference<List<Subject>> returnType = new ParameterizedTypeReference<List<Subject>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a list of teaching groups that match the given set of filters. If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param subjectCode Filter by subject
-     * @param yearCode Filter by a specific NC year code
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param page Page number to return
+     * List Teaching Groups
+     * Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param subjectCode filter by subject
+     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
-     * @return TeachingGroupList
+     * @param page Page number to return
+     * @return List&lt;TeachingGroup&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public TeachingGroupList getTeachingGroups(String subjectCode, String yearCode, String date, Integer academicYearId, Integer page, Integer perPage) throws RestClientException {
+    public List<TeachingGroup> get_14(OffsetDateTime ifModifiedSince, String subjectCode, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/teaching_groups").build().toUriString();
@@ -1366,148 +761,38 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<TeachingGroupList> returnType = new ParameterizedTypeReference<TeachingGroupList>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a single teaching group whose ID matches the provided group_id. Additionally includes a list of all the student and supervisor identifiers that have ever been enrolled in the group.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param groupId ID of the Year Group as an Integer
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @return TeachingGroup
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public TeachingGroup getTeachingGroupsGroupId(String groupId, String date, Integer academicYearId) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'groupId' when calling getTeachingGroupsGroupId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("group_id", groupId);
-        String path = UriComponentsBuilder.fromPath("/teaching_groups/{group_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<TeachingGroup> returnType = new ParameterizedTypeReference<TeachingGroup>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of all the students that are present in the teaching group identified by group_id.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param groupId ID of the Year Group as an Integer
-     * @param yearCode Filter by a specific NC year code
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param demographics Return demographic information along with the person (requires appropriate scope)
-     * @param care Return care information along with this object, depends on inclusion of demographics
-     * @param page Page number to return
-     * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StudentList
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public StudentList getTeachingGroupsGroupIdStudents(String groupId, String yearCode, String date, Integer academicYearId, Boolean demographics, Boolean care, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'groupId' when calling getTeachingGroupsGroupIdStudents");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("group_id", groupId);
-        String path = UriComponentsBuilder.fromPath("/teaching_groups/{group_id}/students").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<StudentList> returnType = new ParameterizedTypeReference<StudentList>() {};
+        ParameterizedTypeReference<List<TeachingGroup>> returnType = new ParameterizedTypeReference<List<TeachingGroup>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a list of year groups that match the given set of filters. The default behaviour is to return the year groups for the school&#39;s current academic year.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param yearCode Filter by a specific NC year code
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param page Page number to return
+     * List Year Groups
+     * Returns a list of year groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return YearGroupList
+     * @param page Page number to return
+     * @return List&lt;YearGroup&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public YearGroupList getYearGroups(String yearCode, String date, Integer academicYearId, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
+    public List<YearGroup> get_15(OffsetDateTime ifModifiedSince, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/year_groups").build().toUriString();
@@ -1519,141 +804,268 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<YearGroupList> returnType = new ParameterizedTypeReference<YearGroupList>() {};
+        ParameterizedTypeReference<List<YearGroup>> returnType = new ParameterizedTypeReference<List<YearGroup>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Returns a single year group whose code matches the provided year_code. Additionally includes a list of all the student identifiers that are present in the group.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param groupId ID of the Year Group as an Integer
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @return YearGroup
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public YearGroup getYearGroupsGroupId(String groupId, String date, Integer academicYearId) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'groupId' when calling getYearGroupsGroupId");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("group_id", groupId);
-        String path = UriComponentsBuilder.fromPath("/year_groups/{group_id}").buildAndExpand(uriVariables).toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "oauth2" };
-
-        ParameterizedTypeReference<YearGroup> returnType = new ParameterizedTypeReference<YearGroup>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Returns a list of all the students that are present in the year group identified by year_code.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param groupId ID of the Year Group as an Integer
-     * @param date Filter for a specific date
-     * @param academicYearId Filter based on the specified academic year
-     * @param page Page number to return
+     * List Attendances
+     * Returns a list of attendances. By default, attendances are returned from the start to the end of the current week.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param studentId a student_id to filter by
+     * @param registrationGroupId id of a registration group
+     * @param startDate the start date of the period to query
+     * @param endDate the end date of the period to query
      * @param perPage Number of results to return
-     * @param ifModifiedSince Timestamp of the last response.
-     * @return StudentList
+     * @param page Page number to return
+     * @return List&lt;Attendance&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public StudentList getYearGroupsGroupIdStudents(String groupId, String date, Integer academicYearId, Integer page, Integer perPage, String ifModifiedSince) throws RestClientException {
+    public List<Attendance> get_2(Integer studentId, Integer registrationGroupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
-        // verify the required parameter 'groupId' is set
-        if (groupId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'groupId' when calling getYearGroupsGroupIdStudents");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("group_id", groupId);
-        String path = UriComponentsBuilder.fromPath("/year_groups/{group_id}/students").buildAndExpand(uriVariables).toUriString();
+        String path = UriComponentsBuilder.fromPath("/attendances").build().toUriString();
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Attendance>> returnType = new ParameterizedTypeReference<List<Attendance>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Calendar Events
+     * Returns a list of calendar events from the school calendar. We strongly recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param eventType a calendar object type from the underlying MIS
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;CalendarEvent&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<CalendarEvent> get_3(String eventType, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/calendar_events").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "event_type", eventType));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<CalendarEvent>> returnType = new ParameterizedTypeReference<List<CalendarEvent>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Contacts
+     * Returns a list of contacts that match the given set of filters.
+     * <p><b>200</b> - success
+     * @param studentId a student_id to filter by
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Contact&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Contact> get_4(Integer studentId, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/contacts").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Contact>> returnType = new ParameterizedTypeReference<List<Contact>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Exclusions
+     * Returns a list of exclusions. *By default, exclusions are returned that occurred during the current academic year.*
+     * <p><b>200</b> - success
+     * @param studentId a student_id to filter by
+     * @param startDate the start date of the period to query
+     * @param endDate the end date of the period to query
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Exclusion&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Exclusion> get_5(Integer studentId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/exclusions").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Exclusion>> returnType = new ParameterizedTypeReference<List<Exclusion>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Facets
+     * Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared.
+     * <p><b>200</b> - success
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Facet&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Facet> get_6(Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/facets").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Facet>> returnType = new ParameterizedTypeReference<List<Facet>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Registration Group
+     * Returns a list of registration groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;RegistrationGroup&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<RegistrationGroup> get_7(OffsetDateTime ifModifiedSince, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/registration_groups").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<StudentList> returnType = new ParameterizedTypeReference<StudentList>() {};
+        ParameterizedTypeReference<List<RegistrationGroup>> returnType = new ParameterizedTypeReference<List<RegistrationGroup>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param updateMultipleResultPayload Payload for update multiple Result request
-     * @return UpdateMultipleResultResponse
+     * List Results
+     * Returns a list of results for the student ID(s) specified by the students parameter.
+     * <p><b>200</b> - success
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public UpdateMultipleResultResponse patchResults(UpdateMultipleResultResponse updateMultipleResultPayload) throws RestClientException {
-        Object postBody = updateMultipleResultPayload;
+    public List<Result> get_8(List<Integer> students, OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'students' is set
+        if (students == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'students' when calling get_8");
+        }
         
         String path = UriComponentsBuilder.fromPath("/results").build().toUriString();
 
@@ -1661,61 +1073,437 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<UpdateMultipleResultResponse> returnType = new ParameterizedTypeReference<UpdateMultipleResultResponse>() {};
-        return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+        ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * 
-     * Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
-     * <p><b>200</b> - Success Response
-     * <p><b>401</b> - Unauthorized.
-     * <p><b>406</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * <p><b>429</b> - No Acceptable. Accept header does not contain the expected value &#x60;application/vnd.assembly+json; version&#x3D;1&#x60;.
-     * @param resultId ID of the Result as an Integer
-     * @param updateResultPayload Payload for update Result request
-     * @return Result
+     * List Staff Absences
+     * Returns a list of staff member absences for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.absences&#x60; scope is required to access staff member absence information.
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param staffMemberId show only absences fot the specified staff member
+     * @param startDate the start date of the period to query
+     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;StaffAbsence&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Result patchResultsResultId(String resultId, Result updateResultPayload) throws RestClientException {
-        Object postBody = updateResultPayload;
+    public List<StaffAbsence> get_9(OffsetDateTime ifModifiedSince, Integer staffMemberId, OffsetDateTime startDate, Integer qualifications, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
         
-        // verify the required parameter 'resultId' is set
-        if (resultId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'resultId' when calling patchResultsResultId");
+        String path = UriComponentsBuilder.fromPath("/staff_absences").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "staff_member_id", staffMemberId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<StaffAbsence>> returnType = new ParameterizedTypeReference<List<StaffAbsence>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View Grade Set for an Assessment
+     * Returns a grade_set (an acceptable list of values) for the assessment identified by the assessment_id. Grades should be written back to the Platform using the grade_id.
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @return GradeSet
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public GradeSet gradeSet(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling gradeSet");
         }
         
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("result_id", resultId);
-        String path = UriComponentsBuilder.fromPath("/results/{result_id}").buildAndExpand(uriVariables).toUriString();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/assessments/{id}/grade_set").buildAndExpand(uriVariables).toUriString();
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         final String[] accepts = { 
-            "application/vnd.assembly+json; version=1"
+            "application/vnd.assembly+json; version=1.1"
         };
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { 
-            "application/json"
-        };
+        final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "oauth2" };
+        String[] authNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<Result> returnType = new ParameterizedTypeReference<Result>() {};
-        return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+        ParameterizedTypeReference<GradeSet> returnType = new ParameterizedTypeReference<GradeSet>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Left Students
+     * Returns a list of students who have left the school.&lt;br&gt;&lt;br&gt;**Note:** This will include any students who have left the school during the current academic year. If the school has been connected to Assembly for more than one academic year, all left students will be returned. The &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @return List&lt;Student&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Student> left(OffsetDateTime ifModifiedSince) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/students/left").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View Results for an Assessment Point
+     * Returns a list of results for the given assessment_point_rank and students.
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+     * @param assessmentPointRank the Assessment Point rank
+     * @return List&lt;Result&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Result> results(Integer id, List<Integer> students, Integer assessmentPointRank) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling results");
+        }
+        
+        // verify the required parameter 'students' is set
+        if (students == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'students' when calling results");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/assessment_points/{id}/results").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "assessment_point_rank", assessmentPointRank));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View Results for an Assessment
+     * Returns a list of results for the given assessment_id and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this support article.
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+     * @return List&lt;Result&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Result> results_0(Integer id, List<Integer> students) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling results_0");
+        }
+        
+        // verify the required parameter 'students' is set
+        if (students == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'students' when calling results_0");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/assessments/{id}/results").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List School Details
+     * Returns details for the school associated with the provided access_token.
+     * <p><b>200</b> - success
+     * @return SchoolDetails
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public SchoolDetails show() throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/school_details").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<SchoolDetails> returnType = new ParameterizedTypeReference<SchoolDetails>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Students for Registration Group
+     * Returns a list of all the students that are present in the registration group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * @param demographics include demographics data
+     * @param contacts include contacts data
+     * @param senNeeds include SEN needs data
+     * @param addresses include student address data
+     * @param care include student care data (you must also supply the demographics parameter)
+     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages include student language data
+     * @param photo include student photo data
+     * @return List&lt;Student&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Student> students(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer academicYearId, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling students");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/registration_groups/{id}/students").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Students for Teaching Group
+     * Returns a list of all the students that are present in the teaching group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param demographics include demographics data
+     * @param contacts include contacts data
+     * @param senNeeds include SEN needs data
+     * @param addresses include student address data
+     * @param care include student care data (you must also supply the demographics parameter)
+     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages include student language data
+     * @param photo include student photo data
+     * @return List&lt;Student&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Student> students_0(Integer id, OffsetDateTime ifModifiedSince, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling students_0");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/teaching_groups/{id}/students").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Students for Year Group
+     * Returns a list of all the students that are present in the year group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @param date returns results for a specific date
+     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * @param demographics include demographics data
+     * @param contacts include contacts data
+     * @param senNeeds include SEN needs data
+     * @param addresses include student address data
+     * @param care include student care data (you must also supply the demographics parameter)
+     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages include student language data
+     * @param photo include student photo data
+     * @return List&lt;Student&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Student> students_1(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer academicYearId, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling students_1");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/year_groups/{id}/students").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
 }

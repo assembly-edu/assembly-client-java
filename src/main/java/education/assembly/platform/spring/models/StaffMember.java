@@ -20,19 +20,17 @@ import education.assembly.platform.spring.models.StaffMemberDemographics;
 import education.assembly.platform.spring.models.StaffMemberQualificationInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * A staff member object represents a single staff member within a school.
+ * StaffMember
  */
-@ApiModel(description = "A staff member object represents a single staff member within a school.")
 
 public class StaffMember implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -61,11 +59,11 @@ public class StaffMember implements Serializable {
   @JsonProperty("former_last_name")
   private String formerLastName = null;
 
-  @JsonProperty("dob")
-  private String dob = null;
-
   @JsonProperty("title")
   private String title = null;
+
+  @JsonProperty("dob")
+  private OffsetDateTime dob = null;
 
   @JsonProperty("email")
   private String email = null;
@@ -77,34 +75,16 @@ public class StaffMember implements Serializable {
   private Boolean includedInCensus = null;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private String startDate = null;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private String endDate = null;
 
   @JsonProperty("demographics")
-  private StaffMemberDemographics demographics = null;
+  private List<StaffMemberDemographics> demographics = null;
 
   @JsonProperty("qualification_info")
-  private StaffMemberQualificationInfo qualificationInfo = null;
-
-  public StaffMember object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "staff_member", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
+  private List<StaffMemberQualificationInfo> qualificationInfo = null;
 
   public StaffMember id(Integer id) {
     this.id = id;
@@ -112,10 +92,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * Internal stable ID given to each staff member in the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "24", value = "Internal stable ID given to each staff member in the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -130,10 +110,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The ID of the staff member from the MIS
+   * Get misId
    * @return misId
   **/
-  @ApiModelProperty(example = "214", value = "The ID of the staff member from the MIS")
+  @ApiModelProperty(value = "")
   public String getMisId() {
     return misId;
   }
@@ -148,10 +128,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The staff code from the MIS
+   * Get staffCode
    * @return staffCode
   **/
-  @ApiModelProperty(example = "TLA", value = "The staff code from the MIS")
+  @ApiModelProperty(value = "")
   public String getStaffCode() {
     return staffCode;
   }
@@ -166,10 +146,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The first name of the staff member
+   * Get firstName
    * @return firstName
   **/
-  @ApiModelProperty(example = "Trevor", value = "The first name of the staff member")
+  @ApiModelProperty(value = "")
   public String getFirstName() {
     return firstName;
   }
@@ -184,10 +164,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The legal first name of the staff member
+   * Get legalFirstName
    * @return legalFirstName
   **/
-  @ApiModelProperty(example = "Trevor", value = "The legal first name of the staff member")
+  @ApiModelProperty(value = "")
   public String getLegalFirstName() {
     return legalFirstName;
   }
@@ -202,10 +182,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The middle name of the staff member
+   * Get middleName
    * @return middleName
   **/
-  @ApiModelProperty(example = "Lance", value = "The middle name of the staff member")
+  @ApiModelProperty(value = "")
   public String getMiddleName() {
     return middleName;
   }
@@ -220,10 +200,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The last name of the staff member
+   * Get lastName
    * @return lastName
   **/
-  @ApiModelProperty(example = "Taylor", value = "The last name of the staff member")
+  @ApiModelProperty(value = "")
   public String getLastName() {
     return lastName;
   }
@@ -238,10 +218,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The legal last name of the staff member
+   * Get legalLastName
    * @return legalLastName
   **/
-  @ApiModelProperty(example = "Taylor", value = "The legal last name of the staff member")
+  @ApiModelProperty(value = "")
   public String getLegalLastName() {
     return legalLastName;
   }
@@ -256,10 +236,10 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * The former last name of the staff member
+   * Get formerLastName
    * @return formerLastName
   **/
-  @ApiModelProperty(example = "Jones", value = "The former last name of the staff member")
+  @ApiModelProperty(value = "")
   public String getFormerLastName() {
     return formerLastName;
   }
@@ -268,34 +248,16 @@ public class StaffMember implements Serializable {
     this.formerLastName = formerLastName;
   }
 
-  public StaffMember dob(String dob) {
-    this.dob = dob;
-    return this;
-  }
-
-   /**
-   * The staff member&#39;s date of birth
-   * @return dob
-  **/
-  @ApiModelProperty(example = "1979-10-30", value = "The staff member's date of birth")
-  public String getDob() {
-    return dob;
-  }
-
-  public void setDob(String dob) {
-    this.dob = dob;
-  }
-
   public StaffMember title(String title) {
     this.title = title;
     return this;
   }
 
    /**
-   * The title of the staff member
+   * Get title
    * @return title
   **/
-  @ApiModelProperty(example = "Mr", value = "The title of the staff member")
+  @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
   }
@@ -304,16 +266,34 @@ public class StaffMember implements Serializable {
     this.title = title;
   }
 
+  public StaffMember dob(OffsetDateTime dob) {
+    this.dob = dob;
+    return this;
+  }
+
+   /**
+   * Get dob
+   * @return dob
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getDob() {
+    return dob;
+  }
+
+  public void setDob(OffsetDateTime dob) {
+    this.dob = dob;
+  }
+
   public StaffMember email(String email) {
     this.email = email;
     return this;
   }
 
    /**
-   * The email address of the staff member.
+   * Get email
    * @return email
   **/
-  @ApiModelProperty(example = "trevor.taylor@assembly.education", value = "The email address of the staff member.")
+  @ApiModelProperty(value = "")
   public String getEmail() {
     return email;
   }
@@ -328,11 +308,11 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * Indicates whether the staff member is a teacher
+   * Get isTeachingStaff
    * @return isTeachingStaff
   **/
-  @ApiModelProperty(example = "true", value = "Indicates whether the staff member is a teacher")
-  public Boolean isIsTeachingStaff() {
+  @ApiModelProperty(value = "")
+  public Boolean isgetIsTeachingStaff() {
     return isTeachingStaff;
   }
 
@@ -346,11 +326,11 @@ public class StaffMember implements Serializable {
   }
 
    /**
-   * Indicates whether the staff member is a teacher
+   * Get includedInCensus
    * @return includedInCensus
   **/
-  @ApiModelProperty(example = "true", value = "Indicates whether the staff member is a teacher")
-  public Boolean isIncludedInCensus() {
+  @ApiModelProperty(value = "")
+  public Boolean isgetIncludedInCensus() {
     return includedInCensus;
   }
 
@@ -358,44 +338,52 @@ public class StaffMember implements Serializable {
     this.includedInCensus = includedInCensus;
   }
 
-  public StaffMember startDate(OffsetDateTime startDate) {
+  public StaffMember startDate(String startDate) {
     this.startDate = startDate;
     return this;
   }
 
    /**
-   * When the staff member&#39;s employment started
+   * Get startDate
    * @return startDate
   **/
-  @ApiModelProperty(example = "2011-09-01T00:00:00.000Z", value = "When the staff member's employment started")
-  public OffsetDateTime getStartDate() {
+  @ApiModelProperty(value = "")
+  public String getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-  public StaffMember endDate(OffsetDateTime endDate) {
+  public StaffMember endDate(String endDate) {
     this.endDate = endDate;
     return this;
   }
 
    /**
-   * When the staff member&#39;s employment ended/is due to end
+   * Get endDate
    * @return endDate
   **/
-  @ApiModelProperty(example = "2079-06-06T23:59:00.000Z", value = "When the staff member's employment ended/is due to end")
-  public OffsetDateTime getEndDate() {
+  @ApiModelProperty(value = "")
+  public String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 
-  public StaffMember demographics(StaffMemberDemographics demographics) {
+  public StaffMember demographics(List<StaffMemberDemographics> demographics) {
     this.demographics = demographics;
+    return this;
+  }
+
+  public StaffMember addDemographicsItem(StaffMemberDemographics demographicsItem) {
+    if (this.demographics == null) {
+      this.demographics = new ArrayList<StaffMemberDemographics>();
+    }
+    this.demographics.add(demographicsItem);
     return this;
   }
 
@@ -404,16 +392,24 @@ public class StaffMember implements Serializable {
    * @return demographics
   **/
   @ApiModelProperty(value = "")
-  public StaffMemberDemographics getDemographics() {
+  public List<StaffMemberDemographics> getDemographics() {
     return demographics;
   }
 
-  public void setDemographics(StaffMemberDemographics demographics) {
+  public void setDemographics(List<StaffMemberDemographics> demographics) {
     this.demographics = demographics;
   }
 
-  public StaffMember qualificationInfo(StaffMemberQualificationInfo qualificationInfo) {
+  public StaffMember qualificationInfo(List<StaffMemberQualificationInfo> qualificationInfo) {
     this.qualificationInfo = qualificationInfo;
+    return this;
+  }
+
+  public StaffMember addQualificationInfoItem(StaffMemberQualificationInfo qualificationInfoItem) {
+    if (this.qualificationInfo == null) {
+      this.qualificationInfo = new ArrayList<StaffMemberQualificationInfo>();
+    }
+    this.qualificationInfo.add(qualificationInfoItem);
     return this;
   }
 
@@ -422,11 +418,11 @@ public class StaffMember implements Serializable {
    * @return qualificationInfo
   **/
   @ApiModelProperty(value = "")
-  public StaffMemberQualificationInfo getQualificationInfo() {
+  public List<StaffMemberQualificationInfo> getQualificationInfo() {
     return qualificationInfo;
   }
 
-  public void setQualificationInfo(StaffMemberQualificationInfo qualificationInfo) {
+  public void setQualificationInfo(List<StaffMemberQualificationInfo> qualificationInfo) {
     this.qualificationInfo = qualificationInfo;
   }
 
@@ -440,8 +436,7 @@ public class StaffMember implements Serializable {
       return false;
     }
     StaffMember staffMember = (StaffMember) o;
-    return Objects.equals(this.object, staffMember.object) &&
-        Objects.equals(this.id, staffMember.id) &&
+    return Objects.equals(this.id, staffMember.id) &&
         Objects.equals(this.misId, staffMember.misId) &&
         Objects.equals(this.staffCode, staffMember.staffCode) &&
         Objects.equals(this.firstName, staffMember.firstName) &&
@@ -450,8 +445,8 @@ public class StaffMember implements Serializable {
         Objects.equals(this.lastName, staffMember.lastName) &&
         Objects.equals(this.legalLastName, staffMember.legalLastName) &&
         Objects.equals(this.formerLastName, staffMember.formerLastName) &&
-        Objects.equals(this.dob, staffMember.dob) &&
         Objects.equals(this.title, staffMember.title) &&
+        Objects.equals(this.dob, staffMember.dob) &&
         Objects.equals(this.email, staffMember.email) &&
         Objects.equals(this.isTeachingStaff, staffMember.isTeachingStaff) &&
         Objects.equals(this.includedInCensus, staffMember.includedInCensus) &&
@@ -463,7 +458,7 @@ public class StaffMember implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, title, email, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
+    return Objects.hash(id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, dob, email, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
   }
 
 
@@ -472,7 +467,6 @@ public class StaffMember implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffMember {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    misId: ").append(toIndentedString(misId)).append("\n");
     sb.append("    staffCode: ").append(toIndentedString(staffCode)).append("\n");
@@ -482,8 +476,8 @@ public class StaffMember implements Serializable {
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    legalLastName: ").append(toIndentedString(legalLastName)).append("\n");
     sb.append("    formerLastName: ").append(toIndentedString(formerLastName)).append("\n");
-    sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    isTeachingStaff: ").append(toIndentedString(isTeachingStaff)).append("\n");
     sb.append("    includedInCensus: ").append(toIndentedString(includedInCensus)).append("\n");

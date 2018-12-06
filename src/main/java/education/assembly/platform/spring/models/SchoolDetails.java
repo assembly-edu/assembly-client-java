@@ -21,18 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Returns details for the school associated with the provided access_token.
+ * SchoolDetails
  */
-@ApiModel(description = "Returns details for the school associated with the provided access_token.")
 
 public class SchoolDetails implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
-
-  @JsonProperty("id")
-  private Integer id = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -41,13 +34,13 @@ public class SchoolDetails implements Serializable {
   private String urn = null;
 
   @JsonProperty("la_code")
-  private String laCode = null;
+  private Integer laCode = null;
 
   @JsonProperty("la_name")
   private String laName = null;
 
   @JsonProperty("establishment_number")
-  private String establishmentNumber = null;
+  private Integer establishmentNumber = null;
 
   @JsonProperty("establishment_type")
   private String establishmentType = null;
@@ -67,52 +60,16 @@ public class SchoolDetails implements Serializable {
   @JsonProperty("head_teacher")
   private String headTeacher = null;
 
-  public SchoolDetails object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "school_details", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
-  public SchoolDetails id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Internal stable ID given to all schools on Platform
-   * @return id
-  **/
-  @ApiModelProperty(example = "1231", value = "Internal stable ID given to all schools on Platform")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
   public SchoolDetails name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Name of the school
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "Test School", value = "Name of the school")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -127,10 +84,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * Unique Reference Number (URN) of the school
+   * Get urn
    * @return urn
   **/
-  @ApiModelProperty(example = "123456", value = "Unique Reference Number (URN) of the school")
+  @ApiModelProperty(value = "")
   public String getUrn() {
     return urn;
   }
@@ -139,21 +96,21 @@ public class SchoolDetails implements Serializable {
     this.urn = urn;
   }
 
-  public SchoolDetails laCode(String laCode) {
+  public SchoolDetails laCode(Integer laCode) {
     this.laCode = laCode;
     return this;
   }
 
    /**
-   * The code of the local authority that the school belongs to
+   * Get laCode
    * @return laCode
   **/
-  @ApiModelProperty(example = "123", value = "The code of the local authority that the school belongs to")
-  public String getLaCode() {
+  @ApiModelProperty(value = "")
+  public Integer getLaCode() {
     return laCode;
   }
 
-  public void setLaCode(String laCode) {
+  public void setLaCode(Integer laCode) {
     this.laCode = laCode;
   }
 
@@ -163,10 +120,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The name of the local authority that the school belongs to
+   * Get laName
    * @return laName
   **/
-  @ApiModelProperty(example = "City of London", value = "The name of the local authority that the school belongs to")
+  @ApiModelProperty(value = "")
   public String getLaName() {
     return laName;
   }
@@ -175,21 +132,21 @@ public class SchoolDetails implements Serializable {
     this.laName = laName;
   }
 
-  public SchoolDetails establishmentNumber(String establishmentNumber) {
+  public SchoolDetails establishmentNumber(Integer establishmentNumber) {
     this.establishmentNumber = establishmentNumber;
     return this;
   }
 
    /**
-   * The school&#39;s establishment or &#39;DfE number&#39;
+   * Get establishmentNumber
    * @return establishmentNumber
   **/
-  @ApiModelProperty(example = "4321", value = "The school's establishment or 'DfE number'")
-  public String getEstablishmentNumber() {
+  @ApiModelProperty(value = "")
+  public Integer getEstablishmentNumber() {
     return establishmentNumber;
   }
 
-  public void setEstablishmentNumber(String establishmentNumber) {
+  public void setEstablishmentNumber(Integer establishmentNumber) {
     this.establishmentNumber = establishmentNumber;
   }
 
@@ -199,10 +156,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The type of establishment
+   * Get establishmentType
    * @return establishmentType
   **/
-  @ApiModelProperty(example = "Community School", value = "The type of establishment")
+  @ApiModelProperty(value = "")
   public String getEstablishmentType() {
     return establishmentType;
   }
@@ -217,10 +174,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The phase of the school (i.e. &#39;Secondary&#39;, &#39;Primary&#39; or &#39;All through&#39;)
+   * Get phase
    * @return phase
   **/
-  @ApiModelProperty(example = "Secondary", value = "The phase of the school (i.e. 'Secondary', 'Primary' or 'All through')")
+  @ApiModelProperty(value = "")
   public String getPhase() {
     return phase;
   }
@@ -235,10 +192,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The street that the school is on
+   * Get street
    * @return street
   **/
-  @ApiModelProperty(example = "High Street", value = "The street that the school is on")
+  @ApiModelProperty(value = "")
   public String getStreet() {
     return street;
   }
@@ -253,10 +210,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The town that the school is in
+   * Get town
    * @return town
   **/
-  @ApiModelProperty(example = "London", value = "The town that the school is in")
+  @ApiModelProperty(value = "")
   public String getTown() {
     return town;
   }
@@ -271,10 +228,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The postcode of the school
+   * Get postcode
    * @return postcode
   **/
-  @ApiModelProperty(example = "SE1 1AA", value = "The postcode of the school")
+  @ApiModelProperty(value = "")
   public String getPostcode() {
     return postcode;
   }
@@ -289,10 +246,10 @@ public class SchoolDetails implements Serializable {
   }
 
    /**
-   * The school&#39;s head teacher name
+   * Get headTeacher
    * @return headTeacher
   **/
-  @ApiModelProperty(example = "Mrs A Smith", value = "The school's head teacher name")
+  @ApiModelProperty(value = "")
   public String getHeadTeacher() {
     return headTeacher;
   }
@@ -311,9 +268,7 @@ public class SchoolDetails implements Serializable {
       return false;
     }
     SchoolDetails schoolDetails = (SchoolDetails) o;
-    return Objects.equals(this.object, schoolDetails.object) &&
-        Objects.equals(this.id, schoolDetails.id) &&
-        Objects.equals(this.name, schoolDetails.name) &&
+    return Objects.equals(this.name, schoolDetails.name) &&
         Objects.equals(this.urn, schoolDetails.urn) &&
         Objects.equals(this.laCode, schoolDetails.laCode) &&
         Objects.equals(this.laName, schoolDetails.laName) &&
@@ -328,7 +283,7 @@ public class SchoolDetails implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, urn, laCode, laName, establishmentNumber, establishmentType, phase, street, town, postcode, headTeacher);
+    return Objects.hash(name, urn, laCode, laName, establishmentNumber, establishmentType, phase, street, town, postcode, headTeacher);
   }
 
 
@@ -337,8 +292,6 @@ public class SchoolDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class SchoolDetails {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    urn: ").append(toIndentedString(urn)).append("\n");
     sb.append("    laCode: ").append(toIndentedString(laCode)).append("\n");

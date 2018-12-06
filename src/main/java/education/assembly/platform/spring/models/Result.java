@@ -22,15 +22,11 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * A result combines the other assessment principles and attaches them to a student.
+ * Result
  */
-@ApiModel(description = "A result combines the other assessment principles and attaches them to a student.")
 
 public class Result implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -47,8 +43,8 @@ public class Result implements Serializable {
   @JsonProperty("assessment_point_rank")
   private Integer assessmentPointRank = null;
 
-  @JsonProperty("aspect_id")
-  private Integer aspectId = null;
+  @JsonProperty("facet_id")
+  private Integer facetId = null;
 
   @JsonProperty("grade_id")
   private Integer gradeId = null;
@@ -62,34 +58,16 @@ public class Result implements Serializable {
   @JsonProperty("updated_at")
   private OffsetDateTime updatedAt = null;
 
-  public Result object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "result", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public Result id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Internal stable ID given to all results on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "101", value = "Internal stable ID given to all results on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -104,10 +82,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The ID of the student that the result is attached to
+   * Get studentId
    * @return studentId
   **/
-  @ApiModelProperty(example = "923", value = "The ID of the student that the result is attached to")
+  @ApiModelProperty(value = "")
   public Integer getStudentId() {
     return studentId;
   }
@@ -122,10 +100,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The ID of the subject that the result is attached to
+   * Get subjectId
    * @return subjectId
   **/
-  @ApiModelProperty(example = "2", value = "The ID of the subject that the result is attached to")
+  @ApiModelProperty(value = "")
   public Integer getSubjectId() {
     return subjectId;
   }
@@ -140,10 +118,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The ID of the assessment that the result is attached to
+   * Get assessmentId
    * @return assessmentId
   **/
-  @ApiModelProperty(example = "1", value = "The ID of the assessment that the result is attached to")
+  @ApiModelProperty(value = "")
   public Integer getAssessmentId() {
     return assessmentId;
   }
@@ -158,10 +136,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The rank of the assessment point
+   * Get assessmentPointRank
    * @return assessmentPointRank
   **/
-  @ApiModelProperty(example = "48", value = "The rank of the assessment point")
+  @ApiModelProperty(value = "")
   public Integer getAssessmentPointRank() {
     return assessmentPointRank;
   }
@@ -170,22 +148,22 @@ public class Result implements Serializable {
     this.assessmentPointRank = assessmentPointRank;
   }
 
-  public Result aspectId(Integer aspectId) {
-    this.aspectId = aspectId;
+  public Result facetId(Integer facetId) {
+    this.facetId = facetId;
     return this;
   }
 
    /**
-   * The ID of the aspect that the result is attached to
-   * @return aspectId
+   * Get facetId
+   * @return facetId
   **/
-  @ApiModelProperty(example = "6", value = "The ID of the aspect that the result is attached to")
-  public Integer getAspectId() {
-    return aspectId;
+  @ApiModelProperty(value = "")
+  public Integer getFacetId() {
+    return facetId;
   }
 
-  public void setAspectId(Integer aspectId) {
-    this.aspectId = aspectId;
+  public void setFacetId(Integer facetId) {
+    this.facetId = facetId;
   }
 
   public Result gradeId(Integer gradeId) {
@@ -194,10 +172,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The ID of the grade
+   * Get gradeId
    * @return gradeId
   **/
-  @ApiModelProperty(example = "157", value = "The ID of the grade")
+  @ApiModelProperty(value = "")
   public Integer getGradeId() {
     return gradeId;
   }
@@ -212,10 +190,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The date on which the result was recorded in the MIS or standardised assessment system
+   * Get resultDate
    * @return resultDate
   **/
-  @ApiModelProperty(example = "2013-06-26T00:00:00.000Z", value = "The date on which the result was recorded in the MIS or standardised assessment system")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getResultDate() {
     return resultDate;
   }
@@ -230,10 +208,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The date and time that the result was first created on Assembly
+   * Get createdAt
    * @return createdAt
   **/
-  @ApiModelProperty(example = "2017-06-07T09:24:06.991Z", value = "The date and time that the result was first created on Assembly")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -248,10 +226,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * The date and time that the result was last updated on Assembly
+   * Get updatedAt
    * @return updatedAt
   **/
-  @ApiModelProperty(example = "2017-06-07T09:24:06.991Z", value = "The date and time that the result was last updated on Assembly")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -270,13 +248,12 @@ public class Result implements Serializable {
       return false;
     }
     Result result = (Result) o;
-    return Objects.equals(this.object, result.object) &&
-        Objects.equals(this.id, result.id) &&
+    return Objects.equals(this.id, result.id) &&
         Objects.equals(this.studentId, result.studentId) &&
         Objects.equals(this.subjectId, result.subjectId) &&
         Objects.equals(this.assessmentId, result.assessmentId) &&
         Objects.equals(this.assessmentPointRank, result.assessmentPointRank) &&
-        Objects.equals(this.aspectId, result.aspectId) &&
+        Objects.equals(this.facetId, result.facetId) &&
         Objects.equals(this.gradeId, result.gradeId) &&
         Objects.equals(this.resultDate, result.resultDate) &&
         Objects.equals(this.createdAt, result.createdAt) &&
@@ -285,7 +262,7 @@ public class Result implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, studentId, subjectId, assessmentId, assessmentPointRank, aspectId, gradeId, resultDate, createdAt, updatedAt);
+    return Objects.hash(id, studentId, subjectId, assessmentId, assessmentPointRank, facetId, gradeId, resultDate, createdAt, updatedAt);
   }
 
 
@@ -294,13 +271,12 @@ public class Result implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Result {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    subjectId: ").append(toIndentedString(subjectId)).append("\n");
     sb.append("    assessmentId: ").append(toIndentedString(assessmentId)).append("\n");
     sb.append("    assessmentPointRank: ").append(toIndentedString(assessmentPointRank)).append("\n");
-    sb.append("    aspectId: ").append(toIndentedString(aspectId)).append("\n");
+    sb.append("    facetId: ").append(toIndentedString(facetId)).append("\n");
     sb.append("    gradeId: ").append(toIndentedString(gradeId)).append("\n");
     sb.append("    resultDate: ").append(toIndentedString(resultDate)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");

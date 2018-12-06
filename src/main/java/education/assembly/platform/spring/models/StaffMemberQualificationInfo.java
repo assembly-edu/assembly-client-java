@@ -16,7 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.StaffMemberQualificationInfoQualifications;
+import education.assembly.platform.spring.models.StaffQualification;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -24,15 +24,11 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * Information about staff member qualifications
+ * StaffMemberQualificationInfo
  */
-@ApiModel(description = "Information about staff member qualifications")
 
 public class StaffMemberQualificationInfo implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("teacher_number")
   private String teacherNumber = null;
@@ -47,25 +43,7 @@ public class StaffMemberQualificationInfo implements Serializable {
   private String qtsRoute = null;
 
   @JsonProperty("qualifications")
-  private List<StaffMemberQualificationInfoQualifications> qualifications = null;
-
-  public StaffMemberQualificationInfo object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "qualification_info", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
+  private List<StaffQualification> qualifications = null;
 
   public StaffMemberQualificationInfo teacherNumber(String teacherNumber) {
     this.teacherNumber = teacherNumber;
@@ -73,10 +51,10 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * The DfE Teacher Reference number (also known as GTC number). For members of staff who have one this is a unique identifier
+   * Get teacherNumber
    * @return teacherNumber
   **/
-  @ApiModelProperty(example = "31333332", value = "The DfE Teacher Reference number (also known as GTC number). For members of staff who have one this is a unique identifier")
+  @ApiModelProperty(value = "")
   public String getTeacherNumber() {
     return teacherNumber;
   }
@@ -91,11 +69,11 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * Whether or not the staff member holds Qualified Teacher Status
+   * Get qtStatus
    * @return qtStatus
   **/
-  @ApiModelProperty(example = "true", value = "Whether or not the staff member holds Qualified Teacher Status")
-  public Boolean isQtStatus() {
+  @ApiModelProperty(value = "")
+  public Boolean isgetQtStatus() {
     return qtStatus;
   }
 
@@ -109,11 +87,11 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * Whether or not the staff member holds Higher Level Teaching Assistant Status
+   * Get hltaStatus
    * @return hltaStatus
   **/
-  @ApiModelProperty(example = "false", value = "Whether or not the staff member holds Higher Level Teaching Assistant Status")
-  public Boolean isHltaStatus() {
+  @ApiModelProperty(value = "")
+  public Boolean isgetHltaStatus() {
     return hltaStatus;
   }
 
@@ -127,10 +105,10 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * The route by which a teacher obtains Qualified Teacher Status (e.g. the Graduate Teacher programme).
+   * Get qtsRoute
    * @return qtsRoute
   **/
-  @ApiModelProperty(example = "School Direct (Salaried)", value = "The route by which a teacher obtains Qualified Teacher Status (e.g. the Graduate Teacher programme).")
+  @ApiModelProperty(value = "")
   public String getQtsRoute() {
     return qtsRoute;
   }
@@ -139,29 +117,29 @@ public class StaffMemberQualificationInfo implements Serializable {
     this.qtsRoute = qtsRoute;
   }
 
-  public StaffMemberQualificationInfo qualifications(List<StaffMemberQualificationInfoQualifications> qualifications) {
+  public StaffMemberQualificationInfo qualifications(List<StaffQualification> qualifications) {
     this.qualifications = qualifications;
     return this;
   }
 
-  public StaffMemberQualificationInfo addQualificationsItem(StaffMemberQualificationInfoQualifications qualificationsItem) {
+  public StaffMemberQualificationInfo addQualificationsItem(StaffQualification qualificationsItem) {
     if (this.qualifications == null) {
-      this.qualifications = new ArrayList<StaffMemberQualificationInfoQualifications>();
+      this.qualifications = new ArrayList<StaffQualification>();
     }
     this.qualifications.add(qualificationsItem);
     return this;
   }
 
    /**
-   * A list of all qualifications/degrees completed by a staff member
+   * Get qualifications
    * @return qualifications
   **/
-  @ApiModelProperty(value = "A list of all qualifications/degrees completed by a staff member")
-  public List<StaffMemberQualificationInfoQualifications> getQualifications() {
+  @ApiModelProperty(value = "")
+  public List<StaffQualification> getQualifications() {
     return qualifications;
   }
 
-  public void setQualifications(List<StaffMemberQualificationInfoQualifications> qualifications) {
+  public void setQualifications(List<StaffQualification> qualifications) {
     this.qualifications = qualifications;
   }
 
@@ -175,8 +153,7 @@ public class StaffMemberQualificationInfo implements Serializable {
       return false;
     }
     StaffMemberQualificationInfo staffMemberQualificationInfo = (StaffMemberQualificationInfo) o;
-    return Objects.equals(this.object, staffMemberQualificationInfo.object) &&
-        Objects.equals(this.teacherNumber, staffMemberQualificationInfo.teacherNumber) &&
+    return Objects.equals(this.teacherNumber, staffMemberQualificationInfo.teacherNumber) &&
         Objects.equals(this.qtStatus, staffMemberQualificationInfo.qtStatus) &&
         Objects.equals(this.hltaStatus, staffMemberQualificationInfo.hltaStatus) &&
         Objects.equals(this.qtsRoute, staffMemberQualificationInfo.qtsRoute) &&
@@ -185,7 +162,7 @@ public class StaffMemberQualificationInfo implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, teacherNumber, qtStatus, hltaStatus, qtsRoute, qualifications);
+    return Objects.hash(teacherNumber, qtStatus, hltaStatus, qtsRoute, qualifications);
   }
 
 
@@ -194,7 +171,6 @@ public class StaffMemberQualificationInfo implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffMemberQualificationInfo {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    teacherNumber: ").append(toIndentedString(teacherNumber)).append("\n");
     sb.append("    qtStatus: ").append(toIndentedString(qtStatus)).append("\n");
     sb.append("    hltaStatus: ").append(toIndentedString(hltaStatus)).append("\n");

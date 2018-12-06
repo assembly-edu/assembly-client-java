@@ -21,78 +21,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * All results belong to one of four facets, with each facet reflecting a different type of grade. Facets can be used to compare 2 grades of the same assessment.
+ * Facet
  */
-@ApiModel(description = "All results belong to one of four facets, with each facet reflecting a different type of grade. Facets can be used to compare 2 grades of the same assessment.")
 
 public class Facet implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("object")
-  private String object = null;
-
   @JsonProperty("id")
   private Integer id = null;
 
-  /**
-   * The name of the facet *Values*  |Value|Description| |---|---| |&#x60;target&#x60;|Result has been set as a target to achieve| |&#x60;achieved&#x60;|Result has been achieved| |&#x60;baseline&#x60;|Result is a baseline comparison value| |&#x60;prediction&#x60;|Result is a prediction| 
-   */
-  public enum NameEnum {
-    TARGET("target"),
-    
-    ACHIEVED("achieved"),
-    
-    BASELINE("baseline"),
-    
-    PREDICTION("prediction");
-
-    private String value;
-
-    NameEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static NameEnum fromValue(String text) {
-      for (NameEnum b : NameEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("name")
-  private NameEnum name = null;
-
-  public Facet object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "facet", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
+  private String name = null;
 
   public Facet id(Integer id) {
     this.id = id;
@@ -100,10 +39,10 @@ public class Facet implements Serializable {
   }
 
    /**
-   * Internal stable ID given to all facets on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "6", value = "Internal stable ID given to all facets on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -112,21 +51,21 @@ public class Facet implements Serializable {
     this.id = id;
   }
 
-  public Facet name(NameEnum name) {
+  public Facet name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * The name of the facet *Values*  |Value|Description| |---|---| |&#x60;target&#x60;|Result has been set as a target to achieve| |&#x60;achieved&#x60;|Result has been achieved| |&#x60;baseline&#x60;|Result is a baseline comparison value| |&#x60;prediction&#x60;|Result is a prediction| 
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "baseline", value = "The name of the facet *Values*  |Value|Description| |---|---| |`target`|Result has been set as a target to achieve| |`achieved`|Result has been achieved| |`baseline`|Result is a baseline comparison value| |`prediction`|Result is a prediction| ")
-  public NameEnum getName() {
+  @ApiModelProperty(value = "")
+  public String getName() {
     return name;
   }
 
-  public void setName(NameEnum name) {
+  public void setName(String name) {
     this.name = name;
   }
 
@@ -140,14 +79,13 @@ public class Facet implements Serializable {
       return false;
     }
     Facet facet = (Facet) o;
-    return Objects.equals(this.object, facet.object) &&
-        Objects.equals(this.id, facet.id) &&
+    return Objects.equals(this.id, facet.id) &&
         Objects.equals(this.name, facet.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name);
+    return Objects.hash(id, name);
   }
 
 
@@ -156,7 +94,6 @@ public class Facet implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Facet {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");

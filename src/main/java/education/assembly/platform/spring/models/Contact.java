@@ -16,9 +16,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.ContactEmails;
-import education.assembly.platform.spring.models.ContactStudents;
-import education.assembly.platform.spring.models.ContactTelephoneNumbers;
+import education.assembly.platform.spring.models.Email;
+import education.assembly.platform.spring.models.Student;
+import education.assembly.platform.spring.models.TelephoneNumber;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -26,15 +26,11 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * A contact object represents a parent or guardian. Students are related to contacts through a student/contact relationship.
+ * Contact
  */
-@ApiModel(description = "A contact object represents a parent or guardian. Students are related to contacts through a student/contact relationship.")
 
 public class Contact implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -48,43 +44,8 @@ public class Contact implements Serializable {
   @JsonProperty("last_name")
   private String lastName = null;
 
-  /**
-   * The gender of the contact *Values*  |Value|Description| |---|---| |&#x60;F&#x60;|Female| |&#x60;M&#x60;|Male| 
-   */
-  public enum GenderEnum {
-    F("F"),
-    
-    M("M");
-
-    private String value;
-
-    GenderEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static GenderEnum fromValue(String text) {
-      for (GenderEnum b : GenderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("gender")
-  private GenderEnum gender = null;
+  private String gender = null;
 
   @JsonProperty("title")
   private String title = null;
@@ -93,31 +54,13 @@ public class Contact implements Serializable {
   private String salutation = null;
 
   @JsonProperty("emails")
-  private List<ContactEmails> emails = null;
+  private List<Email> emails = null;
 
   @JsonProperty("telephone_numbers")
-  private List<ContactTelephoneNumbers> telephoneNumbers = null;
+  private List<TelephoneNumber> telephoneNumbers = null;
 
   @JsonProperty("students")
-  private List<ContactStudents> students = null;
-
-  public Contact object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "contact", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
+  private List<Student> students = null;
 
   public Contact id(Integer id) {
     this.id = id;
@@ -125,10 +68,10 @@ public class Contact implements Serializable {
   }
 
    /**
-   * Internal stable ID given to all contacts on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "87", value = "Internal stable ID given to all contacts on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -143,10 +86,10 @@ public class Contact implements Serializable {
   }
 
    /**
-   * The first name of the contact
+   * Get firstName
    * @return firstName
   **/
-  @ApiModelProperty(example = "Tony", value = "The first name of the contact")
+  @ApiModelProperty(value = "")
   public String getFirstName() {
     return firstName;
   }
@@ -161,10 +104,10 @@ public class Contact implements Serializable {
   }
 
    /**
-   * The middle name of the contact
+   * Get middleName
    * @return middleName
   **/
-  @ApiModelProperty(example = "Peter", value = "The middle name of the contact")
+  @ApiModelProperty(value = "")
   public String getMiddleName() {
     return middleName;
   }
@@ -179,10 +122,10 @@ public class Contact implements Serializable {
   }
 
    /**
-   * The last name of the contact
+   * Get lastName
    * @return lastName
   **/
-  @ApiModelProperty(example = "Smith", value = "The last name of the contact")
+  @ApiModelProperty(value = "")
   public String getLastName() {
     return lastName;
   }
@@ -191,21 +134,21 @@ public class Contact implements Serializable {
     this.lastName = lastName;
   }
 
-  public Contact gender(GenderEnum gender) {
+  public Contact gender(String gender) {
     this.gender = gender;
     return this;
   }
 
    /**
-   * The gender of the contact *Values*  |Value|Description| |---|---| |&#x60;F&#x60;|Female| |&#x60;M&#x60;|Male| 
+   * Get gender
    * @return gender
   **/
-  @ApiModelProperty(example = "M", value = "The gender of the contact *Values*  |Value|Description| |---|---| |`F`|Female| |`M`|Male| ")
-  public GenderEnum getGender() {
+  @ApiModelProperty(value = "")
+  public String getGender() {
     return gender;
   }
 
-  public void setGender(GenderEnum gender) {
+  public void setGender(String gender) {
     this.gender = gender;
   }
 
@@ -215,10 +158,10 @@ public class Contact implements Serializable {
   }
 
    /**
-   * The title of the contact
+   * Get title
    * @return title
   **/
-  @ApiModelProperty(example = "Mr", value = "The title of the contact")
+  @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
   }
@@ -233,10 +176,10 @@ public class Contact implements Serializable {
   }
 
    /**
-   * The salutation for the contact
+   * Get salutation
    * @return salutation
   **/
-  @ApiModelProperty(example = "Mr Smith", value = "The salutation for the contact")
+  @ApiModelProperty(value = "")
   public String getSalutation() {
     return salutation;
   }
@@ -245,81 +188,81 @@ public class Contact implements Serializable {
     this.salutation = salutation;
   }
 
-  public Contact emails(List<ContactEmails> emails) {
+  public Contact emails(List<Email> emails) {
     this.emails = emails;
     return this;
   }
 
-  public Contact addEmailsItem(ContactEmails emailsItem) {
+  public Contact addEmailsItem(Email emailsItem) {
     if (this.emails == null) {
-      this.emails = new ArrayList<ContactEmails>();
+      this.emails = new ArrayList<Email>();
     }
     this.emails.add(emailsItem);
     return this;
   }
 
    /**
-   * A list of emails for the contact
+   * Get emails
    * @return emails
   **/
-  @ApiModelProperty(value = "A list of emails for the contact")
-  public List<ContactEmails> getEmails() {
+  @ApiModelProperty(value = "")
+  public List<Email> getEmails() {
     return emails;
   }
 
-  public void setEmails(List<ContactEmails> emails) {
+  public void setEmails(List<Email> emails) {
     this.emails = emails;
   }
 
-  public Contact telephoneNumbers(List<ContactTelephoneNumbers> telephoneNumbers) {
+  public Contact telephoneNumbers(List<TelephoneNumber> telephoneNumbers) {
     this.telephoneNumbers = telephoneNumbers;
     return this;
   }
 
-  public Contact addTelephoneNumbersItem(ContactTelephoneNumbers telephoneNumbersItem) {
+  public Contact addTelephoneNumbersItem(TelephoneNumber telephoneNumbersItem) {
     if (this.telephoneNumbers == null) {
-      this.telephoneNumbers = new ArrayList<ContactTelephoneNumbers>();
+      this.telephoneNumbers = new ArrayList<TelephoneNumber>();
     }
     this.telephoneNumbers.add(telephoneNumbersItem);
     return this;
   }
 
    /**
-   * A list of telephone numbers for the contact
+   * Get telephoneNumbers
    * @return telephoneNumbers
   **/
-  @ApiModelProperty(value = "A list of telephone numbers for the contact")
-  public List<ContactTelephoneNumbers> getTelephoneNumbers() {
+  @ApiModelProperty(value = "")
+  public List<TelephoneNumber> getTelephoneNumbers() {
     return telephoneNumbers;
   }
 
-  public void setTelephoneNumbers(List<ContactTelephoneNumbers> telephoneNumbers) {
+  public void setTelephoneNumbers(List<TelephoneNumber> telephoneNumbers) {
     this.telephoneNumbers = telephoneNumbers;
   }
 
-  public Contact students(List<ContactStudents> students) {
+  public Contact students(List<Student> students) {
     this.students = students;
     return this;
   }
 
-  public Contact addStudentsItem(ContactStudents studentsItem) {
+  public Contact addStudentsItem(Student studentsItem) {
     if (this.students == null) {
-      this.students = new ArrayList<ContactStudents>();
+      this.students = new ArrayList<Student>();
     }
     this.students.add(studentsItem);
     return this;
   }
 
    /**
-   * A list of student IDs that the contact is responsible for
+   * Get students
    * @return students
   **/
-  @ApiModelProperty(value = "A list of student IDs that the contact is responsible for")
-  public List<ContactStudents> getStudents() {
+  @ApiModelProperty(value = "")
+  public List<Student> getStudents() {
     return students;
   }
 
-  public void setStudents(List<ContactStudents> students) {
+  public void setStudents(List<Student> students) {
     this.students = students;
   }
 
@@ -333,8 +276,7 @@ public class Contact implements Serializable {
       return false;
     }
     Contact contact = (Contact) o;
-    return Objects.equals(this.object, contact.object) &&
-        Objects.equals(this.id, contact.id) &&
+    return Objects.equals(this.id, contact.id) &&
         Objects.equals(this.firstName, contact.firstName) &&
         Objects.equals(this.middleName, contact.middleName) &&
         Objects.equals(this.lastName, contact.lastName) &&
@@ -348,7 +290,7 @@ public class Contact implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, firstName, middleName, lastName, gender, title, salutation, emails, telephoneNumbers, students);
+    return Objects.hash(id, firstName, middleName, lastName, gender, title, salutation, emails, telephoneNumbers, students);
   }
 
 
@@ -357,7 +299,6 @@ public class Contact implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Contact {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    middleName: ").append(toIndentedString(middleName)).append("\n");

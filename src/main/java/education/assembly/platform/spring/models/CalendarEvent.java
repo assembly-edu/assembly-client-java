@@ -23,15 +23,11 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * The calendar events object provides details of school events. This resource is currently only available for SIMS.
+ * CalendarEvent
  */
-@ApiModel(description = "The calendar events object provides details of school events. This resource is currently only available for SIMS.")
 
 public class CalendarEvent implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -57,34 +53,16 @@ public class CalendarEvent implements Serializable {
   @JsonProperty("mis_type")
   private CalendarEventMisType misType = null;
 
-  public CalendarEvent object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "calendar_event", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public CalendarEvent id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Internal stable ID given to all calendar events on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "1", value = "Internal stable ID given to all calendar events on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -99,10 +77,10 @@ public class CalendarEvent implements Serializable {
   }
 
    /**
-   * This details the user-defined &#39;category&#39; that the event is assigned to on SIMS.
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "Meeting", value = "This details the user-defined 'category' that the event is assigned to on SIMS.")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -117,10 +95,10 @@ public class CalendarEvent implements Serializable {
   }
 
    /**
-   * The name of the instance of the event, usually more detailed and specific than the &#39;name&#39;
+   * Get description
    * @return description
   **/
-  @ApiModelProperty(example = "After School SLT Meeting", value = "The name of the instance of the event, usually more detailed and specific than the 'name'")
+  @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
   }
@@ -135,10 +113,10 @@ public class CalendarEvent implements Serializable {
   }
 
    /**
-   * Date and time of when the event starts
+   * Get startDate
    * @return startDate
   **/
-  @ApiModelProperty(example = "2015-09-03T16:00:00.000Z", value = "Date and time of when the event starts")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -153,10 +131,10 @@ public class CalendarEvent implements Serializable {
   }
 
    /**
-   * Date and time of when the event ends
+   * Get endDate
    * @return endDate
   **/
-  @ApiModelProperty(example = "2015-09-03T17:30:00.000Z", value = "Date and time of when the event ends")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -171,11 +149,11 @@ public class CalendarEvent implements Serializable {
   }
 
    /**
-   * Whether the event is active or not
+   * Get isActive
    * @return isActive
   **/
-  @ApiModelProperty(example = "true", value = "Whether the event is active or not")
-  public Boolean isIsActive() {
+  @ApiModelProperty(value = "")
+  public Boolean isgetIsActive() {
     return isActive;
   }
 
@@ -189,11 +167,11 @@ public class CalendarEvent implements Serializable {
   }
 
    /**
-   * Whether the event recurs and (soon) details of recurrences
+   * Get isRecurrent
    * @return isRecurrent
   **/
-  @ApiModelProperty(example = "true", value = "Whether the event recurs and (soon) details of recurrences")
-  public Boolean isIsRecurrent() {
+  @ApiModelProperty(value = "")
+  public Boolean isgetIsRecurrent() {
     return isRecurrent;
   }
 
@@ -229,8 +207,7 @@ public class CalendarEvent implements Serializable {
       return false;
     }
     CalendarEvent calendarEvent = (CalendarEvent) o;
-    return Objects.equals(this.object, calendarEvent.object) &&
-        Objects.equals(this.id, calendarEvent.id) &&
+    return Objects.equals(this.id, calendarEvent.id) &&
         Objects.equals(this.name, calendarEvent.name) &&
         Objects.equals(this.description, calendarEvent.description) &&
         Objects.equals(this.startDate, calendarEvent.startDate) &&
@@ -242,7 +219,7 @@ public class CalendarEvent implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, description, startDate, endDate, isActive, isRecurrent, misType);
+    return Objects.hash(id, name, description, startDate, endDate, isActive, isRecurrent, misType);
   }
 
 
@@ -251,7 +228,6 @@ public class CalendarEvent implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class CalendarEvent {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

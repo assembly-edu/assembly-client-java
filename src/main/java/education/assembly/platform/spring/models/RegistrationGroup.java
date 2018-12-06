@@ -16,22 +16,20 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.Subject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * A registration group object represents the grouping in which students take AM/PM roll call (morning and afternoon registers).
+ * RegistrationGroup
  */
-@ApiModel(description = "A registration group object represents the grouping in which students take AM/PM roll call (morning and afternoon registers).")
 
 public class RegistrationGroup implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -39,29 +37,20 @@ public class RegistrationGroup implements Serializable {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("start_date")
+  private OffsetDateTime startDate = null;
+
+  @JsonProperty("end_date")
+  private OffsetDateTime endDate = null;
+
   @JsonProperty("supervisor_ids")
   private List<Integer> supervisorIds = null;
 
   @JsonProperty("student_ids")
   private List<Integer> studentIds = null;
 
-  public RegistrationGroup object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "registration_group", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
+  @JsonProperty("subject")
+  private Subject subject = null;
 
   public RegistrationGroup id(Integer id) {
     this.id = id;
@@ -69,10 +58,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Internal stable ID given to all registration groups on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "124", value = "Internal stable ID given to all registration groups on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -87,16 +76,52 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Name of the registration group
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "6-Oxford", value = "Name of the registration group")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public RegistrationGroup startDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+  public RegistrationGroup endDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Get endDate
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
   }
 
   public RegistrationGroup supervisorIds(List<Integer> supervisorIds) {
@@ -113,10 +138,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * The IDs of staff members associated with the registration group
+   * Get supervisorIds
    * @return supervisorIds
   **/
-  @ApiModelProperty(value = "The IDs of staff members associated with the registration group")
+  @ApiModelProperty(value = "")
   public List<Integer> getSupervisorIds() {
     return supervisorIds;
   }
@@ -139,16 +164,34 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * The IDs of students associated with the registration group
+   * Get studentIds
    * @return studentIds
   **/
-  @ApiModelProperty(value = "The IDs of students associated with the registration group")
+  @ApiModelProperty(value = "")
   public List<Integer> getStudentIds() {
     return studentIds;
   }
 
   public void setStudentIds(List<Integer> studentIds) {
     this.studentIds = studentIds;
+  }
+
+  public RegistrationGroup subject(Subject subject) {
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @ApiModelProperty(value = "")
+  public Subject getSubject() {
+    return subject;
+  }
+
+  public void setSubject(Subject subject) {
+    this.subject = subject;
   }
 
 
@@ -161,16 +204,18 @@ public class RegistrationGroup implements Serializable {
       return false;
     }
     RegistrationGroup registrationGroup = (RegistrationGroup) o;
-    return Objects.equals(this.object, registrationGroup.object) &&
-        Objects.equals(this.id, registrationGroup.id) &&
+    return Objects.equals(this.id, registrationGroup.id) &&
         Objects.equals(this.name, registrationGroup.name) &&
+        Objects.equals(this.startDate, registrationGroup.startDate) &&
+        Objects.equals(this.endDate, registrationGroup.endDate) &&
         Objects.equals(this.supervisorIds, registrationGroup.supervisorIds) &&
-        Objects.equals(this.studentIds, registrationGroup.studentIds);
+        Objects.equals(this.studentIds, registrationGroup.studentIds) &&
+        Objects.equals(this.subject, registrationGroup.subject);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, supervisorIds, studentIds);
+    return Objects.hash(id, name, startDate, endDate, supervisorIds, studentIds, subject);
   }
 
 
@@ -179,11 +224,13 @@ public class RegistrationGroup implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class RegistrationGroup {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    supervisorIds: ").append(toIndentedString(supervisorIds)).append("\n");
     sb.append("    studentIds: ").append(toIndentedString(studentIds)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("}");
     return sb.toString();
   }

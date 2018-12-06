@@ -21,15 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * A student&#39;s language information.
+ * StudentLanguages
  */
-@ApiModel(description = "A student's language information.")
 
 public class StudentLanguages implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("home_language_code")
   private String homeLanguageCode = null;
@@ -49,34 +45,16 @@ public class StudentLanguages implements Serializable {
   @JsonProperty("proficiency_in_english_name")
   private String proficiencyInEnglishName = null;
 
-  public StudentLanguages object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "languages", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public StudentLanguages homeLanguageCode(String homeLanguageCode) {
     this.homeLanguageCode = homeLanguageCode;
     return this;
   }
 
    /**
-   * The code of a student&#39;s home language
+   * Get homeLanguageCode
    * @return homeLanguageCode
   **/
-  @ApiModelProperty(example = "POL", value = "The code of a student's home language")
+  @ApiModelProperty(value = "")
   public String getHomeLanguageCode() {
     return homeLanguageCode;
   }
@@ -91,10 +69,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * The name of a student&#39;s home language
+   * Get homeLanguageName
    * @return homeLanguageName
   **/
-  @ApiModelProperty(example = "Polish", value = "The name of a student's home language")
+  @ApiModelProperty(value = "")
   public String getHomeLanguageName() {
     return homeLanguageName;
   }
@@ -109,10 +87,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * The code of a student&#39;s first language
+   * Get firstLanguageCode
    * @return firstLanguageCode
   **/
-  @ApiModelProperty(example = "ENG", value = "The code of a student's first language")
+  @ApiModelProperty(value = "")
   public String getFirstLanguageCode() {
     return firstLanguageCode;
   }
@@ -127,10 +105,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * The name of a student&#39;s first language
+   * Get firstLanguageName
    * @return firstLanguageName
   **/
-  @ApiModelProperty(example = "English", value = "The name of a student's first language")
+  @ApiModelProperty(value = "")
   public String getFirstLanguageName() {
     return firstLanguageName;
   }
@@ -145,10 +123,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * A student&#39;s proficiency in English code
+   * Get proficiencyInEnglishCode
    * @return proficiencyInEnglishCode
   **/
-  @ApiModelProperty(example = "E", value = "A student's proficiency in English code")
+  @ApiModelProperty(value = "")
   public String getProficiencyInEnglishCode() {
     return proficiencyInEnglishCode;
   }
@@ -163,10 +141,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * A student&#39;s proficiency in English name
+   * Get proficiencyInEnglishName
    * @return proficiencyInEnglishName
   **/
-  @ApiModelProperty(example = "Fluent", value = "A student's proficiency in English name")
+  @ApiModelProperty(value = "")
   public String getProficiencyInEnglishName() {
     return proficiencyInEnglishName;
   }
@@ -185,8 +163,7 @@ public class StudentLanguages implements Serializable {
       return false;
     }
     StudentLanguages studentLanguages = (StudentLanguages) o;
-    return Objects.equals(this.object, studentLanguages.object) &&
-        Objects.equals(this.homeLanguageCode, studentLanguages.homeLanguageCode) &&
+    return Objects.equals(this.homeLanguageCode, studentLanguages.homeLanguageCode) &&
         Objects.equals(this.homeLanguageName, studentLanguages.homeLanguageName) &&
         Objects.equals(this.firstLanguageCode, studentLanguages.firstLanguageCode) &&
         Objects.equals(this.firstLanguageName, studentLanguages.firstLanguageName) &&
@@ -196,7 +173,7 @@ public class StudentLanguages implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, homeLanguageCode, homeLanguageName, firstLanguageCode, firstLanguageName, proficiencyInEnglishCode, proficiencyInEnglishName);
+    return Objects.hash(homeLanguageCode, homeLanguageName, firstLanguageCode, firstLanguageName, proficiencyInEnglishCode, proficiencyInEnglishName);
   }
 
 
@@ -205,7 +182,6 @@ public class StudentLanguages implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StudentLanguages {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    homeLanguageCode: ").append(toIndentedString(homeLanguageCode)).append("\n");
     sb.append("    homeLanguageName: ").append(toIndentedString(homeLanguageName)).append("\n");
     sb.append("    firstLanguageCode: ").append(toIndentedString(firstLanguageCode)).append("\n");

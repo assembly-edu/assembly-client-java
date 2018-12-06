@@ -21,15 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * An assessment point represents a point in the school key stage, year, term or half-term that results can be attached to.
+ * AssessmentPoint
  */
-@ApiModel(description = "An assessment point represents a point in the school key stage, year, term or half-term that results can be attached to.")
 
 public class AssessmentPoint implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("rank")
   private Integer rank = null;
@@ -43,34 +39,16 @@ public class AssessmentPoint implements Serializable {
   @JsonProperty("year_code")
   private String yearCode = null;
 
-  public AssessmentPoint object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "assessment_point", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public AssessmentPoint rank(Integer rank) {
     this.rank = rank;
     return this;
   }
 
    /**
-   * A stable number consistently assigned to assessment points across all environments. This field should be used to send results back to the Platform
+   * Get rank
    * @return rank
   **/
-  @ApiModelProperty(example = "122", value = "A stable number consistently assigned to assessment points across all environments. This field should be used to send results back to the Platform")
+  @ApiModelProperty(value = "")
   public Integer getRank() {
     return rank;
   }
@@ -85,10 +63,10 @@ public class AssessmentPoint implements Serializable {
   }
 
    /**
-   * The name of the assessment point
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "Key Stage 2", value = "The name of the assessment point")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -103,10 +81,10 @@ public class AssessmentPoint implements Serializable {
   }
 
    /**
-   * The time period that the assessment point relates to. This can be an entire key stage, an entire year, or a single term or half-term
+   * Get type
    * @return type
   **/
-  @ApiModelProperty(example = "term", value = "The time period that the assessment point relates to. This can be an entire key stage, an entire year, or a single term or half-term")
+  @ApiModelProperty(value = "")
   public String getType() {
     return type;
   }
@@ -121,10 +99,10 @@ public class AssessmentPoint implements Serializable {
   }
 
    /**
-   * This field ties an assessment point to a year group.
+   * Get yearCode
    * @return yearCode
   **/
-  @ApiModelProperty(example = "Year 6 Spring 2", value = "This field ties an assessment point to a year group.")
+  @ApiModelProperty(value = "")
   public String getYearCode() {
     return yearCode;
   }
@@ -143,8 +121,7 @@ public class AssessmentPoint implements Serializable {
       return false;
     }
     AssessmentPoint assessmentPoint = (AssessmentPoint) o;
-    return Objects.equals(this.object, assessmentPoint.object) &&
-        Objects.equals(this.rank, assessmentPoint.rank) &&
+    return Objects.equals(this.rank, assessmentPoint.rank) &&
         Objects.equals(this.name, assessmentPoint.name) &&
         Objects.equals(this.type, assessmentPoint.type) &&
         Objects.equals(this.yearCode, assessmentPoint.yearCode);
@@ -152,7 +129,7 @@ public class AssessmentPoint implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, rank, name, type, yearCode);
+    return Objects.hash(rank, name, type, yearCode);
   }
 
 
@@ -161,7 +138,6 @@ public class AssessmentPoint implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssessmentPoint {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

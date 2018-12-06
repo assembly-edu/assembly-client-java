@@ -4,105 +4,49 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAcademicYears**](AssemblyApi.md#getAcademicYears) | **GET** /academic_years | 
-[**getAssessmentPoints**](AssemblyApi.md#getAssessmentPoints) | **GET** /assessment_points | 
-[**getAssessmentPointsAssessmentPointRank**](AssemblyApi.md#getAssessmentPointsAssessmentPointRank) | **GET** /assessment_points/{assessment_point_rank} | 
-[**getAssessmentPointsAssessmentPointRankResults**](AssemblyApi.md#getAssessmentPointsAssessmentPointRankResults) | **GET** /assessment_points/{assessment_point_rank}/results | 
-[**getAssessments**](AssemblyApi.md#getAssessments) | **GET** /assessments | 
-[**getAssessmentsAssessmentId**](AssemblyApi.md#getAssessmentsAssessmentId) | **GET** /assessments/{assessment_id} | 
-[**getAssessmentsAssessmentIdGradeSet**](AssemblyApi.md#getAssessmentsAssessmentIdGradeSet) | **GET** /assessments/{assessment_id}/grade_set | 
-[**getAssessmentsAssessmentIdResults**](AssemblyApi.md#getAssessmentsAssessmentIdResults) | **GET** /assessments/{assessment_id}/results | 
-[**getAttendances**](AssemblyApi.md#getAttendances) | **GET** /attendances | 
-[**getCalendarEvents**](AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | 
-[**getContacts**](AssemblyApi.md#getContacts) | **GET** /contacts | 
-[**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | 
-[**getExclusionsStudentId**](AssemblyApi.md#getExclusionsStudentId) | **GET** /exclusions/{student_id} | 
-[**getFacetFacetId**](AssemblyApi.md#getFacetFacetId) | **GET** /facet/{facet_id} | 
-[**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | 
-[**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | 
-[**getRegistrationGroupsGroupId**](AssemblyApi.md#getRegistrationGroupsGroupId) | **GET** /registration_groups/{group_id} | 
-[**getRegistrationGroupsGroupIdStudents**](AssemblyApi.md#getRegistrationGroupsGroupIdStudents) | **GET** /registration_groups/{group_id}/students | 
-[**getSchoolDetails**](AssemblyApi.md#getSchoolDetails) | **GET** /school_details | 
-[**getStaffAbsences**](AssemblyApi.md#getStaffAbsences) | **GET** /staff_absences | 
-[**getStaffContracts**](AssemblyApi.md#getStaffContracts) | **GET** /staff_contracts | 
-[**getStaffContractsStaffMemberId**](AssemblyApi.md#getStaffContractsStaffMemberId) | **GET** /staff_contracts/{staff_member_id} | 
-[**getStaffMembers**](AssemblyApi.md#getStaffMembers) | **GET** /staff_members | 
-[**getStaffMembersStaffMemberId**](AssemblyApi.md#getStaffMembersStaffMemberId) | **GET** /staff_members/{staff_member_id} | 
-[**getStudents**](AssemblyApi.md#getStudents) | **GET** /students | 
-[**getStudentsStudentId**](AssemblyApi.md#getStudentsStudentId) | **GET** /students/{student_id} | 
-[**getSubjects**](AssemblyApi.md#getSubjects) | **GET** /subjects | 
-[**getTeachingGroups**](AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | 
-[**getTeachingGroupsGroupId**](AssemblyApi.md#getTeachingGroupsGroupId) | **GET** /teaching_groups/{group_id} | 
-[**getTeachingGroupsGroupIdStudents**](AssemblyApi.md#getTeachingGroupsGroupIdStudents) | **GET** /teaching_groups/{group_id}/students | 
-[**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | 
-[**getYearGroupsGroupId**](AssemblyApi.md#getYearGroupsGroupId) | **GET** /year_groups/{group_id} | 
-[**getYearGroupsGroupIdStudents**](AssemblyApi.md#getYearGroupsGroupIdStudents) | **GET** /year_groups/{group_id}/students | 
-[**patchResults**](AssemblyApi.md#patchResults) | **PATCH** /results | 
-[**patchResultsResultId**](AssemblyApi.md#patchResultsResultId) | **PATCH** /results/{result_id} | 
+[**find**](AssemblyApi.md#find) | **GET** /academic_years/{id} | View an Academic Year
+[**find_0**](AssemblyApi.md#find_0) | **GET** /assessment_points/{id} | View an Assessment Point
+[**find_1**](AssemblyApi.md#find_1) | **GET** /assessments/{id} | View an Assessment
+[**find_2**](AssemblyApi.md#find_2) | **GET** /facets/{id} | View a Facet
+[**find_3**](AssemblyApi.md#find_3) | **GET** /registration_groups/{id} | View a Registration Group
+[**find_4**](AssemblyApi.md#find_4) | **GET** /staff_members/{id} | View a Staff Member
+[**find_5**](AssemblyApi.md#find_5) | **GET** /students/{id} | View a Student
+[**find_6**](AssemblyApi.md#find_6) | **GET** /teaching_groups/{id} | View a Teaching Group
+[**find_7**](AssemblyApi.md#find_7) | **GET** /year_groups/{id} | View a Year Group
+[**get**](AssemblyApi.md#get) | **GET** /academic_years | List Academic Years
+[**get_0**](AssemblyApi.md#get_0) | **GET** /assessment_points | List Assessment Points
+[**get_1**](AssemblyApi.md#get_1) | **GET** /assessments | List Assessments
+[**get_10**](AssemblyApi.md#get_10) | **GET** /staff_contracts | List Staff Contracts
+[**get_11**](AssemblyApi.md#get_11) | **GET** /staff_members | List Staff Members
+[**get_12**](AssemblyApi.md#get_12) | **GET** /students | List Students
+[**get_13**](AssemblyApi.md#get_13) | **GET** /subjects | List Subjects
+[**get_14**](AssemblyApi.md#get_14) | **GET** /teaching_groups | List Teaching Groups
+[**get_15**](AssemblyApi.md#get_15) | **GET** /year_groups | List Year Groups
+[**get_2**](AssemblyApi.md#get_2) | **GET** /attendances | List Attendances
+[**get_3**](AssemblyApi.md#get_3) | **GET** /calendar_events | List Calendar Events
+[**get_4**](AssemblyApi.md#get_4) | **GET** /contacts | List Contacts
+[**get_5**](AssemblyApi.md#get_5) | **GET** /exclusions | List Exclusions
+[**get_6**](AssemblyApi.md#get_6) | **GET** /facets | List Facets
+[**get_7**](AssemblyApi.md#get_7) | **GET** /registration_groups | List Registration Group
+[**get_8**](AssemblyApi.md#get_8) | **GET** /results | List Results
+[**get_9**](AssemblyApi.md#get_9) | **GET** /staff_absences | List Staff Absences
+[**gradeSet**](AssemblyApi.md#gradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
+[**left**](AssemblyApi.md#left) | **GET** /students/left | List Left Students
+[**results**](AssemblyApi.md#results) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
+[**results_0**](AssemblyApi.md#results_0) | **GET** /assessments/{id}/results | View Results for an Assessment
+[**show**](AssemblyApi.md#show) | **GET** /school_details | List School Details
+[**students**](AssemblyApi.md#students) | **GET** /registration_groups/{id}/students | List Students for Registration Group
+[**students_0**](AssemblyApi.md#students_0) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
+[**students_1**](AssemblyApi.md#students_1) | **GET** /year_groups/{id}/students | List Students for Year Group
 
 
-<a name="getAcademicYears"></a>
-# **getAcademicYears**
-> AcademicYearList getAcademicYears(page, perPage)
+<a name="find"></a>
+# **find**
+> AcademicYear find(id)
 
+View an Academic Year
 
-
-Returns a list of academic years for the school associated with the provided access_token. The dates of these academic years can be used to filter data in other API endpoints.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-try {
-    AcademicYearList result = apiInstance.getAcademicYears(page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAcademicYears");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**AcademicYearList**](AcademicYearList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getAssessmentPoints"></a>
-# **getAssessmentPoints**
-> AssessmentPointList getAssessmentPoints(yearCode, type, page, perPage)
-
-
-
-Returns a list of assessment points. An assessment_point object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the &#x60;assessment_point_rank&#x60; should be used - this will remain constant across all environments.
+Returns a single academic year for the school associated with the provided access_token.
 
 ### Example
 ```java
@@ -115,20 +59,18 @@ Returns a list of assessment points. An assessment_point object represents a poi
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String type = "type_example"; // String | Filter by assessment point type
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
+Integer id = 56; // Integer | id of the entity
 try {
-    AssessmentPointList result = apiInstance.getAssessmentPoints(yearCode, type, page, perPage);
+    AcademicYear result = apiInstance.find(id);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentPoints");
+    System.err.println("Exception when calling AssemblyApi#find");
     e.printStackTrace();
 }
 ```
@@ -137,29 +79,26 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **type** | **String**| Filter by assessment point type | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **id** | **Integer**| id of the entity |
 
 ### Return type
 
-[**AssessmentPointList**](AssessmentPointList.md)
+[**AcademicYear**](AcademicYear.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getAssessmentPointsAssessmentPointRank"></a>
-# **getAssessmentPointsAssessmentPointRank**
-> AssessmentPoint getAssessmentPointsAssessmentPointRank(assessmentPointRank)
+<a name="find_0"></a>
+# **find_0**
+> AssessmentPoint find_0(id)
 
-
+View an Assessment Point
 
 Returns a single assessment point for the given rank.
 
@@ -174,17 +113,18 @@ Returns a single assessment point for the given rank.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String assessmentPointRank = "assessmentPointRank_example"; // String | The rank of the assessment point as an Integer
+Integer id = 56; // Integer | id of the entity
 try {
-    AssessmentPoint result = apiInstance.getAssessmentPointsAssessmentPointRank(assessmentPointRank);
+    AssessmentPoint result = apiInstance.find_0(id);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentPointsAssessmentPointRank");
+    System.err.println("Exception when calling AssemblyApi#find_0");
     e.printStackTrace();
 }
 ```
@@ -193,7 +133,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assessmentPointRank** | **String**| The rank of the assessment point as an Integer |
+ **id** | **Integer**| id of the entity |
 
 ### Return type
 
@@ -201,20 +141,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getAssessmentPointsAssessmentPointRankResults"></a>
-# **getAssessmentPointsAssessmentPointRankResults**
-> ResultList getAssessmentPointsAssessmentPointRankResults(assessmentPointRank, students, page, perPage)
+<a name="find_1"></a>
+# **find_1**
+> Assessment find_1(id)
 
+View an Assessment
 
-
-Returns a list of results for the given assessment_point_rank and students.
+Returns a single assessment for the given id.
 
 ### Example
 ```java
@@ -227,20 +167,18 @@ Returns a list of results for the given assessment_point_rank and students.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String assessmentPointRank = "assessmentPointRank_example"; // String | The rank of the assessment point as an Integer
-String students = "students_example"; // String | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
+Integer id = 56; // Integer | id of the entity
 try {
-    ResultList result = apiInstance.getAssessmentPointsAssessmentPointRankResults(assessmentPointRank, students, page, perPage);
+    Assessment result = apiInstance.find_1(id);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentPointsAssessmentPointRankResults");
+    System.err.println("Exception when calling AssemblyApi#find_1");
     e.printStackTrace();
 }
 ```
@@ -249,120 +187,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assessmentPointRank** | **String**| The rank of the assessment point as an Integer |
- **students** | **String**| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**ResultList**](ResultList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getAssessments"></a>
-# **getAssessments**
-> AssessmentList getAssessments(misMappings, page, perPage)
-
-
-
-Returns a list of assessment objects.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Boolean misMappings = false; // Boolean | Includes the names of any MIS components to this object
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-try {
-    AssessmentList result = apiInstance.getAssessments(misMappings, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **misMappings** | **Boolean**| Includes the names of any MIS components to this object | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**AssessmentList**](AssessmentList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getAssessmentsAssessmentId"></a>
-# **getAssessmentsAssessmentId**
-> Assessment getAssessmentsAssessmentId(assessmentId)
-
-
-
-Returns a single assessment for the given ID.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String assessmentId = "assessmentId_example"; // String | ID of the assessment as an Integer.
-try {
-    Assessment result = apiInstance.getAssessmentsAssessmentId(assessmentId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentsAssessmentId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **assessmentId** | **String**| ID of the assessment as an Integer. |
+ **id** | **Integer**| id of the entity |
 
 ### Return type
 
@@ -370,20 +195,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getAssessmentsAssessmentIdGradeSet"></a>
-# **getAssessmentsAssessmentIdGradeSet**
-> Gradeset getAssessmentsAssessmentIdGradeSet(assessmentId)
+<a name="find_2"></a>
+# **find_2**
+> Facet find_2(id)
 
+View a Facet
 
-
-Returns a gradeset (an acceptable list of values) for the assessment identified by the assessment_id. Grades should be written back to the Platform using the grade_id.
+Returns a single facet for the given id.
 
 ### Example
 ```java
@@ -396,17 +221,18 @@ Returns a gradeset (an acceptable list of values) for the assessment identified 
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String assessmentId = "assessmentId_example"; // String | ID of the assessment as an Integer.
+Integer id = 56; // Integer | id of the entity
 try {
-    Gradeset result = apiInstance.getAssessmentsAssessmentIdGradeSet(assessmentId);
+    Facet result = apiInstance.find_2(id);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentsAssessmentIdGradeSet");
+    System.err.println("Exception when calling AssemblyApi#find_2");
     e.printStackTrace();
 }
 ```
@@ -415,416 +241,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assessmentId** | **String**| ID of the assessment as an Integer. |
-
-### Return type
-
-[**Gradeset**](Gradeset.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getAssessmentsAssessmentIdResults"></a>
-# **getAssessmentsAssessmentIdResults**
-> Result getAssessmentsAssessmentIdResults(assessmentId, students)
-
-
-
-Returns a list of results for the given assessment_id and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this support article.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String assessmentId = "assessmentId_example"; // String | ID of the assessment as an Integer.
-String students = "students_example"; // String | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-try {
-    Result result = apiInstance.getAssessmentsAssessmentIdResults(assessmentId, students);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentsAssessmentIdResults");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **assessmentId** | **String**| ID of the assessment as an Integer. |
- **students** | **String**| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [optional]
-
-### Return type
-
-[**Result**](Result.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getAttendances"></a>
-# **getAttendances**
-> AttendanceList getAttendances(studentId, registrationGroupId, startDate, endDate, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of attendances, filtered by date, student, or registration group. By default, attendances are returned from the start to the end of the current week.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Integer studentId = 56; // Integer | ID of the Student as an Integer
-Integer registrationGroupId = 56; // Integer | ID of the registration group as an Integer
-String startDate = "startDate_example"; // String | The start date of the period to return data for
-String endDate = "endDate_example"; // String | The end date of the period to return data for
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    AttendanceList result = apiInstance.getAttendances(studentId, registrationGroupId, startDate, endDate, page, perPage, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAttendances");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **studentId** | **Integer**| ID of the Student as an Integer | [optional]
- **registrationGroupId** | **Integer**| ID of the registration group as an Integer | [optional]
- **startDate** | **String**| The start date of the period to return data for | [optional]
- **endDate** | **String**| The end date of the period to return data for | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**AttendanceList**](AttendanceList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getCalendarEvents"></a>
-# **getCalendarEvents**
-> CalendarEventList getCalendarEvents(eventType, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of calendar events from the school calendar. We strongly recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String eventType = "eventType_example"; // String | Return a calendar object type from the underlying MIS
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    CalendarEventList result = apiInstance.getCalendarEvents(eventType, page, perPage, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getCalendarEvents");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eventType** | **String**| Return a calendar object type from the underlying MIS | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**CalendarEventList**](CalendarEventList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getContacts"></a>
-# **getContacts**
-> ContactList getContacts(studentId, page, perPage)
-
-
-
-Returns a list of contacts that match the given set of filters.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Integer studentId = 56; // Integer | ID of the Student as an Integer
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-try {
-    ContactList result = apiInstance.getContacts(studentId, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getContacts");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **studentId** | **Integer**| ID of the Student as an Integer | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**ContactList**](ContactList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getExclusions"></a>
-# **getExclusions**
-> ExclusionList getExclusions(startDate, endDate, page, perPage)
-
-
-
-Returns a list of exclusions. By default, exclusions are returned that occurred during the current academic year.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String startDate = "startDate_example"; // String | The start date of the period to return data for
-String endDate = "endDate_example"; // String | The end date of the period to return data for
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-try {
-    ExclusionList result = apiInstance.getExclusions(startDate, endDate, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getExclusions");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **String**| The start date of the period to return data for | [optional]
- **endDate** | **String**| The end date of the period to return data for | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**ExclusionList**](ExclusionList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getExclusionsStudentId"></a>
-# **getExclusionsStudentId**
-> ExclusionList getExclusionsStudentId(studentId, startDate, endDate, page, perPage)
-
-
-
-Returns a list of exclusions for a given student. By default, exclusions are returned that occurred during the current academic year.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String studentId = "studentId_example"; // String | ID of the Student as an Integer
-String startDate = "startDate_example"; // String | The start date of the period to return data for
-String endDate = "endDate_example"; // String | The end date of the period to return data for
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-try {
-    ExclusionList result = apiInstance.getExclusionsStudentId(studentId, startDate, endDate, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getExclusionsStudentId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **studentId** | **String**| ID of the Student as an Integer |
- **startDate** | **String**| The start date of the period to return data for | [optional]
- **endDate** | **String**| The end date of the period to return data for | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**ExclusionList**](ExclusionList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getFacetFacetId"></a>
-# **getFacetFacetId**
-> Facet getFacetFacetId(facetId)
-
-
-
-Returns a single facet for the given ID.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String facetId = "facetId_example"; // String | ID of the facet as an Integer.
-try {
-    Facet result = apiInstance.getFacetFacetId(facetId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getFacetFacetId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **facetId** | **String**| ID of the facet as an Integer. |
+ **id** | **Integer**| id of the entity |
 
 ### Return type
 
@@ -832,73 +249,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getFacets"></a>
-# **getFacets**
-> FacetList getFacets(page, perPage)
+<a name="find_3"></a>
+# **find_3**
+> RegistrationGroup find_3(id, date, academicYearId)
 
-
-
-Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-try {
-    FacetList result = apiInstance.getFacets(page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getFacets");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**FacetList**](FacetList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getRegistrationGroups"></a>
-# **getRegistrationGroups**
-> RegistrationGroupList getRegistrationGroups(yearCode, date, academicYearId, page, perPage, ifModifiedSince)
-
-
+View a Registration Group
 
 Returns a list of registration groups that match the given set of filters.
 
@@ -913,22 +275,20 @@ Returns a list of registration groups that match the given set of filters.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
+Integer id = 56; // Integer | id of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
 try {
-    RegistrationGroupList result = apiInstance.getRegistrationGroups(yearCode, date, academicYearId, page, perPage, ifModifiedSince);
+    RegistrationGroup result = apiInstance.find_3(id, date, academicYearId);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getRegistrationGroups");
+    System.err.println("Exception when calling AssemblyApi#find_3");
     e.printStackTrace();
 }
 ```
@@ -937,71 +297,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**RegistrationGroupList**](RegistrationGroupList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getRegistrationGroupsGroupId"></a>
-# **getRegistrationGroupsGroupId**
-> RegistrationGroup getRegistrationGroupsGroupId(groupId, date, academicYearId, ifModifiedSince)
-
-
-
-Returns a single registration group whose code matches the provided group_id. Additionally includes a list of all the student identifiers that are present in the group.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String groupId = "groupId_example"; // String | ID of the Year Group as an Integer
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    RegistrationGroup result = apiInstance.getRegistrationGroupsGroupId(groupId, date, academicYearId, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getRegistrationGroupsGroupId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **String**| ID of the Year Group as an Integer |
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
+ **id** | **Integer**| id of the entity |
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
 
 ### Return type
 
@@ -1009,20 +307,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getRegistrationGroupsGroupIdStudents"></a>
-# **getRegistrationGroupsGroupIdStudents**
-> StudentList getRegistrationGroupsGroupIdStudents(groupId, yearCode, date, academicYearId, demographics, care, page, perPage, ifModifiedSince)
+<a name="find_4"></a>
+# **find_4**
+> StaffMember find_4(id, demographics, qualifications)
 
+View a Staff Member
 
-
-Returns a list of all the students that are present in the registration group identified by group_id.
+Returns an individual staff member record for the given ID.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
 
 ### Example
 ```java
@@ -1035,25 +333,20 @@ Returns a list of all the students that are present in the registration group id
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String groupId = "groupId_example"; // String | ID of the Year Group as an Integer
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
-Boolean demographics = false; // Boolean | Return demographic information along with the person (requires appropriate scope)
-Boolean care = false; // Boolean | Return care information along with this object, depends on inclusion of demographics
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
+Integer id = 56; // Integer | id of the entity
+Boolean demographics = true; // Boolean | include demographics data
+Boolean qualifications = true; // Boolean | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 try {
-    StudentList result = apiInstance.getRegistrationGroupsGroupIdStudents(groupId, yearCode, date, academicYearId, demographics, care, page, perPage, ifModifiedSince);
+    StaffMember result = apiInstance.find_4(id, demographics, qualifications);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getRegistrationGroupsGroupIdStudents");
+    System.err.println("Exception when calling AssemblyApi#find_4");
     e.printStackTrace();
 }
 ```
@@ -1062,379 +355,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| ID of the Year Group as an Integer |
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **demographics** | **Boolean**| Return demographic information along with the person (requires appropriate scope) | [optional] [default to false]
- **care** | **Boolean**| Return care information along with this object, depends on inclusion of demographics | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**StudentList**](StudentList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getSchoolDetails"></a>
-# **getSchoolDetails**
-> SchoolDetails getSchoolDetails()
-
-
-
-Returns details for the school associated with the provided access_token.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-try {
-    SchoolDetails result = apiInstance.getSchoolDetails();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getSchoolDetails");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SchoolDetails**](SchoolDetails.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getStaffAbsences"></a>
-# **getStaffAbsences**
-> StaffAbsenceList getStaffAbsences(startDate, endDate, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of staff member absences for the school accociated with the provided access_token. A school level access token with the staff_members.absences scope is required to access staff member absence information.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String startDate = "startDate_example"; // String | The start date of the period to return data for
-String endDate = "endDate_example"; // String | The end date of the period to return data for
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    StaffAbsenceList result = apiInstance.getStaffAbsences(startDate, endDate, page, perPage, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStaffAbsences");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **String**| The start date of the period to return data for | [optional]
- **endDate** | **String**| The end date of the period to return data for | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**StaffAbsenceList**](StaffAbsenceList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getStaffContracts"></a>
-# **getStaffContracts**
-> StaffContractList getStaffContracts(date, roles, salaries, allowances, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of staff member contracts for the school accociated with the provided access_token. A school level access token with the staff_members.contracts scope is required to access staff member contract information.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String date = "date_example"; // String | Filter for a specific date
-Boolean roles = false; // Boolean | Return roles information along with this object
-Boolean salaries = false; // Boolean | Return salary information along with this object
-Boolean allowances = false; // Boolean | Return allowances information along with this object
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    StaffContractList result = apiInstance.getStaffContracts(date, roles, salaries, allowances, page, perPage, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStaffContracts");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **String**| Filter for a specific date | [optional]
- **roles** | **Boolean**| Return roles information along with this object | [optional] [default to false]
- **salaries** | **Boolean**| Return salary information along with this object | [optional] [default to false]
- **allowances** | **Boolean**| Return allowances information along with this object | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**StaffContractList**](StaffContractList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getStaffContractsStaffMemberId"></a>
-# **getStaffContractsStaffMemberId**
-> StaffContractList getStaffContractsStaffMemberId(staffMemberId, date, roles, salaries, allowances, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of staff member contracts for the school accociated with the provided access_token. A school level access token with the staff_members.contracts scope is required to access staff member contract information.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String staffMemberId = "staffMemberId_example"; // String | ID of the Staff Member as an Integer
-String date = "date_example"; // String | Filter for a specific date
-Boolean roles = false; // Boolean | Return roles information along with this object
-Boolean salaries = false; // Boolean | Return salary information along with this object
-Boolean allowances = false; // Boolean | Return allowances information along with this object
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    StaffContractList result = apiInstance.getStaffContractsStaffMemberId(staffMemberId, date, roles, salaries, allowances, page, perPage, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStaffContractsStaffMemberId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **staffMemberId** | **String**| ID of the Staff Member as an Integer |
- **date** | **String**| Filter for a specific date | [optional]
- **roles** | **Boolean**| Return roles information along with this object | [optional] [default to false]
- **salaries** | **Boolean**| Return salary information along with this object | [optional] [default to false]
- **allowances** | **Boolean**| Return allowances information along with this object | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**StaffContractList**](StaffContractList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getStaffMembers"></a>
-# **getStaffMembers**
-> StaffMemberList getStaffMembers(teachersOnly, demographics, qualifications, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of staff members for the school accociated with the provided access_token.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Boolean teachersOnly = false; // Boolean | Return only staff who are teachers
-Boolean demographics = false; // Boolean | Return demographic information along with the person (requires appropriate scope)
-Boolean qualifications = false; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires appropriate scope)
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    StaffMemberList result = apiInstance.getStaffMembers(teachersOnly, demographics, qualifications, page, perPage, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStaffMembers");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **teachersOnly** | **Boolean**| Return only staff who are teachers | [optional] [default to false]
- **demographics** | **Boolean**| Return demographic information along with the person (requires appropriate scope) | [optional] [default to false]
- **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires appropriate scope) | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**StaffMemberList**](StaffMemberList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getStaffMembersStaffMemberId"></a>
-# **getStaffMembersStaffMemberId**
-> StaffMember getStaffMembersStaffMemberId(staffMemberId, demographics, qualifications, ifModifiedSince)
-
-
-
-Returns an individual staff member record for the given ID.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String staffMemberId = "staffMemberId_example"; // String | ID of the Staff Member as an Integer
-Boolean demographics = false; // Boolean | Return demographic information along with the person (requires appropriate scope)
-Boolean qualifications = false; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires appropriate scope)
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    StaffMember result = apiInstance.getStaffMembersStaffMemberId(staffMemberId, demographics, qualifications, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStaffMembersStaffMemberId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **staffMemberId** | **String**| ID of the Staff Member as an Integer |
- **demographics** | **Boolean**| Return demographic information along with the person (requires appropriate scope) | [optional] [default to false]
- **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires appropriate scope) | [optional] [default to false]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
+ **id** | **Integer**| id of the entity |
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **qualifications** | **Boolean**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
 ### Return type
 
@@ -1442,20 +365,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getStudents"></a>
-# **getStudents**
-> StudentList getStudents(yearCode, students, date, demographics, contacts, senNeeds, addresses, care, languages, page, perPage, ifModifiedSince)
+<a name="find_5"></a>
+# **find_5**
+> Student find_5(id, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
 
+View a Student
 
-
-Returns a list of students for the school associated with the provided access_token.
+Returns an individual student record for the given ID.  **Note:** the response shown includes student demographics, contacts, student SEN needs, student addresses, photo and student care data but these will only be present if you have permission to access it and pass &#x60;demographics&#x60;, &#x60;contacts&#x60;, &#x60;sen_needs&#x60;, &#x60;addresses&#x60;, &#x60;photo&#x60;, &#x60;care&#x60; and &#x60;ever_in_care&#x60; respectively  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).  ### Photo Notes When requesting photo information the response includes a &#x60;photo.url&#x60; property, this URL should be treated as confidential and used to download the students photo to your storage system of choice. The URL is *not designed for hotlinking directly in the browser* for end users. URLs are signed and only valid for 1 hour after which time you will receive a 400 error.  Once downloaded to avoid repeatedly syncing unchanged photos you should code your application to compare the &#x60;photo.hash&#x60; property to detect changes in student photos since your last sync, it is guaranteed that changes in a photo will change the hash, however the hash is only intended to be used to detect photo changes and is not guaranteed to match a checksum of the files contents.  Photos are currently provided on an \&quot;as is\&quot; basis straight from the source MIS, this means the format, quality, metadata and dimensions are not guaranteed. We reserve the right to normalise this data in the future but your application should be resistant to differing photo formats. 
 
 ### Example
 ```java
@@ -1468,28 +391,26 @@ Returns a list of students for the school associated with the provided access_to
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String students = "students_example"; // String | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-String date = "date_example"; // String | Filter for a specific date
-Boolean demographics = false; // Boolean | Return demographic information along with the person (requires appropriate scope)
-Boolean contacts = false; // Boolean | Return contact information along with this object
-Boolean senNeeds = false; // Boolean | Return Special Educational Need information along with this object
-Boolean addresses = false; // Boolean | Return address information along with this object
-Boolean care = false; // Boolean | Return care information along with this object, depends on inclusion of demographics
-Boolean languages = false; // Boolean | Return language information along with this object
-Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
+Integer id = 56; // Integer | id of the entity
+Boolean demographics = true; // Boolean | include demographics data
+Boolean contacts = true; // Boolean | include contacts data
+Boolean senNeeds = true; // Boolean | include SEN needs data
+Boolean addresses = true; // Boolean | include student address data
+Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | include student language data
+Boolean photo = true; // Boolean | include student photo data
 try {
-    StudentList result = apiInstance.getStudents(yearCode, students, date, demographics, contacts, senNeeds, addresses, care, languages, page, perPage, ifModifiedSince);
+    Student result = apiInstance.find_5(id, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStudents");
+    System.err.println("Exception when calling AssemblyApi#find_5");
     e.printStackTrace();
 }
 ```
@@ -1498,87 +419,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **students** | **String**| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [optional]
- **date** | **String**| Filter for a specific date | [optional]
- **demographics** | **Boolean**| Return demographic information along with the person (requires appropriate scope) | [optional] [default to false]
- **contacts** | **Boolean**| Return contact information along with this object | [optional] [default to false]
- **senNeeds** | **Boolean**| Return Special Educational Need information along with this object | [optional] [default to false]
- **addresses** | **Boolean**| Return address information along with this object | [optional] [default to false]
- **care** | **Boolean**| Return care information along with this object, depends on inclusion of demographics | [optional] [default to false]
- **languages** | **Boolean**| Return language information along with this object | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
-
-### Return type
-
-[**StudentList**](StudentList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getStudentsStudentId"></a>
-# **getStudentsStudentId**
-> Student getStudentsStudentId(studentId, date, demographics, contacts, senNeeds, addresses, care, languages, ifModifiedSince)
-
-
-
-Returns an individual student record for the given ID. Note: the response shown includes student demographics, contacts, student SEN needs, student addresses and student care data but these will only be present if you have permission to access it and pass demographics&#x3D;true, contacts&#x3D;true, sen_needs&#x3D;true, addresses&#x3D;true and care&#x3D;true respectively
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String studentId = "studentId_example"; // String | ID of the Student as an Integer
-String date = "date_example"; // String | Filter for a specific date
-Boolean demographics = false; // Boolean | Return demographic information along with the person (requires appropriate scope)
-Boolean contacts = false; // Boolean | Return contact information along with this object
-Boolean senNeeds = false; // Boolean | Return Special Educational Need information along with this object
-Boolean addresses = false; // Boolean | Return address information along with this object
-Boolean care = false; // Boolean | Return care information along with this object, depends on inclusion of demographics
-Boolean languages = false; // Boolean | Return language information along with this object
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
-try {
-    Student result = apiInstance.getStudentsStudentId(studentId, date, demographics, contacts, senNeeds, addresses, care, languages, ifModifiedSince);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getStudentsStudentId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **studentId** | **String**| ID of the Student as an Integer |
- **date** | **String**| Filter for a specific date | [optional]
- **demographics** | **Boolean**| Return demographic information along with the person (requires appropriate scope) | [optional] [default to false]
- **contacts** | **Boolean**| Return contact information along with this object | [optional] [default to false]
- **senNeeds** | **Boolean**| Return Special Educational Need information along with this object | [optional] [default to false]
- **addresses** | **Boolean**| Return address information along with this object | [optional] [default to false]
- **care** | **Boolean**| Return care information along with this object, depends on inclusion of demographics | [optional] [default to false]
- **languages** | **Boolean**| Return language information along with this object | [optional] [default to false]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
+ **id** | **Integer**| id of the entity |
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **contacts** | **Boolean**| include contacts data | [optional]
+ **senNeeds** | **Boolean**| include SEN needs data | [optional]
+ **addresses** | **Boolean**| include student address data | [optional]
+ **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| include student language data | [optional]
+ **photo** | **Boolean**| include student photo data | [optional]
 
 ### Return type
 
@@ -1586,18 +435,516 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getSubjects"></a>
-# **getSubjects**
-> SubjectList getSubjects(misMappings, page, perPage)
+<a name="find_6"></a>
+# **find_6**
+> TeachingGroup find_6(id, date, academicYearId, groupId)
 
+View a Teaching Group
 
+Returns a list of teaching groups that match the given set of filters.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Integer groupId = 56; // Integer | a group_id to filter by
+try {
+    TeachingGroup result = apiInstance.find_6(id, date, academicYearId, groupId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#find_6");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **groupId** | **Integer**| a group_id to filter by | [optional]
+
+### Return type
+
+[**TeachingGroup**](TeachingGroup.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="find_7"></a>
+# **find_7**
+> YearGroup find_7(id, date, academicYearId)
+
+View a Year Group
+
+Returns a list of year groups that match the given set of filters.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+try {
+    YearGroup result = apiInstance.find_7(id, date, academicYearId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#find_7");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+
+### Return type
+
+[**YearGroup**](YearGroup.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get"></a>
+# **get**
+> List&lt;AcademicYear&gt; get(perPage, page)
+
+List Academic Years
+
+Returns a list of academic years for the school associated with the provided access_token. The dates of these academic years can be used to filter data in other API endpoints.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<AcademicYear> result = apiInstance.get(perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;AcademicYear&gt;**](AcademicYear.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_0"></a>
+# **get_0**
+> List&lt;AssessmentPoint&gt; get_0(perPage, page)
+
+List Assessment Points
+
+Returns a list of assessment points. An assessment_point object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the assessment_point_rank should be used - this will remain constant across all environments.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<AssessmentPoint> result = apiInstance.get_0(perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_0");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;AssessmentPoint&gt;**](AssessmentPoint.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_1"></a>
+# **get_1**
+> List&lt;Assessment&gt; get_1(perPage, page)
+
+List Assessments
+
+Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<Assessment> result = apiInstance.get_1(perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_1");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Assessment&gt;**](Assessment.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_10"></a>
+# **get_10**
+> List&lt;StaffContract&gt; get_10(ifModifiedSince, staffMemberId, date, roles, salaries, allowances, perPage, page)
+
+List Staff Contracts
+
+Returns a list of staff member contracts for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.contracts&#x60; scope is required to access staff member contract information.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Integer staffMemberId = 56; // Integer | show only absences fot the specified staff member
+Boolean date = true; // Boolean | returns results for a specific date
+Boolean roles = true; // Boolean | return roles information along with a staff contract
+Boolean salaries = true; // Boolean | return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it)
+Boolean allowances = true; // Boolean | return allowances information along with a staff contract (requires staff_members.salaries scope)
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<StaffContract> result = apiInstance.get_10(ifModifiedSince, staffMemberId, date, roles, salaries, allowances, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_10");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **staffMemberId** | **Integer**| show only absences fot the specified staff member | [optional]
+ **date** | **Boolean**| returns results for a specific date | [optional]
+ **roles** | **Boolean**| return roles information along with a staff contract | [optional]
+ **salaries** | **Boolean**| return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) | [optional]
+ **allowances** | **Boolean**| return allowances information along with a staff contract (requires staff_members.salaries scope) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;StaffContract&gt;**](StaffContract.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_11"></a>
+# **get_11**
+> List&lt;StaffMember&gt; get_11(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page)
+
+List Staff Members
+
+Returns a list of staff members for the school accociated with the provided &#x60;access_token&#x60;.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Boolean teachersOnly = true; // Boolean | return only staff who are teachers
+Boolean demographics = true; // Boolean | include demographics data
+Boolean qualifications = true; // Boolean | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<StaffMember> result = apiInstance.get_11(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_11");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **teachersOnly** | **Boolean**| return only staff who are teachers | [optional]
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **qualifications** | **Boolean**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;StaffMember&gt;**](StaffMember.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_12"></a>
+# **get_12**
+> List&lt;Student&gt; get_12(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo, perPage, page)
+
+List Students
+
+Returns a list of students for the school associated with the provided &#x60;access_token.&#x60; **Note:** the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+List<Integer> students = Arrays.asList(56); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
+Boolean demographics = true; // Boolean | include demographics data
+Boolean contacts = true; // Boolean | include contacts data
+Boolean senNeeds = true; // Boolean | include SEN needs data
+Boolean addresses = true; // Boolean | include student address data
+Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | include student language data
+Boolean photo = true; // Boolean | include student photo data
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<Student> result = apiInstance.get_12(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_12");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [optional]
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **contacts** | **Boolean**| include contacts data | [optional]
+ **senNeeds** | **Boolean**| include SEN needs data | [optional]
+ **addresses** | **Boolean**| include student address data | [optional]
+ **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| include student language data | [optional]
+ **photo** | **Boolean**| include student photo data | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Student&gt;**](Student.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_13"></a>
+# **get_13**
+> List&lt;Subject&gt; get_13(perPage, page)
+
+List Subjects
 
 Returns a list of the Assembly Platform&#39;s subjects.
 
@@ -1612,79 +959,19 @@ Returns a list of the Assembly Platform&#39;s subjects.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Boolean misMappings = false; // Boolean | Includes the names of any MIS components to this object
-Integer page = 1; // Integer | Page number to return
 Integer perPage = 100; // Integer | Number of results to return
-try {
-    SubjectList result = apiInstance.getSubjects(misMappings, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getSubjects");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **misMappings** | **Boolean**| Includes the names of any MIS components to this object | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
- **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
-
-### Return type
-
-[**SubjectList**](SubjectList.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getTeachingGroups"></a>
-# **getTeachingGroups**
-> TeachingGroupList getTeachingGroups(subjectCode, yearCode, date, academicYearId, page, perPage)
-
-
-
-Returns a list of teaching groups that match the given set of filters. If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String subjectCode = "subjectCode_example"; // String | Filter by subject
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
 Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
 try {
-    TeachingGroupList result = apiInstance.getTeachingGroups(subjectCode, yearCode, date, academicYearId, page, perPage);
+    List<Subject> result = apiInstance.get_13(perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getTeachingGroups");
+    System.err.println("Exception when calling AssemblyApi#get_13");
     e.printStackTrace();
 }
 ```
@@ -1693,33 +980,29 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subjectCode** | **String**| Filter by subject | [optional]
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
-[**TeachingGroupList**](TeachingGroupList.md)
+[**List&lt;Subject&gt;**](Subject.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getTeachingGroupsGroupId"></a>
-# **getTeachingGroupsGroupId**
-> TeachingGroup getTeachingGroupsGroupId(groupId, date, academicYearId)
+<a name="get_14"></a>
+# **get_14**
+> List&lt;TeachingGroup&gt; get_14(ifModifiedSince, subjectCode, yearCode, date, academicYearId, perPage, page)
 
+List Teaching Groups
 
-
-Returns a single teaching group whose ID matches the provided group_id. Additionally includes a list of all the student and supervisor identifiers that have ever been enrolled in the group.
+Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
 
 ### Example
 ```java
@@ -1732,82 +1015,24 @@ Returns a single teaching group whose ID matches the provided group_id. Addition
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String groupId = "groupId_example"; // String | ID of the Year Group as an Integer
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
-try {
-    TeachingGroup result = apiInstance.getTeachingGroupsGroupId(groupId, date, academicYearId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getTeachingGroupsGroupId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **String**| ID of the Year Group as an Integer |
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
-
-### Return type
-
-[**TeachingGroup**](TeachingGroup.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getTeachingGroupsGroupIdStudents"></a>
-# **getTeachingGroupsGroupIdStudents**
-> StudentList getTeachingGroupsGroupIdStudents(groupId, yearCode, date, academicYearId, demographics, care, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of all the students that are present in the teaching group identified by group_id.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String groupId = "groupId_example"; // String | ID of the Year Group as an Integer
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
-Boolean demographics = false; // Boolean | Return demographic information along with the person (requires appropriate scope)
-Boolean care = false; // Boolean | Return care information along with this object, depends on inclusion of demographics
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+String subjectCode = "subjectCode_example"; // String | filter by subject
+Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Integer perPage = 100; // Integer | Number of results to return
 Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
 try {
-    StudentList result = apiInstance.getTeachingGroupsGroupIdStudents(groupId, yearCode, date, academicYearId, demographics, care, page, perPage, ifModifiedSince);
+    List<TeachingGroup> result = apiInstance.get_14(ifModifiedSince, subjectCode, yearCode, date, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getTeachingGroupsGroupIdStudents");
+    System.err.println("Exception when calling AssemblyApi#get_14");
     e.printStackTrace();
 }
 ```
@@ -1816,36 +1041,34 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| ID of the Year Group as an Integer |
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **demographics** | **Boolean**| Return demographic information along with the person (requires appropriate scope) | [optional] [default to false]
- **care** | **Boolean**| Return care information along with this object, depends on inclusion of demographics | [optional] [default to false]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **subjectCode** | **String**| filter by subject | [optional]
+ **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
-[**StudentList**](StudentList.md)
+[**List&lt;TeachingGroup&gt;**](TeachingGroup.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getYearGroups"></a>
-# **getYearGroups**
-> YearGroupList getYearGroups(yearCode, date, academicYearId, page, perPage, ifModifiedSince)
+<a name="get_15"></a>
+# **get_15**
+> List&lt;YearGroup&gt; get_15(ifModifiedSince, yearCode, date, academicYearId, perPage, page)
 
+List Year Groups
 
-
-Returns a list of year groups that match the given set of filters. The default behaviour is to return the year groups for the school&#39;s current academic year.
+Returns a list of year groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
 
 ### Example
 ```java
@@ -1858,22 +1081,23 @@ Returns a list of year groups that match the given set of filters. The default b
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String yearCode = "yearCode_example"; // String | Filter by a specific NC year code
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Integer perPage = 100; // Integer | Number of results to return
 Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
 try {
-    YearGroupList result = apiInstance.getYearGroups(yearCode, date, academicYearId, page, perPage, ifModifiedSince);
+    List<YearGroup> result = apiInstance.get_15(ifModifiedSince, yearCode, date, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getYearGroups");
+    System.err.println("Exception when calling AssemblyApi#get_15");
     e.printStackTrace();
 }
 ```
@@ -1882,33 +1106,33 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **yearCode** | **String**| Filter by a specific NC year code | [optional]
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
-[**YearGroupList**](YearGroupList.md)
+[**List&lt;YearGroup&gt;**](YearGroup.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getYearGroupsGroupId"></a>
-# **getYearGroupsGroupId**
-> YearGroup getYearGroupsGroupId(groupId, date, academicYearId)
+<a name="get_2"></a>
+# **get_2**
+> List&lt;Attendance&gt; get_2(studentId, registrationGroupId, startDate, endDate, perPage, page)
 
+List Attendances
 
-
-Returns a single year group whose code matches the provided year_code. Additionally includes a list of all the student identifiers that are present in the group.
+Returns a list of attendances. By default, attendances are returned from the start to the end of the current week.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
 
 ### Example
 ```java
@@ -1921,79 +1145,23 @@ Returns a single year group whose code matches the provided year_code. Additiona
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String groupId = "groupId_example"; // String | ID of the Year Group as an Integer
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
-try {
-    YearGroup result = apiInstance.getYearGroupsGroupId(groupId, date, academicYearId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getYearGroupsGroupId");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupId** | **String**| ID of the Year Group as an Integer |
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
-
-### Return type
-
-[**YearGroup**](YearGroup.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
-
-<a name="getYearGroupsGroupIdStudents"></a>
-# **getYearGroupsGroupIdStudents**
-> StudentList getYearGroupsGroupIdStudents(groupId, date, academicYearId, page, perPage, ifModifiedSince)
-
-
-
-Returns a list of all the students that are present in the year group identified by year_code.
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-AssemblyApi apiInstance = new AssemblyApi();
-String groupId = "groupId_example"; // String | ID of the Year Group as an Integer
-String date = "date_example"; // String | Filter for a specific date
-Integer academicYearId = 56; // Integer | Filter based on the specified academic year
+Integer studentId = 56; // Integer | a student_id to filter by
+Integer registrationGroupId = 56; // Integer | id of a registration group
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | the start date of the period to query
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | the end date of the period to query
+Integer perPage = 100; // Integer | Number of results to return
 Integer page = 1; // Integer | Page number to return
-Integer perPage = 100; // Integer | Number of results to return
-String ifModifiedSince = "ifModifiedSince_example"; // String | Timestamp of the last response.
 try {
-    StudentList result = apiInstance.getYearGroupsGroupIdStudents(groupId, date, academicYearId, page, perPage, ifModifiedSince);
+    List<Attendance> result = apiInstance.get_2(studentId, registrationGroupId, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getYearGroupsGroupIdStudents");
+    System.err.println("Exception when calling AssemblyApi#get_2");
     e.printStackTrace();
 }
 ```
@@ -2002,33 +1170,33 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **String**| ID of the Year Group as an Integer |
- **date** | **String**| Filter for a specific date | [optional]
- **academicYearId** | **Integer**| Filter based on the specified academic year | [optional]
- **page** | **Integer**| Page number to return | [optional] [default to 1]
+ **studentId** | **Integer**| a student_id to filter by | [optional]
+ **registrationGroupId** | **Integer**| id of a registration group | [optional]
+ **startDate** | **OffsetDateTime**| the start date of the period to query | [optional]
+ **endDate** | **OffsetDateTime**| the end date of the period to query | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
- **ifModifiedSince** | **String**| Timestamp of the last response. | [optional]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
-[**StudentList**](StudentList.md)
+[**List&lt;Attendance&gt;**](Attendance.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="patchResults"></a>
-# **patchResults**
-> UpdateMultipleResultResponse patchResults(updateMultipleResultPayload)
+<a name="get_3"></a>
+# **get_3**
+> List&lt;CalendarEvent&gt; get_3(eventType, perPage, page)
 
+List Calendar Events
 
-
-Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
+Returns a list of calendar events from the school calendar. We strongly recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
 
 ### Example
 ```java
@@ -2041,17 +1209,20 @@ Multiple results can be updated simultaneously by providing the relevant result_
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-UpdateMultipleResultResponse updateMultipleResultPayload = new UpdateMultipleResultResponse(); // UpdateMultipleResultResponse | Payload for update multiple Result request
+String eventType = "eventType_example"; // String | a calendar object type from the underlying MIS
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
 try {
-    UpdateMultipleResultResponse result = apiInstance.patchResults(updateMultipleResultPayload);
+    List<CalendarEvent> result = apiInstance.get_3(eventType, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#patchResults");
+    System.err.println("Exception when calling AssemblyApi#get_3");
     e.printStackTrace();
 }
 ```
@@ -2060,28 +1231,30 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateMultipleResultPayload** | [**UpdateMultipleResultResponse**](UpdateMultipleResultResponse.md)| Payload for update multiple Result request | [optional]
+ **eventType** | **String**| a calendar object type from the underlying MIS | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
-[**UpdateMultipleResultResponse**](UpdateMultipleResultResponse.md)
+[**List&lt;CalendarEvent&gt;**](CalendarEvent.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="patchResultsResultId"></a>
-# **patchResultsResultId**
-> Result patchResultsResultId(resultId, updateResultPayload)
+<a name="get_4"></a>
+# **get_4**
+> List&lt;Contact&gt; get_4(studentId, perPage, page)
 
+List Contacts
 
-
-Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
+Returns a list of contacts that match the given set of filters.
 
 ### Example
 ```java
@@ -2094,18 +1267,20 @@ Once a result has been created, it can be updated on the Platform by passing the
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String resultId = "resultId_example"; // String | ID of the Result as an Integer
-Result updateResultPayload = new Result(); // Result | Payload for update Result request
+Integer studentId = 56; // Integer | a student_id to filter by
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
 try {
-    Result result = apiInstance.patchResultsResultId(resultId, updateResultPayload);
+    List<Contact> result = apiInstance.get_4(studentId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#patchResultsResultId");
+    System.err.println("Exception when calling AssemblyApi#get_4");
     e.printStackTrace();
 }
 ```
@@ -2114,19 +1289,822 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resultId** | **String**| ID of the Result as an Integer |
- **updateResultPayload** | [**Result**](Result.md)| Payload for update Result request | [optional]
+ **studentId** | **Integer**| a student_id to filter by | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
-[**Result**](Result.md)
+[**List&lt;Contact&gt;**](Contact.md)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/vnd.assembly+json; version=1
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_5"></a>
+# **get_5**
+> List&lt;Exclusion&gt; get_5(studentId, startDate, endDate, perPage, page)
+
+List Exclusions
+
+Returns a list of exclusions. *By default, exclusions are returned that occurred during the current academic year.*
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer studentId = 56; // Integer | a student_id to filter by
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | the start date of the period to query
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | the end date of the period to query
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<Exclusion> result = apiInstance.get_5(studentId, startDate, endDate, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_5");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **studentId** | **Integer**| a student_id to filter by | [optional]
+ **startDate** | **OffsetDateTime**| the start date of the period to query | [optional]
+ **endDate** | **OffsetDateTime**| the end date of the period to query | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Exclusion&gt;**](Exclusion.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_6"></a>
+# **get_6**
+> List&lt;Facet&gt; get_6(perPage, page)
+
+List Facets
+
+Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<Facet> result = apiInstance.get_6(perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_6");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Facet&gt;**](Facet.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_7"></a>
+# **get_7**
+> List&lt;RegistrationGroup&gt; get_7(ifModifiedSince, yearCode, date, academicYearId, perPage, page)
+
+List Registration Group
+
+Returns a list of registration groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<RegistrationGroup> result = apiInstance.get_7(ifModifiedSince, yearCode, date, academicYearId, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_7");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;RegistrationGroup&gt;**](RegistrationGroup.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_8"></a>
+# **get_8**
+> List&lt;Result&gt; get_8(students, ifModifiedSince, perPage, page)
+
+List Results
+
+Returns a list of results for the student ID(s) specified by the students parameter.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+List<Integer> students = Arrays.asList(56); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<Result> result = apiInstance.get_8(students, ifModifiedSince, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_8");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). |
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Result&gt;**](Result.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="get_9"></a>
+# **get_9**
+> List&lt;StaffAbsence&gt; get_9(ifModifiedSince, staffMemberId, startDate, qualifications, perPage, page)
+
+List Staff Absences
+
+Returns a list of staff member absences for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.absences&#x60; scope is required to access staff member absence information.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Integer staffMemberId = 56; // Integer | show only absences fot the specified staff member
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | the start date of the period to query
+Integer qualifications = 56; // Integer | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+Integer perPage = 100; // Integer | Number of results to return
+Integer page = 1; // Integer | Page number to return
+try {
+    List<StaffAbsence> result = apiInstance.get_9(ifModifiedSince, staffMemberId, startDate, qualifications, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#get_9");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **staffMemberId** | **Integer**| show only absences fot the specified staff member | [optional]
+ **startDate** | **OffsetDateTime**| the start date of the period to query | [optional]
+ **qualifications** | **Integer**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;StaffAbsence&gt;**](StaffAbsence.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="gradeSet"></a>
+# **gradeSet**
+> GradeSet gradeSet(id)
+
+View Grade Set for an Assessment
+
+Returns a grade_set (an acceptable list of values) for the assessment identified by the assessment_id. Grades should be written back to the Platform using the grade_id.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+try {
+    GradeSet result = apiInstance.gradeSet(id);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#gradeSet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+
+### Return type
+
+[**GradeSet**](GradeSet.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="left"></a>
+# **left**
+> List&lt;Student&gt; left(ifModifiedSince)
+
+List Left Students
+
+Returns a list of students who have left the school.&lt;br&gt;&lt;br&gt;**Note:** This will include any students who have left the school during the current academic year. If the school has been connected to Assembly for more than one academic year, all left students will be returned. The &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+try {
+    List<Student> result = apiInstance.left(ifModifiedSince);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#left");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+
+### Return type
+
+[**List&lt;Student&gt;**](Student.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="results"></a>
+# **results**
+> List&lt;Result&gt; results(id, students, assessmentPointRank)
+
+View Results for an Assessment Point
+
+Returns a list of results for the given assessment_point_rank and students.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+List<Integer> students = Arrays.asList(56); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+Integer assessmentPointRank = 56; // Integer | the Assessment Point rank
+try {
+    List<Result> result = apiInstance.results(id, students, assessmentPointRank);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#results");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). |
+ **assessmentPointRank** | **Integer**| the Assessment Point rank | [optional]
+
+### Return type
+
+[**List&lt;Result&gt;**](Result.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="results_0"></a>
+# **results_0**
+> List&lt;Result&gt; results_0(id, students)
+
+View Results for an Assessment
+
+Returns a list of results for the given assessment_id and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this support article.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+List<Integer> students = Arrays.asList(56); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+try {
+    List<Result> result = apiInstance.results_0(id, students);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#results_0");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). |
+
+### Return type
+
+[**List&lt;Result&gt;**](Result.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="show"></a>
+# **show**
+> SchoolDetails show()
+
+List School Details
+
+Returns details for the school associated with the provided access_token.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+try {
+    SchoolDetails result = apiInstance.show();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#show");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SchoolDetails**](SchoolDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="students"></a>
+# **students**
+> List&lt;Student&gt; students(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+
+List Students for Registration Group
+
+Returns a list of all the students that are present in the registration group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Boolean demographics = true; // Boolean | include demographics data
+Boolean contacts = true; // Boolean | include contacts data
+Boolean senNeeds = true; // Boolean | include SEN needs data
+Boolean addresses = true; // Boolean | include student address data
+Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | include student language data
+Boolean photo = true; // Boolean | include student photo data
+try {
+    List<Student> result = apiInstance.students(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#students");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **contacts** | **Boolean**| include contacts data | [optional]
+ **senNeeds** | **Boolean**| include SEN needs data | [optional]
+ **addresses** | **Boolean**| include student address data | [optional]
+ **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| include student language data | [optional]
+ **photo** | **Boolean**| include student photo data | [optional]
+
+### Return type
+
+[**List&lt;Student&gt;**](Student.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="students_0"></a>
+# **students_0**
+> List&lt;Student&gt; students_0(id, ifModifiedSince, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+
+List Students for Teaching Group
+
+Returns a list of all the students that are present in the teaching group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Boolean demographics = true; // Boolean | include demographics data
+Boolean contacts = true; // Boolean | include contacts data
+Boolean senNeeds = true; // Boolean | include SEN needs data
+Boolean addresses = true; // Boolean | include student address data
+Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | include student language data
+Boolean photo = true; // Boolean | include student photo data
+try {
+    List<Student> result = apiInstance.students_0(id, ifModifiedSince, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#students_0");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **contacts** | **Boolean**| include contacts data | [optional]
+ **senNeeds** | **Boolean**| include SEN needs data | [optional]
+ **addresses** | **Boolean**| include student address data | [optional]
+ **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| include student language data | [optional]
+ **photo** | **Boolean**| include student photo data | [optional]
+
+### Return type
+
+[**List&lt;Student&gt;**](Student.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="students_1"></a>
+# **students_1**
+> List&lt;Student&gt; students_1(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+
+List Students for Year Group
+
+Returns a list of all the students that are present in the year group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
+Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Boolean demographics = true; // Boolean | include demographics data
+Boolean contacts = true; // Boolean | include contacts data
+Boolean senNeeds = true; // Boolean | include SEN needs data
+Boolean addresses = true; // Boolean | include student address data
+Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | include student language data
+Boolean photo = true; // Boolean | include student photo data
+try {
+    List<Student> result = apiInstance.students_1(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#students_1");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **date** | **OffsetDateTime**| returns results for a specific date | [optional]
+ **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **contacts** | **Boolean**| include contacts data | [optional]
+ **senNeeds** | **Boolean**| include SEN needs data | [optional]
+ **addresses** | **Boolean**| include student address data | [optional]
+ **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| include student language data | [optional]
+ **photo** | **Boolean**| include student photo data | [optional]
+
+### Return type
+
+[**List&lt;Student&gt;**](Student.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
 

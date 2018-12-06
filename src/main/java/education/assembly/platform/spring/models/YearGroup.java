@@ -16,69 +16,58 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.Subject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * A year group object represents the pastoral year group that a student belongs to.
+ * YearGroup
  */
-@ApiModel(description = "A year group object represents the pastoral year group that a student belongs to.")
 
 public class YearGroup implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("object")
-  private String object = null;
-
-  @JsonProperty("code")
-  private String code = null;
+  @JsonProperty("id")
+  private Integer id = null;
 
   @JsonProperty("name")
   private String name = null;
 
-  @JsonProperty("student_ids")
-  private List<Integer> studentIds = null;
+  @JsonProperty("start_date")
+  private OffsetDateTime startDate = null;
+
+  @JsonProperty("end_date")
+  private OffsetDateTime endDate = null;
 
   @JsonProperty("supervisor_ids")
   private List<Integer> supervisorIds = null;
 
-  public YearGroup object(String object) {
-    this.object = object;
+  @JsonProperty("student_ids")
+  private List<Integer> studentIds = null;
+
+  @JsonProperty("subject")
+  private Subject subject = null;
+
+  public YearGroup id(Integer id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Object type
-   * @return object
+   * Get id
+   * @return id
   **/
-  @ApiModelProperty(example = "year_group", value = "Object type")
-  public String getObject() {
-    return object;
+  @ApiModelProperty(value = "")
+  public Integer getId() {
+    return id;
   }
 
-  public void setObject(String object) {
-    this.object = object;
-  }
-
-  public YearGroup code(String code) {
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * The code of the year that the student belongs to
-   * @return code
-  **/
-  @ApiModelProperty(example = "7", value = "The code of the year that the student belongs to")
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public YearGroup name(String name) {
@@ -87,10 +76,10 @@ public class YearGroup implements Serializable {
   }
 
    /**
-   * The name of internal year group that the student belongs to
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "Year 7", value = "The name of internal year group that the student belongs to")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -99,30 +88,40 @@ public class YearGroup implements Serializable {
     this.name = name;
   }
 
-  public YearGroup studentIds(List<Integer> studentIds) {
-    this.studentIds = studentIds;
-    return this;
-  }
-
-  public YearGroup addStudentIdsItem(Integer studentIdsItem) {
-    if (this.studentIds == null) {
-      this.studentIds = new ArrayList<Integer>();
-    }
-    this.studentIds.add(studentIdsItem);
+  public YearGroup startDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * The IDs of students associated with the year group
-   * @return studentIds
+   * Get startDate
+   * @return startDate
   **/
-  @ApiModelProperty(value = "The IDs of students associated with the year group")
-  public List<Integer> getStudentIds() {
-    return studentIds;
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getStartDate() {
+    return startDate;
   }
 
-  public void setStudentIds(List<Integer> studentIds) {
-    this.studentIds = studentIds;
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+  public YearGroup endDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Get endDate
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "")
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
   }
 
   public YearGroup supervisorIds(List<Integer> supervisorIds) {
@@ -139,16 +138,60 @@ public class YearGroup implements Serializable {
   }
 
    /**
-   * The IDs of supervisors associated with the year group
+   * Get supervisorIds
    * @return supervisorIds
   **/
-  @ApiModelProperty(value = "The IDs of supervisors associated with the year group")
+  @ApiModelProperty(value = "")
   public List<Integer> getSupervisorIds() {
     return supervisorIds;
   }
 
   public void setSupervisorIds(List<Integer> supervisorIds) {
     this.supervisorIds = supervisorIds;
+  }
+
+  public YearGroup studentIds(List<Integer> studentIds) {
+    this.studentIds = studentIds;
+    return this;
+  }
+
+  public YearGroup addStudentIdsItem(Integer studentIdsItem) {
+    if (this.studentIds == null) {
+      this.studentIds = new ArrayList<Integer>();
+    }
+    this.studentIds.add(studentIdsItem);
+    return this;
+  }
+
+   /**
+   * Get studentIds
+   * @return studentIds
+  **/
+  @ApiModelProperty(value = "")
+  public List<Integer> getStudentIds() {
+    return studentIds;
+  }
+
+  public void setStudentIds(List<Integer> studentIds) {
+    this.studentIds = studentIds;
+  }
+
+  public YearGroup subject(Subject subject) {
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @ApiModelProperty(value = "")
+  public Subject getSubject() {
+    return subject;
+  }
+
+  public void setSubject(Subject subject) {
+    this.subject = subject;
   }
 
 
@@ -161,16 +204,18 @@ public class YearGroup implements Serializable {
       return false;
     }
     YearGroup yearGroup = (YearGroup) o;
-    return Objects.equals(this.object, yearGroup.object) &&
-        Objects.equals(this.code, yearGroup.code) &&
+    return Objects.equals(this.id, yearGroup.id) &&
         Objects.equals(this.name, yearGroup.name) &&
+        Objects.equals(this.startDate, yearGroup.startDate) &&
+        Objects.equals(this.endDate, yearGroup.endDate) &&
+        Objects.equals(this.supervisorIds, yearGroup.supervisorIds) &&
         Objects.equals(this.studentIds, yearGroup.studentIds) &&
-        Objects.equals(this.supervisorIds, yearGroup.supervisorIds);
+        Objects.equals(this.subject, yearGroup.subject);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, code, name, studentIds, supervisorIds);
+    return Objects.hash(id, name, startDate, endDate, supervisorIds, studentIds, subject);
   }
 
 
@@ -179,11 +224,13 @@ public class YearGroup implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class YearGroup {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    studentIds: ").append(toIndentedString(studentIds)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    supervisorIds: ").append(toIndentedString(supervisorIds)).append("\n");
+    sb.append("    studentIds: ").append(toIndentedString(studentIds)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("}");
     return sb.toString();
   }

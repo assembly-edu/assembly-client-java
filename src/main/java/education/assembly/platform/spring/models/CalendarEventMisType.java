@@ -21,15 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
+ * CalendarEventMisType
  */
-@ApiModel(description = "Details the type of event - whether it is a regular calendar event, a staff meeting or inset day")
 
 public class CalendarEventMisType implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -37,34 +33,16 @@ public class CalendarEventMisType implements Serializable {
   @JsonProperty("description")
   private String description = null;
 
-  public CalendarEventMisType object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "mis_type", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public CalendarEventMisType name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Name of the event type in the MIS
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "student_contact", value = "Name of the event type in the MIS")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -79,10 +57,10 @@ public class CalendarEventMisType implements Serializable {
   }
 
    /**
-   * Description of the event type in the MIS
+   * Get description
    * @return description
   **/
-  @ApiModelProperty(example = "School Event", value = "Description of the event type in the MIS")
+  @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
   }
@@ -101,14 +79,13 @@ public class CalendarEventMisType implements Serializable {
       return false;
     }
     CalendarEventMisType calendarEventMisType = (CalendarEventMisType) o;
-    return Objects.equals(this.object, calendarEventMisType.object) &&
-        Objects.equals(this.name, calendarEventMisType.name) &&
+    return Objects.equals(this.name, calendarEventMisType.name) &&
         Objects.equals(this.description, calendarEventMisType.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, name, description);
+    return Objects.hash(name, description);
   }
 
 
@@ -117,7 +94,6 @@ public class CalendarEventMisType implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class CalendarEventMisType {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

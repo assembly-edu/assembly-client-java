@@ -108,13 +108,12 @@ public class AssemblyApiExample {
 
         // Create an API instance and start using it:
         AssemblyApi api = new AssemblyApi(client);
-        Integer page = 1; // Integer | Page number to return
-        Integer perPage = 100; // Integer | Number of results to return
+        Integer id = 56; // Integer | id of the entity
         try {
-            AcademicYearList result = api.getAcademicYears(page, perPage);
+            AcademicYear result = api.find(id);
             System.out.println(result);
         } catch (Exception e) {
-            System.err.println("Exception when calling AssemblyApi#getAcademicYears");
+            System.err.println("Exception when calling AssemblyApi#find");
             e.printStackTrace();
         }
     }
@@ -129,211 +128,89 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssemblyApi* | [**getAcademicYears**](docs/AssemblyApi.md#getAcademicYears) | **GET** /academic_years | 
-*AssemblyApi* | [**getAssessmentPoints**](docs/AssemblyApi.md#getAssessmentPoints) | **GET** /assessment_points | 
-*AssemblyApi* | [**getAssessmentPointsAssessmentPointRank**](docs/AssemblyApi.md#getAssessmentPointsAssessmentPointRank) | **GET** /assessment_points/{assessment_point_rank} | 
-*AssemblyApi* | [**getAssessmentPointsAssessmentPointRankResults**](docs/AssemblyApi.md#getAssessmentPointsAssessmentPointRankResults) | **GET** /assessment_points/{assessment_point_rank}/results | 
-*AssemblyApi* | [**getAssessments**](docs/AssemblyApi.md#getAssessments) | **GET** /assessments | 
-*AssemblyApi* | [**getAssessmentsAssessmentId**](docs/AssemblyApi.md#getAssessmentsAssessmentId) | **GET** /assessments/{assessment_id} | 
-*AssemblyApi* | [**getAssessmentsAssessmentIdGradeSet**](docs/AssemblyApi.md#getAssessmentsAssessmentIdGradeSet) | **GET** /assessments/{assessment_id}/grade_set | 
-*AssemblyApi* | [**getAssessmentsAssessmentIdResults**](docs/AssemblyApi.md#getAssessmentsAssessmentIdResults) | **GET** /assessments/{assessment_id}/results | 
-*AssemblyApi* | [**getAttendances**](docs/AssemblyApi.md#getAttendances) | **GET** /attendances | 
-*AssemblyApi* | [**getCalendarEvents**](docs/AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | 
-*AssemblyApi* | [**getContacts**](docs/AssemblyApi.md#getContacts) | **GET** /contacts | 
-*AssemblyApi* | [**getExclusions**](docs/AssemblyApi.md#getExclusions) | **GET** /exclusions | 
-*AssemblyApi* | [**getExclusionsStudentId**](docs/AssemblyApi.md#getExclusionsStudentId) | **GET** /exclusions/{student_id} | 
-*AssemblyApi* | [**getFacetFacetId**](docs/AssemblyApi.md#getFacetFacetId) | **GET** /facet/{facet_id} | 
-*AssemblyApi* | [**getFacets**](docs/AssemblyApi.md#getFacets) | **GET** /facets | 
-*AssemblyApi* | [**getRegistrationGroups**](docs/AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | 
-*AssemblyApi* | [**getRegistrationGroupsGroupId**](docs/AssemblyApi.md#getRegistrationGroupsGroupId) | **GET** /registration_groups/{group_id} | 
-*AssemblyApi* | [**getRegistrationGroupsGroupIdStudents**](docs/AssemblyApi.md#getRegistrationGroupsGroupIdStudents) | **GET** /registration_groups/{group_id}/students | 
-*AssemblyApi* | [**getSchoolDetails**](docs/AssemblyApi.md#getSchoolDetails) | **GET** /school_details | 
-*AssemblyApi* | [**getStaffAbsences**](docs/AssemblyApi.md#getStaffAbsences) | **GET** /staff_absences | 
-*AssemblyApi* | [**getStaffContracts**](docs/AssemblyApi.md#getStaffContracts) | **GET** /staff_contracts | 
-*AssemblyApi* | [**getStaffContractsStaffMemberId**](docs/AssemblyApi.md#getStaffContractsStaffMemberId) | **GET** /staff_contracts/{staff_member_id} | 
-*AssemblyApi* | [**getStaffMembers**](docs/AssemblyApi.md#getStaffMembers) | **GET** /staff_members | 
-*AssemblyApi* | [**getStaffMembersStaffMemberId**](docs/AssemblyApi.md#getStaffMembersStaffMemberId) | **GET** /staff_members/{staff_member_id} | 
-*AssemblyApi* | [**getStudents**](docs/AssemblyApi.md#getStudents) | **GET** /students | 
-*AssemblyApi* | [**getStudentsStudentId**](docs/AssemblyApi.md#getStudentsStudentId) | **GET** /students/{student_id} | 
-*AssemblyApi* | [**getSubjects**](docs/AssemblyApi.md#getSubjects) | **GET** /subjects | 
-*AssemblyApi* | [**getTeachingGroups**](docs/AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | 
-*AssemblyApi* | [**getTeachingGroupsGroupId**](docs/AssemblyApi.md#getTeachingGroupsGroupId) | **GET** /teaching_groups/{group_id} | 
-*AssemblyApi* | [**getTeachingGroupsGroupIdStudents**](docs/AssemblyApi.md#getTeachingGroupsGroupIdStudents) | **GET** /teaching_groups/{group_id}/students | 
-*AssemblyApi* | [**getYearGroups**](docs/AssemblyApi.md#getYearGroups) | **GET** /year_groups | 
-*AssemblyApi* | [**getYearGroupsGroupId**](docs/AssemblyApi.md#getYearGroupsGroupId) | **GET** /year_groups/{group_id} | 
-*AssemblyApi* | [**getYearGroupsGroupIdStudents**](docs/AssemblyApi.md#getYearGroupsGroupIdStudents) | **GET** /year_groups/{group_id}/students | 
-*AssemblyApi* | [**patchResults**](docs/AssemblyApi.md#patchResults) | **PATCH** /results | 
-*AssemblyApi* | [**patchResultsResultId**](docs/AssemblyApi.md#patchResultsResultId) | **PATCH** /results/{result_id} | 
+*AssemblyApi* | [**find**](docs/AssemblyApi.md#find) | **GET** /academic_years/{id} | View an Academic Year
+*AssemblyApi* | [**find_0**](docs/AssemblyApi.md#find_0) | **GET** /assessment_points/{id} | View an Assessment Point
+*AssemblyApi* | [**find_1**](docs/AssemblyApi.md#find_1) | **GET** /assessments/{id} | View an Assessment
+*AssemblyApi* | [**find_2**](docs/AssemblyApi.md#find_2) | **GET** /facets/{id} | View a Facet
+*AssemblyApi* | [**find_3**](docs/AssemblyApi.md#find_3) | **GET** /registration_groups/{id} | View a Registration Group
+*AssemblyApi* | [**find_4**](docs/AssemblyApi.md#find_4) | **GET** /staff_members/{id} | View a Staff Member
+*AssemblyApi* | [**find_5**](docs/AssemblyApi.md#find_5) | **GET** /students/{id} | View a Student
+*AssemblyApi* | [**find_6**](docs/AssemblyApi.md#find_6) | **GET** /teaching_groups/{id} | View a Teaching Group
+*AssemblyApi* | [**find_7**](docs/AssemblyApi.md#find_7) | **GET** /year_groups/{id} | View a Year Group
+*AssemblyApi* | [**get**](docs/AssemblyApi.md#get) | **GET** /academic_years | List Academic Years
+*AssemblyApi* | [**get_0**](docs/AssemblyApi.md#get_0) | **GET** /assessment_points | List Assessment Points
+*AssemblyApi* | [**get_1**](docs/AssemblyApi.md#get_1) | **GET** /assessments | List Assessments
+*AssemblyApi* | [**get_10**](docs/AssemblyApi.md#get_10) | **GET** /staff_contracts | List Staff Contracts
+*AssemblyApi* | [**get_11**](docs/AssemblyApi.md#get_11) | **GET** /staff_members | List Staff Members
+*AssemblyApi* | [**get_12**](docs/AssemblyApi.md#get_12) | **GET** /students | List Students
+*AssemblyApi* | [**get_13**](docs/AssemblyApi.md#get_13) | **GET** /subjects | List Subjects
+*AssemblyApi* | [**get_14**](docs/AssemblyApi.md#get_14) | **GET** /teaching_groups | List Teaching Groups
+*AssemblyApi* | [**get_15**](docs/AssemblyApi.md#get_15) | **GET** /year_groups | List Year Groups
+*AssemblyApi* | [**get_2**](docs/AssemblyApi.md#get_2) | **GET** /attendances | List Attendances
+*AssemblyApi* | [**get_3**](docs/AssemblyApi.md#get_3) | **GET** /calendar_events | List Calendar Events
+*AssemblyApi* | [**get_4**](docs/AssemblyApi.md#get_4) | **GET** /contacts | List Contacts
+*AssemblyApi* | [**get_5**](docs/AssemblyApi.md#get_5) | **GET** /exclusions | List Exclusions
+*AssemblyApi* | [**get_6**](docs/AssemblyApi.md#get_6) | **GET** /facets | List Facets
+*AssemblyApi* | [**get_7**](docs/AssemblyApi.md#get_7) | **GET** /registration_groups | List Registration Group
+*AssemblyApi* | [**get_8**](docs/AssemblyApi.md#get_8) | **GET** /results | List Results
+*AssemblyApi* | [**get_9**](docs/AssemblyApi.md#get_9) | **GET** /staff_absences | List Staff Absences
+*AssemblyApi* | [**gradeSet**](docs/AssemblyApi.md#gradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
+*AssemblyApi* | [**left**](docs/AssemblyApi.md#left) | **GET** /students/left | List Left Students
+*AssemblyApi* | [**results**](docs/AssemblyApi.md#results) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
+*AssemblyApi* | [**results_0**](docs/AssemblyApi.md#results_0) | **GET** /assessments/{id}/results | View Results for an Assessment
+*AssemblyApi* | [**show**](docs/AssemblyApi.md#show) | **GET** /school_details | List School Details
+*AssemblyApi* | [**students**](docs/AssemblyApi.md#students) | **GET** /registration_groups/{id}/students | List Students for Registration Group
+*AssemblyApi* | [**students_0**](docs/AssemblyApi.md#students_0) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
+*AssemblyApi* | [**students_1**](docs/AssemblyApi.md#students_1) | **GET** /year_groups/{id}/students | List Students for Year Group
 
 
 ## Documentation for Models
 
  - [AcademicYear](docs/AcademicYear.md)
- - [AcademicYearList](docs/AcademicYearList.md)
- - [AcademicYearListData](docs/AcademicYearListData.md)
  - [AcademicYearTerms](docs/AcademicYearTerms.md)
  - [Assessment](docs/Assessment.md)
- - [AssessmentList](docs/AssessmentList.md)
- - [AssessmentListData](docs/AssessmentListData.md)
  - [AssessmentPoint](docs/AssessmentPoint.md)
- - [AssessmentPointList](docs/AssessmentPointList.md)
- - [AssessmentPointListData](docs/AssessmentPointListData.md)
  - [Attendance](docs/Attendance.md)
- - [AttendanceList](docs/AttendanceList.md)
- - [AttendanceListData](docs/AttendanceListData.md)
  - [CalendarEvent](docs/CalendarEvent.md)
- - [CalendarEventList](docs/CalendarEventList.md)
- - [CalendarEventListData](docs/CalendarEventListData.md)
  - [CalendarEventMisType](docs/CalendarEventMisType.md)
  - [Contact](docs/Contact.md)
- - [ContactEmails](docs/ContactEmails.md)
- - [ContactList](docs/ContactList.md)
- - [ContactListData](docs/ContactListData.md)
- - [ContactRelationship](docs/ContactRelationship.md)
- - [ContactStudents](docs/ContactStudents.md)
- - [ContactTelephoneNumbers](docs/ContactTelephoneNumbers.md)
- - [CreateResultPayload](docs/CreateResultPayload.md)
- - [CreateResultPayloadList](docs/CreateResultPayloadList.md)
- - [CreateResultPayloadListData](docs/CreateResultPayloadListData.md)
- - [CreateResultPayloadResults](docs/CreateResultPayloadResults.md)
- - [CreateResultResponse](docs/CreateResultResponse.md)
- - [CreateResultResponseList](docs/CreateResultResponseList.md)
- - [CreateResultResponseListData](docs/CreateResultResponseListData.md)
- - [Error](docs/Error.md)
- - [ErrorData](docs/ErrorData.md)
- - [ErrorRateLimit](docs/ErrorRateLimit.md)
+ - [Email](docs/Email.md)
  - [Exclusion](docs/Exclusion.md)
- - [ExclusionList](docs/ExclusionList.md)
- - [ExclusionListData](docs/ExclusionListData.md)
  - [Facet](docs/Facet.md)
- - [FacetList](docs/FacetList.md)
- - [FacetListData](docs/FacetListData.md)
- - [Gradeset](docs/Gradeset.md)
- - [GradesetGrades](docs/GradesetGrades.md)
- - [GradesetList](docs/GradesetList.md)
- - [GradesetListData](docs/GradesetListData.md)
- - [Oauth](docs/Oauth.md)
+ - [Grade](docs/Grade.md)
+ - [GradeSet](docs/GradeSet.md)
+ - [MisSubject](docs/MisSubject.md)
  - [RegistrationGroup](docs/RegistrationGroup.md)
- - [RegistrationGroupList](docs/RegistrationGroupList.md)
- - [RegistrationGroupListData](docs/RegistrationGroupListData.md)
  - [Result](docs/Result.md)
- - [ResultList](docs/ResultList.md)
  - [SchoolDetails](docs/SchoolDetails.md)
- - [SchoolDetailsList](docs/SchoolDetailsList.md)
- - [SchoolDetailsListData](docs/SchoolDetailsListData.md)
+ - [SenNeed](docs/SenNeed.md)
  - [StaffAbsence](docs/StaffAbsence.md)
- - [StaffAbsenceList](docs/StaffAbsenceList.md)
- - [StaffAbsenceListData](docs/StaffAbsenceListData.md)
+ - [StaffAllowance](docs/StaffAllowance.md)
  - [StaffContract](docs/StaffContract.md)
- - [StaffContractAllowances](docs/StaffContractAllowances.md)
- - [StaffContractList](docs/StaffContractList.md)
- - [StaffContractListData](docs/StaffContractListData.md)
- - [StaffContractRoles](docs/StaffContractRoles.md)
- - [StaffContractSalaries](docs/StaffContractSalaries.md)
  - [StaffMember](docs/StaffMember.md)
  - [StaffMemberDemographics](docs/StaffMemberDemographics.md)
- - [StaffMemberList](docs/StaffMemberList.md)
- - [StaffMemberListData](docs/StaffMemberListData.md)
  - [StaffMemberQualificationInfo](docs/StaffMemberQualificationInfo.md)
- - [StaffMemberQualificationInfoQualifications](docs/StaffMemberQualificationInfoQualifications.md)
+ - [StaffQualification](docs/StaffQualification.md)
+ - [StaffRole](docs/StaffRole.md)
+ - [StaffSalary](docs/StaffSalary.md)
  - [Student](docs/Student.md)
- - [StudentAddresses](docs/StudentAddresses.md)
+ - [StudentAddress](docs/StudentAddress.md)
  - [StudentDemographics](docs/StudentDemographics.md)
- - [StudentDemographicsSenNeeds](docs/StudentDemographicsSenNeeds.md)
  - [StudentLanguages](docs/StudentLanguages.md)
- - [StudentList](docs/StudentList.md)
- - [StudentListData](docs/StudentListData.md)
+ - [StudentMedical](docs/StudentMedical.md)
+ - [StudentPhoto](docs/StudentPhoto.md)
  - [Subject](docs/Subject.md)
- - [SubjectList](docs/SubjectList.md)
- - [SubjectListData](docs/SubjectListData.md)
- - [SubjectMisSubjects](docs/SubjectMisSubjects.md)
  - [TeachingGroup](docs/TeachingGroup.md)
- - [TeachingGroupList](docs/TeachingGroupList.md)
- - [TeachingGroupListData](docs/TeachingGroupListData.md)
- - [TeachingGroupSubject](docs/TeachingGroupSubject.md)
- - [UpdateMultipleResultPayload](docs/UpdateMultipleResultPayload.md)
- - [UpdateMultipleResultPayloadList](docs/UpdateMultipleResultPayloadList.md)
- - [UpdateMultipleResultPayloadListData](docs/UpdateMultipleResultPayloadListData.md)
- - [UpdateMultipleResultResponse](docs/UpdateMultipleResultResponse.md)
- - [UpdateMultipleResultResponseList](docs/UpdateMultipleResultResponseList.md)
- - [UpdateMultipleResultResponseListData](docs/UpdateMultipleResultResponseListData.md)
- - [UpdateResultResponse](docs/UpdateResultResponse.md)
- - [UpdateResultResponseList](docs/UpdateResultResponseList.md)
- - [UpdateResultResponseListData](docs/UpdateResultResponseListData.md)
+ - [TelephoneNumber](docs/TelephoneNumber.md)
  - [YearGroup](docs/YearGroup.md)
- - [YearGroupList](docs/YearGroupList.md)
- - [YearGroupListData](docs/YearGroupListData.md)
 
 
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### oauth2
+### bearerAuth
 
-- **Type**: OAuth
-- **Flow**: accessCode
-- **Authorization URL**: https://platform-sandbox.assembly.education/oauth/authorize
-- **Scopes**: 
-  - school: This includes school level information that is generally publicly available or non-sensitive. Examples include the school&#39;s name, URN and subject list.
-  - calendar: Calendar events from the school&#39;s MIS calendar, as well as details of term dates (currently available on SIMS only).
-  - registration_groups: Provides access to a school &#39;s registration groups.
-  - teaching_groups: Provides access to teaching group names and subjects. What teaching groups we pull from your MIS is governed by the subject mappings you have configured within the Assembly Platform.
-  - students.basic: Provides access to basic student information (for example first name, last name and year group).
-  - students.middle_names: Provides access to student middle names.
-  - students.legal_names: Provides access to student legal names.
-  - students.former_names: Provides access to student former names.
-  - students.upn: Provides access to unique pupil numbersfor students.
-  - students.former_upn: Provides access to any former unique pupil numbersfor students.
-  - students.dates: Provides access to student start and end dates.
-  - students.dob: Provides access to dates of birthfor students.
-  - students.enrolment_status: Provides access to the enrolment status of students.
-  - students.pan: Provides access to student pupil admission numbers.
-  - students.mis_id: Provides access to the MIS identifierfor students.
-  - students.gender: Provides access to the gender of students.
-  - students.country_of_birth: Provides access to the country of birthfor students.
-  - students.nationality: Provides access to student nationalities.
-  - students.ethnicity: Provides access to the ethnicity of students.
-  - students.first_language: Provides access to the first languagefor students.
-  - students.home_language: Provides access to the home languagefor students.
-  - students.proficiency_in_eng: Provides access to proficiency in Englishfor students.
-  - students.eal: Provides access to the English as Additional Language statusfor students.
-  - students.pp: Provides access to the pupil premium status of students.
-  - students.fsm: Provides access to the free school meal statusfor students.
-  - students.fsm_review_dates: Provides access to the review datefor student free school meal eligibility.
-  - students.care: Provides access to the in care or &#39;looked after&#39; statusfor students.
-  - students.sen_provision: Provides access to special education need provisionfor students.
-  - students.sen_needs: Provides access to special education needsfor students.
-  - students.addresses: Provides access to student home addresses and postcodes.
-  - students.photo: Provides access to student photos.
-  - contacts.basic: Provides access to basic contact information(for example first name,last name,title and relationship to students).
-  - contacts.middle_names: Provides access to contact middle names.
-  - contacts.emails: Provides access to contact email addresses.
-  - contacts.gender: Provides access to the gender of contacts.
-  - contacts.parental_responsibility: Provides access to the parental responsibility flagfor contacts.
-  - contacts.priority: Provides access to the priority of contacts.
-  - contacts.telephone_numbers: Provides access to contact telephone numbers.
-  - staff_members.basic: Provides access to basic staff member information (for example staff code,first name,last name and title).
-  - staff_members.middle_names: Provides access to staff member middle names.
-  - staff_members.legal_names: Provides access to staff member legal names.
-  - staff_members.former_names: Provides access to the former names of staff members.
-  - staff_members.dates: Provides access to staff member start and end dates.
-  - staff_members.included_in_census: The scope provides access to whether or not staff members are included in the School Workforce Census.
-  - staff_members.teaching_status: Provides access to the teaching status of staff members.
-  - staff_members.mis_id: Provides access to the MIS identifierfor staff members.
-  - staff_members.dob: Provides access to dates of birthfor staff members.
-  - staff_members.gender: Provides access to the gender of staff members.
-  - staff_members.ethnicity: Provides access to the ethnicity of staff members.
-  - staff_members.disability: Provides access to the disability status of staff members.
-  - staff_members.emails: Provides access to staff member email addresses.
-  - staff_members.absences: Provides access to staff member absences.
-  - staff_members.qualifications: Provides access to staff member qualifications (for example teacher number, QT status, HLTA status and degree information).
-  - staff_members.contracts: Provides access to staff contract information (for example NI number, payroll number, contract type, post and roles).No salary information is extracted with this scope.
-  - staff_members.salaries: Provides access to staff member salaries and allowances (for example pay scale, pay framework and additional payment amount).
-  - attendances: Provides access to morning and afternoon attendance marks (AM / PM roll call).
-  - exclusions: Official student exclusions stored in the MIS.
-  - assessments.national: Provides access to students&#39; national assessment results (for example, Key  Stage 2 SATs results).
-  - assessments.internal: Provides access to the school&#39;s internal assessments.What results are exported is governed by the assessment mappings that you have configured on the Assembly Platform.
-  - assessments.write: This scope allows an application to store its assessment data securely in the Assembly platform so that you can use it laterfor analytics tools.
+- **Type**: HTTP basic authentication
 
 
 ## Recommendation

@@ -22,9 +22,8 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * No description
+ * AcademicYearTerms
  */
-@ApiModel(description = "No description")
 
 public class AcademicYearTerms implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -47,10 +46,10 @@ public class AcademicYearTerms implements Serializable {
   }
 
    /**
-   * Internal stable ID given to term_dates on Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "2032", value = "Internal stable ID given to term_dates on Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -65,10 +64,10 @@ public class AcademicYearTerms implements Serializable {
   }
 
    /**
-   * Name of the term
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "Summer Term", value = "Name of the term")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -83,10 +82,10 @@ public class AcademicYearTerms implements Serializable {
   }
 
    /**
-   * Date on which term begins
+   * Get startDate
    * @return startDate
   **/
-  @ApiModelProperty(example = "2016-04-11T00:00:00.000Z", value = "Date on which term begins")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -101,10 +100,10 @@ public class AcademicYearTerms implements Serializable {
   }
 
    /**
-   * Date on which term ends
+   * Get endDate
    * @return endDate
   **/
-  @ApiModelProperty(example = "2016-07-22T23:59:00.000Z", value = "Date on which term ends")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getEndDate() {
     return endDate;
   }

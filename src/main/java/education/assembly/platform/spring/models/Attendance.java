@@ -22,15 +22,11 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * The attendances resource details AM and PM roll call attendance marks for students.
+ * Attendance
  */
-@ApiModel(description = "The attendances resource details AM and PM roll call attendance marks for students.")
 
 public class Attendance implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("object")
-  private String object = null;
 
   @JsonProperty("id")
   private Integer id = null;
@@ -56,34 +52,16 @@ public class Attendance implements Serializable {
   @JsonProperty("comments")
   private String comments = null;
 
-  public Attendance object(String object) {
-    this.object = object;
-    return this;
-  }
-
-   /**
-   * Object type
-   * @return object
-  **/
-  @ApiModelProperty(example = "attendance", value = "Object type")
-  public String getObject() {
-    return object;
-  }
-
-  public void setObject(String object) {
-    this.object = object;
-  }
-
   public Attendance id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Internal stable ID given to all attendances on the Platform
+   * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "2117", value = "Internal stable ID given to all attendances on the Platform")
+  @ApiModelProperty(value = "")
   public Integer getId() {
     return id;
   }
@@ -98,10 +76,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * The ID of the student that the attendance is attached to
+   * Get studentId
    * @return studentId
   **/
-  @ApiModelProperty(example = "1085", value = "The ID of the student that the attendance is attached to")
+  @ApiModelProperty(value = "")
   public Integer getStudentId() {
     return studentId;
   }
@@ -116,10 +94,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * The ID of the subject that the attendance is attached to
+   * Get registrationGroupId
    * @return registrationGroupId
   **/
-  @ApiModelProperty(example = "4682", value = "The ID of the subject that the attendance is attached to")
+  @ApiModelProperty(value = "")
   public Integer getRegistrationGroupId() {
     return registrationGroupId;
   }
@@ -134,10 +112,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * The date of the attendance
+   * Get sessionDate
    * @return sessionDate
   **/
-  @ApiModelProperty(example = "2017-05-19T13:00:00.000Z", value = "The date of the attendance")
+  @ApiModelProperty(value = "")
   public OffsetDateTime getSessionDate() {
     return sessionDate;
   }
@@ -152,10 +130,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * Denotes whether the attendance is an AM session or PM session (morning or afternoon)
+   * Get sessionName
    * @return sessionName
   **/
-  @ApiModelProperty(example = "PM", value = "Denotes whether the attendance is an AM session or PM session (morning or afternoon)")
+  @ApiModelProperty(value = "")
   public String getSessionName() {
     return sessionName;
   }
@@ -170,10 +148,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * The attendance mark
+   * Get attendanceMark
    * @return attendanceMark
   **/
-  @ApiModelProperty(example = "/", value = "The attendance mark")
+  @ApiModelProperty(value = "")
   public String getAttendanceMark() {
     return attendanceMark;
   }
@@ -188,10 +166,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * If the attendance mark is &#39;L&#39; for &#39;Late&#39;, how many minutes late the student was
+   * Get minutesLate
    * @return minutesLate
   **/
-  @ApiModelProperty(example = "15", value = "If the attendance mark is 'L' for 'Late', how many minutes late the student was")
+  @ApiModelProperty(value = "")
   public Integer getMinutesLate() {
     return minutesLate;
   }
@@ -206,10 +184,10 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * Any additional comments
+   * Get comments
    * @return comments
   **/
-  @ApiModelProperty(example = "Missed bus", value = "Any additional comments")
+  @ApiModelProperty(value = "")
   public String getComments() {
     return comments;
   }
@@ -228,8 +206,7 @@ public class Attendance implements Serializable {
       return false;
     }
     Attendance attendance = (Attendance) o;
-    return Objects.equals(this.object, attendance.object) &&
-        Objects.equals(this.id, attendance.id) &&
+    return Objects.equals(this.id, attendance.id) &&
         Objects.equals(this.studentId, attendance.studentId) &&
         Objects.equals(this.registrationGroupId, attendance.registrationGroupId) &&
         Objects.equals(this.sessionDate, attendance.sessionDate) &&
@@ -241,7 +218,7 @@ public class Attendance implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, studentId, registrationGroupId, sessionDate, sessionName, attendanceMark, minutesLate, comments);
+    return Objects.hash(id, studentId, registrationGroupId, sessionDate, sessionName, attendanceMark, minutesLate, comments);
   }
 
 
@@ -250,7 +227,6 @@ public class Attendance implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Attendance {\n");
     
-    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    registrationGroupId: ").append(toIndentedString(registrationGroupId)).append("\n");
