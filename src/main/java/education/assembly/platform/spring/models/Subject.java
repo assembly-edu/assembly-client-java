@@ -31,13 +31,13 @@ public class Subject implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("code")
-  private String code = null;
+  private String code = ;
 
   @JsonProperty("name")
-  private String name = null;
+  private String name = ;
 
   @JsonProperty("mis_subjects")
   private List<MisSubject> misSubjects = null;

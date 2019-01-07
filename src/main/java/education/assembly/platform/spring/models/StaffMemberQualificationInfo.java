@@ -31,16 +31,16 @@ public class StaffMemberQualificationInfo implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("teacher_number")
-  private String teacherNumber = null;
+  private String teacherNumber = ;
 
   @JsonProperty("qt_status")
-  private Boolean qtStatus = null;
+  private Boolean qtStatus = ;
 
   @JsonProperty("hlta_status")
-  private Boolean hltaStatus = null;
+  private Boolean hltaStatus = ;
 
   @JsonProperty("qts_route")
-  private String qtsRoute = null;
+  private String qtsRoute = ;
 
   @JsonProperty("qualifications")
   private List<StaffQualification> qualifications = null;

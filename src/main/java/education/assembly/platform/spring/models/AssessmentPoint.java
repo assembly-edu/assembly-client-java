@@ -28,16 +28,16 @@ public class AssessmentPoint implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("rank")
-  private Integer rank = null;
+  private Integer rank = ;
 
   @JsonProperty("name")
-  private String name = null;
+  private String name = ;
 
   @JsonProperty("type")
-  private String type = null;
+  private String type = ;
 
   @JsonProperty("year_code")
-  private String yearCode = null;
+  private String yearCode = ;
 
   public AssessmentPoint rank(Integer rank) {
     this.rank = rank;

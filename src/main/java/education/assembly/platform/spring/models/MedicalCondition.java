@@ -21,19 +21,58 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * CalendarEventMisType
+ * MedicalCondition
  */
 
-public class CalendarEventMisType implements Serializable {
+public class MedicalCondition implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("id")
+  private Integer id = ;
+
+  @JsonProperty("code")
+  private String code = ;
 
   @JsonProperty("name")
   private String name = ;
 
-  @JsonProperty("description")
-  private String description = ;
+  public MedicalCondition id(Integer id) {
+    this.id = id;
+    return this;
+  }
 
-  public CalendarEventMisType name(String name) {
+   /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public MedicalCondition code(String code) {
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @ApiModelProperty(value = "")
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  public MedicalCondition name(String name) {
     this.name = name;
     return this;
   }
@@ -51,24 +90,6 @@ public class CalendarEventMisType implements Serializable {
     this.name = name;
   }
 
-  public CalendarEventMisType description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @ApiModelProperty(value = "")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -78,24 +99,26 @@ public class CalendarEventMisType implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CalendarEventMisType calendarEventMisType = (CalendarEventMisType) o;
-    return Objects.equals(this.name, calendarEventMisType.name) &&
-        Objects.equals(this.description, calendarEventMisType.description);
+    MedicalCondition medicalCondition = (MedicalCondition) o;
+    return Objects.equals(this.id, medicalCondition.id) &&
+        Objects.equals(this.code, medicalCondition.code) &&
+        Objects.equals(this.name, medicalCondition.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description);
+    return Objects.hash(id, code, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CalendarEventMisType {\n");
+    sb.append("class MedicalCondition {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

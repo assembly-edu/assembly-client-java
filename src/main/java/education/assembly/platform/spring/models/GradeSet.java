@@ -31,10 +31,10 @@ public class GradeSet implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("name")
-  private String name = null;
+  private String name = ;
 
   @JsonProperty("grades")
   private List<Grade> grades = null;

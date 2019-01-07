@@ -28,25 +28,25 @@ public class SenNeed implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("start_date")
-  private String startDate = null;
+  private String startDate = ;
 
   @JsonProperty("sen_need_code")
-  private String senNeedCode = null;
+  private String senNeedCode = ;
 
   @JsonProperty("sen_need_name")
-  private String senNeedName = null;
+  private String senNeedName = ;
 
   @JsonProperty("sen_broad_need_type_code")
-  private String senBroadNeedTypeCode = null;
+  private String senBroadNeedTypeCode = ;
 
   @JsonProperty("sen_broad_need_type_name")
-  private String senBroadNeedTypeName = null;
+  private String senBroadNeedTypeName = ;
 
   @JsonProperty("priority")
-  private Integer priority = null;
+  private Integer priority = ;
 
   public SenNeed id(Integer id) {
     this.id = id;

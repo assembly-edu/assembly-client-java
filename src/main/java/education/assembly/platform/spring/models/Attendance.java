@@ -29,28 +29,28 @@ public class Attendance implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("student_id")
-  private Integer studentId = null;
+  private Integer studentId = ;
 
   @JsonProperty("registration_group_id")
-  private Integer registrationGroupId = null;
+  private Integer registrationGroupId = ;
 
   @JsonProperty("session_date")
-  private OffsetDateTime sessionDate = null;
+  private OffsetDateTime sessionDate = ;
 
   @JsonProperty("session_name")
-  private String sessionName = null;
+  private String sessionName = ;
 
   @JsonProperty("attendance_mark")
-  private String attendanceMark = null;
+  private String attendanceMark = ;
 
   @JsonProperty("minutes_late")
-  private Integer minutesLate = null;
+  private Integer minutesLate = ;
 
   @JsonProperty("comments")
-  private String comments = null;
+  private String comments = ;
 
   public Attendance id(Integer id) {
     this.id = id;

@@ -33,25 +33,25 @@ public class Contact implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("first_name")
-  private String firstName = null;
+  private String firstName = ;
 
   @JsonProperty("middle_name")
-  private String middleName = null;
+  private String middleName = ;
 
   @JsonProperty("last_name")
-  private String lastName = null;
+  private String lastName = ;
 
   @JsonProperty("gender")
-  private String gender = null;
+  private String gender = ;
 
   @JsonProperty("title")
-  private String title = null;
+  private String title = ;
 
   @JsonProperty("salutation")
-  private String salutation = null;
+  private String salutation = ;
 
   @JsonProperty("emails")
   private List<Email> emails = null;

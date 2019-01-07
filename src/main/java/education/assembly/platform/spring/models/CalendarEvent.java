@@ -30,25 +30,25 @@ public class CalendarEvent implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("name")
-  private String name = null;
+  private String name = ;
 
   @JsonProperty("description")
-  private String description = null;
+  private String description = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   @JsonProperty("is_active")
-  private Boolean isActive = null;
+  private Boolean isActive = ;
 
   @JsonProperty("is_recurrent")
-  private Boolean isRecurrent = null;
+  private Boolean isRecurrent = ;
 
   @JsonProperty("mis_type")
   private CalendarEventMisType misType = null;

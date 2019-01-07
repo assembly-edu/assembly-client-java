@@ -28,7 +28,7 @@ public class AssessmentMisAssessments implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("type")
-  private String type = null;
+  private String type = ;
 
   public AssessmentMisAssessments type(String type) {
     this.type = type;

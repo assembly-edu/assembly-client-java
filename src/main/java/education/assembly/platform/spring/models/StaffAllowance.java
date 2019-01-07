@@ -29,16 +29,16 @@ public class StaffAllowance implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("additional_payment_type")
-  private String additionalPaymentType = null;
+  private String additionalPaymentType = ;
 
   @JsonProperty("additional_payment_amount")
-  private String additionalPaymentAmount = null;
+  private String additionalPaymentAmount = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   public StaffAllowance additionalPaymentType(String additionalPaymentType) {
     this.additionalPaymentType = additionalPaymentType;

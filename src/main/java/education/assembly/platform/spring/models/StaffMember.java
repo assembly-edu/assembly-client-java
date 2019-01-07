@@ -31,52 +31,52 @@ public class StaffMember implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("mis_id")
-  private String misId = null;
+  private String misId = ;
 
   @JsonProperty("staff_code")
-  private String staffCode = null;
+  private String staffCode = ;
 
   @JsonProperty("first_name")
-  private String firstName = null;
+  private String firstName = ;
 
   @JsonProperty("legal_first_name")
-  private String legalFirstName = null;
+  private String legalFirstName = ;
 
   @JsonProperty("middle_name")
-  private String middleName = null;
+  private String middleName = ;
 
   @JsonProperty("last_name")
-  private String lastName = null;
+  private String lastName = ;
 
   @JsonProperty("legal_last_name")
-  private String legalLastName = null;
+  private String legalLastName = ;
 
   @JsonProperty("former_last_name")
-  private String formerLastName = null;
+  private String formerLastName = ;
 
   @JsonProperty("title")
-  private String title = null;
+  private String title = ;
 
   @JsonProperty("dob")
-  private OffsetDateTime dob = null;
+  private OffsetDateTime dob = ;
 
   @JsonProperty("email")
-  private String email = null;
+  private String email = ;
 
   @JsonProperty("is_teaching_staff")
-  private Boolean isTeachingStaff = null;
+  private Boolean isTeachingStaff = ;
 
   @JsonProperty("included_in_census")
-  private Boolean includedInCensus = null;
+  private Boolean includedInCensus = ;
 
   @JsonProperty("start_date")
-  private String startDate = null;
+  private String startDate = ;
 
   @JsonProperty("end_date")
-  private String endDate = null;
+  private String endDate = ;
 
   @JsonProperty("demographics")
   private StaffMemberDemographics demographics = null;

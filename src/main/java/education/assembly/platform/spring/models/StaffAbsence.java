@@ -29,28 +29,28 @@ public class StaffAbsence implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("staff_member_id")
-  private Integer staffMemberId = null;
+  private Integer staffMemberId = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   @JsonProperty("working_days_lost")
-  private String workingDaysLost = null;
+  private String workingDaysLost = ;
 
   @JsonProperty("absence_category")
-  private String absenceCategory = null;
+  private String absenceCategory = ;
 
   @JsonProperty("illness_category")
-  private String illnessCategory = null;
+  private String illnessCategory = ;
 
   @JsonProperty("pay_rate")
-  private String payRate = null;
+  private String payRate = ;
 
   public StaffAbsence id(Integer id) {
     this.id = id;

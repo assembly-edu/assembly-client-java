@@ -28,10 +28,10 @@ public class StudentPhoto implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("url")
-  private String url = null;
+  private String url = ;
 
   @JsonProperty("hash")
-  private String hash = null;
+  private String hash = ;
 
   public StudentPhoto url(String url) {
     this.url = url;

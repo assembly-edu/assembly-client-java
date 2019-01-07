@@ -28,22 +28,22 @@ public class StudentAddress implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("address_line_1")
-  private String addressLine1 = null;
+  private String addressLine1 = ;
 
   @JsonProperty("address_line_2")
-  private String addressLine2 = null;
+  private String addressLine2 = ;
 
   @JsonProperty("town_city")
-  private String townCity = null;
+  private String townCity = ;
 
   @JsonProperty("county")
-  private String county = null;
+  private String county = ;
 
   @JsonProperty("country")
-  private String country = null;
+  private String country = ;
 
   @JsonProperty("postcode")
-  private String postcode = null;
+  private String postcode = ;
 
   public StudentAddress addressLine1(String addressLine1) {
     this.addressLine1 = addressLine1;

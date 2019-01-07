@@ -28,13 +28,13 @@ public class MisSubject implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("name")
-  private String name = null;
+  private String name = ;
 
   @JsonProperty("code")
-  private String code = null;
+  private String code = ;
 
   public MisSubject id(Integer id) {
     this.id = id;

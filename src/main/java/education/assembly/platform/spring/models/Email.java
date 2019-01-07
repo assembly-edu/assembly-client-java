@@ -28,16 +28,16 @@ public class Email implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("email")
-  private String email = null;
+  private String email = ;
 
   @JsonProperty("type")
-  private String type = null;
+  private String type = ;
 
   @JsonProperty("is_primary")
-  private Boolean isPrimary = null;
+  private Boolean isPrimary = ;
 
   public Email id(Integer id) {
     this.id = id;

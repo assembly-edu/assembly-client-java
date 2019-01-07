@@ -28,22 +28,22 @@ public class StudentLanguages implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("home_language_code")
-  private String homeLanguageCode = null;
+  private String homeLanguageCode = ;
 
   @JsonProperty("home_language_name")
-  private String homeLanguageName = null;
+  private String homeLanguageName = ;
 
   @JsonProperty("first_language_code")
-  private String firstLanguageCode = null;
+  private String firstLanguageCode = ;
 
   @JsonProperty("first_language_name")
-  private String firstLanguageName = null;
+  private String firstLanguageName = ;
 
   @JsonProperty("proficiency_in_english_code")
-  private String proficiencyInEnglishCode = null;
+  private String proficiencyInEnglishCode = ;
 
   @JsonProperty("proficiency_in_english_name")
-  private String proficiencyInEnglishName = null;
+  private String proficiencyInEnglishName = ;
 
   public StudentLanguages homeLanguageCode(String homeLanguageCode) {
     this.homeLanguageCode = homeLanguageCode;

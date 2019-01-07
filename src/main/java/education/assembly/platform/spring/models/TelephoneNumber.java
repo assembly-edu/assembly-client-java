@@ -28,16 +28,16 @@ public class TelephoneNumber implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("type")
-  private String type = null;
+  private String type = ;
 
   @JsonProperty("telephone_number")
-  private String telephoneNumber = null;
+  private String telephoneNumber = ;
 
   @JsonProperty("is_primary")
-  private Boolean isPrimary = null;
+  private Boolean isPrimary = ;
 
   public TelephoneNumber id(Integer id) {
     this.id = id;

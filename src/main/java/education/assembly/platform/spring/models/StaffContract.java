@@ -34,40 +34,40 @@ public class StaffContract implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("staff_member_id")
-  private Integer staffMemberId = null;
+  private Integer staffMemberId = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   @JsonProperty("national_insurance_number")
-  private String nationalInsuranceNumber = null;
+  private String nationalInsuranceNumber = ;
 
   @JsonProperty("payroll_number")
-  private String payrollNumber = null;
+  private String payrollNumber = ;
 
   @JsonProperty("contract_type")
-  private String contractType = null;
+  private String contractType = ;
 
   @JsonProperty("post")
-  private String post = null;
+  private String post = ;
 
   @JsonProperty("origin")
-  private String origin = null;
+  private String origin = ;
 
   @JsonProperty("destination")
-  private String destination = null;
+  private String destination = ;
 
   @JsonProperty("daily_rate")
-  private Boolean dailyRate = null;
+  private Boolean dailyRate = ;
 
   @JsonProperty("pay_review_date")
-  private OffsetDateTime payReviewDate = null;
+  private OffsetDateTime payReviewDate = ;
 
   @JsonProperty("roles")
   private List<StaffRole> roles = null;

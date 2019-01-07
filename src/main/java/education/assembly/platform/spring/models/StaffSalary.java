@@ -29,37 +29,37 @@ public class StaffSalary implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("hours_per_week")
-  private String hoursPerWeek = null;
+  private String hoursPerWeek = ;
 
   @JsonProperty("fte")
-  private String fte = null;
+  private String fte = ;
 
   @JsonProperty("weeks_per_year")
-  private String weeksPerYear = null;
+  private String weeksPerYear = ;
 
   @JsonProperty("pay_range")
-  private String payRange = null;
+  private String payRange = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   @JsonProperty("pay_scale_framework")
-  private String payScaleFramework = null;
+  private String payScaleFramework = ;
 
   @JsonProperty("regional_spine")
-  private String regionalSpine = null;
+  private String regionalSpine = ;
 
   @JsonProperty("base_pay")
-  private String basePay = null;
+  private String basePay = ;
 
   @JsonProperty("actual_pay")
-  private String actualPay = null;
+  private String actualPay = ;
 
   @JsonProperty("safeguarded_salary")
-  private Boolean safeguardedSalary = null;
+  private Boolean safeguardedSalary = ;
 
   public StaffSalary hoursPerWeek(String hoursPerWeek) {
     this.hoursPerWeek = hoursPerWeek;

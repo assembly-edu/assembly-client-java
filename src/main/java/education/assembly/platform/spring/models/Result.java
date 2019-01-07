@@ -29,34 +29,34 @@ public class Result implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("student_id")
-  private Integer studentId = null;
+  private Integer studentId = ;
 
   @JsonProperty("subject_id")
-  private Integer subjectId = null;
+  private Integer subjectId = ;
 
   @JsonProperty("assessment_id")
-  private Integer assessmentId = null;
+  private Integer assessmentId = ;
 
   @JsonProperty("assessment_point_rank")
-  private Integer assessmentPointRank = null;
+  private Integer assessmentPointRank = ;
 
   @JsonProperty("facet_id")
-  private Integer facetId = null;
+  private Integer facetId = ;
 
   @JsonProperty("grade_id")
-  private Integer gradeId = null;
+  private Integer gradeId = ;
 
   @JsonProperty("result_date")
-  private OffsetDateTime resultDate = null;
+  private OffsetDateTime resultDate = ;
 
   @JsonProperty("created_at")
-  private OffsetDateTime createdAt = null;
+  private OffsetDateTime createdAt = ;
 
   @JsonProperty("updated_at")
-  private OffsetDateTime updatedAt = null;
+  private OffsetDateTime updatedAt = ;
 
   public Result id(Integer id) {
     this.id = id;

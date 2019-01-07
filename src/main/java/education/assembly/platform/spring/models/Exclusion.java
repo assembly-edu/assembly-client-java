@@ -29,31 +29,31 @@ public class Exclusion implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("student_id")
-  private Integer studentId = null;
+  private Integer studentId = ;
 
   @JsonProperty("exclusion_type")
-  private String exclusionType = null;
+  private String exclusionType = ;
 
   @JsonProperty("exclusion_reason")
-  private String exclusionReason = null;
+  private String exclusionReason = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("start_session")
-  private String startSession = null;
+  private String startSession = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   @JsonProperty("end_session")
-  private String endSession = null;
+  private String endSession = ;
 
   @JsonProperty("exclusion_length")
-  private Integer exclusionLength = null;
+  private Integer exclusionLength = ;
 
   public Exclusion id(Integer id) {
     this.id = id;

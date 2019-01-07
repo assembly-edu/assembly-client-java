@@ -31,16 +31,16 @@ public class Assessment implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("family_id")
-  private Integer familyId = null;
+  private Integer familyId = ;
 
   @JsonProperty("family_name")
-  private String familyName = null;
+  private String familyName = ;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("name")
-  private String name = null;
+  private String name = ;
 
   @JsonProperty("mis_assessments")
   private List<AssessmentMisAssessments> misAssessments = null;

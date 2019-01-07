@@ -31,46 +31,46 @@ public class StudentDemographics implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("ethnicity_code")
-  private String ethnicityCode = null;
+  private String ethnicityCode = ;
 
   @JsonProperty("ethnicity_group")
-  private String ethnicityGroup = null;
+  private String ethnicityGroup = ;
 
   @JsonProperty("gender")
-  private String gender = null;
+  private String gender = ;
 
   @JsonProperty("is_pp")
-  private Boolean isPp = null;
+  private Boolean isPp = ;
 
   @JsonProperty("is_eal")
-  private Boolean isEal = null;
+  private Boolean isEal = ;
 
   @JsonProperty("sen_category")
-  private String senCategory = null;
+  private String senCategory = ;
 
   @JsonProperty("country_of_birth")
-  private String countryOfBirth = null;
+  private String countryOfBirth = ;
 
   @JsonProperty("nationalities")
   private List<String> nationalities = null;
 
   @JsonProperty("fsm_review_date")
-  private String fsmReviewDate = null;
+  private String fsmReviewDate = ;
 
   @JsonProperty("is_fsm")
-  private Boolean isFsm = null;
+  private Boolean isFsm = ;
 
   @JsonProperty("looked_after")
-  private Boolean lookedAfter = null;
+  private Boolean lookedAfter = ;
 
   @JsonProperty("in_care")
-  private Boolean inCare = null;
+  private Boolean inCare = ;
 
   @JsonProperty("ever_in_care")
-  private Boolean everInCare = null;
+  private Boolean everInCare = ;
 
   @JsonProperty("service_child")
-  private Boolean serviceChild = null;
+  private Boolean serviceChild = ;
 
   @JsonProperty("sen_needs")
   private List<SenNeed> senNeeds = null;

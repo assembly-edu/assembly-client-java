@@ -18,11 +18,14 @@ import education.assembly.platform.spring.models.AcademicYear;
 import education.assembly.platform.spring.models.Assessment;
 import education.assembly.platform.spring.models.AssessmentPoint;
 import education.assembly.platform.spring.models.Attendance;
+import education.assembly.platform.spring.models.AttendanceSummary;
 import education.assembly.platform.spring.models.CalendarEvent;
 import education.assembly.platform.spring.models.Contact;
+import education.assembly.platform.spring.models.DietaryNeed;
 import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
 import education.assembly.platform.spring.models.GradeSet;
+import education.assembly.platform.spring.models.MedicalCondition;
 import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
 import education.assembly.platform.spring.models.Result;
@@ -223,6 +226,44 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * View an Dietary Need
+     * Returns a single dietary need for the given id.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return DietaryNeed
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public DietaryNeed findDietaryNeed(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findDietaryNeed");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/school/dietary_needs/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<DietaryNeed> returnType = new ParameterizedTypeReference<DietaryNeed>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * View a Facet
      * Returns a single facet for the given id.
      * <p><b>200</b> - success
@@ -258,6 +299,82 @@ public class AssemblyApi {
         String[] authNames = new String[] { "bearerAuth" };
 
         ParameterizedTypeReference<Facet> returnType = new ParameterizedTypeReference<Facet>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Grade Set
+     * Returns a single grade set for the given id.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return GradeSet
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public GradeSet findGradeSet(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findGradeSet");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/grade_sets/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<GradeSet> returnType = new ParameterizedTypeReference<GradeSet>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View an Medical Condition
+     * Returns a single medical condition for the given id.
+     * <p><b>200</b> - success
+     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
+     * @param id id of the entity
+     * @return MedicalCondition
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public MedicalCondition findMedicalCondition(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findMedicalCondition");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/school/medical_conditions/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<MedicalCondition> returnType = new ParameterizedTypeReference<MedicalCondition>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
@@ -648,6 +765,39 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Attendance Summaries
+     * Returns a list of attendance summaries.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+     * <p><b>200</b> - success
+     * @param studentId a student_id to filter by
+     * @param registrationGroupId id of a registration group
+     * @return List&lt;AttendanceSummary&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<AttendanceSummary> getAssessmentSummaries(Integer studentId, Integer registrationGroupId) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/attendances/summaries").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<AttendanceSummary>> returnType = new ParameterizedTypeReference<List<AttendanceSummary>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Assessments
      * Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result.
      * <p><b>200</b> - success
@@ -792,6 +942,39 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * Dietary Needs
+     * Returns a list of all the Dietary Needs defined by the school.
+     * <p><b>200</b> - success
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;DietaryNeed&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<DietaryNeed> getDietaryNeeds(Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/school/dietary_needs").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<DietaryNeed>> returnType = new ParameterizedTypeReference<List<DietaryNeed>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Exclusions
      * Returns a list of exclusions. *By default, exclusions are returned that occurred during the current academic year.*
      * <p><b>200</b> - success
@@ -864,8 +1047,73 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Grade Sets
+     * Returns a list of grade sets.
+     * <p><b>200</b> - success
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;GradeSet&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<GradeSet> getGradeSets(Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/grade_sets").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<GradeSet>> returnType = new ParameterizedTypeReference<List<GradeSet>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Left Staff Members
+     * Returns a list of staff members who have left the school.  **Note:** The &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).&#39; 
+     * <p><b>200</b> - success
+     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * @return List&lt;StaffMember&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/staff_members/left").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<StaffMember>> returnType = new ParameterizedTypeReference<List<StaffMember>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Left Students
-     * Returns a list of students who have left the school.&lt;br&gt;&lt;br&gt;**Note:** This will include any students who have left the school during the current academic year. If the school has been connected to Assembly for more than one academic year, all left students will be returned. The &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).
+     * &#39;Returns a list of students who have left the school.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).&#39; 
      * <p><b>200</b> - success
      * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
      * @return List&lt;Student&gt;
@@ -893,6 +1141,39 @@ public class AssemblyApi {
         String[] authNames = new String[] { "bearerAuth" };
 
         ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * Medical Conditions
+     * Returns a list of all the Medical Conditions defined by the school.
+     * <p><b>200</b> - success
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;MedicalCondition&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<MedicalCondition> getMedicalConditions(Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/school/medical_conditions").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<MedicalCondition>> returnType = new ParameterizedTypeReference<List<MedicalCondition>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**

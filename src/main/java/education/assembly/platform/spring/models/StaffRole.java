@@ -29,13 +29,13 @@ public class StaffRole implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("role_type")
-  private String roleType = null;
+  private String roleType = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   public StaffRole roleType(String roleType) {
     this.roleType = roleType;

@@ -37,52 +37,52 @@ public class Student implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("year_code")
-  private String yearCode = null;
+  private String yearCode = ;
 
   @JsonProperty("upn")
-  private String upn = null;
+  private String upn = ;
 
   @JsonProperty("former_upn")
-  private String formerUpn = null;
+  private String formerUpn = ;
 
   @JsonProperty("mis_id")
-  private String misId = null;
+  private String misId = ;
 
   @JsonProperty("pan")
-  private String pan = null;
+  private String pan = ;
 
   @JsonProperty("first_name")
-  private String firstName = null;
+  private String firstName = ;
 
   @JsonProperty("legal_first_name")
-  private String legalFirstName = null;
+  private String legalFirstName = ;
 
   @JsonProperty("middle_name")
-  private String middleName = null;
+  private String middleName = ;
 
   @JsonProperty("last_name")
-  private String lastName = null;
+  private String lastName = ;
 
   @JsonProperty("legal_last_name")
-  private String legalLastName = null;
+  private String legalLastName = ;
 
   @JsonProperty("former_last_name")
-  private String formerLastName = null;
+  private String formerLastName = ;
 
   @JsonProperty("dob")
-  private OffsetDateTime dob = null;
+  private OffsetDateTime dob = ;
 
   @JsonProperty("start_date")
-  private OffsetDateTime startDate = null;
+  private OffsetDateTime startDate = ;
 
   @JsonProperty("end_date")
-  private OffsetDateTime endDate = null;
+  private OffsetDateTime endDate = ;
 
   @JsonProperty("enrolment_status")
-  private String enrolmentStatus = null;
+  private String enrolmentStatus = ;
 
   @JsonProperty("demographics")
   private StudentDemographics demographics = null;

@@ -28,25 +28,25 @@ public class StaffQualification implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
-  private Integer id = null;
+  private Integer id = ;
 
   @JsonProperty("qualification_code")
-  private String qualificationCode = null;
+  private String qualificationCode = ;
 
   @JsonProperty("degree_class")
-  private String degreeClass = null;
+  private String degreeClass = ;
 
   @JsonProperty("first_subject_code")
-  private String firstSubjectCode = null;
+  private String firstSubjectCode = ;
 
   @JsonProperty("first_subject_name")
-  private String firstSubjectName = null;
+  private String firstSubjectName = ;
 
   @JsonProperty("second_subject_code")
-  private String secondSubjectCode = null;
+  private String secondSubjectCode = ;
 
   @JsonProperty("second_subject_name")
-  private String secondSubjectName = null;
+  private String secondSubjectName = ;
 
   public StaffQualification id(Integer id) {
     this.id = id;

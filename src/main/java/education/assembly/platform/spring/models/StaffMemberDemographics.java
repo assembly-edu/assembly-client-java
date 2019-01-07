@@ -28,16 +28,16 @@ public class StaffMemberDemographics implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("ethnicity_code")
-  private String ethnicityCode = null;
+  private String ethnicityCode = ;
 
   @JsonProperty("ethnicity_group")
-  private String ethnicityGroup = null;
+  private String ethnicityGroup = ;
 
   @JsonProperty("gender")
-  private String gender = null;
+  private String gender = ;
 
   @JsonProperty("disability")
-  private String disability = null;
+  private String disability = ;
 
   public StaffMemberDemographics ethnicityCode(String ethnicityCode) {
     this.ethnicityCode = ethnicityCode;
