@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**findGradeSet**](AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
 [**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View an Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
+[**findSchool**](AssemblyApi.md#findSchool) | **GET** /school | Get School Details
 [**findStaffMember**](AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
 [**findStudent**](AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
 [**findTeachingGroup**](AssemblyApi.md#findTeachingGroup) | **GET** /teaching_groups/{id} | View a Teaching Group
@@ -45,6 +46,7 @@ Method | HTTP request | Description
 [**getTeachingGroups**](AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | List Teaching Groups
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
+[**status**](AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
 
 
 <a name="findAcademicYear"></a>
@@ -527,6 +529,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RegistrationGroup**](RegistrationGroup.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="findSchool"></a>
+# **findSchool**
+> School findSchool(id)
+
+Get School Details
+
+Returns details for the school associated with the provided access_token.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+try {
+    School result = apiInstance.findSchool(id);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#findSchool");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+
+### Return type
+
+[**School**](School.md)
 
 ### Authorization
 
@@ -1533,7 +1589,7 @@ Name | Type | Description  | Notes
 
 <a name="getLeftStaffMembers"></a>
 # **getLeftStaffMembers**
-> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince)
+> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications)
 
 List Left Staff Members
 
@@ -1557,8 +1613,11 @@ bearerAuth.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+Boolean teachersOnly = true; // Boolean | return only staff who are teachers
+Boolean demographics = true; // Boolean | include demographics data
+Boolean qualifications = true; // Boolean | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 try {
-    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince);
+    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLeftStaffMembers");
@@ -1571,6 +1630,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **teachersOnly** | **Boolean**| return only staff who are teachers | [optional]
+ **demographics** | **Boolean**| include demographics data | [optional]
+ **qualifications** | **Boolean**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
 ### Return type
 
@@ -2495,6 +2557,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List&lt;YearGroup&gt;**](YearGroup.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="status"></a>
+# **status**
+> SchoolStatus status()
+
+Get School Sync Status
+
+Returns status for the school associated with the provided access_token.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+try {
+    SchoolStatus result = apiInstance.status();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#status");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SchoolStatus**](SchoolStatus.md)
 
 ### Authorization
 

@@ -18,8 +18,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import education.assembly.platform.spring.models.StaffMemberDemographics;
 import education.assembly.platform.spring.models.StaffMemberQualificationInfo;
+import education.assembly.platform.spring.models.TelephoneNumber;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
@@ -65,6 +68,9 @@ public class StaffMember implements Serializable {
 
   @JsonProperty("email")
   private String email = ;
+
+  @JsonProperty("telephone_numbers")
+  private List<TelephoneNumber> telephoneNumbers = null;
 
   @JsonProperty("is_teaching_staff")
   private Boolean isTeachingStaff = ;
@@ -300,6 +306,32 @@ public class StaffMember implements Serializable {
     this.email = email;
   }
 
+  public StaffMember telephoneNumbers(List<TelephoneNumber> telephoneNumbers) {
+    this.telephoneNumbers = telephoneNumbers;
+    return this;
+  }
+
+  public StaffMember addTelephoneNumbersItem(TelephoneNumber telephoneNumbersItem) {
+    if (this.telephoneNumbers == null) {
+      this.telephoneNumbers = new ArrayList<TelephoneNumber>();
+    }
+    this.telephoneNumbers.add(telephoneNumbersItem);
+    return this;
+  }
+
+   /**
+   * Get telephoneNumbers
+   * @return telephoneNumbers
+  **/
+  @ApiModelProperty(value = "")
+  public List<TelephoneNumber> getTelephoneNumbers() {
+    return telephoneNumbers;
+  }
+
+  public void setTelephoneNumbers(List<TelephoneNumber> telephoneNumbers) {
+    this.telephoneNumbers = telephoneNumbers;
+  }
+
   public StaffMember isTeachingStaff(Boolean isTeachingStaff) {
     this.isTeachingStaff = isTeachingStaff;
     return this;
@@ -430,6 +462,7 @@ public class StaffMember implements Serializable {
         Objects.equals(this.title, staffMember.title) &&
         Objects.equals(this.dob, staffMember.dob) &&
         Objects.equals(this.email, staffMember.email) &&
+        Objects.equals(this.telephoneNumbers, staffMember.telephoneNumbers) &&
         Objects.equals(this.isTeachingStaff, staffMember.isTeachingStaff) &&
         Objects.equals(this.includedInCensus, staffMember.includedInCensus) &&
         Objects.equals(this.startDate, staffMember.startDate) &&
@@ -440,7 +473,7 @@ public class StaffMember implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, dob, email, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
+    return Objects.hash(id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, dob, email, telephoneNumbers, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
   }
 
 
@@ -461,6 +494,7 @@ public class StaffMember implements Serializable {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    telephoneNumbers: ").append(toIndentedString(telephoneNumbers)).append("\n");
     sb.append("    isTeachingStaff: ").append(toIndentedString(isTeachingStaff)).append("\n");
     sb.append("    includedInCensus: ").append(toIndentedString(includedInCensus)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

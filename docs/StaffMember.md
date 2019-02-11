@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **title** | **String** |  |  [optional]
 **dob** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **email** | **String** |  |  [optional]
+**telephoneNumbers** | [**List&lt;TelephoneNumber&gt;**](TelephoneNumber.md) |  |  [optional]
 **isTeachingStaff** | **Boolean** |  |  [optional]
 **includedInCensus** | **Boolean** |  |  [optional]
 **startDate** | **String** |  |  [optional]
