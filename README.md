@@ -79,12 +79,12 @@ public class AssemblyApiExample {
         bearerAuth.setPassword("YOUR PASSWORD");
 
         AssemblyApi apiInstance = new AssemblyApi();
-        Integer id = 56; // Integer | id of the entity
+        BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
         try {
-            AcademicYear result = apiInstance.findAcademicYear(id);
+            ModelApiResponse result = apiInstance.bulkUpdateResults(bulkResultsBody);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AssemblyApi#findAcademicYear");
+            System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");
             e.printStackTrace();
         }
     }
@@ -98,6 +98,8 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AssemblyApi* | [**bulkUpdateResults**](docs/AssemblyApi.md#bulkUpdateResults) | **PATCH** /results | Update Multiple Results
+*AssemblyApi* | [**createResult**](docs/AssemblyApi.md#createResult) | **POST** /results | Write Results
 *AssemblyApi* | [**findAcademicYear**](docs/AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
 *AssemblyApi* | [**findAssessment**](docs/AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 *AssemblyApi* | [**findAssessmentGradeSet**](docs/AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -141,6 +143,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getYearGroupStudents**](docs/AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 *AssemblyApi* | [**getYearGroups**](docs/AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 *AssemblyApi* | [**status**](docs/AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
+*AssemblyApi* | [**updateResults**](docs/AssemblyApi.md#updateResults) | **PATCH** /results/{id} | Update a Single Result
 
 
 ## Documentation for Models
@@ -152,6 +155,7 @@ Class | Method | HTTP request | Description
  - [AssessmentPoint](docs/AssessmentPoint.md)
  - [Attendance](docs/Attendance.md)
  - [AttendanceSummary](docs/AttendanceSummary.md)
+ - [BulkResultsBody](docs/BulkResultsBody.md)
  - [CalendarEvent](docs/CalendarEvent.md)
  - [CalendarEventMisType](docs/CalendarEventMisType.md)
  - [Contact](docs/Contact.md)
@@ -163,8 +167,11 @@ Class | Method | HTTP request | Description
  - [GradeSet](docs/GradeSet.md)
  - [MedicalCondition](docs/MedicalCondition.md)
  - [MisSubject](docs/MisSubject.md)
+ - [ModelApiResponse](docs/ModelApiResponse.md)
  - [RegistrationGroup](docs/RegistrationGroup.md)
  - [Result](docs/Result.md)
+ - [ResultBody](docs/ResultBody.md)
+ - [ResultEntry](docs/ResultEntry.md)
  - [School](docs/School.md)
  - [SchoolStatus](docs/SchoolStatus.md)
  - [SenNeed](docs/SenNeed.md)

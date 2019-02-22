@@ -49,12 +49,12 @@ public class AssemblyApiExample {
 
         // Create an API instance and start using it:
         AssemblyApi api = new AssemblyApi(client);
-        Integer id = 56; // Integer | id of the entity
+        BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
         try {
-            AcademicYear result = api.findAcademicYear(id);
+            ModelApiResponse result = api.bulkUpdateResults(bulkResultsBody);
             System.out.println(result);
         } catch (Exception e) {
-            System.err.println("Exception when calling AssemblyApi#findAcademicYear");
+            System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");
             e.printStackTrace();
         }
     }

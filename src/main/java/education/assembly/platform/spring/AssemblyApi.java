@@ -19,6 +19,7 @@ import education.assembly.platform.spring.models.Assessment;
 import education.assembly.platform.spring.models.AssessmentPoint;
 import education.assembly.platform.spring.models.Attendance;
 import education.assembly.platform.spring.models.AttendanceSummary;
+import education.assembly.platform.spring.models.BulkResultsBody;
 import education.assembly.platform.spring.models.CalendarEvent;
 import education.assembly.platform.spring.models.Contact;
 import education.assembly.platform.spring.models.DietaryNeed;
@@ -26,9 +27,12 @@ import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
 import education.assembly.platform.spring.models.GradeSet;
 import education.assembly.platform.spring.models.MedicalCondition;
+import education.assembly.platform.spring.models.ModelApiResponse;
 import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
 import education.assembly.platform.spring.models.Result;
+import education.assembly.platform.spring.models.ResultBody;
+import education.assembly.platform.spring.models.ResultEntry;
 import education.assembly.platform.spring.models.School;
 import education.assembly.platform.spring.models.SchoolStatus;
 import education.assembly.platform.spring.models.StaffAbsence;
@@ -76,6 +80,68 @@ public class AssemblyApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Update Multiple Results
+     * Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
+     * <p><b>200</b> - success
+     * @param bulkResultsBody The bulkResultsBody parameter
+     * @return ModelApiResponse
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ModelApiResponse bulkUpdateResults(BulkResultsBody bulkResultsBody) throws RestClientException {
+        Object postBody = bulkResultsBody;
+        
+        String path = UriComponentsBuilder.fromPath("/results").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { 
+            "application/json"
+        };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<ModelApiResponse> returnType = new ParameterizedTypeReference<ModelApiResponse>() {};
+        return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * Write Results
+     * Given a subject_id, facet_id, assessment_point_rank and assessment_id results can be sent to the Platform, along with a student_id, the grade_id and (optionally) the result_date.  **Permissions**: A school level access token with the assessments.write scope is needed to write results back to the Platform. 
+     * <p><b>200</b> - success
+     * @param resultBody The resultBody parameter
+     * @return List&lt;Result&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Result> createResult(ResultBody resultBody) throws RestClientException {
+        Object postBody = resultBody;
+        
+        String path = UriComponentsBuilder.fromPath("/results").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { 
+            "application/json"
+        };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
     /**
      * View an Academic Year
      * Returns a single academic year for the school associated with the provided access_token.
@@ -1832,5 +1898,45 @@ public class AssemblyApi {
 
         ParameterizedTypeReference<SchoolStatus> returnType = new ParameterizedTypeReference<SchoolStatus>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * Update a Single Result
+     * Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
+     * <p><b>200</b> - success
+     * @param id id of the entity
+     * @param resultEntry The resultEntry parameter
+     * @return Result
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Result updateResults(Integer id, ResultEntry resultEntry) throws RestClientException {
+        Object postBody = resultEntry;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling updateResults");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/results/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { 
+            "application/json"
+        };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "bearerAuth" };
+
+        ParameterizedTypeReference<Result> returnType = new ParameterizedTypeReference<Result>() {};
+        return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
 }

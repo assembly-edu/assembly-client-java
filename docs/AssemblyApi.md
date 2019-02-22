@@ -4,6 +4,8 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**bulkUpdateResults**](AssemblyApi.md#bulkUpdateResults) | **PATCH** /results | Update Multiple Results
+[**createResult**](AssemblyApi.md#createResult) | **POST** /results | Write Results
 [**findAcademicYear**](AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
 [**findAssessment**](AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 [**findAssessmentGradeSet**](AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -47,7 +49,116 @@ Method | HTTP request | Description
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 [**status**](AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
+[**updateResults**](AssemblyApi.md#updateResults) | **PATCH** /results/{id} | Update a Single Result
 
+
+<a name="bulkUpdateResults"></a>
+# **bulkUpdateResults**
+> ModelApiResponse bulkUpdateResults(bulkResultsBody)
+
+Update Multiple Results
+
+Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
+try {
+    ModelApiResponse result = apiInstance.bulkUpdateResults(bulkResultsBody);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulkResultsBody** | [**BulkResultsBody**](BulkResultsBody.md)|  | [optional]
+
+### Return type
+
+[**ModelApiResponse**](ModelApiResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="createResult"></a>
+# **createResult**
+> List&lt;Result&gt; createResult(resultBody)
+
+Write Results
+
+Given a subject_id, facet_id, assessment_point_rank and assessment_id results can be sent to the Platform, along with a student_id, the grade_id and (optionally) the result_date.  **Permissions**: A school level access token with the assessments.write scope is needed to write results back to the Platform. 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+ResultBody resultBody = new ResultBody(); // ResultBody | 
+try {
+    List<Result> result = apiInstance.createResult(resultBody);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#createResult");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resultBody** | [**ResultBody**](ResultBody.md)|  | [optional]
+
+### Return type
+
+[**List&lt;Result&gt;**](Result.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.assembly+json; version=1.1
 
 <a name="findAcademicYear"></a>
 # **findAcademicYear**
@@ -2615,5 +2726,61 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="updateResults"></a>
+# **updateResults**
+> Result updateResults(id, resultEntry)
+
+Update a Single Result
+
+Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: bearerAuth
+HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setUsername("YOUR USERNAME");
+bearerAuth.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | id of the entity
+ResultEntry resultEntry = new ResultEntry(); // ResultEntry | 
+try {
+    Result result = apiInstance.updateResults(id, resultEntry);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#updateResults");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| id of the entity |
+ **resultEntry** | [**ResultEntry**](ResultEntry.md)|  | [optional]
+
+### Return type
+
+[**Result**](Result.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/vnd.assembly+json; version=1.1
 
