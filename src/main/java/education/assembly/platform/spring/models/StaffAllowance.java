@@ -32,7 +32,7 @@ public class StaffAllowance implements Serializable {
   private String additionalPaymentType = ;
 
   @JsonProperty("additional_payment_amount")
-  private String additionalPaymentAmount = ;
+  private Float additionalPaymentAmount = ;
 
   @JsonProperty("start_date")
   private OffsetDateTime startDate = ;
@@ -58,7 +58,7 @@ public class StaffAllowance implements Serializable {
     this.additionalPaymentType = additionalPaymentType;
   }
 
-  public StaffAllowance additionalPaymentAmount(String additionalPaymentAmount) {
+  public StaffAllowance additionalPaymentAmount(Float additionalPaymentAmount) {
     this.additionalPaymentAmount = additionalPaymentAmount;
     return this;
   }
@@ -68,11 +68,11 @@ public class StaffAllowance implements Serializable {
    * @return additionalPaymentAmount
   **/
   @ApiModelProperty(value = "")
-  public String getAdditionalPaymentAmount() {
+  public Float getAdditionalPaymentAmount() {
     return additionalPaymentAmount;
   }
 
-  public void setAdditionalPaymentAmount(String additionalPaymentAmount) {
+  public void setAdditionalPaymentAmount(Float additionalPaymentAmount) {
     this.additionalPaymentAmount = additionalPaymentAmount;
   }
 

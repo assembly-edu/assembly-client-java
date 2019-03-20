@@ -60,6 +60,9 @@ public class StudentDemographics implements Serializable {
   @JsonProperty("is_fsm")
   private Boolean isFsm = ;
 
+  @JsonProperty("is_fsm6")
+  private Boolean isFsm6 = ;
+
   @JsonProperty("looked_after")
   private Boolean lookedAfter = ;
 
@@ -263,6 +266,24 @@ public class StudentDemographics implements Serializable {
     this.isFsm = isFsm;
   }
 
+  public StudentDemographics isFsm6(Boolean isFsm6) {
+    this.isFsm6 = isFsm6;
+    return this;
+  }
+
+   /**
+   * Get isFsm6
+   * @return isFsm6
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isgetIsFsm6() {
+    return isFsm6;
+  }
+
+  public void setIsFsm6(Boolean isFsm6) {
+    this.isFsm6 = isFsm6;
+  }
+
   public StudentDemographics lookedAfter(Boolean lookedAfter) {
     this.lookedAfter = lookedAfter;
     return this;
@@ -381,6 +402,7 @@ public class StudentDemographics implements Serializable {
         Objects.equals(this.nationalities, studentDemographics.nationalities) &&
         Objects.equals(this.fsmReviewDate, studentDemographics.fsmReviewDate) &&
         Objects.equals(this.isFsm, studentDemographics.isFsm) &&
+        Objects.equals(this.isFsm6, studentDemographics.isFsm6) &&
         Objects.equals(this.lookedAfter, studentDemographics.lookedAfter) &&
         Objects.equals(this.inCare, studentDemographics.inCare) &&
         Objects.equals(this.everInCare, studentDemographics.everInCare) &&
@@ -390,7 +412,7 @@ public class StudentDemographics implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, lookedAfter, inCare, everInCare, serviceChild, senNeeds);
+    return Objects.hash(ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, lookedAfter, inCare, everInCare, serviceChild, senNeeds);
   }
 
 
@@ -409,6 +431,7 @@ public class StudentDemographics implements Serializable {
     sb.append("    nationalities: ").append(toIndentedString(nationalities)).append("\n");
     sb.append("    fsmReviewDate: ").append(toIndentedString(fsmReviewDate)).append("\n");
     sb.append("    isFsm: ").append(toIndentedString(isFsm)).append("\n");
+    sb.append("    isFsm6: ").append(toIndentedString(isFsm6)).append("\n");
     sb.append("    lookedAfter: ").append(toIndentedString(lookedAfter)).append("\n");
     sb.append("    inCare: ").append(toIndentedString(inCare)).append("\n");
     sb.append("    everInCare: ").append(toIndentedString(everInCare)).append("\n");

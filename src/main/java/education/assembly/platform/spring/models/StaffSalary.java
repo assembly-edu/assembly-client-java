@@ -29,13 +29,13 @@ public class StaffSalary implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("hours_per_week")
-  private String hoursPerWeek = ;
+  private Float hoursPerWeek = ;
 
   @JsonProperty("fte")
-  private String fte = ;
+  private Float fte = ;
 
   @JsonProperty("weeks_per_year")
-  private String weeksPerYear = ;
+  private Float weeksPerYear = ;
 
   @JsonProperty("pay_range")
   private String payRange = ;
@@ -53,15 +53,15 @@ public class StaffSalary implements Serializable {
   private String regionalSpine = ;
 
   @JsonProperty("base_pay")
-  private String basePay = ;
+  private Float basePay = ;
 
   @JsonProperty("actual_pay")
-  private String actualPay = ;
+  private Float actualPay = ;
 
   @JsonProperty("safeguarded_salary")
   private Boolean safeguardedSalary = ;
 
-  public StaffSalary hoursPerWeek(String hoursPerWeek) {
+  public StaffSalary hoursPerWeek(Float hoursPerWeek) {
     this.hoursPerWeek = hoursPerWeek;
     return this;
   }
@@ -71,15 +71,15 @@ public class StaffSalary implements Serializable {
    * @return hoursPerWeek
   **/
   @ApiModelProperty(value = "")
-  public String getHoursPerWeek() {
+  public Float getHoursPerWeek() {
     return hoursPerWeek;
   }
 
-  public void setHoursPerWeek(String hoursPerWeek) {
+  public void setHoursPerWeek(Float hoursPerWeek) {
     this.hoursPerWeek = hoursPerWeek;
   }
 
-  public StaffSalary fte(String fte) {
+  public StaffSalary fte(Float fte) {
     this.fte = fte;
     return this;
   }
@@ -89,15 +89,15 @@ public class StaffSalary implements Serializable {
    * @return fte
   **/
   @ApiModelProperty(value = "")
-  public String getFte() {
+  public Float getFte() {
     return fte;
   }
 
-  public void setFte(String fte) {
+  public void setFte(Float fte) {
     this.fte = fte;
   }
 
-  public StaffSalary weeksPerYear(String weeksPerYear) {
+  public StaffSalary weeksPerYear(Float weeksPerYear) {
     this.weeksPerYear = weeksPerYear;
     return this;
   }
@@ -107,11 +107,11 @@ public class StaffSalary implements Serializable {
    * @return weeksPerYear
   **/
   @ApiModelProperty(value = "")
-  public String getWeeksPerYear() {
+  public Float getWeeksPerYear() {
     return weeksPerYear;
   }
 
-  public void setWeeksPerYear(String weeksPerYear) {
+  public void setWeeksPerYear(Float weeksPerYear) {
     this.weeksPerYear = weeksPerYear;
   }
 
@@ -205,7 +205,7 @@ public class StaffSalary implements Serializable {
     this.regionalSpine = regionalSpine;
   }
 
-  public StaffSalary basePay(String basePay) {
+  public StaffSalary basePay(Float basePay) {
     this.basePay = basePay;
     return this;
   }
@@ -215,15 +215,15 @@ public class StaffSalary implements Serializable {
    * @return basePay
   **/
   @ApiModelProperty(value = "")
-  public String getBasePay() {
+  public Float getBasePay() {
     return basePay;
   }
 
-  public void setBasePay(String basePay) {
+  public void setBasePay(Float basePay) {
     this.basePay = basePay;
   }
 
-  public StaffSalary actualPay(String actualPay) {
+  public StaffSalary actualPay(Float actualPay) {
     this.actualPay = actualPay;
     return this;
   }
@@ -233,11 +233,11 @@ public class StaffSalary implements Serializable {
    * @return actualPay
   **/
   @ApiModelProperty(value = "")
-  public String getActualPay() {
+  public Float getActualPay() {
     return actualPay;
   }
 
-  public void setActualPay(String actualPay) {
+  public void setActualPay(Float actualPay) {
     this.actualPay = actualPay;
   }
 

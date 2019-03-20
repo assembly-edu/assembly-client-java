@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **nationalities** | **List&lt;String&gt;** |  |  [optional]
 **fsmReviewDate** | **String** |  |  [optional]
 **isFsm** | **Boolean** |  |  [optional]
+**isFsm6** | **Boolean** |  |  [optional]
 **lookedAfter** | **Boolean** |  |  [optional]
 **inCare** | **Boolean** |  |  [optional]
 **everInCare** | **Boolean** |  |  [optional]

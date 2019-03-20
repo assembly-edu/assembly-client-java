@@ -41,7 +41,7 @@ public class StaffAbsence implements Serializable {
   private OffsetDateTime endDate = ;
 
   @JsonProperty("working_days_lost")
-  private String workingDaysLost = ;
+  private Float workingDaysLost = ;
 
   @JsonProperty("absence_category")
   private String absenceCategory = ;
@@ -124,7 +124,7 @@ public class StaffAbsence implements Serializable {
     this.endDate = endDate;
   }
 
-  public StaffAbsence workingDaysLost(String workingDaysLost) {
+  public StaffAbsence workingDaysLost(Float workingDaysLost) {
     this.workingDaysLost = workingDaysLost;
     return this;
   }
@@ -134,11 +134,11 @@ public class StaffAbsence implements Serializable {
    * @return workingDaysLost
   **/
   @ApiModelProperty(value = "")
-  public String getWorkingDaysLost() {
+  public Float getWorkingDaysLost() {
     return workingDaysLost;
   }
 
-  public void setWorkingDaysLost(String workingDaysLost) {
+  public void setWorkingDaysLost(Float workingDaysLost) {
     this.workingDaysLost = workingDaysLost;
   }
 

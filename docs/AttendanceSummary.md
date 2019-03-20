@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **academicYearId** | **Integer** |  |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**possibleSessions** | **String** |  |  [optional]
-**attendedSessions** | **String** |  |  [optional]
-**lateSessions** | **String** |  |  [optional]
-**authorisedAbsenceSessions** | **String** |  |  [optional]
-**unauthorisedAbsenceSessions** | **String** |  |  [optional]
+**possibleSessions** | **Float** |  |  [optional]
+**attendedSessions** | **Float** |  |  [optional]
+**lateSessions** | **Float** |  |  [optional]
+**authorisedAbsenceSessions** | **Float** |  |  [optional]
+**unauthorisedAbsenceSessions** | **Float** |  |  [optional]
 
 
 

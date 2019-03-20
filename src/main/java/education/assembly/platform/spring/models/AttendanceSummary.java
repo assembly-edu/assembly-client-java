@@ -47,19 +47,19 @@ public class AttendanceSummary implements Serializable {
   private OffsetDateTime endDate = ;
 
   @JsonProperty("possible_sessions")
-  private String possibleSessions = ;
+  private Float possibleSessions = ;
 
   @JsonProperty("attended_sessions")
-  private String attendedSessions = ;
+  private Float attendedSessions = ;
 
   @JsonProperty("late_sessions")
-  private String lateSessions = ;
+  private Float lateSessions = ;
 
   @JsonProperty("authorised_absence_sessions")
-  private String authorisedAbsenceSessions = ;
+  private Float authorisedAbsenceSessions = ;
 
   @JsonProperty("unauthorised_absence_sessions")
-  private String unauthorisedAbsenceSessions = ;
+  private Float unauthorisedAbsenceSessions = ;
 
   public AttendanceSummary id(Integer id) {
     this.id = id;
@@ -169,7 +169,7 @@ public class AttendanceSummary implements Serializable {
     this.endDate = endDate;
   }
 
-  public AttendanceSummary possibleSessions(String possibleSessions) {
+  public AttendanceSummary possibleSessions(Float possibleSessions) {
     this.possibleSessions = possibleSessions;
     return this;
   }
@@ -179,15 +179,15 @@ public class AttendanceSummary implements Serializable {
    * @return possibleSessions
   **/
   @ApiModelProperty(value = "")
-  public String getPossibleSessions() {
+  public Float getPossibleSessions() {
     return possibleSessions;
   }
 
-  public void setPossibleSessions(String possibleSessions) {
+  public void setPossibleSessions(Float possibleSessions) {
     this.possibleSessions = possibleSessions;
   }
 
-  public AttendanceSummary attendedSessions(String attendedSessions) {
+  public AttendanceSummary attendedSessions(Float attendedSessions) {
     this.attendedSessions = attendedSessions;
     return this;
   }
@@ -197,15 +197,15 @@ public class AttendanceSummary implements Serializable {
    * @return attendedSessions
   **/
   @ApiModelProperty(value = "")
-  public String getAttendedSessions() {
+  public Float getAttendedSessions() {
     return attendedSessions;
   }
 
-  public void setAttendedSessions(String attendedSessions) {
+  public void setAttendedSessions(Float attendedSessions) {
     this.attendedSessions = attendedSessions;
   }
 
-  public AttendanceSummary lateSessions(String lateSessions) {
+  public AttendanceSummary lateSessions(Float lateSessions) {
     this.lateSessions = lateSessions;
     return this;
   }
@@ -215,15 +215,15 @@ public class AttendanceSummary implements Serializable {
    * @return lateSessions
   **/
   @ApiModelProperty(value = "")
-  public String getLateSessions() {
+  public Float getLateSessions() {
     return lateSessions;
   }
 
-  public void setLateSessions(String lateSessions) {
+  public void setLateSessions(Float lateSessions) {
     this.lateSessions = lateSessions;
   }
 
-  public AttendanceSummary authorisedAbsenceSessions(String authorisedAbsenceSessions) {
+  public AttendanceSummary authorisedAbsenceSessions(Float authorisedAbsenceSessions) {
     this.authorisedAbsenceSessions = authorisedAbsenceSessions;
     return this;
   }
@@ -233,15 +233,15 @@ public class AttendanceSummary implements Serializable {
    * @return authorisedAbsenceSessions
   **/
   @ApiModelProperty(value = "")
-  public String getAuthorisedAbsenceSessions() {
+  public Float getAuthorisedAbsenceSessions() {
     return authorisedAbsenceSessions;
   }
 
-  public void setAuthorisedAbsenceSessions(String authorisedAbsenceSessions) {
+  public void setAuthorisedAbsenceSessions(Float authorisedAbsenceSessions) {
     this.authorisedAbsenceSessions = authorisedAbsenceSessions;
   }
 
-  public AttendanceSummary unauthorisedAbsenceSessions(String unauthorisedAbsenceSessions) {
+  public AttendanceSummary unauthorisedAbsenceSessions(Float unauthorisedAbsenceSessions) {
     this.unauthorisedAbsenceSessions = unauthorisedAbsenceSessions;
     return this;
   }
@@ -251,11 +251,11 @@ public class AttendanceSummary implements Serializable {
    * @return unauthorisedAbsenceSessions
   **/
   @ApiModelProperty(value = "")
-  public String getUnauthorisedAbsenceSessions() {
+  public Float getUnauthorisedAbsenceSessions() {
     return unauthorisedAbsenceSessions;
   }
 
-  public void setUnauthorisedAbsenceSessions(String unauthorisedAbsenceSessions) {
+  public void setUnauthorisedAbsenceSessions(Float unauthorisedAbsenceSessions) {
     this.unauthorisedAbsenceSessions = unauthorisedAbsenceSessions;
   }
 
