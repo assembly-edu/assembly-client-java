@@ -1,4 +1,4 @@
-# Java SDK for the Assembly API 
+# Java SDK for the Assembly API
 ## Description
 The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
 
@@ -28,10 +28,10 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>education.assembly</groupId>
-    <artifactId>assembly-client-java</artifactId>
-    <version>1.1.0</version>
-    <scope>compile</scope>
+  <groupId>education.assembly</groupId>
+  <artifactId>assembly-client-java</artifactId>
+  <version>1.1.0</version>
+  <scope>compile</scope>
 </dependency>
 ```
 
@@ -47,7 +47,7 @@ compile "education.assembly:assembly-client-java:1.1.0"
 
 At first generate the JAR by executing:
 
-    mvn package
+  mvn package
 
 Then manually install the following JARs:
 
@@ -70,24 +70,24 @@ import java.util.*;
 
 public class AssemblyApiExample {
 
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure HTTP basic authorization: bearerAuth
-        HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setUsername("YOUR USERNAME");
-        bearerAuth.setPassword("YOUR PASSWORD");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    
+    // Configure HTTP basic authorization: bearerAuth
+    HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setUsername("YOUR USERNAME");
+    bearerAuth.setPassword("YOUR PASSWORD");
 
-        AssemblyApi apiInstance = new AssemblyApi();
-        BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
-        try {
-            ModelApiResponse result = apiInstance.bulkUpdateResults(bulkResultsBody);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");
-            e.printStackTrace();
-        }
+    AssemblyApi apiInstance = new AssemblyApi();
+    BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
+    try {
+      ModelApiResponse result = apiInstance.bulkUpdateResults(bulkResultsBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");
+      e.printStackTrace();
     }
+  }
 }
 
 ```

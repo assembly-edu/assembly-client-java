@@ -37,10 +37,10 @@ public enum AssemblyEnvironment {
     }
 
     public String authTokenUri() {
-    	return this.authUri("oauth/token");
+      return this.authUri("oauth/token");
     }
 
     public String authAuthorizeUri() {
-    	return this.authUri("oauth/authorize");
+      return this.authUri("oauth/authorize");
     }
 }
