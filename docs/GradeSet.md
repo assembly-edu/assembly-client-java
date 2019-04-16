@@ -4,9 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**name** | **String** |  |  [optional]
-**grades** | [**List&lt;Grade&gt;**](Grade.md) |  |  [optional]
+**object** | **String** | Descriminator |  [optional]
+**id** | **Integer** | Internal stable ID |  [optional]
+**name** | **String** | The name of the assessment family |  [optional]
+**grades** | [**List&lt;Grade&gt;**](Grade.md) | The grades that this gradeset contains |  [optional]
 
 
 

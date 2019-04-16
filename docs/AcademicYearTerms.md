@@ -4,10 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**name** | **String** |  |  [optional]
-**startDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**endDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**object** | **String** | Descriminator |  [optional]
+**id** | **Integer** | Internal stable ID |  [optional]
+**name** | **String** | Name of the term |  [optional]
+**startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which term begins |  [optional]
+**endDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which term ends |  [optional]
 
 
 

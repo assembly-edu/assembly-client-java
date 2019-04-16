@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Grade
+ * An acceptable name and value for an assessment grade.
  */
+@ApiModel(description = "An acceptable name and value for an assessment grade.")
 
 public class Grade implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "grade";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -36,16 +40,34 @@ public class Grade implements Serializable {
   @JsonProperty("value")
   private Integer value = ;
 
+  public Grade object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public Grade id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID. Results should be written back using the ID (as opposed to the &#x60;name&#x60;)
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID. Results should be written back using the ID (as opposed to the `name`)")
   public Integer getId() {
     return id;
   }
@@ -60,10 +82,10 @@ public class Grade implements Serializable {
   }
 
    /**
-   * Get name
+   * The name of the grade as a string
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the grade as a string")
   public String getName() {
     return name;
   }
@@ -78,10 +100,10 @@ public class Grade implements Serializable {
   }
 
    /**
-   * Get value
+   * The value of the grade as a number
    * @return value
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The value of the grade as a number")
   public Integer getValue() {
     return value;
   }
@@ -100,14 +122,15 @@ public class Grade implements Serializable {
       return false;
     }
     Grade grade = (Grade) o;
-    return Objects.equals(this.id, grade.id) &&
+    return Objects.equals(this.object, grade.object) &&
+        Objects.equals(this.id, grade.id) &&
         Objects.equals(this.name, grade.name) &&
         Objects.equals(this.value, grade.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, value);
+    return Objects.hash(object, id, name, value);
   }
 
 
@@ -116,6 +139,7 @@ public class Grade implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Grade {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");

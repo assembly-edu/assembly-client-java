@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * StaffMemberDemographics
+ * Demographic information about the staff member.
  */
+@ApiModel(description = "Demographic information about the staff member.")
 
 public class StaffMemberDemographics implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "staff_demographics";
 
   @JsonProperty("ethnicity_code")
   private String ethnicityCode = ;
@@ -39,16 +43,34 @@ public class StaffMemberDemographics implements Serializable {
   @JsonProperty("disability")
   private String disability = ;
 
+  public StaffMemberDemographics object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public StaffMemberDemographics ethnicityCode(String ethnicityCode) {
     this.ethnicityCode = ethnicityCode;
     return this;
   }
 
    /**
-   * Get ethnicityCode
+   * A detailed, Dfe standardised way of categorising the ethnicity of a staff member
    * @return ethnicityCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A detailed, Dfe standardised way of categorising the ethnicity of a staff member")
   public String getEthnicityCode() {
     return ethnicityCode;
   }
@@ -63,10 +85,10 @@ public class StaffMemberDemographics implements Serializable {
   }
 
    /**
-   * Get ethnicityGroup
+   * A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
    * @return ethnicityGroup
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections")
   public String getEthnicityGroup() {
     return ethnicityGroup;
   }
@@ -81,10 +103,10 @@ public class StaffMemberDemographics implements Serializable {
   }
 
    /**
-   * Get gender
+   * The gender of a staff member
    * @return gender
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The gender of a staff member")
   public String getGender() {
     return gender;
   }
@@ -99,10 +121,10 @@ public class StaffMemberDemographics implements Serializable {
   }
 
    /**
-   * Get disability
+   * The disability status of a staff member
    * @return disability
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The disability status of a staff member")
   public String getDisability() {
     return disability;
   }
@@ -121,7 +143,8 @@ public class StaffMemberDemographics implements Serializable {
       return false;
     }
     StaffMemberDemographics staffMemberDemographics = (StaffMemberDemographics) o;
-    return Objects.equals(this.ethnicityCode, staffMemberDemographics.ethnicityCode) &&
+    return Objects.equals(this.object, staffMemberDemographics.object) &&
+        Objects.equals(this.ethnicityCode, staffMemberDemographics.ethnicityCode) &&
         Objects.equals(this.ethnicityGroup, staffMemberDemographics.ethnicityGroup) &&
         Objects.equals(this.gender, staffMemberDemographics.gender) &&
         Objects.equals(this.disability, staffMemberDemographics.disability);
@@ -129,7 +152,7 @@ public class StaffMemberDemographics implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ethnicityCode, ethnicityGroup, gender, disability);
+    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, disability);
   }
 
 
@@ -138,6 +161,7 @@ public class StaffMemberDemographics implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffMemberDemographics {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    ethnicityCode: ").append(toIndentedString(ethnicityCode)).append("\n");
     sb.append("    ethnicityGroup: ").append(toIndentedString(ethnicityGroup)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");

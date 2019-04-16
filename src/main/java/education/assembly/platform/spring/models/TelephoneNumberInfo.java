@@ -21,17 +21,62 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * TelephoneNumber
+ * A telephone number.
  */
+@ApiModel(description = "A telephone number.")
 
-public class TelephoneNumber implements Serializable {
+public class TelephoneNumberInfo implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "telephone_number";
 
   @JsonProperty("id")
   private Integer id = ;
 
+  /**
+   * The location associated with the telephone number
+   */
+  public enum TypeEnum {
+    HOME("Home"),
+    
+    WORK("Work"),
+    
+    MOBILE("Mobile"),
+    
+    OTHER("Other"),
+    
+    NULL("null");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
   @JsonProperty("type")
-  private String type = ;
+  private TypeEnum type = ;
 
   @JsonProperty("telephone_number")
   private String telephoneNumber = ;
@@ -39,16 +84,34 @@ public class TelephoneNumber implements Serializable {
   @JsonProperty("is_primary")
   private Boolean isPrimary = ;
 
-  public TelephoneNumber id(Integer id) {
+  public TelephoneNumberInfo object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
+  public TelephoneNumberInfo id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -57,34 +120,34 @@ public class TelephoneNumber implements Serializable {
     this.id = id;
   }
 
-  public TelephoneNumber type(String type) {
+  public TelephoneNumberInfo type(TypeEnum type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * The location associated with the telephone number
    * @return type
   **/
-  @ApiModelProperty(value = "")
-  public String getType() {
+  @ApiModelProperty(value = "The location associated with the telephone number")
+  public TypeEnum getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
-  public TelephoneNumber telephoneNumber(String telephoneNumber) {
+  public TelephoneNumberInfo telephoneNumber(String telephoneNumber) {
     this.telephoneNumber = telephoneNumber;
     return this;
   }
 
    /**
-   * Get telephoneNumber
+   * The telephone number
    * @return telephoneNumber
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The telephone number")
   public String getTelephoneNumber() {
     return telephoneNumber;
   }
@@ -93,16 +156,16 @@ public class TelephoneNumber implements Serializable {
     this.telephoneNumber = telephoneNumber;
   }
 
-  public TelephoneNumber isPrimary(Boolean isPrimary) {
+  public TelephoneNumberInfo isPrimary(Boolean isPrimary) {
     this.isPrimary = isPrimary;
     return this;
   }
 
    /**
-   * Get isPrimary
+   * Indicates whether this is the primary telephone number
    * @return isPrimary
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Indicates whether this is the primary telephone number")
   public Boolean isgetIsPrimary() {
     return isPrimary;
   }
@@ -120,24 +183,26 @@ public class TelephoneNumber implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TelephoneNumber telephoneNumber = (TelephoneNumber) o;
-    return Objects.equals(this.id, telephoneNumber.id) &&
-        Objects.equals(this.type, telephoneNumber.type) &&
-        Objects.equals(this.telephoneNumber, telephoneNumber.telephoneNumber) &&
-        Objects.equals(this.isPrimary, telephoneNumber.isPrimary);
+    TelephoneNumberInfo telephoneNumberInfo = (TelephoneNumberInfo) o;
+    return Objects.equals(this.object, telephoneNumberInfo.object) &&
+        Objects.equals(this.id, telephoneNumberInfo.id) &&
+        Objects.equals(this.type, telephoneNumberInfo.type) &&
+        Objects.equals(this.telephoneNumber, telephoneNumberInfo.telephoneNumber) &&
+        Objects.equals(this.isPrimary, telephoneNumberInfo.isPrimary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, telephoneNumber, isPrimary);
+    return Objects.hash(object, id, type, telephoneNumber, isPrimary);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TelephoneNumber {\n");
+    sb.append("class TelephoneNumberInfo {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    telephoneNumber: ").append(toIndentedString(telephoneNumber)).append("\n");

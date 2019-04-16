@@ -25,11 +25,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * AcademicYear
+ * A school year within a particular school.
  */
+@ApiModel(description = "A school year within a particular school.")
 
 public class AcademicYear implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "academic_year";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -46,16 +50,34 @@ public class AcademicYear implements Serializable {
   @JsonProperty("terms")
   private List<AcademicYearTerms> terms = null;
 
+  public AcademicYear object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public AcademicYear id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -70,10 +92,10 @@ public class AcademicYear implements Serializable {
   }
 
    /**
-   * Get name
+   * Name of academic year
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Name of academic year")
   public String getName() {
     return name;
   }
@@ -88,10 +110,10 @@ public class AcademicYear implements Serializable {
   }
 
    /**
-   * Get startDate
+   * Date on which academic year starts
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Date on which academic year starts")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -106,10 +128,10 @@ public class AcademicYear implements Serializable {
   }
 
    /**
-   * Get endDate
+   * Date on which academic year ends
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Date on which academic year ends")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -132,10 +154,10 @@ public class AcademicYear implements Serializable {
   }
 
    /**
-   * Get terms
+   * Provides details of the individual terms that make up the academic year
    * @return terms
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Provides details of the individual terms that make up the academic year")
   public List<AcademicYearTerms> getTerms() {
     return terms;
   }
@@ -154,7 +176,8 @@ public class AcademicYear implements Serializable {
       return false;
     }
     AcademicYear academicYear = (AcademicYear) o;
-    return Objects.equals(this.id, academicYear.id) &&
+    return Objects.equals(this.object, academicYear.object) &&
+        Objects.equals(this.id, academicYear.id) &&
         Objects.equals(this.name, academicYear.name) &&
         Objects.equals(this.startDate, academicYear.startDate) &&
         Objects.equals(this.endDate, academicYear.endDate) &&
@@ -163,7 +186,7 @@ public class AcademicYear implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, startDate, endDate, terms);
+    return Objects.hash(object, id, name, startDate, endDate, terms);
   }
 
 
@@ -172,6 +195,7 @@ public class AcademicYear implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class AcademicYear {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  |  [optional]
-**description** | **String** |  |  [optional]
+**name** | **String** | The type of the event |  [optional]
+**description** | **String** | Any additional description of this event type |  [optional]
 
 
 

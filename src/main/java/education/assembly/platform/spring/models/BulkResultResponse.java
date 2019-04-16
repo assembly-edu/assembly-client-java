@@ -21,31 +21,32 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * AssessmentMisAssessments
+ * A response object
  */
+@ApiModel(description = "A response object")
 
-public class AssessmentMisAssessments implements Serializable {
+public class BulkResultResponse implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("type")
-  private String type = ;
+  @JsonProperty("message")
+  private String message = ;
 
-  public AssessmentMisAssessments type(String type) {
-    this.type = type;
+  public BulkResultResponse message(String message) {
+    this.message = message;
     return this;
   }
 
    /**
-   * Get type
-   * @return type
+   * Whether the operation was successful
+   * @return message
   **/
-  @ApiModelProperty(value = "")
-  public String getType() {
-    return type;
+  @ApiModelProperty(value = "Whether the operation was successful")
+  public String getMessage() {
+    return message;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -57,22 +58,22 @@ public class AssessmentMisAssessments implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AssessmentMisAssessments assessmentMisAssessments = (AssessmentMisAssessments) o;
-    return Objects.equals(this.type, assessmentMisAssessments.type);
+    BulkResultResponse bulkResultResponse = (BulkResultResponse) o;
+    return Objects.equals(this.message, bulkResultResponse.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type);
+    return Objects.hash(message);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AssessmentMisAssessments {\n");
+    sb.append("class BulkResultResponse {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

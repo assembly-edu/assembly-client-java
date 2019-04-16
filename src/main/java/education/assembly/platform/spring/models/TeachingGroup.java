@@ -16,41 +16,31 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.Assessment;
+import education.assembly.platform.spring.models.Subject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * TeachingGroup
+ * A grouping in which students are taught a subject.
  */
+@ApiModel(description = "A grouping in which students are taught a subject.")
 
 public class TeachingGroup implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("object")
+  private String object = "teaching_group";
+
   @JsonProperty("id")
   private Integer id = ;
 
-  @JsonProperty("school_id")
-  private Integer schoolId = ;
-
-  @JsonProperty("source_id")
-  private String sourceId = ;
-
   @JsonProperty("name")
   private String name = ;
-
-  @JsonProperty("created_at")
-  private OffsetDateTime createdAt = ;
-
-  @JsonProperty("updated_at")
-  private OffsetDateTime updatedAt = ;
-
-  @JsonProperty("academic_year_id")
-  private Integer academicYearId = ;
-
-  @JsonProperty("subject_id")
-  private Integer subjectId = ;
 
   @JsonProperty("start_date")
   private OffsetDateTime startDate = ;
@@ -58,14 +48,41 @@ public class TeachingGroup implements Serializable {
   @JsonProperty("end_date")
   private OffsetDateTime endDate = ;
 
-  @JsonProperty("level")
-  private String level = ;
+  @JsonProperty("academic_year_id")
+  private Integer academicYearId = ;
 
-  @JsonProperty("assessment_id")
-  private Integer assessmentId = ;
+  @JsonProperty("supervisor_ids")
+  private List<Integer> supervisorIds = null;
 
-  @JsonProperty("effective_at")
-  private OffsetDateTime effectiveAt = ;
+  @JsonProperty("student_ids")
+  private List<Integer> studentIds = null;
+
+  @JsonProperty("subject")
+  private Subject subject = null;
+
+  @JsonProperty("mis_level")
+  private String misLevel = ;
+
+  @JsonProperty("assessment")
+  private Assessment assessment = null;
+
+  public TeachingGroup object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
 
   public TeachingGroup id(Integer id) {
     this.id = id;
@@ -73,10 +90,10 @@ public class TeachingGroup implements Serializable {
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -85,52 +102,16 @@ public class TeachingGroup implements Serializable {
     this.id = id;
   }
 
-  public TeachingGroup schoolId(Integer schoolId) {
-    this.schoolId = schoolId;
-    return this;
-  }
-
-   /**
-   * Get schoolId
-   * @return schoolId
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getSchoolId() {
-    return schoolId;
-  }
-
-  public void setSchoolId(Integer schoolId) {
-    this.schoolId = schoolId;
-  }
-
-  public TeachingGroup sourceId(String sourceId) {
-    this.sourceId = sourceId;
-    return this;
-  }
-
-   /**
-   * Get sourceId
-   * @return sourceId
-  **/
-  @ApiModelProperty(value = "")
-  public String getSourceId() {
-    return sourceId;
-  }
-
-  public void setSourceId(String sourceId) {
-    this.sourceId = sourceId;
-  }
-
   public TeachingGroup name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Get name
+   * Name of teaching group
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Name of teaching group")
   public String getName() {
     return name;
   }
@@ -139,88 +120,16 @@ public class TeachingGroup implements Serializable {
     this.name = name;
   }
 
-  public TeachingGroup createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public TeachingGroup updatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public TeachingGroup academicYearId(Integer academicYearId) {
-    this.academicYearId = academicYearId;
-    return this;
-  }
-
-   /**
-   * Get academicYearId
-   * @return academicYearId
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getAcademicYearId() {
-    return academicYearId;
-  }
-
-  public void setAcademicYearId(Integer academicYearId) {
-    this.academicYearId = academicYearId;
-  }
-
-  public TeachingGroup subjectId(Integer subjectId) {
-    this.subjectId = subjectId;
-    return this;
-  }
-
-   /**
-   * Get subjectId
-   * @return subjectId
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getSubjectId() {
-    return subjectId;
-  }
-
-  public void setSubjectId(Integer subjectId) {
-    this.subjectId = subjectId;
-  }
-
   public TeachingGroup startDate(OffsetDateTime startDate) {
     this.startDate = startDate;
     return this;
   }
 
    /**
-   * Get startDate
+   * The start date of the teaching group
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The start date of the teaching group")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -235,10 +144,10 @@ public class TeachingGroup implements Serializable {
   }
 
    /**
-   * Get endDate
+   * The end date of the teaching group
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The end date of the teaching group")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -247,58 +156,128 @@ public class TeachingGroup implements Serializable {
     this.endDate = endDate;
   }
 
-  public TeachingGroup level(String level) {
-    this.level = level;
+  public TeachingGroup academicYearId(Integer academicYearId) {
+    this.academicYearId = academicYearId;
     return this;
   }
 
    /**
-   * Get level
-   * @return level
+   * The ID of the academic year
+   * @return academicYearId
   **/
-  @ApiModelProperty(value = "")
-  public String getLevel() {
-    return level;
+  @ApiModelProperty(value = "The ID of the academic year")
+  public Integer getAcademicYearId() {
+    return academicYearId;
   }
 
-  public void setLevel(String level) {
-    this.level = level;
+  public void setAcademicYearId(Integer academicYearId) {
+    this.academicYearId = academicYearId;
   }
 
-  public TeachingGroup assessmentId(Integer assessmentId) {
-    this.assessmentId = assessmentId;
+  public TeachingGroup supervisorIds(List<Integer> supervisorIds) {
+    this.supervisorIds = supervisorIds;
+    return this;
+  }
+
+  public TeachingGroup addSupervisorIdsItem(Integer supervisorIdsItem) {
+    if (this.supervisorIds == null) {
+      this.supervisorIds = new ArrayList<Integer>();
+    }
+    this.supervisorIds.add(supervisorIdsItem);
     return this;
   }
 
    /**
-   * Get assessmentId
-   * @return assessmentId
+   * The IDs of supervisors (staff members) associated with the teaching group
+   * @return supervisorIds
   **/
-  @ApiModelProperty(value = "")
-  public Integer getAssessmentId() {
-    return assessmentId;
+  @ApiModelProperty(value = "The IDs of supervisors (staff members) associated with the teaching group")
+  public List<Integer> getSupervisorIds() {
+    return supervisorIds;
   }
 
-  public void setAssessmentId(Integer assessmentId) {
-    this.assessmentId = assessmentId;
+  public void setSupervisorIds(List<Integer> supervisorIds) {
+    this.supervisorIds = supervisorIds;
   }
 
-  public TeachingGroup effectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+  public TeachingGroup studentIds(List<Integer> studentIds) {
+    this.studentIds = studentIds;
+    return this;
+  }
+
+  public TeachingGroup addStudentIdsItem(Integer studentIdsItem) {
+    if (this.studentIds == null) {
+      this.studentIds = new ArrayList<Integer>();
+    }
+    this.studentIds.add(studentIdsItem);
     return this;
   }
 
    /**
-   * Get effectiveAt
-   * @return effectiveAt
+   * The IDs of members (students) associated with the teaching group
+   * @return studentIds
   **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getEffectiveAt() {
-    return effectiveAt;
+  @ApiModelProperty(value = "The IDs of members (students) associated with the teaching group")
+  public List<Integer> getStudentIds() {
+    return studentIds;
   }
 
-  public void setEffectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+  public void setStudentIds(List<Integer> studentIds) {
+    this.studentIds = studentIds;
+  }
+
+  public TeachingGroup subject(Subject subject) {
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @ApiModelProperty(value = "")
+  public Subject getSubject() {
+    return subject;
+  }
+
+  public void setSubject(Subject subject) {
+    this.subject = subject;
+  }
+
+  public TeachingGroup misLevel(String misLevel) {
+    this.misLevel = misLevel;
+    return this;
+  }
+
+   /**
+   * The official examination or assessment \&quot;level\&quot; of the teaching group taken directly from the MIS
+   * @return misLevel
+  **/
+  @ApiModelProperty(value = "The official examination or assessment \"level\" of the teaching group taken directly from the MIS")
+  public String getMisLevel() {
+    return misLevel;
+  }
+
+  public void setMisLevel(String misLevel) {
+    this.misLevel = misLevel;
+  }
+
+  public TeachingGroup assessment(Assessment assessment) {
+    this.assessment = assessment;
+    return this;
+  }
+
+   /**
+   * Get assessment
+   * @return assessment
+  **/
+  @ApiModelProperty(value = "")
+  public Assessment getAssessment() {
+    return assessment;
+  }
+
+  public void setAssessment(Assessment assessment) {
+    this.assessment = assessment;
   }
 
 
@@ -311,24 +290,22 @@ public class TeachingGroup implements Serializable {
       return false;
     }
     TeachingGroup teachingGroup = (TeachingGroup) o;
-    return Objects.equals(this.id, teachingGroup.id) &&
-        Objects.equals(this.schoolId, teachingGroup.schoolId) &&
-        Objects.equals(this.sourceId, teachingGroup.sourceId) &&
+    return Objects.equals(this.object, teachingGroup.object) &&
+        Objects.equals(this.id, teachingGroup.id) &&
         Objects.equals(this.name, teachingGroup.name) &&
-        Objects.equals(this.createdAt, teachingGroup.createdAt) &&
-        Objects.equals(this.updatedAt, teachingGroup.updatedAt) &&
-        Objects.equals(this.academicYearId, teachingGroup.academicYearId) &&
-        Objects.equals(this.subjectId, teachingGroup.subjectId) &&
         Objects.equals(this.startDate, teachingGroup.startDate) &&
         Objects.equals(this.endDate, teachingGroup.endDate) &&
-        Objects.equals(this.level, teachingGroup.level) &&
-        Objects.equals(this.assessmentId, teachingGroup.assessmentId) &&
-        Objects.equals(this.effectiveAt, teachingGroup.effectiveAt);
+        Objects.equals(this.academicYearId, teachingGroup.academicYearId) &&
+        Objects.equals(this.supervisorIds, teachingGroup.supervisorIds) &&
+        Objects.equals(this.studentIds, teachingGroup.studentIds) &&
+        Objects.equals(this.subject, teachingGroup.subject) &&
+        Objects.equals(this.misLevel, teachingGroup.misLevel) &&
+        Objects.equals(this.assessment, teachingGroup.assessment);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, schoolId, sourceId, name, createdAt, updatedAt, academicYearId, subjectId, startDate, endDate, level, assessmentId, effectiveAt);
+    return Objects.hash(object, id, name, startDate, endDate, academicYearId, supervisorIds, studentIds, subject, misLevel, assessment);
   }
 
 
@@ -337,19 +314,17 @@ public class TeachingGroup implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class TeachingGroup {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    schoolId: ").append(toIndentedString(schoolId)).append("\n");
-    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    academicYearId: ").append(toIndentedString(academicYearId)).append("\n");
-    sb.append("    subjectId: ").append(toIndentedString(subjectId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    level: ").append(toIndentedString(level)).append("\n");
-    sb.append("    assessmentId: ").append(toIndentedString(assessmentId)).append("\n");
-    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
+    sb.append("    academicYearId: ").append(toIndentedString(academicYearId)).append("\n");
+    sb.append("    supervisorIds: ").append(toIndentedString(supervisorIds)).append("\n");
+    sb.append("    studentIds: ").append(toIndentedString(studentIds)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+    sb.append("    misLevel: ").append(toIndentedString(misLevel)).append("\n");
+    sb.append("    assessment: ").append(toIndentedString(assessment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

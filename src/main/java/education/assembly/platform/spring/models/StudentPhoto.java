@@ -21,8 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * StudentPhoto
+ * The student&#39;s photo
  */
+@ApiModel(description = "The student's photo")
 
 public class StudentPhoto implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -39,10 +40,10 @@ public class StudentPhoto implements Serializable {
   }
 
    /**
-   * Get url
+   * A URL for downloading the photo, expires after one hour
    * @return url
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A URL for downloading the photo, expires after one hour")
   public String getUrl() {
     return url;
   }
@@ -57,10 +58,10 @@ public class StudentPhoto implements Serializable {
   }
 
    /**
-   * Get hash
+   * An indication of photo change between syncs, it is not necessarily a checksum of the photo
    * @return hash
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "An indication of photo change between syncs, it is not necessarily a checksum of the photo")
   public String getHash() {
     return hash;
   }

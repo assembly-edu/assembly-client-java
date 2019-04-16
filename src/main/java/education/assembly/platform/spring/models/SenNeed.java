@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * SenNeed
+ * A student&#39;s SEN Need information.
  */
+@ApiModel(description = "A student's SEN Need information.")
 
 public class SenNeed implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "sen_need";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -48,16 +52,34 @@ public class SenNeed implements Serializable {
   @JsonProperty("priority")
   private Integer priority = ;
 
+  public SenNeed object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public SenNeed id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -72,10 +94,10 @@ public class SenNeed implements Serializable {
   }
 
    /**
-   * Get startDate
+   * The start date for the need
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The start date for the need")
   public String getStartDate() {
     return startDate;
   }
@@ -90,10 +112,10 @@ public class SenNeed implements Serializable {
   }
 
    /**
-   * Get senNeedCode
+   * The code of the sen need
    * @return senNeedCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The code of the sen need")
   public String getSenNeedCode() {
     return senNeedCode;
   }
@@ -108,10 +130,10 @@ public class SenNeed implements Serializable {
   }
 
    /**
-   * Get senNeedName
+   * The name of the sen need
    * @return senNeedName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the sen need")
   public String getSenNeedName() {
     return senNeedName;
   }
@@ -126,10 +148,10 @@ public class SenNeed implements Serializable {
   }
 
    /**
-   * Get senBroadNeedTypeCode
+   * The code for the broad need
    * @return senBroadNeedTypeCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The code for the broad need")
   public String getSenBroadNeedTypeCode() {
     return senBroadNeedTypeCode;
   }
@@ -144,10 +166,10 @@ public class SenNeed implements Serializable {
   }
 
    /**
-   * Get senBroadNeedTypeName
+   * The name of the broad need
    * @return senBroadNeedTypeName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the broad need")
   public String getSenBroadNeedTypeName() {
     return senBroadNeedTypeName;
   }
@@ -162,10 +184,10 @@ public class SenNeed implements Serializable {
   }
 
    /**
-   * Get priority
+   * The priority of the sen need
    * @return priority
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The priority of the sen need")
   public Integer getPriority() {
     return priority;
   }
@@ -184,7 +206,8 @@ public class SenNeed implements Serializable {
       return false;
     }
     SenNeed senNeed = (SenNeed) o;
-    return Objects.equals(this.id, senNeed.id) &&
+    return Objects.equals(this.object, senNeed.object) &&
+        Objects.equals(this.id, senNeed.id) &&
         Objects.equals(this.startDate, senNeed.startDate) &&
         Objects.equals(this.senNeedCode, senNeed.senNeedCode) &&
         Objects.equals(this.senNeedName, senNeed.senNeedName) &&
@@ -195,7 +218,7 @@ public class SenNeed implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, startDate, senNeedCode, senNeedName, senBroadNeedTypeCode, senBroadNeedTypeName, priority);
+    return Objects.hash(object, id, startDate, senNeedCode, senNeedName, senBroadNeedTypeCode, senBroadNeedTypeName, priority);
   }
 
 
@@ -204,6 +227,7 @@ public class SenNeed implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class SenNeed {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    senNeedCode: ").append(toIndentedString(senNeedCode)).append("\n");

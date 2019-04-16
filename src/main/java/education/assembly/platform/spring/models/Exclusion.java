@@ -22,11 +22,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * Exclusion
+ * An official exclusion of a student from a school.
  */
+@ApiModel(description = "An official exclusion of a student from a school.")
 
 public class Exclusion implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "exclusion";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -34,8 +38,47 @@ public class Exclusion implements Serializable {
   @JsonProperty("student_id")
   private Integer studentId = ;
 
+  /**
+   * The exclusions type, where &#x60;Reinstated&#x60; may be from a fixed term or permanent exclusion
+   */
+  public enum ExclusionTypeEnum {
+    FIXED_TERM("Fixed Term"),
+    
+    LUNCHTIME("Lunchtime"),
+    
+    PERMANENT("Permanent"),
+    
+    REINSTATED("Reinstated");
+
+    private String value;
+
+    ExclusionTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ExclusionTypeEnum fromValue(String text) {
+      for (ExclusionTypeEnum b : ExclusionTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
   @JsonProperty("exclusion_type")
-  private String exclusionType = ;
+  private ExclusionTypeEnum exclusionType = ;
 
   @JsonProperty("exclusion_reason")
   private String exclusionReason = ;
@@ -55,16 +98,34 @@ public class Exclusion implements Serializable {
   @JsonProperty("exclusion_length")
   private Integer exclusionLength = ;
 
+  public Exclusion object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public Exclusion id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -79,10 +140,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get studentId
+   * The ID of the student that the exclusion is attached to
    * @return studentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the student that the exclusion is attached to")
   public Integer getStudentId() {
     return studentId;
   }
@@ -91,21 +152,21 @@ public class Exclusion implements Serializable {
     this.studentId = studentId;
   }
 
-  public Exclusion exclusionType(String exclusionType) {
+  public Exclusion exclusionType(ExclusionTypeEnum exclusionType) {
     this.exclusionType = exclusionType;
     return this;
   }
 
    /**
-   * Get exclusionType
+   * The exclusions type, where &#x60;Reinstated&#x60; may be from a fixed term or permanent exclusion
    * @return exclusionType
   **/
-  @ApiModelProperty(value = "")
-  public String getExclusionType() {
+  @ApiModelProperty(value = "The exclusions type, where `Reinstated` may be from a fixed term or permanent exclusion")
+  public ExclusionTypeEnum getExclusionType() {
     return exclusionType;
   }
 
-  public void setExclusionType(String exclusionType) {
+  public void setExclusionType(ExclusionTypeEnum exclusionType) {
     this.exclusionType = exclusionType;
   }
 
@@ -115,10 +176,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get exclusionReason
+   * The exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS
    * @return exclusionReason
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS")
   public String getExclusionReason() {
     return exclusionReason;
   }
@@ -133,10 +194,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get startDate
+   * The date on which the exclusions starts
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date on which the exclusions starts")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -151,10 +212,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get startSession
+   * The session (AM/PM) in which the exclusion starts
    * @return startSession
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The session (AM/PM) in which the exclusion starts")
   public String getStartSession() {
     return startSession;
   }
@@ -169,10 +230,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get endDate
+   * The date on which the exclusion ends
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date on which the exclusion ends")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -187,10 +248,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get endSession
+   * The session (AM/PM) in which the exclusion ends
    * @return endSession
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The session (AM/PM) in which the exclusion ends")
   public String getEndSession() {
     return endSession;
   }
@@ -205,10 +266,10 @@ public class Exclusion implements Serializable {
   }
 
    /**
-   * Get exclusionLength
+   * The total length, in sessions, of the exclusion
    * @return exclusionLength
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The total length, in sessions, of the exclusion")
   public Integer getExclusionLength() {
     return exclusionLength;
   }
@@ -227,7 +288,8 @@ public class Exclusion implements Serializable {
       return false;
     }
     Exclusion exclusion = (Exclusion) o;
-    return Objects.equals(this.id, exclusion.id) &&
+    return Objects.equals(this.object, exclusion.object) &&
+        Objects.equals(this.id, exclusion.id) &&
         Objects.equals(this.studentId, exclusion.studentId) &&
         Objects.equals(this.exclusionType, exclusion.exclusionType) &&
         Objects.equals(this.exclusionReason, exclusion.exclusionReason) &&
@@ -240,7 +302,7 @@ public class Exclusion implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, studentId, exclusionType, exclusionReason, startDate, startSession, endDate, endSession, exclusionLength);
+    return Objects.hash(object, id, studentId, exclusionType, exclusionReason, startDate, startSession, endDate, endSession, exclusionLength);
   }
 
 
@@ -249,6 +311,7 @@ public class Exclusion implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Exclusion {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    exclusionType: ").append(toIndentedString(exclusionType)).append("\n");

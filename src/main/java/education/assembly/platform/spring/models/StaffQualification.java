@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * StaffQualification
+ * A degree completed by a staff member.
  */
+@ApiModel(description = "A degree completed by a staff member.")
 
 public class StaffQualification implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "staff_qualification";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -48,16 +52,34 @@ public class StaffQualification implements Serializable {
   @JsonProperty("second_subject_name")
   private String secondSubjectName = ;
 
+  public StaffQualification object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public StaffQualification id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -72,10 +94,10 @@ public class StaffQualification implements Serializable {
   }
 
    /**
-   * Get qualificationCode
+   * A code describing the type of qualification
    * @return qualificationCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A code describing the type of qualification")
   public String getQualificationCode() {
     return qualificationCode;
   }
@@ -90,10 +112,10 @@ public class StaffQualification implements Serializable {
   }
 
    /**
-   * Get degreeClass
+   * Identifies the result of the qualification
    * @return degreeClass
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Identifies the result of the qualification")
   public String getDegreeClass() {
     return degreeClass;
   }
@@ -108,10 +130,10 @@ public class StaffQualification implements Serializable {
   }
 
    /**
-   * Get firstSubjectCode
+   * A code identifying the primary or joint main subject of the qualification
    * @return firstSubjectCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A code identifying the primary or joint main subject of the qualification")
   public String getFirstSubjectCode() {
     return firstSubjectCode;
   }
@@ -126,10 +148,10 @@ public class StaffQualification implements Serializable {
   }
 
    /**
-   * Get firstSubjectName
+   * The name of the main/joint subject
    * @return firstSubjectName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the main/joint subject")
   public String getFirstSubjectName() {
     return firstSubjectName;
   }
@@ -144,10 +166,10 @@ public class StaffQualification implements Serializable {
   }
 
    /**
-   * Get secondSubjectCode
+   * A code identifying the secondary or joint main subject of the qualification
    * @return secondSubjectCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A code identifying the secondary or joint main subject of the qualification")
   public String getSecondSubjectCode() {
     return secondSubjectCode;
   }
@@ -162,10 +184,10 @@ public class StaffQualification implements Serializable {
   }
 
    /**
-   * Get secondSubjectName
+   * The name of the secondary/joint subject
    * @return secondSubjectName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the secondary/joint subject")
   public String getSecondSubjectName() {
     return secondSubjectName;
   }
@@ -184,7 +206,8 @@ public class StaffQualification implements Serializable {
       return false;
     }
     StaffQualification staffQualification = (StaffQualification) o;
-    return Objects.equals(this.id, staffQualification.id) &&
+    return Objects.equals(this.object, staffQualification.object) &&
+        Objects.equals(this.id, staffQualification.id) &&
         Objects.equals(this.qualificationCode, staffQualification.qualificationCode) &&
         Objects.equals(this.degreeClass, staffQualification.degreeClass) &&
         Objects.equals(this.firstSubjectCode, staffQualification.firstSubjectCode) &&
@@ -195,7 +218,7 @@ public class StaffQualification implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, qualificationCode, degreeClass, firstSubjectCode, firstSubjectName, secondSubjectCode, secondSubjectName);
+    return Objects.hash(object, id, qualificationCode, degreeClass, firstSubjectCode, firstSubjectName, secondSubjectCode, secondSubjectName);
   }
 
 
@@ -204,6 +227,7 @@ public class StaffQualification implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffQualification {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    qualificationCode: ").append(toIndentedString(qualificationCode)).append("\n");
     sb.append("    degreeClass: ").append(toIndentedString(degreeClass)).append("\n");

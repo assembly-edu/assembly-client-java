@@ -21,17 +21,24 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * School
+ * Details for the school associated with the provided &#x60;access_token&#x60;.
  */
+@ApiModel(description = "Details for the school associated with the provided `access_token`.")
 
 public class School implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "school";
 
   @JsonProperty("name")
   private String name = ;
 
   @JsonProperty("urn")
   private String urn = ;
+
+  @JsonProperty("mis_provider")
+  private String misProvider = ;
 
   @JsonProperty("la_code")
   private Integer laCode = ;
@@ -60,16 +67,34 @@ public class School implements Serializable {
   @JsonProperty("head_teacher")
   private String headTeacher = ;
 
+  public School object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public School name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Get name
+   * Name of the school
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Name of the school")
   public String getName() {
     return name;
   }
@@ -84,10 +109,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get urn
+   * Unique Reference Number (URN) of the school
    * @return urn
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Unique Reference Number (URN) of the school")
   public String getUrn() {
     return urn;
   }
@@ -96,16 +121,34 @@ public class School implements Serializable {
     this.urn = urn;
   }
 
+  public School misProvider(String misProvider) {
+    this.misProvider = misProvider;
+    return this;
+  }
+
+   /**
+   * Name of school&#39;s MIS provider
+   * @return misProvider
+  **/
+  @ApiModelProperty(value = "Name of school's MIS provider")
+  public String getMisProvider() {
+    return misProvider;
+  }
+
+  public void setMisProvider(String misProvider) {
+    this.misProvider = misProvider;
+  }
+
   public School laCode(Integer laCode) {
     this.laCode = laCode;
     return this;
   }
 
    /**
-   * Get laCode
+   * The code of the local authority that the school belongs to
    * @return laCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The code of the local authority that the school belongs to")
   public Integer getLaCode() {
     return laCode;
   }
@@ -120,10 +163,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get laName
+   * The name of the local authority that the school belongs to
    * @return laName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the local authority that the school belongs to")
   public String getLaName() {
     return laName;
   }
@@ -138,10 +181,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get establishmentNumber
+   * The school&#39;s establishment number
    * @return establishmentNumber
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The school's establishment number")
   public Integer getEstablishmentNumber() {
     return establishmentNumber;
   }
@@ -156,10 +199,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get establishmentType
+   * The type of establishment
    * @return establishmentType
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The type of establishment")
   public String getEstablishmentType() {
     return establishmentType;
   }
@@ -174,10 +217,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get phase
+   * The phase of the school (i.e. \&quot;Secondary, \&quot;Primary\&quot; or \&quot;All through\&quot;)
    * @return phase
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The phase of the school (i.e. \"Secondary, \"Primary\" or \"All through\")")
   public String getPhase() {
     return phase;
   }
@@ -192,10 +235,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get street
+   * The street that the school is on
    * @return street
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The street that the school is on")
   public String getStreet() {
     return street;
   }
@@ -210,10 +253,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get town
+   * The town that the school is in
    * @return town
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The town that the school is in")
   public String getTown() {
     return town;
   }
@@ -228,10 +271,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get postcode
+   * The postcode of the school
    * @return postcode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The postcode of the school")
   public String getPostcode() {
     return postcode;
   }
@@ -246,10 +289,10 @@ public class School implements Serializable {
   }
 
    /**
-   * Get headTeacher
+   * The school&#39;s head teacher name
    * @return headTeacher
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The school's head teacher name")
   public String getHeadTeacher() {
     return headTeacher;
   }
@@ -268,8 +311,10 @@ public class School implements Serializable {
       return false;
     }
     School school = (School) o;
-    return Objects.equals(this.name, school.name) &&
+    return Objects.equals(this.object, school.object) &&
+        Objects.equals(this.name, school.name) &&
         Objects.equals(this.urn, school.urn) &&
+        Objects.equals(this.misProvider, school.misProvider) &&
         Objects.equals(this.laCode, school.laCode) &&
         Objects.equals(this.laName, school.laName) &&
         Objects.equals(this.establishmentNumber, school.establishmentNumber) &&
@@ -283,7 +328,7 @@ public class School implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, urn, laCode, laName, establishmentNumber, establishmentType, phase, street, town, postcode, headTeacher);
+    return Objects.hash(object, name, urn, misProvider, laCode, laName, establishmentNumber, establishmentType, phase, street, town, postcode, headTeacher);
   }
 
 
@@ -292,8 +337,10 @@ public class School implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class School {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    urn: ").append(toIndentedString(urn)).append("\n");
+    sb.append("    misProvider: ").append(toIndentedString(misProvider)).append("\n");
     sb.append("    laCode: ").append(toIndentedString(laCode)).append("\n");
     sb.append("    laName: ").append(toIndentedString(laName)).append("\n");
     sb.append("    establishmentNumber: ").append(toIndentedString(establishmentNumber)).append("\n");

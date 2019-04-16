@@ -19,6 +19,7 @@ import education.assembly.platform.spring.models.Assessment;
 import education.assembly.platform.spring.models.AssessmentPoint;
 import education.assembly.platform.spring.models.Attendance;
 import education.assembly.platform.spring.models.AttendanceSummary;
+import education.assembly.platform.spring.models.BulkResultResponse;
 import education.assembly.platform.spring.models.BulkResultsBody;
 import education.assembly.platform.spring.models.CalendarEvent;
 import education.assembly.platform.spring.models.Contact;
@@ -26,8 +27,8 @@ import education.assembly.platform.spring.models.DietaryNeed;
 import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
 import education.assembly.platform.spring.models.GradeSet;
+import education.assembly.platform.spring.models.Group;
 import education.assembly.platform.spring.models.MedicalCondition;
-import education.assembly.platform.spring.models.ModelApiResponse;
 import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
 import education.assembly.platform.spring.models.Result;
@@ -38,6 +39,7 @@ import education.assembly.platform.spring.models.SchoolStatus;
 import education.assembly.platform.spring.models.StaffAbsence;
 import education.assembly.platform.spring.models.StaffContract;
 import education.assembly.platform.spring.models.StaffMember;
+import education.assembly.platform.spring.models.StandardError;
 import education.assembly.platform.spring.models.Student;
 import education.assembly.platform.spring.models.Subject;
 import education.assembly.platform.spring.models.TeachingGroup;
@@ -82,13 +84,17 @@ public class AssemblyApi {
 
     /**
      * Update Multiple Results
-     * Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
-     * <p><b>200</b> - success
+     * Multiple results can be updated simultaneously by providing the relevant &#x60;result_ids&#x60; in the body of your request. The response will tell you whether the batch of updates has either been successful or failed
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param bulkResultsBody The bulkResultsBody parameter
-     * @return ModelApiResponse
+     * @return BulkResultResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ModelApiResponse bulkUpdateResults(BulkResultsBody bulkResultsBody) throws RestClientException {
+    public BulkResultResponse bulkUpdateResults(BulkResultsBody bulkResultsBody) throws RestClientException {
         Object postBody = bulkResultsBody;
         
         String path = UriComponentsBuilder.fromPath("/results").build().toUriString();
@@ -106,15 +112,19 @@ public class AssemblyApi {
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
-        ParameterizedTypeReference<ModelApiResponse> returnType = new ParameterizedTypeReference<ModelApiResponse>() {};
+        ParameterizedTypeReference<BulkResultResponse> returnType = new ParameterizedTypeReference<BulkResultResponse>() {};
         return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * Write Results
-     * Given a subject_id, facet_id, assessment_point_rank and assessment_id results can be sent to the Platform, along with a student_id, the grade_id and (optionally) the result_date.  **Permissions**: A school level access token with the assessments.write scope is needed to write results back to the Platform. 
-     * <p><b>200</b> - success
+     * Given a &#x60;subject_id&#x60;, &#x60;facet_id&#x60;, &#x60;assessment_point_rank&#x60; and &#x60;assessment_id&#x60; results can be sent to the Platform, along with a &#x60;student_id&#x60;, the &#x60;grade_id&#x60; and (optionally) the &#x60;result_date&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param resultBody The resultBody parameter
      * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
@@ -137,17 +147,21 @@ public class AssemblyApi {
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
         return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View an Academic Year
-     * Returns a single academic year for the school associated with the provided access_token.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * Returns a single academic year for the school associated with the provided &#x60;access_token&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return AcademicYear
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -175,17 +189,21 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<AcademicYear> returnType = new ParameterizedTypeReference<AcademicYear>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View an Assessment
-     * Returns a single assessment for the given id.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * Returns a single assessment for the given ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return Assessment
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -213,16 +231,20 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<Assessment> returnType = new ParameterizedTypeReference<Assessment>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View Grade Set for an Assessment
-     * Returns a grade_set (an acceptable list of values) for the assessment identified by the assessment_id. Grades should be written back to the Platform using the grade_id.
-     * <p><b>200</b> - success
-     * @param id id of the entity
+     * Returns a &#x60;grade_set&#x60; (an acceptable list of values) for the assessment identifierentified by the &#x60;assessment_id&#x60;. Grades should be written back to the Platform using the &#x60;grade_id&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return GradeSet
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -250,32 +272,36 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<GradeSet> returnType = new ParameterizedTypeReference<GradeSet>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View an Assessment Point
-     * Returns a single assessment point for the given rank.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * Returns a single assessment point for the given rank
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param assessmentPointRank The rank of the assessment point as an Integer
      * @return AssessmentPoint
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public AssessmentPoint findAssessmentPoint(Integer id) throws RestClientException {
+    public AssessmentPoint findAssessmentPoint(Integer assessmentPointRank) throws RestClientException {
         Object postBody = null;
         
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findAssessmentPoint");
+        // verify the required parameter 'assessmentPointRank' is set
+        if (assessmentPointRank == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentPointRank' when calling findAssessmentPoint");
         }
         
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("id", id);
-        String path = UriComponentsBuilder.fromPath("/assessment_points/{id}").buildAndExpand(uriVariables).toUriString();
+        uriVariables.put("assessment_point_rank", assessmentPointRank);
+        String path = UriComponentsBuilder.fromPath("/assessment_points/{assessment_point_rank}").buildAndExpand(uriVariables).toUriString();
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
@@ -288,17 +314,21 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<AssessmentPoint> returnType = new ParameterizedTypeReference<AssessmentPoint>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * View an Dietary Need
-     * Returns a single dietary need for the given id.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * View a Dietary Need
+     * Returns a single dietary need for the given ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return DietaryNeed
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -326,17 +356,21 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<DietaryNeed> returnType = new ParameterizedTypeReference<DietaryNeed>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Facet
-     * Returns a single facet for the given id.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * Returns a single facet for the given ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return Facet
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -364,17 +398,21 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<Facet> returnType = new ParameterizedTypeReference<Facet>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Grade Set
-     * Returns a single grade set for the given id.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * Returns a single grade set for the given ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return GradeSet
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -402,17 +440,63 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<GradeSet> returnType = new ParameterizedTypeReference<GradeSet>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * View an Medical Condition
-     * Returns a single medical condition for the given id.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * View a Group
+     * Returns a list of groups that match the given set of filters
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @return Group
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Group findGroup(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findGroup");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/groups/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<Group> returnType = new ParameterizedTypeReference<Group>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Medical Condition
+     * Returns a single medical condition for the given ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @return MedicalCondition
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -440,23 +524,26 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<MedicalCondition> returnType = new ParameterizedTypeReference<MedicalCondition>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Registration Group
-     * Returns a list of registration groups that match the given set of filters.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * Returns a list of registration groups that match the given set of filters
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @return RegistrationGroup
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public RegistrationGroup findRegistrationGroup(Integer id, OffsetDateTime date, Integer academicYearId) throws RestClientException {
+    public RegistrationGroup findRegistrationGroup(Integer id, OffsetDateTime date) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -474,7 +561,6 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -483,32 +569,27 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<RegistrationGroup> returnType = new ParameterizedTypeReference<RegistrationGroup>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * Get School Details
-     * Returns details for the school associated with the provided access_token.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
+     * View School Details
+     * Returns details for the school associated with the provided &#x60;access_token&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @return School
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public School findSchool(Integer id) throws RestClientException {
+    public School findSchool() throws RestClientException {
         Object postBody = null;
         
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findSchool");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("id", id);
-        String path = UriComponentsBuilder.fromPath("/school").buildAndExpand(uriVariables).toUriString();
+        String path = UriComponentsBuilder.fromPath("/school").build().toUriString();
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
@@ -521,19 +602,23 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<School> returnType = new ParameterizedTypeReference<School>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Staff Member
-     * Returns an individual staff member record for the given ID.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
-     * @param demographics include demographics data
-     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * Returns an individual staff member record for the given ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param demographics Include demographics data
+     * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @return StaffMember
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -564,25 +649,29 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<StaffMember> returnType = new ParameterizedTypeReference<StaffMember>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Student
-     * Returns an individual student record for the given ID.  **Note:** the response shown includes student demographics, contacts, student SEN needs, student addresses, photo and student care data but these will only be present if you have permission to access it and pass &#x60;demographics&#x60;, &#x60;contacts&#x60;, &#x60;sen_needs&#x60;, &#x60;addresses&#x60;, &#x60;photo&#x60;, &#x60;care&#x60; and &#x60;ever_in_care&#x60; respectively  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).  ### Photo Notes When requesting photo information the response includes a &#x60;photo.url&#x60; property, this URL should be treated as confidential and used to download the students photo to your storage system of choice. The URL is *not designed for hotlinking directly in the browser* for end users. URLs are signed and only valid for 1 hour after which time you will receive a 400 error.  Once downloaded to avoid repeatedly syncing unchanged photos you should code your application to compare the &#x60;photo.hash&#x60; property to detect changes in student photos since your last sync, it is guaranteed that changes in a photo will change the hash, however the hash is only intended to be used to detect photo changes and is not guaranteed to match a checksum of the files contents.  Photos are currently provided on an \&quot;as is\&quot; basis straight from the source MIS, this means the format, quality, metadata and dimensions are not guaranteed. We reserve the right to normalise this data in the future but your application should be resistant to differing photo formats. 
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
-     * @param demographics include demographics data
-     * @param contacts include contacts data
-     * @param senNeeds include SEN needs data
-     * @param addresses include student address data
-     * @param care include student care data (you must also supply the demographics parameter)
-     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
-     * @param languages include student language data
-     * @param photo include student photo data
+     * Returns an individual student record for the given ID.  **Note:** the response shown includes student demographics, contacts, student SEN needs, student addresses, photo and student care data but these will only be present if you have permission to access it and pass &#x60;demographics&#x60;, &#x60;contacts&#x60;, &#x60;sen_needs&#x60;, &#x60;addresses&#x60;, &#x60;photo&#x60;, &#x60;care&#x60; and &#x60;ever_in_care&#x60; respectively.  ### Photo Notes When requesting photo information the response includes a &#x60;photo.url&#x60; property, this URL should be treated as confidential and used to download the students photo to your storage system of choice. The URL is *not designed for hotlinking directly in the browser* for end users. URLs are signed and only valid for 1 hour after which time you will receive a 400 error.  Once downloaded to avoid repeatedly syncing unchanged photos you should code your application to compare the &#x60;photo.hash&#x60; property to detect changes in student photos since your last sync, it is guaranteed that changes in a photo will change the hash, however the hash is only intended to be used to detect photo changes and is not guaranteed to match a checksum of the files contents.  Photos are currently provided on an \&quot;as is\&quot; basis straight from the source MIS, this means the format, quality, metadata and dimensions are not guaranteed. We reserve the right to normalise this data in the future but your application should be resistant to differing photo formats. 
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param demographics Include demographics data
+     * @param contacts Include contacts data
+     * @param senNeeds Include SEN needs data
+     * @param addresses Include student address data
+     * @param care Include student care data (you must also supply the demographics parameter)
+     * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages Include student language data
+     * @param photo Include student photo data
      * @return Student
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -619,24 +708,26 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<Student> returnType = new ParameterizedTypeReference<Student>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Teaching Group
-     * Returns a list of teaching groups that match the given set of filters.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
-     * @param groupId a group_id to filter by
+     * Returns a list of teaching groups that match the given set of filters
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @return TeachingGroup
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public TeachingGroup findTeachingGroup(Integer id, OffsetDateTime date, Integer academicYearId, Integer groupId) throws RestClientException {
+    public TeachingGroup findTeachingGroup(Integer id, OffsetDateTime date) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -654,8 +745,6 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "group_id", groupId));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -664,23 +753,26 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<TeachingGroup> returnType = new ParameterizedTypeReference<TeachingGroup>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View a Year Group
-     * Returns a list of year groups that match the given set of filters.
-     * <p><b>200</b> - success
-     * <p><b>404</b> - { \&quot;message\&quot;: \&quot;not found\&quot; }
-     * @param id id of the entity
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * Returns a list of year groups that match the given set of filters
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @return YearGroup
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public YearGroup findYearGroup(Integer id, OffsetDateTime date, Integer academicYearId) throws RestClientException {
+    public YearGroup findYearGroup(Integer id, OffsetDateTime date) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -698,7 +790,6 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -707,15 +798,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<YearGroup> returnType = new ParameterizedTypeReference<YearGroup>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Academic Years
-     * Returns a list of academic years for the school associated with the provided access_token. The dates of these academic years can be used to filter data in other API endpoints.
-     * <p><b>200</b> - success
+     * Returns a list of academic years for the school associated with the provided &#x60;access_token&#x60;. The dates of these academic years can be used to filter data in other API endpoints
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;AcademicYear&gt;
@@ -740,27 +835,30 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<AcademicYear>> returnType = new ParameterizedTypeReference<List<AcademicYear>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View Results for an Assessment Point
-     * Returns a list of results for the given assessment_point_rank and students.
-     * <p><b>200</b> - success
-     * @param id id of the entity
-     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-     * @param assessmentPointRank the Assessment Point rank
+     * Returns a list of results for the given &#x60;assessment_point_rank&#x60; and students
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param assessmentPointRank The rank of the assessment point as an Integer
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
      * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Result> getAssessmentPointResults(Integer id, List<Integer> students, Integer assessmentPointRank) throws RestClientException {
+    public List<Result> getAssessmentPointResults(Integer assessmentPointRank, List<Integer> students) throws RestClientException {
         Object postBody = null;
         
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling getAssessmentPointResults");
+        // verify the required parameter 'assessmentPointRank' is set
+        if (assessmentPointRank == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'assessmentPointRank' when calling getAssessmentPointResults");
         }
         
         // verify the required parameter 'students' is set
@@ -770,14 +868,13 @@ public class AssemblyApi {
         
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("id", id);
-        String path = UriComponentsBuilder.fromPath("/assessment_points/{id}/results").buildAndExpand(uriVariables).toUriString();
+        uriVariables.put("assessment_point_rank", assessmentPointRank);
+        String path = UriComponentsBuilder.fromPath("/assessment_points/{assessment_point_rank}/results").buildAndExpand(uriVariables).toUriString();
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "assessment_point_rank", assessmentPointRank));
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
 
         final String[] accepts = { 
@@ -787,21 +884,27 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Assessment Points
-     * Returns a list of assessment points. An assessment_point object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the assessment_point_rank should be used - this will remain constant across all environments.
-     * <p><b>200</b> - success
+     * Returns a list of assessment points. An &#x60;assessment_point&#x60; object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the &#x60;assessment_point_rank&#x60; should be used - this will remain constant across all environments
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param yearCode Filter by school year
+     * @param type Filter by assessment point type
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;AssessmentPoint&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<AssessmentPoint> getAssessmentPoints(Integer perPage, Integer page) throws RestClientException {
+    public List<AssessmentPoint> getAssessmentPoints(Integer yearCode, String type, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/assessment_points").build().toUriString();
@@ -810,6 +913,8 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
@@ -820,17 +925,21 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<AssessmentPoint>> returnType = new ParameterizedTypeReference<List<AssessmentPoint>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * View Results for an Assessment
-     * Returns a list of results for the given assessment_id and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this support article.
-     * <p><b>200</b> - success
-     * @param id id of the entity
-     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+     * Returns a list of results for the given &#x60;assessment_id&#x60; and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this [support article](http://help.assembly.education/article/89-getting-prior-attainment-from-the-platform)
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
      * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -865,48 +974,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * List Attendance Summaries
-     * Returns a list of attendance summaries.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param studentId a student_id to filter by
-     * @param registrationGroupId id of a registration group
-     * @return List&lt;AttendanceSummary&gt;
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public List<AttendanceSummary> getAssessmentSummaries(Integer studentId, Integer registrationGroupId) throws RestClientException {
-        Object postBody = null;
-        
-        String path = UriComponentsBuilder.fromPath("/attendances/summaries").build().toUriString();
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
-
-        final String[] accepts = { 
-            "application/vnd.assembly+json; version=1.1"
-        };
-        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-        final String[] contentTypes = { };
-        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "bearerAuth" };
-
-        ParameterizedTypeReference<List<AttendanceSummary>> returnType = new ParameterizedTypeReference<List<AttendanceSummary>>() {};
-        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    }
-    /**
      * List Assessments
-     * Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result.
-     * <p><b>200</b> - success
+     * Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Assessment&gt;
@@ -931,25 +1011,75 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Assessment>> returnType = new ParameterizedTypeReference<List<Assessment>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Attendance Summaries
+     * Returns a list of attendance summaries
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param studentId Filter to the specified student
+     * @param registrationGroupId ID of a registration group
+     * @param academicYearId Include all groups and group memberships from the specified academic year
+     * @return List&lt;AttendanceSummary&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer academicYearId) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/attendances/summaries").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<AttendanceSummary>> returnType = new ParameterizedTypeReference<List<AttendanceSummary>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Attendances
-     * Returns a list of attendances. By default, attendances are returned from the start to the end of the current week.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param studentId a student_id to filter by
-     * @param registrationGroupId id of a registration group
-     * @param startDate the start date of the period to query
-     * @param endDate the end date of the period to query
+     * Returns a list of attendances. By default, attendances are returned from the start to the end of the current week
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param studentId Filter to the specified student
+     * @param registrationGroupId ID of a registration group
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Attendance&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Attendance> getAttendances(Integer studentId, Integer registrationGroupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
+    public List<Attendance> getAttendances(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/attendances").build().toUriString();
@@ -965,6 +1095,9 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
         };
@@ -972,22 +1105,28 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Attendance>> returnType = new ParameterizedTypeReference<List<Attendance>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Calendar Events
-     * Returns a list of calendar events from the school calendar. We strongly recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param eventType a calendar object type from the underlying MIS
+     * Returns a list of calendar events from the school calendar. We *strongly* recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param eventType Filter by a calendar object type from the underlying MIS
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;CalendarEvent&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<CalendarEvent> getCalendarEvents(String eventType, Integer perPage, Integer page) throws RestClientException {
+    public List<CalendarEvent> getCalendarEvents(OffsetDateTime ifModifiedSince, String eventType, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/calendar_events").build().toUriString();
@@ -1000,6 +1139,9 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
         };
@@ -1007,16 +1149,20 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<CalendarEvent>> returnType = new ParameterizedTypeReference<List<CalendarEvent>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Contacts
-     * Returns a list of contacts that match the given set of filters.
-     * <p><b>200</b> - success
-     * @param studentId a student_id to filter by
+     * Returns a list of contacts that match the given set of filters
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param studentId Filter to the specified student
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Contact&gt;
@@ -1042,15 +1188,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Contact>> returnType = new ParameterizedTypeReference<List<Contact>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * Dietary Needs
-     * Returns a list of all the Dietary Needs defined by the school.
-     * <p><b>200</b> - success
+     * List Dietary Needs
+     * Returns a list of all the Dietary Needs defined by the school
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;DietaryNeed&gt;
@@ -1075,7 +1225,7 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<DietaryNeed>> returnType = new ParameterizedTypeReference<List<DietaryNeed>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
@@ -1083,10 +1233,14 @@ public class AssemblyApi {
     /**
      * List Exclusions
      * Returns a list of exclusions. *By default, exclusions are returned that occurred during the current academic year.*
-     * <p><b>200</b> - success
-     * @param studentId a student_id to filter by
-     * @param startDate the start date of the period to query
-     * @param endDate the end date of the period to query
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param studentId Filter to the specified student
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Exclusion&gt;
@@ -1114,15 +1268,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Exclusion>> returnType = new ParameterizedTypeReference<List<Exclusion>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Facets
-     * Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared.
-     * <p><b>200</b> - success
+     * Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Facet&gt;
@@ -1147,15 +1305,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Facet>> returnType = new ParameterizedTypeReference<List<Facet>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Grade Sets
-     * Returns a list of grade sets.
-     * <p><b>200</b> - success
+     * Returns a list of grade sets
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;GradeSet&gt;
@@ -1180,19 +1342,68 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<GradeSet>> returnType = new ParameterizedTypeReference<List<GradeSet>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Groups
+     * Returns a list of groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param academicYearId Include all groups and group memberships from the specified academic year
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Group&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Group> getGroups(OffsetDateTime ifModifiedSince, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/groups").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<Group>> returnType = new ParameterizedTypeReference<List<Group>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Left Staff Members
-     * Returns a list of staff members who have left the school.  **Note:** The &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).&#39; 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param teachersOnly return only staff who are teachers
-     * @param demographics include demographics data
-     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * Returns a list of staff members who have left the school
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param teachersOnly Filter to staff who are teachers
+     * @param demographics Include demographics data
+     * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -1219,16 +1430,21 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<StaffMember>> returnType = new ParameterizedTypeReference<List<StaffMember>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Left Students
-     * &#39;Returns a list of students who have left the school.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).&#39; 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * Returns a list of students who have left the school
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -1251,15 +1467,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * Medical Conditions
-     * Returns a list of all the Medical Conditions defined by the school.
-     * <p><b>200</b> - success
+     * List Medical Conditions
+     * Returns a list of all the Medical Conditions defined by the school
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;MedicalCondition&gt;
@@ -1284,31 +1504,36 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<MedicalCondition>> returnType = new ParameterizedTypeReference<List<MedicalCondition>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Students for Registration Group
-     * Returns a list of all the students that are present in the registration group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param id id of the entity
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
-     * @param demographics include demographics data
-     * @param contacts include contacts data
-     * @param senNeeds include SEN needs data
-     * @param addresses include student address data
-     * @param care include student care data (you must also supply the demographics parameter)
-     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
-     * @param languages include student language data
-     * @param photo include student photo data
+     * Returns a list of all the students that are present in the registration group identified by &#x60;group_id&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param yearCode Filter by school year
+     * @param demographics Include demographics data
+     * @param contacts Include contacts data
+     * @param senNeeds Include SEN needs data
+     * @param addresses Include student address data
+     * @param care Include student care data (you must also supply the demographics parameter)
+     * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages Include student language data
+     * @param photo Include student photo data
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer academicYearId, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1326,7 +1551,7 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
@@ -1346,19 +1571,24 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * List Registration Group
-     * Returns a list of registration groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * List Registration Groups
+     * Returns a list of registration groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param yearCode Filter by school year
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;RegistrationGroup&gt;
@@ -1389,17 +1619,22 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<RegistrationGroup>> returnType = new ParameterizedTypeReference<List<RegistrationGroup>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Results
-     * Returns a list of results for the student ID(s) specified by the students parameter.
-     * <p><b>200</b> - success
-     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
+     * Returns a list of results for the student ID(s) specified by the students parameter
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Result&gt;
@@ -1433,25 +1668,28 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Staff Absences
-     * Returns a list of staff member absences for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.absences&#x60; scope is required to access staff member absence information.
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param staffMemberId show only absences fot the specified staff member
-     * @param startDate the start date of the period to query
-     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * Returns a list of staff member absences for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.absences&#x60; scope is required to access staff member absence information
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param staffMemberId Filter to the specified staff member
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;StaffAbsence&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffAbsence> getStaffAbsences(OffsetDateTime ifModifiedSince, Integer staffMemberId, OffsetDateTime startDate, Integer qualifications, Integer perPage, Integer page) throws RestClientException {
+    public List<StaffAbsence> getStaffAbsences(Integer staffMemberId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_absences").build().toUriString();
@@ -1462,12 +1700,9 @@ public class AssemblyApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "staff_member_id", staffMemberId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1476,27 +1711,30 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<StaffAbsence>> returnType = new ParameterizedTypeReference<List<StaffAbsence>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Staff Contracts
-     * Returns a list of staff member contracts for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.contracts&#x60; scope is required to access staff member contract information.
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param staffMemberId show only absences fot the specified staff member
-     * @param date returns results for a specific date
-     * @param roles return roles information along with a staff contract
-     * @param salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it)
-     * @param allowances return allowances information along with a staff contract (requires staff_members.salaries scope)
+     * Returns a list of staff member contracts for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.contracts&#x60; scope is required to access staff member contract information
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param staffMemberId Filter to the specified staff member
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param roles Include role information along with a staff contract
+     * @param salaries Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it)
+     * @param allowances Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope)
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;StaffContract&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffContract> getStaffContracts(OffsetDateTime ifModifiedSince, Integer staffMemberId, Boolean date, Boolean roles, Boolean salaries, Boolean allowances, Integer perPage, Integer page) throws RestClientException {
+    public List<StaffContract> getStaffContracts(Integer staffMemberId, String date, Boolean roles, Boolean salaries, Boolean allowances, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_contracts").build().toUriString();
@@ -1513,9 +1751,6 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
-
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
         };
@@ -1523,19 +1758,24 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<StaffContract>> returnType = new ParameterizedTypeReference<List<StaffContract>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Staff Members
-     * Returns a list of staff members for the school accociated with the provided &#x60;access_token&#x60;.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param teachersOnly return only staff who are teachers
-     * @param demographics include demographics data
-     * @param qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * Returns a list of staff members for the school accociated with the provided &#x60;access_token&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param teachersOnly Filter to staff who are teachers
+     * @param demographics Include demographics data
+     * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;StaffMember&gt;
@@ -1566,27 +1806,32 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<StaffMember>> returnType = new ParameterizedTypeReference<List<StaffMember>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Students
-     * Returns a list of students for the school associated with the provided &#x60;access_token.&#x60; **Note:** the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-     * @param date returns results for a specific date
-     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
-     * @param demographics include demographics data
-     * @param contacts include contacts data
-     * @param senNeeds include SEN needs data
-     * @param addresses include student address data
-     * @param care include student care data (you must also supply the demographics parameter)
-     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
-     * @param languages include student language data
-     * @param photo include student photo data
+     * Returns a list of students for the school associated with the provided &#x60;access_token&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param yearCode Filter by school year
+     * @param demographics Include demographics data
+     * @param contacts Include contacts data
+     * @param senNeeds Include SEN needs data
+     * @param addresses Include student address data
+     * @param care Include student care data (you must also supply the demographics parameter)
+     * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages Include student language data
+     * @param photo Include student photo data
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Student&gt;
@@ -1625,15 +1870,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Subjects
-     * Returns a list of the Assembly Platform&#39;s subjects.
-     * <p><b>200</b> - success
+     * Returns a list of the Assembly Platform&#39;s subjects
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Subject&gt;
@@ -1658,29 +1907,37 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Subject>> returnType = new ParameterizedTypeReference<List<Subject>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Students for Teaching Group
-     * Returns a list of all the students that are present in the teaching group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param id id of the entity
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param demographics include demographics data
-     * @param contacts include contacts data
-     * @param senNeeds include SEN needs data
-     * @param addresses include student address data
-     * @param care include student care data (you must also supply the demographics parameter)
-     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
-     * @param languages include student language data
-     * @param photo include student photo data
+     * Returns a list of all the students that are present in the teaching group identified by &#x60;group_id&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param academicYearId Include all groups and group memberships from the specified academic year
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param yearCode Filter by school year
+     * @param demographics Include demographics data
+     * @param contacts Include contacts data
+     * @param senNeeds Include SEN needs data
+     * @param addresses Include student address data
+     * @param care Include student care data (you must also supply the demographics parameter)
+     * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages Include student language data
+     * @param photo Include student photo data
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1697,6 +1954,9 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
@@ -1716,20 +1976,25 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Teaching Groups
-     * Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param subjectCode filter by subject
-     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param subjectCode Filter by subject
+     * @param yearCode Filter by school year
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;TeachingGroup&gt;
@@ -1761,31 +2026,35 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<TeachingGroup>> returnType = new ParameterizedTypeReference<List<TeachingGroup>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Students for Year Group
-     * Returns a list of all the students that are present in the year group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param id id of the entity
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
-     * @param demographics include demographics data
-     * @param contacts include contacts data
-     * @param senNeeds include SEN needs data
-     * @param addresses include student address data
-     * @param care include student care data (you must also supply the demographics parameter)
-     * @param everInCare include whether the student has ever been in care (you must also supply the demographics parameter)
-     * @param languages include student language data
-     * @param photo include student photo data
+     * Returns a list of all the students that are present in the year group identified by &#x60;group_id&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param demographics Include demographics data
+     * @param contacts Include contacts data
+     * @param senNeeds Include SEN needs data
+     * @param addresses Include student address data
+     * @param care Include student care data (you must also supply the demographics parameter)
+     * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages Include student language data
+     * @param photo Include student photo data
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer academicYearId, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1803,7 +2072,6 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
@@ -1823,25 +2091,30 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Student>> returnType = new ParameterizedTypeReference<List<Student>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * List Year Groups
-     * Returns a list of year groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-     * <p><b>200</b> - success
-     * @param ifModifiedSince If-Modified-Since is optional (see the page on Conditional Requests for more details).
-     * @param yearCode filter by school year (cannot be supplied at the same time as the students parameter)
-     * @param date returns results for a specific date
-     * @param academicYearId returns all groups and group memberships from the specified academic year
+     * Returns a list of year groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param yearCode Filter by school year
+     * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;YearGroup&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<YearGroup> getYearGroups(OffsetDateTime ifModifiedSince, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+    public List<YearGroup> getYearGroups(OffsetDateTime ifModifiedSince, OffsetDateTime date, String yearCode, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/year_groups").build().toUriString();
@@ -1850,8 +2123,8 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "year_code", yearCode));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
@@ -1866,15 +2139,19 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<YearGroup>> returnType = new ParameterizedTypeReference<List<YearGroup>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
-     * Get School Sync Status
-     * Returns status for the school associated with the provided access_token.
-     * <p><b>200</b> - success
+     * View School Sync Status
+     * Returns status for the school associated with the provided &#x60;access_token&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
      * @return SchoolStatus
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -1894,16 +2171,20 @@ public class AssemblyApi {
         final String[] contentTypes = { };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<SchoolStatus> returnType = new ParameterizedTypeReference<SchoolStatus>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
      * Update a Single Result
-     * Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
-     * <p><b>200</b> - success
-     * @param id id of the entity
+     * Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
      * @param resultEntry The resultEntry parameter
      * @return Result
      * @throws RestClientException if an error occurs while attempting to invoke the API
@@ -1934,7 +2215,7 @@ public class AssemblyApi {
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "bearerAuth" };
+        String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<Result> returnType = new ParameterizedTypeReference<Result>() {};
         return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);

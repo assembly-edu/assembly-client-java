@@ -4,9 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**name** | **String** |  |  [optional]
-**code** | **String** |  |  [optional]
+**object** | **String** | Descriminator |  [optional]
+**id** | **Integer** | Internal stable ID |  [optional]
+**name** | **String** | The name of the subject in the MIS |  [optional]
+**code** | **String** | The code of the subject in the MIS |  [optional]
 
 
 

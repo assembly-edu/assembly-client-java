@@ -1,10 +1,10 @@
 
-# AssessmentMisAssessments
+# BulkResultResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  |  [optional]
+**message** | **String** | Whether the operation was successful |  [optional]
 
 
 

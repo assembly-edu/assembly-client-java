@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * AssessmentPoint
+ * A point in time (the school key stage, year, term or half-term) that results can be attached to.
  */
+@ApiModel(description = "A point in time (the school key stage, year, term or half-term) that results can be attached to.")
 
 public class AssessmentPoint implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "assessment_point";
 
   @JsonProperty("rank")
   private Integer rank = ;
@@ -39,16 +43,34 @@ public class AssessmentPoint implements Serializable {
   @JsonProperty("year_code")
   private String yearCode = ;
 
+  public AssessmentPoint object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public AssessmentPoint rank(Integer rank) {
     this.rank = rank;
     return this;
   }
 
    /**
-   * Get rank
+   * A stable number consistently assigned to assessment points across all environments that should be used to send results back to the Platform
    * @return rank
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A stable number consistently assigned to assessment points across all environments that should be used to send results back to the Platform")
   public Integer getRank() {
     return rank;
   }
@@ -63,10 +85,10 @@ public class AssessmentPoint implements Serializable {
   }
 
    /**
-   * Get name
+   * The name of the assessment point
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the assessment point")
   public String getName() {
     return name;
   }
@@ -81,10 +103,10 @@ public class AssessmentPoint implements Serializable {
   }
 
    /**
-   * Get type
+   * The time period that the assessment point relates to, which may be an entire key stage, year, or a single (half) term
    * @return type
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The time period that the assessment point relates to, which may be an entire key stage, year, or a single (half) term")
   public String getType() {
     return type;
   }
@@ -99,10 +121,10 @@ public class AssessmentPoint implements Serializable {
   }
 
    /**
-   * Get yearCode
+   * This field ties an assessment point to a year group.
    * @return yearCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "This field ties an assessment point to a year group.")
   public String getYearCode() {
     return yearCode;
   }
@@ -121,7 +143,8 @@ public class AssessmentPoint implements Serializable {
       return false;
     }
     AssessmentPoint assessmentPoint = (AssessmentPoint) o;
-    return Objects.equals(this.rank, assessmentPoint.rank) &&
+    return Objects.equals(this.object, assessmentPoint.object) &&
+        Objects.equals(this.rank, assessmentPoint.rank) &&
         Objects.equals(this.name, assessmentPoint.name) &&
         Objects.equals(this.type, assessmentPoint.type) &&
         Objects.equals(this.yearCode, assessmentPoint.yearCode);
@@ -129,7 +152,7 @@ public class AssessmentPoint implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(rank, name, type, yearCode);
+    return Objects.hash(object, rank, name, type, yearCode);
   }
 
 
@@ -138,6 +161,7 @@ public class AssessmentPoint implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssessmentPoint {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

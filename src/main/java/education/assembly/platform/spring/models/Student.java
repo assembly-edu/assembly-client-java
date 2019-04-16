@@ -16,8 +16,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.Contact;
 import education.assembly.platform.spring.models.StudentAddress;
+import education.assembly.platform.spring.models.StudentContacts;
 import education.assembly.platform.spring.models.StudentDemographics;
 import education.assembly.platform.spring.models.StudentLanguages;
 import education.assembly.platform.spring.models.StudentMedical;
@@ -30,11 +30,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * Student
+ * A single student within a school.
  */
+@ApiModel(description = "A single student within a school.")
 
 public class Student implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "student";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -91,7 +95,7 @@ public class Student implements Serializable {
   private StudentMedical medical = null;
 
   @JsonProperty("contacts")
-  private List<Contact> contacts = null;
+  private List<StudentContacts> contacts = null;
 
   @JsonProperty("address")
   private StudentAddress address = null;
@@ -102,16 +106,34 @@ public class Student implements Serializable {
   @JsonProperty("photo")
   private StudentPhoto photo = null;
 
+  public Student object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public Student id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -126,10 +148,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get yearCode
+   * The year group the student currently belongs to
    * @return yearCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The year group the student currently belongs to")
   public String getYearCode() {
     return yearCode;
   }
@@ -144,10 +166,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get upn
+   * Unique Pupil Number (UPN) - a DfE-mandated 13-character code that identifies each pupil
    * @return upn
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Unique Pupil Number (UPN) - a DfE-mandated 13-character code that identifies each pupil")
   public String getUpn() {
     return upn;
   }
@@ -162,10 +184,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get formerUpn
+   * The previous UPN where a pupil has held another UPN whilst at a school
    * @return formerUpn
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The previous UPN where a pupil has held another UPN whilst at a school")
   public String getFormerUpn() {
     return formerUpn;
   }
@@ -180,10 +202,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get misId
+   * The ID of a student from the MIS
    * @return misId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of a student from the MIS")
   public String getMisId() {
     return misId;
   }
@@ -198,10 +220,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get pan
+   * A student&#39;s \&quot;pupil admission number\&quot;. This field is often exposed in the front end of the MIS, and may be the same as &#x60;mis_id&#x60;
    * @return pan
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A student's \"pupil admission number\". This field is often exposed in the front end of the MIS, and may be the same as `mis_id`")
   public String getPan() {
     return pan;
   }
@@ -216,10 +238,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get firstName
+   * The first name the student wishes to go by, may be the same as &#x60;legal_first_name&#x60;
    * @return firstName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The first name the student wishes to go by, may be the same as `legal_first_name`")
   public String getFirstName() {
     return firstName;
   }
@@ -234,10 +256,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get legalFirstName
+   * The legal first name of the student
    * @return legalFirstName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The legal first name of the student")
   public String getLegalFirstName() {
     return legalFirstName;
   }
@@ -252,10 +274,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get middleName
+   * The middle name of the student
    * @return middleName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The middle name of the student")
   public String getMiddleName() {
     return middleName;
   }
@@ -270,10 +292,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get lastName
+   * The last name the student wishes to go by, may be the same as &#x60;legal_last_name&#x60;
    * @return lastName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The last name the student wishes to go by, may be the same as `legal_last_name`")
   public String getLastName() {
     return lastName;
   }
@@ -288,10 +310,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get legalLastName
+   * The legal first name of the student, may be the same as &#x60;legal_last_name&#x60;
    * @return legalLastName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The legal first name of the student, may be the same as `legal_last_name`")
   public String getLegalLastName() {
     return legalLastName;
   }
@@ -306,10 +328,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get formerLastName
+   * The former last name of the student, may be &#x60;null&#x60;
    * @return formerLastName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The former last name of the student, may be `null`")
   public String getFormerLastName() {
     return formerLastName;
   }
@@ -324,10 +346,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get dob
+   * The date of birth of the student
    * @return dob
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date of birth of the student")
   public OffsetDateTime getDob() {
     return dob;
   }
@@ -342,10 +364,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get startDate
+   * The date that the student first joined the school
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date that the student first joined the school")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -360,10 +382,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get endDate
+   * The date that the student left the school, or &#x60;null&#x60; if still a current student
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date that the student left the school, or `null` if still a current student")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -378,10 +400,10 @@ public class Student implements Serializable {
   }
 
    /**
-   * Get enrolmentStatus
+   * The enrolment status of the student
    * @return enrolmentStatus
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The enrolment status of the student")
   public String getEnrolmentStatus() {
     return enrolmentStatus;
   }
@@ -426,29 +448,29 @@ public class Student implements Serializable {
     this.medical = medical;
   }
 
-  public Student contacts(List<Contact> contacts) {
+  public Student contacts(List<StudentContacts> contacts) {
     this.contacts = contacts;
     return this;
   }
 
-  public Student addContactsItem(Contact contactsItem) {
+  public Student addContactsItem(StudentContacts contactsItem) {
     if (this.contacts == null) {
-      this.contacts = new ArrayList<Contact>();
+      this.contacts = new ArrayList<StudentContacts>();
     }
     this.contacts.add(contactsItem);
     return this;
   }
 
    /**
-   * Get contacts
+   * A list of contact IDs which are associated with this student, and their relationship
    * @return contacts
   **/
-  @ApiModelProperty(value = "")
-  public List<Contact> getContacts() {
+  @ApiModelProperty(value = "A list of contact IDs which are associated with this student, and their relationship")
+  public List<StudentContacts> getContacts() {
     return contacts;
   }
 
-  public void setContacts(List<Contact> contacts) {
+  public void setContacts(List<StudentContacts> contacts) {
     this.contacts = contacts;
   }
 
@@ -516,7 +538,8 @@ public class Student implements Serializable {
       return false;
     }
     Student student = (Student) o;
-    return Objects.equals(this.id, student.id) &&
+    return Objects.equals(this.object, student.object) &&
+        Objects.equals(this.id, student.id) &&
         Objects.equals(this.yearCode, student.yearCode) &&
         Objects.equals(this.upn, student.upn) &&
         Objects.equals(this.formerUpn, student.formerUpn) &&
@@ -542,7 +565,7 @@ public class Student implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, yearCode, upn, formerUpn, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, address, languages, photo);
+    return Objects.hash(object, id, yearCode, upn, formerUpn, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, address, languages, photo);
   }
 
 
@@ -551,6 +574,7 @@ public class Student implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Student {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    yearCode: ").append(toIndentedString(yearCode)).append("\n");
     sb.append("    upn: ").append(toIndentedString(upn)).append("\n");

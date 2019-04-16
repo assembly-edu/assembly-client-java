@@ -24,8 +24,9 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * ResultBody
+ * A result to updated on the Platform
  */
+@ApiModel(description = "A result to updated on the Platform")
 
 public class ResultBody implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -51,10 +52,10 @@ public class ResultBody implements Serializable {
   }
 
    /**
-   * Get subjectId
+   * The ID of the associated subject
    * @return subjectId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the associated subject")
   public Integer getSubjectId() {
     return subjectId;
   }
@@ -69,10 +70,10 @@ public class ResultBody implements Serializable {
   }
 
    /**
-   * Get facetId
+   * The ID of the associated facet
    * @return facetId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the associated facet")
   public Integer getFacetId() {
     return facetId;
   }
@@ -87,10 +88,10 @@ public class ResultBody implements Serializable {
   }
 
    /**
-   * Get assessmentPointRank
+   * The rank of the associated assessment point
    * @return assessmentPointRank
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The rank of the associated assessment point")
   public Integer getAssessmentPointRank() {
     return assessmentPointRank;
   }
@@ -105,10 +106,10 @@ public class ResultBody implements Serializable {
   }
 
    /**
-   * Get assessmentId
+   * The ID of the associated assessment
    * @return assessmentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the associated assessment")
   public Integer getAssessmentId() {
     return assessmentId;
   }
@@ -131,10 +132,10 @@ public class ResultBody implements Serializable {
   }
 
    /**
-   * Get results
+   * The results to record
    * @return results
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The results to record")
   public List<ResultEntry> getResults() {
     return results;
   }

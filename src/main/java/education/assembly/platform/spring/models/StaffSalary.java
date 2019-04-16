@@ -22,11 +22,18 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * StaffSalary
+ * The salary detail of a staff member.
  */
+@ApiModel(description = "The salary detail of a staff member.")
 
 public class StaffSalary implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "staff_salary";
+
+  @JsonProperty("id")
+  private Integer id = ;
 
   @JsonProperty("hours_per_week")
   private Float hoursPerWeek = ;
@@ -61,16 +68,52 @@ public class StaffSalary implements Serializable {
   @JsonProperty("safeguarded_salary")
   private Boolean safeguardedSalary = ;
 
+  public StaffSalary object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
+  public StaffSalary id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Internal stable ID
+   * @return id
+  **/
+  @ApiModelProperty(value = "Internal stable ID")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
   public StaffSalary hoursPerWeek(Float hoursPerWeek) {
     this.hoursPerWeek = hoursPerWeek;
     return this;
   }
 
    /**
-   * Get hoursPerWeek
+   * Number of hours on which the contract is based
    * @return hoursPerWeek
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of hours on which the contract is based")
   public Float getHoursPerWeek() {
     return hoursPerWeek;
   }
@@ -85,10 +128,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get fte
+   * Total contracted time expressed as a proportion of \&quot;full-time\&quot;
    * @return fte
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Total contracted time expressed as a proportion of \"full-time\"")
   public Float getFte() {
     return fte;
   }
@@ -103,10 +146,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get weeksPerYear
+   * Number of weeks per year that the contract operates
    * @return weeksPerYear
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of weeks per year that the contract operates")
   public Float getWeeksPerYear() {
     return weeksPerYear;
   }
@@ -121,10 +164,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get payRange
+   * The pay range under which the member of staff is paid
    * @return payRange
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The pay range under which the member of staff is paid")
   public String getPayRange() {
     return payRange;
   }
@@ -139,10 +182,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get startDate
+   * Start date for this salary
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Start date for this salary")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -157,10 +200,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get endDate
+   * End date of this salary
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "End date of this salary")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -175,10 +218,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get payScaleFramework
+   * Shows the pay framework under which a member of staff is paid
    * @return payScaleFramework
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Shows the pay framework under which a member of staff is paid")
   public String getPayScaleFramework() {
     return payScaleFramework;
   }
@@ -193,10 +236,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get regionalSpine
+   * The location of the pay scale framework
    * @return regionalSpine
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The location of the pay scale framework")
   public String getRegionalSpine() {
     return regionalSpine;
   }
@@ -211,10 +254,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get basePay
+   * Annual salary, excluding additional payments
    * @return basePay
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Annual salary, excluding additional payments")
   public Float getBasePay() {
     return basePay;
   }
@@ -229,10 +272,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get actualPay
+   * Actual pay
    * @return actualPay
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Actual pay")
   public Float getActualPay() {
     return actualPay;
   }
@@ -247,10 +290,10 @@ public class StaffSalary implements Serializable {
   }
 
    /**
-   * Get safeguardedSalary
+   * Indicates the staff member&#39;s salary has been safeguarded
    * @return safeguardedSalary
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Indicates the staff member's salary has been safeguarded")
   public Boolean isgetSafeguardedSalary() {
     return safeguardedSalary;
   }
@@ -269,7 +312,9 @@ public class StaffSalary implements Serializable {
       return false;
     }
     StaffSalary staffSalary = (StaffSalary) o;
-    return Objects.equals(this.hoursPerWeek, staffSalary.hoursPerWeek) &&
+    return Objects.equals(this.object, staffSalary.object) &&
+        Objects.equals(this.id, staffSalary.id) &&
+        Objects.equals(this.hoursPerWeek, staffSalary.hoursPerWeek) &&
         Objects.equals(this.fte, staffSalary.fte) &&
         Objects.equals(this.weeksPerYear, staffSalary.weeksPerYear) &&
         Objects.equals(this.payRange, staffSalary.payRange) &&
@@ -284,7 +329,7 @@ public class StaffSalary implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hoursPerWeek, fte, weeksPerYear, payRange, startDate, endDate, payScaleFramework, regionalSpine, basePay, actualPay, safeguardedSalary);
+    return Objects.hash(object, id, hoursPerWeek, fte, weeksPerYear, payRange, startDate, endDate, payScaleFramework, regionalSpine, basePay, actualPay, safeguardedSalary);
   }
 
 
@@ -293,6 +338,8 @@ public class StaffSalary implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffSalary {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    hoursPerWeek: ").append(toIndentedString(hoursPerWeek)).append("\n");
     sb.append("    fte: ").append(toIndentedString(fte)).append("\n");
     sb.append("    weeksPerYear: ").append(toIndentedString(weeksPerYear)).append("\n");

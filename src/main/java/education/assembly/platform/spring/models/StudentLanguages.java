@@ -21,8 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * StudentLanguages
+ * Information about a student&#39;s languages (this will only be returned if &#x60;&amp;languages&#x3D;true&#x60; is included in your request)
  */
+@ApiModel(description = "Information about a student's languages (this will only be returned if `&languages=true` is included in your request)")
 
 public class StudentLanguages implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -51,10 +52,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * Get homeLanguageCode
+   * The code of a student&#39;s home language
    * @return homeLanguageCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The code of a student's home language")
   public String getHomeLanguageCode() {
     return homeLanguageCode;
   }
@@ -69,10 +70,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * Get homeLanguageName
+   * The name of a student&#39;s home language
    * @return homeLanguageName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of a student's home language")
   public String getHomeLanguageName() {
     return homeLanguageName;
   }
@@ -87,10 +88,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * Get firstLanguageCode
+   * The code of a student&#39;s first language
    * @return firstLanguageCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The code of a student's first language")
   public String getFirstLanguageCode() {
     return firstLanguageCode;
   }
@@ -105,10 +106,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * Get firstLanguageName
+   * The name of a student&#39;s first language
    * @return firstLanguageName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of a student's first language")
   public String getFirstLanguageName() {
     return firstLanguageName;
   }
@@ -123,10 +124,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * Get proficiencyInEnglishCode
+   * A student&#39;s proficiency in English code
    * @return proficiencyInEnglishCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A student's proficiency in English code")
   public String getProficiencyInEnglishCode() {
     return proficiencyInEnglishCode;
   }
@@ -141,10 +142,10 @@ public class StudentLanguages implements Serializable {
   }
 
    /**
-   * Get proficiencyInEnglishName
+   * A student&#39;s proficiency in English name
    * @return proficiencyInEnglishName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A student's proficiency in English name")
   public String getProficiencyInEnglishName() {
     return proficiencyInEnglishName;
   }

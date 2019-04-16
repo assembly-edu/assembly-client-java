@@ -4,10 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**additionalPaymentType** | **String** |  |  [optional]
-**additionalPaymentAmount** | **Float** |  |  [optional]
-**startDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**endDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**object** | **String** | Descriminator |  [optional]
+**id** | **Integer** | Internal stable ID |  [optional]
+**additionalPaymentType** | **String** | Type of additional payment |  [optional]
+**additionalPaymentAmount** | **Float** | Amount of additional payment |  [optional]
+**startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Start date of additional payment |  [optional]
+**endDate** | [**OffsetDateTime**](OffsetDateTime.md) | End date of additional payment |  [optional]
 
 
 

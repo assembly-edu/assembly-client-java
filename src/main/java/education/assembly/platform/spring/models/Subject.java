@@ -24,11 +24,15 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * Subject
+ * An Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school&#39;s MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.
  */
+@ApiModel(description = "An Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school's MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.")
 
 public class Subject implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "subject";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -42,16 +46,34 @@ public class Subject implements Serializable {
   @JsonProperty("mis_subjects")
   private List<MisSubject> misSubjects = null;
 
+  public Subject object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public Subject id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -66,10 +88,10 @@ public class Subject implements Serializable {
   }
 
    /**
-   * Get code
+   * Shortened code of subject
    * @return code
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Shortened code of subject")
   public String getCode() {
     return code;
   }
@@ -84,10 +106,10 @@ public class Subject implements Serializable {
   }
 
    /**
-   * Get name
+   * Full name of subject
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Full name of subject")
   public String getName() {
     return name;
   }
@@ -110,10 +132,10 @@ public class Subject implements Serializable {
   }
 
    /**
-   * Get misSubjects
+   * The MIS subjects that have been mapped to this Assembly Subject.
    * @return misSubjects
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The MIS subjects that have been mapped to this Assembly Subject.")
   public List<MisSubject> getMisSubjects() {
     return misSubjects;
   }
@@ -132,7 +154,8 @@ public class Subject implements Serializable {
       return false;
     }
     Subject subject = (Subject) o;
-    return Objects.equals(this.id, subject.id) &&
+    return Objects.equals(this.object, subject.object) &&
+        Objects.equals(this.id, subject.id) &&
         Objects.equals(this.code, subject.code) &&
         Objects.equals(this.name, subject.name) &&
         Objects.equals(this.misSubjects, subject.misSubjects);
@@ -140,7 +163,7 @@ public class Subject implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, name, misSubjects);
+    return Objects.hash(object, id, code, name, misSubjects);
   }
 
 
@@ -149,6 +172,7 @@ public class Subject implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Subject {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

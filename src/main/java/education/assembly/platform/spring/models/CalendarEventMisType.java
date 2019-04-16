@@ -21,8 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * CalendarEventMisType
+ * Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
  */
+@ApiModel(description = "Details the type of event - whether it is a regular calendar event, a staff meeting or inset day")
 
 public class CalendarEventMisType implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -39,10 +40,10 @@ public class CalendarEventMisType implements Serializable {
   }
 
    /**
-   * Get name
+   * The type of the event
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The type of the event")
   public String getName() {
     return name;
   }
@@ -57,10 +58,10 @@ public class CalendarEventMisType implements Serializable {
   }
 
    /**
-   * Get description
+   * Any additional description of this event type
    * @return description
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Any additional description of this event type")
   public String getDescription() {
     return description;
   }

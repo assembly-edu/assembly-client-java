@@ -22,11 +22,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * Result
+ * A result combines the other assessment principles and attaches them to a student.
  */
+@ApiModel(description = "A result combines the other assessment principles and attaches them to a student.")
 
 public class Result implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "result_date";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -58,16 +62,34 @@ public class Result implements Serializable {
   @JsonProperty("updated_at")
   private OffsetDateTime updatedAt = ;
 
+  public Result object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public Result id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -82,10 +104,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get studentId
+   * The ID of the student that the result is attached to
    * @return studentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the student that the result is attached to")
   public Integer getStudentId() {
     return studentId;
   }
@@ -100,10 +122,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get subjectId
+   * The ID of the subject that the result is attached to
    * @return subjectId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the subject that the result is attached to")
   public Integer getSubjectId() {
     return subjectId;
   }
@@ -118,10 +140,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get assessmentId
+   * The ID of the assessment that the result is attached to
    * @return assessmentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the assessment that the result is attached to")
   public Integer getAssessmentId() {
     return assessmentId;
   }
@@ -136,10 +158,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get assessmentPointRank
+   * The rank of the assessment point
    * @return assessmentPointRank
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The rank of the assessment point")
   public Integer getAssessmentPointRank() {
     return assessmentPointRank;
   }
@@ -154,10 +176,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get facetId
+   * The ID of the facet that the result is attached to
    * @return facetId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the facet that the result is attached to")
   public Integer getFacetId() {
     return facetId;
   }
@@ -172,10 +194,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get gradeId
+   * The ID of the grade that this result is attached to
    * @return gradeId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the grade that this result is attached to")
   public Integer getGradeId() {
     return gradeId;
   }
@@ -190,10 +212,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get resultDate
+   * The date on which the result was recorded in the MIS or standardised assessment system
    * @return resultDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date on which the result was recorded in the MIS or standardised assessment system")
   public OffsetDateTime getResultDate() {
     return resultDate;
   }
@@ -208,10 +230,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get createdAt
+   * The date and time that the result was first created on Assembly
    * @return createdAt
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date and time that the result was first created on Assembly")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -226,10 +248,10 @@ public class Result implements Serializable {
   }
 
    /**
-   * Get updatedAt
+   * The date and time that the result was last updated on Assembly
    * @return updatedAt
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date and time that the result was last updated on Assembly")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -248,7 +270,8 @@ public class Result implements Serializable {
       return false;
     }
     Result result = (Result) o;
-    return Objects.equals(this.id, result.id) &&
+    return Objects.equals(this.object, result.object) &&
+        Objects.equals(this.id, result.id) &&
         Objects.equals(this.studentId, result.studentId) &&
         Objects.equals(this.subjectId, result.subjectId) &&
         Objects.equals(this.assessmentId, result.assessmentId) &&
@@ -262,7 +285,7 @@ public class Result implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, studentId, subjectId, assessmentId, assessmentPointRank, facetId, gradeId, resultDate, createdAt, updatedAt);
+    return Objects.hash(object, id, studentId, subjectId, assessmentId, assessmentPointRank, facetId, gradeId, resultDate, createdAt, updatedAt);
   }
 
 
@@ -271,6 +294,7 @@ public class Result implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Result {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    subjectId: ").append(toIndentedString(subjectId)).append("\n");

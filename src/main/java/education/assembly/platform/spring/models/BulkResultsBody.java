@@ -24,8 +24,9 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * BulkResultsBody
+ * A collection of results to bulk update ont he Platform
  */
+@ApiModel(description = "A collection of results to bulk update ont he Platform")
 
 public class BulkResultsBody implements Serializable {
   private static final long serialVersionUID = 1L;

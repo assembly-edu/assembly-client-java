@@ -27,11 +27,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * StaffContract
+ * A contract held by a staff member.
  */
+@ApiModel(description = "A contract held by a staff member.")
 
 public class StaffContract implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "staff_contract";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -78,16 +82,34 @@ public class StaffContract implements Serializable {
   @JsonProperty("allowances")
   private List<StaffAllowance> allowances = null;
 
+  public StaffContract object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public StaffContract id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -102,10 +124,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get staffMemberId
+   * The ID of the staff member
    * @return staffMemberId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the staff member")
   public Integer getStaffMemberId() {
     return staffMemberId;
   }
@@ -120,10 +142,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get startDate
+   * The start date of the contract
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The start date of the contract")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -138,10 +160,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get endDate
+   * The end date of the contract
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The end date of the contract")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -156,10 +178,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get nationalInsuranceNumber
+   * The staff member&#39;s NI Number
    * @return nationalInsuranceNumber
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The staff member's NI Number")
   public String getNationalInsuranceNumber() {
     return nationalInsuranceNumber;
   }
@@ -174,10 +196,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get payrollNumber
+   * The staff member&#39;s payroll number
    * @return payrollNumber
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The staff member's payroll number")
   public String getPayrollNumber() {
     return payrollNumber;
   }
@@ -192,10 +214,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get contractType
+   * The type of contract
    * @return contractType
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The type of contract")
   public String getContractType() {
     return contractType;
   }
@@ -210,10 +232,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get post
+   * The post of the contract
    * @return post
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The post of the contract")
   public String getPost() {
     return post;
   }
@@ -228,10 +250,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get origin
+   * Indicates the role undertaken by the staff member before this contract
    * @return origin
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Indicates the role undertaken by the staff member before this contract")
   public String getOrigin() {
     return origin;
   }
@@ -246,10 +268,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get destination
+   * The destination of the staff member if they have moved on from this contract
    * @return destination
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The destination of the staff member if they have moved on from this contract")
   public String getDestination() {
     return destination;
   }
@@ -264,10 +286,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get dailyRate
+   * Indicates if the staff member is paid a daily rate
    * @return dailyRate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Indicates if the staff member is paid a daily rate")
   public Boolean isgetDailyRate() {
     return dailyRate;
   }
@@ -282,10 +304,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get payReviewDate
+   * Shows the date of the staff member&#39;s most recent pay review
    * @return payReviewDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Shows the date of the staff member's most recent pay review")
   public OffsetDateTime getPayReviewDate() {
     return payReviewDate;
   }
@@ -308,10 +330,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get roles
+   * The roles associated to this contract
    * @return roles
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The roles associated to this contract")
   public List<StaffRole> getRoles() {
     return roles;
   }
@@ -334,10 +356,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get salaries
+   * The salaries associated with this contract
    * @return salaries
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The salaries associated with this contract")
   public List<StaffSalary> getSalaries() {
     return salaries;
   }
@@ -360,10 +382,10 @@ public class StaffContract implements Serializable {
   }
 
    /**
-   * Get allowances
+   * The allowances associated with this contract
    * @return allowances
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The allowances associated with this contract")
   public List<StaffAllowance> getAllowances() {
     return allowances;
   }
@@ -382,7 +404,8 @@ public class StaffContract implements Serializable {
       return false;
     }
     StaffContract staffContract = (StaffContract) o;
-    return Objects.equals(this.id, staffContract.id) &&
+    return Objects.equals(this.object, staffContract.object) &&
+        Objects.equals(this.id, staffContract.id) &&
         Objects.equals(this.staffMemberId, staffContract.staffMemberId) &&
         Objects.equals(this.startDate, staffContract.startDate) &&
         Objects.equals(this.endDate, staffContract.endDate) &&
@@ -401,7 +424,7 @@ public class StaffContract implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, staffMemberId, startDate, endDate, nationalInsuranceNumber, payrollNumber, contractType, post, origin, destination, dailyRate, payReviewDate, roles, salaries, allowances);
+    return Objects.hash(object, id, staffMemberId, startDate, endDate, nationalInsuranceNumber, payrollNumber, contractType, post, origin, destination, dailyRate, payReviewDate, roles, salaries, allowances);
   }
 
 
@@ -410,6 +433,7 @@ public class StaffContract implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffContract {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    staffMemberId: ").append(toIndentedString(staffMemberId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

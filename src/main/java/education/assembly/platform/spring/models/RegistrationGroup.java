@@ -24,11 +24,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * RegistrationGroup
+ * The grouping in which students take AM/PM roll call (morning and afternoon registers).
  */
+@ApiModel(description = "The grouping in which students take AM/PM roll call (morning and afternoon registers).")
 
 public class RegistrationGroup implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "registration_group";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -48,16 +52,34 @@ public class RegistrationGroup implements Serializable {
   @JsonProperty("student_ids")
   private List<Integer> studentIds = null;
 
+  public RegistrationGroup object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public RegistrationGroup id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -72,10 +94,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Get name
+   * Name of the registration group
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Name of the registration group")
   public String getName() {
     return name;
   }
@@ -90,10 +112,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Get startDate
+   * The start date of the registration group
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The start date of the registration group")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -108,10 +130,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Get endDate
+   * The end date of the registration group
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The end date of the registration group")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -134,10 +156,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Get supervisorIds
+   * The IDs of supervisors (staff members) associated with the registration group
    * @return supervisorIds
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The IDs of supervisors (staff members) associated with the registration group")
   public List<Integer> getSupervisorIds() {
     return supervisorIds;
   }
@@ -160,10 +182,10 @@ public class RegistrationGroup implements Serializable {
   }
 
    /**
-   * Get studentIds
+   * The IDs of members (students) associated with the registration group
    * @return studentIds
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The IDs of members (students) associated with the registration group")
   public List<Integer> getStudentIds() {
     return studentIds;
   }
@@ -182,7 +204,8 @@ public class RegistrationGroup implements Serializable {
       return false;
     }
     RegistrationGroup registrationGroup = (RegistrationGroup) o;
-    return Objects.equals(this.id, registrationGroup.id) &&
+    return Objects.equals(this.object, registrationGroup.object) &&
+        Objects.equals(this.id, registrationGroup.id) &&
         Objects.equals(this.name, registrationGroup.name) &&
         Objects.equals(this.startDate, registrationGroup.startDate) &&
         Objects.equals(this.endDate, registrationGroup.endDate) &&
@@ -192,7 +215,7 @@ public class RegistrationGroup implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, startDate, endDate, supervisorIds, studentIds);
+    return Objects.hash(object, id, name, startDate, endDate, supervisorIds, studentIds);
   }
 
 
@@ -201,6 +224,7 @@ public class RegistrationGroup implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class RegistrationGroup {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

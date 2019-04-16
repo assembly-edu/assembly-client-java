@@ -9,35 +9,37 @@ Method | HTTP request | Description
 [**findAcademicYear**](AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
 [**findAssessment**](AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 [**findAssessmentGradeSet**](AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
-[**findAssessmentPoint**](AssemblyApi.md#findAssessmentPoint) | **GET** /assessment_points/{id} | View an Assessment Point
-[**findDietaryNeed**](AssemblyApi.md#findDietaryNeed) | **GET** /school/dietary_needs/{id} | View an Dietary Need
+[**findAssessmentPoint**](AssemblyApi.md#findAssessmentPoint) | **GET** /assessment_points/{assessment_point_rank} | View an Assessment Point
+[**findDietaryNeed**](AssemblyApi.md#findDietaryNeed) | **GET** /school/dietary_needs/{id} | View a Dietary Need
 [**findFacet**](AssemblyApi.md#findFacet) | **GET** /facets/{id} | View a Facet
 [**findGradeSet**](AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
-[**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View an Medical Condition
+[**findGroup**](AssemblyApi.md#findGroup) | **GET** /groups/{id} | View a Group
+[**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
-[**findSchool**](AssemblyApi.md#findSchool) | **GET** /school | Get School Details
+[**findSchool**](AssemblyApi.md#findSchool) | **GET** /school | View School Details
 [**findStaffMember**](AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
 [**findStudent**](AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
 [**findTeachingGroup**](AssemblyApi.md#findTeachingGroup) | **GET** /teaching_groups/{id} | View a Teaching Group
 [**findYearGroup**](AssemblyApi.md#findYearGroup) | **GET** /year_groups/{id} | View a Year Group
 [**getAcademicYears**](AssemblyApi.md#getAcademicYears) | **GET** /academic_years | List Academic Years
-[**getAssessmentPointResults**](AssemblyApi.md#getAssessmentPointResults) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
+[**getAssessmentPointResults**](AssemblyApi.md#getAssessmentPointResults) | **GET** /assessment_points/{assessment_point_rank}/results | View Results for an Assessment Point
 [**getAssessmentPoints**](AssemblyApi.md#getAssessmentPoints) | **GET** /assessment_points | List Assessment Points
 [**getAssessmentResults**](AssemblyApi.md#getAssessmentResults) | **GET** /assessments/{id}/results | View Results for an Assessment
-[**getAssessmentSummaries**](AssemblyApi.md#getAssessmentSummaries) | **GET** /attendances/summaries | List Attendance Summaries
 [**getAssessments**](AssemblyApi.md#getAssessments) | **GET** /assessments | List Assessments
+[**getAttendanceSummaries**](AssemblyApi.md#getAttendanceSummaries) | **GET** /attendances/summaries | List Attendance Summaries
 [**getAttendances**](AssemblyApi.md#getAttendances) | **GET** /attendances | List Attendances
 [**getCalendarEvents**](AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | List Calendar Events
 [**getContacts**](AssemblyApi.md#getContacts) | **GET** /contacts | List Contacts
-[**getDietaryNeeds**](AssemblyApi.md#getDietaryNeeds) | **GET** /school/dietary_needs | Dietary Needs
+[**getDietaryNeeds**](AssemblyApi.md#getDietaryNeeds) | **GET** /school/dietary_needs | List Dietary Needs
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 [**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
+[**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
-[**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | Medical Conditions
+[**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | List Medical Conditions
 [**getRegistrationGroupStudents**](AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
-[**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Group
+[**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Groups
 [**getResults**](AssemblyApi.md#getResults) | **GET** /results | List Results
 [**getStaffAbsences**](AssemblyApi.md#getStaffAbsences) | **GET** /staff_absences | List Staff Absences
 [**getStaffContracts**](AssemblyApi.md#getStaffContracts) | **GET** /staff_contracts | List Staff Contracts
@@ -48,17 +50,17 @@ Method | HTTP request | Description
 [**getTeachingGroups**](AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | List Teaching Groups
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
-[**status**](AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
+[**status**](AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
 [**updateResults**](AssemblyApi.md#updateResults) | **PATCH** /results/{id} | Update a Single Result
 
 
 <a name="bulkUpdateResults"></a>
 # **bulkUpdateResults**
-> ModelApiResponse bulkUpdateResults(bulkResultsBody)
+> BulkResultResponse bulkUpdateResults(bulkResultsBody)
 
 Update Multiple Results
 
-Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
+Multiple results can be updated simultaneously by providing the relevant &#x60;result_ids&#x60; in the body of your request. The response will tell you whether the batch of updates has either been successful or failed
 
 ### Example
 ```java
@@ -71,15 +73,15 @@ Multiple results can be updated simultaneously by providing the relevant result_
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
 try {
-    ModelApiResponse result = apiInstance.bulkUpdateResults(bulkResultsBody);
+    BulkResultResponse result = apiInstance.bulkUpdateResults(bulkResultsBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");
@@ -95,11 +97,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelApiResponse**](ModelApiResponse.md)
+[**BulkResultResponse**](BulkResultResponse.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -112,7 +114,7 @@ Name | Type | Description  | Notes
 
 Write Results
 
-Given a subject_id, facet_id, assessment_point_rank and assessment_id results can be sent to the Platform, along with a student_id, the grade_id and (optionally) the result_date.  **Permissions**: A school level access token with the assessments.write scope is needed to write results back to the Platform. 
+Given a &#x60;subject_id&#x60;, &#x60;facet_id&#x60;, &#x60;assessment_point_rank&#x60; and &#x60;assessment_id&#x60; results can be sent to the Platform, along with a &#x60;student_id&#x60;, the &#x60;grade_id&#x60; and (optionally) the &#x60;result_date&#x60;
 
 ### Example
 ```java
@@ -125,10 +127,10 @@ Given a subject_id, facet_id, assessment_point_rank and assessment_id results ca
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 ResultBody resultBody = new ResultBody(); // ResultBody | 
@@ -153,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -166,7 +168,7 @@ Name | Type | Description  | Notes
 
 View an Academic Year
 
-Returns a single academic year for the school associated with the provided access_token.
+Returns a single academic year for the school associated with the provided &#x60;access_token&#x60;
 
 ### Example
 ```java
@@ -179,13 +181,13 @@ Returns a single academic year for the school associated with the provided acces
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     AcademicYear result = apiInstance.findAcademicYear(id);
     System.out.println(result);
@@ -199,7 +201,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -207,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -220,7 +222,7 @@ Name | Type | Description  | Notes
 
 View an Assessment
 
-Returns a single assessment for the given id.
+Returns a single assessment for the given ID
 
 ### Example
 ```java
@@ -233,13 +235,13 @@ Returns a single assessment for the given id.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     Assessment result = apiInstance.findAssessment(id);
     System.out.println(result);
@@ -253,7 +255,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -261,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -274,7 +276,7 @@ Name | Type | Description  | Notes
 
 View Grade Set for an Assessment
 
-Returns a grade_set (an acceptable list of values) for the assessment identified by the assessment_id. Grades should be written back to the Platform using the grade_id.
+Returns a &#x60;grade_set&#x60; (an acceptable list of values) for the assessment identifierentified by the &#x60;assessment_id&#x60;. Grades should be written back to the Platform using the &#x60;grade_id&#x60;
 
 ### Example
 ```java
@@ -287,13 +289,13 @@ Returns a grade_set (an acceptable list of values) for the assessment identified
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     GradeSet result = apiInstance.findAssessmentGradeSet(id);
     System.out.println(result);
@@ -307,7 +309,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -315,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -324,11 +326,11 @@ Name | Type | Description  | Notes
 
 <a name="findAssessmentPoint"></a>
 # **findAssessmentPoint**
-> AssessmentPoint findAssessmentPoint(id)
+> AssessmentPoint findAssessmentPoint(assessmentPointRank)
 
 View an Assessment Point
 
-Returns a single assessment point for the given rank.
+Returns a single assessment point for the given rank
 
 ### Example
 ```java
@@ -341,15 +343,15 @@ Returns a single assessment point for the given rank.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer assessmentPointRank = 56; // Integer | The rank of the assessment point as an Integer
 try {
-    AssessmentPoint result = apiInstance.findAssessmentPoint(id);
+    AssessmentPoint result = apiInstance.findAssessmentPoint(assessmentPointRank);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findAssessmentPoint");
@@ -361,7 +363,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **assessmentPointRank** | **Integer**| The rank of the assessment point as an Integer |
 
 ### Return type
 
@@ -369,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -380,9 +382,9 @@ Name | Type | Description  | Notes
 # **findDietaryNeed**
 > DietaryNeed findDietaryNeed(id)
 
-View an Dietary Need
+View a Dietary Need
 
-Returns a single dietary need for the given id.
+Returns a single dietary need for the given ID
 
 ### Example
 ```java
@@ -395,13 +397,13 @@ Returns a single dietary need for the given id.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     DietaryNeed result = apiInstance.findDietaryNeed(id);
     System.out.println(result);
@@ -415,7 +417,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -423,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -436,7 +438,7 @@ Name | Type | Description  | Notes
 
 View a Facet
 
-Returns a single facet for the given id.
+Returns a single facet for the given ID
 
 ### Example
 ```java
@@ -449,13 +451,13 @@ Returns a single facet for the given id.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     Facet result = apiInstance.findFacet(id);
     System.out.println(result);
@@ -469,7 +471,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -477,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -490,7 +492,7 @@ Name | Type | Description  | Notes
 
 View a Grade Set
 
-Returns a single grade set for the given id.
+Returns a single grade set for the given ID
 
 ### Example
 ```java
@@ -503,13 +505,13 @@ Returns a single grade set for the given id.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     GradeSet result = apiInstance.findGradeSet(id);
     System.out.println(result);
@@ -523,7 +525,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -531,20 +533,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="findMedicalCondition"></a>
-# **findMedicalCondition**
-> MedicalCondition findMedicalCondition(id)
+<a name="findGroup"></a>
+# **findGroup**
+> Group findGroup(id)
 
-View an Medical Condition
+View a Group
 
-Returns a single medical condition for the given id.
+Returns a list of groups that match the given set of filters
 
 ### Example
 ```java
@@ -557,13 +559,67 @@ Returns a single medical condition for the given id.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
+try {
+    Group result = apiInstance.findGroup(id);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#findGroup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+
+### Return type
+
+[**Group**](Group.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="findMedicalCondition"></a>
+# **findMedicalCondition**
+> MedicalCondition findMedicalCondition(id)
+
+View a Medical Condition
+
+Returns a single medical condition for the given ID
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
 try {
     MedicalCondition result = apiInstance.findMedicalCondition(id);
     System.out.println(result);
@@ -577,7 +633,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
 
 ### Return type
 
@@ -585,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -594,11 +650,11 @@ Name | Type | Description  | Notes
 
 <a name="findRegistrationGroup"></a>
 # **findRegistrationGroup**
-> RegistrationGroup findRegistrationGroup(id, date, academicYearId)
+> RegistrationGroup findRegistrationGroup(id, date)
 
 View a Registration Group
 
-Returns a list of registration groups that match the given set of filters.
+Returns a list of registration groups that match the given set of filters
 
 ### Example
 ```java
@@ -611,17 +667,16 @@ Returns a list of registration groups that match the given set of filters.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 try {
-    RegistrationGroup result = apiInstance.findRegistrationGroup(id, date, academicYearId);
+    RegistrationGroup result = apiInstance.findRegistrationGroup(id, date);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findRegistrationGroup");
@@ -633,9 +688,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
 
 ### Return type
 
@@ -643,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -652,11 +706,11 @@ Name | Type | Description  | Notes
 
 <a name="findSchool"></a>
 # **findSchool**
-> School findSchool(id)
+> School findSchool()
 
-Get School Details
+View School Details
 
-Returns details for the school associated with the provided access_token.
+Returns details for the school associated with the provided &#x60;access_token&#x60;
 
 ### Example
 ```java
@@ -669,15 +723,14 @@ Returns details for the school associated with the provided access_token.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
 try {
-    School result = apiInstance.findSchool(id);
+    School result = apiInstance.findSchool();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findSchool");
@@ -686,10 +739,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -697,7 +747,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -710,7 +760,7 @@ Name | Type | Description  | Notes
 
 View a Staff Member
 
-Returns an individual staff member record for the given ID.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns an individual staff member record for the given ID
 
 ### Example
 ```java
@@ -723,15 +773,15 @@ Returns an individual staff member record for the given ID.  **Note:** Note the 
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-Boolean demographics = true; // Boolean | include demographics data
-Boolean qualifications = true; // Boolean | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+Integer id = 56; // Integer | Internal identifier of the entity
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 try {
     StaffMember result = apiInstance.findStaffMember(id, demographics, qualifications);
     System.out.println(result);
@@ -745,9 +795,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **demographics** | **Boolean**| include demographics data | [optional]
- **qualifications** | **Boolean**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
 ### Return type
 
@@ -755,7 +805,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -768,7 +818,7 @@ Name | Type | Description  | Notes
 
 View a Student
 
-Returns an individual student record for the given ID.  **Note:** the response shown includes student demographics, contacts, student SEN needs, student addresses, photo and student care data but these will only be present if you have permission to access it and pass &#x60;demographics&#x60;, &#x60;contacts&#x60;, &#x60;sen_needs&#x60;, &#x60;addresses&#x60;, &#x60;photo&#x60;, &#x60;care&#x60; and &#x60;ever_in_care&#x60; respectively  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).  ### Photo Notes When requesting photo information the response includes a &#x60;photo.url&#x60; property, this URL should be treated as confidential and used to download the students photo to your storage system of choice. The URL is *not designed for hotlinking directly in the browser* for end users. URLs are signed and only valid for 1 hour after which time you will receive a 400 error.  Once downloaded to avoid repeatedly syncing unchanged photos you should code your application to compare the &#x60;photo.hash&#x60; property to detect changes in student photos since your last sync, it is guaranteed that changes in a photo will change the hash, however the hash is only intended to be used to detect photo changes and is not guaranteed to match a checksum of the files contents.  Photos are currently provided on an \&quot;as is\&quot; basis straight from the source MIS, this means the format, quality, metadata and dimensions are not guaranteed. We reserve the right to normalise this data in the future but your application should be resistant to differing photo formats. 
+Returns an individual student record for the given ID.  **Note:** the response shown includes student demographics, contacts, student SEN needs, student addresses, photo and student care data but these will only be present if you have permission to access it and pass &#x60;demographics&#x60;, &#x60;contacts&#x60;, &#x60;sen_needs&#x60;, &#x60;addresses&#x60;, &#x60;photo&#x60;, &#x60;care&#x60; and &#x60;ever_in_care&#x60; respectively.  ### Photo Notes When requesting photo information the response includes a &#x60;photo.url&#x60; property, this URL should be treated as confidential and used to download the students photo to your storage system of choice. The URL is *not designed for hotlinking directly in the browser* for end users. URLs are signed and only valid for 1 hour after which time you will receive a 400 error.  Once downloaded to avoid repeatedly syncing unchanged photos you should code your application to compare the &#x60;photo.hash&#x60; property to detect changes in student photos since your last sync, it is guaranteed that changes in a photo will change the hash, however the hash is only intended to be used to detect photo changes and is not guaranteed to match a checksum of the files contents.  Photos are currently provided on an \&quot;as is\&quot; basis straight from the source MIS, this means the format, quality, metadata and dimensions are not guaranteed. We reserve the right to normalise this data in the future but your application should be resistant to differing photo formats. 
 
 ### Example
 ```java
@@ -781,21 +831,21 @@ Returns an individual student record for the given ID.  **Note:** the response s
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-Boolean demographics = true; // Boolean | include demographics data
-Boolean contacts = true; // Boolean | include contacts data
-Boolean senNeeds = true; // Boolean | include SEN needs data
-Boolean addresses = true; // Boolean | include student address data
-Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
-Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
-Boolean languages = true; // Boolean | include student language data
-Boolean photo = true; // Boolean | include student photo data
+Integer id = 56; // Integer | Internal identifier of the entity
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean addresses = true; // Boolean | Include student address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
 try {
     Student result = apiInstance.findStudent(id, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
     System.out.println(result);
@@ -809,15 +859,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **demographics** | **Boolean**| include demographics data | [optional]
- **contacts** | **Boolean**| include contacts data | [optional]
- **senNeeds** | **Boolean**| include SEN needs data | [optional]
- **addresses** | **Boolean**| include student address data | [optional]
- **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
- **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
- **languages** | **Boolean**| include student language data | [optional]
- **photo** | **Boolean**| include student photo data | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **addresses** | **Boolean**| Include student address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
 
 ### Return type
 
@@ -825,7 +875,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -834,11 +884,11 @@ Name | Type | Description  | Notes
 
 <a name="findTeachingGroup"></a>
 # **findTeachingGroup**
-> TeachingGroup findTeachingGroup(id, date, academicYearId, groupId)
+> TeachingGroup findTeachingGroup(id, date)
 
 View a Teaching Group
 
-Returns a list of teaching groups that match the given set of filters.
+Returns a list of teaching groups that match the given set of filters
 
 ### Example
 ```java
@@ -851,18 +901,16 @@ Returns a list of teaching groups that match the given set of filters.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
-Integer groupId = 56; // Integer | a group_id to filter by
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 try {
-    TeachingGroup result = apiInstance.findTeachingGroup(id, date, academicYearId, groupId);
+    TeachingGroup result = apiInstance.findTeachingGroup(id, date);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findTeachingGroup");
@@ -874,10 +922,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
- **groupId** | **Integer**| a group_id to filter by | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
 
 ### Return type
 
@@ -885,7 +931,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -894,11 +940,11 @@ Name | Type | Description  | Notes
 
 <a name="findYearGroup"></a>
 # **findYearGroup**
-> YearGroup findYearGroup(id, date, academicYearId)
+> YearGroup findYearGroup(id, date)
 
 View a Year Group
 
-Returns a list of year groups that match the given set of filters.
+Returns a list of year groups that match the given set of filters
 
 ### Example
 ```java
@@ -911,17 +957,16 @@ Returns a list of year groups that match the given set of filters.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 try {
-    YearGroup result = apiInstance.findYearGroup(id, date, academicYearId);
+    YearGroup result = apiInstance.findYearGroup(id, date);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findYearGroup");
@@ -933,9 +978,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
 
 ### Return type
 
@@ -943,7 +987,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -956,7 +1000,7 @@ Name | Type | Description  | Notes
 
 List Academic Years
 
-Returns a list of academic years for the school associated with the provided access_token. The dates of these academic years can be used to filter data in other API endpoints.
+Returns a list of academic years for the school associated with the provided &#x60;access_token&#x60;. The dates of these academic years can be used to filter data in other API endpoints
 
 ### Example
 ```java
@@ -969,14 +1013,14 @@ Returns a list of academic years for the school associated with the provided acc
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<AcademicYear> result = apiInstance.getAcademicYears(perPage, page);
     System.out.println(result);
@@ -999,7 +1043,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1008,11 +1052,11 @@ Name | Type | Description  | Notes
 
 <a name="getAssessmentPointResults"></a>
 # **getAssessmentPointResults**
-> List&lt;Result&gt; getAssessmentPointResults(id, students, assessmentPointRank)
+> List&lt;Result&gt; getAssessmentPointResults(assessmentPointRank, students)
 
 View Results for an Assessment Point
 
-Returns a list of results for the given assessment_point_rank and students.
+Returns a list of results for the given &#x60;assessment_point_rank&#x60; and students
 
 ### Example
 ```java
@@ -1025,17 +1069,16 @@ Returns a list of results for the given assessment_point_rank and students.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-Integer assessmentPointRank = 56; // Integer | the Assessment Point rank
+Integer assessmentPointRank = 56; // Integer | The rank of the assessment point as an Integer
+List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 try {
-    List<Result> result = apiInstance.getAssessmentPointResults(id, students, assessmentPointRank);
+    List<Result> result = apiInstance.getAssessmentPointResults(assessmentPointRank, students);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAssessmentPointResults");
@@ -1047,9 +1090,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [default to new ArrayList&lt;Integer&gt;()]
- **assessmentPointRank** | **Integer**| the Assessment Point rank | [optional]
+ **assessmentPointRank** | **Integer**| The rank of the assessment point as an Integer |
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [default to new ArrayList&lt;Integer&gt;()]
 
 ### Return type
 
@@ -1057,7 +1099,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1066,11 +1108,11 @@ Name | Type | Description  | Notes
 
 <a name="getAssessmentPoints"></a>
 # **getAssessmentPoints**
-> List&lt;AssessmentPoint&gt; getAssessmentPoints(perPage, page)
+> List&lt;AssessmentPoint&gt; getAssessmentPoints(yearCode, type, perPage, page)
 
 List Assessment Points
 
-Returns a list of assessment points. An assessment_point object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the assessment_point_rank should be used - this will remain constant across all environments.
+Returns a list of assessment points. An &#x60;assessment_point&#x60; object represents a point in the school key stage, year, term or half-term that results can be attached to. When sending results back to the Platform, the &#x60;assessment_point_rank&#x60; should be used - this will remain constant across all environments
 
 ### Example
 ```java
@@ -1083,16 +1125,18 @@ Returns a list of assessment points. An assessment_point object represents a poi
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer yearCode = 56; // Integer | Filter by school year
+String type = "type_example"; // String | Filter by assessment point type
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<AssessmentPoint> result = apiInstance.getAssessmentPoints(perPage, page);
+    List<AssessmentPoint> result = apiInstance.getAssessmentPoints(yearCode, type, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAssessmentPoints");
@@ -1104,6 +1148,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **yearCode** | **Integer**| Filter by school year | [optional]
+ **type** | **String**| Filter by assessment point type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1113,7 +1159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1126,7 +1172,7 @@ Name | Type | Description  | Notes
 
 View Results for an Assessment
 
-Returns a list of results for the given assessment_id and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this support article.
+Returns a list of results for the given &#x60;assessment_id&#x60; and students. For a full list of national assessment data (Key stage 1 and 2 SATs results) available on the Platform, please see this [support article](http://help.assembly.education/article/89-getting-prior-attainment-from-the-platform)
 
 ### Example
 ```java
@@ -1139,14 +1185,14 @@ Returns a list of results for the given assessment_id and students. For a full l
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
+Integer id = 56; // Integer | Internal identifier of the entity
+List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 try {
     List<Result> result = apiInstance.getAssessmentResults(id, students);
     System.out.println(result);
@@ -1160,8 +1206,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [default to new ArrayList&lt;Integer&gt;()]
+ **id** | **Integer**| Internal identifier of the entity |
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [default to new ArrayList&lt;Integer&gt;()]
 
 ### Return type
 
@@ -1169,63 +1215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/vnd.assembly+json; version=1.1
-
-<a name="getAssessmentSummaries"></a>
-# **getAssessmentSummaries**
-> List&lt;AttendanceSummary&gt; getAssessmentSummaries(studentId, registrationGroupId)
-
-List Attendance Summaries
-
-Returns a list of attendance summaries.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
-
-### Example
-```java
-// Import classes:
-//import education.assembly.platform.spring.ApiClient;
-//import education.assembly.platform.spring.ApiException;
-//import education.assembly.platform.spring.Configuration;
-//import education.assembly.platform.spring.auth.*;
-//import education.assembly.platform.spring.AssemblyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
-
-AssemblyApi apiInstance = new AssemblyApi();
-Integer studentId = 56; // Integer | a student_id to filter by
-Integer registrationGroupId = 56; // Integer | id of a registration group
-try {
-    List<AttendanceSummary> result = apiInstance.getAssessmentSummaries(studentId, registrationGroupId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AssemblyApi#getAssessmentSummaries");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **studentId** | **Integer**| a student_id to filter by | [optional]
- **registrationGroupId** | **Integer**| id of a registration group | [optional]
-
-### Return type
-
-[**List&lt;AttendanceSummary&gt;**](AttendanceSummary.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1238,7 +1228,7 @@ Name | Type | Description  | Notes
 
 List Assessments
 
-Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result.
+Returns a list of assessment objects. The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result
 
 ### Example
 ```java
@@ -1251,14 +1241,14 @@ Returns a list of assessment objects. The assessment is the grouping that knits 
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Assessment> result = apiInstance.getAssessments(perPage, page);
     System.out.println(result);
@@ -1281,20 +1271,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getAttendances"></a>
-# **getAttendances**
-> List&lt;Attendance&gt; getAttendances(studentId, registrationGroupId, startDate, endDate, perPage, page)
+<a name="getAttendanceSummaries"></a>
+# **getAttendanceSummaries**
+> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId)
 
-List Attendances
+List Attendance Summaries
 
-Returns a list of attendances. By default, attendances are returned from the start to the end of the current week.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of attendance summaries
 
 ### Example
 ```java
@@ -1307,20 +1297,81 @@ Returns a list of attendances. By default, attendances are returned from the sta
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer studentId = 56; // Integer | a student_id to filter by
-Integer registrationGroupId = 56; // Integer | id of a registration group
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | the start date of the period to query
-OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | the end date of the period to query
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Integer studentId = 56; // Integer | Filter to the specified student
+Integer registrationGroupId = 56; // Integer | ID of a registration group
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
 try {
-    List<Attendance> result = apiInstance.getAttendances(studentId, registrationGroupId, startDate, endDate, perPage, page);
+    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getAttendanceSummaries");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **studentId** | **Integer**| Filter to the specified student | [optional]
+ **registrationGroupId** | **Integer**| ID of a registration group | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+
+### Return type
+
+[**List&lt;AttendanceSummary&gt;**](AttendanceSummary.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="getAttendances"></a>
+# **getAttendances**
+> List&lt;Attendance&gt; getAttendances(ifModifiedSince, studentId, registrationGroupId, startDate, endDate, perPage, page)
+
+List Attendances
+
+Returns a list of attendances. By default, attendances are returned from the start to the end of the current week
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Integer studentId = 56; // Integer | Filter to the specified student
+Integer registrationGroupId = 56; // Integer | ID of a registration group
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
+try {
+    List<Attendance> result = apiInstance.getAttendances(ifModifiedSince, studentId, registrationGroupId, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAttendances");
@@ -1332,10 +1383,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **studentId** | **Integer**| a student_id to filter by | [optional]
- **registrationGroupId** | **Integer**| id of a registration group | [optional]
- **startDate** | **OffsetDateTime**| the start date of the period to query | [optional]
- **endDate** | **OffsetDateTime**| the end date of the period to query | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **studentId** | **Integer**| Filter to the specified student | [optional]
+ **registrationGroupId** | **Integer**| ID of a registration group | [optional]
+ **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
+ **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1345,7 +1397,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1354,11 +1406,11 @@ Name | Type | Description  | Notes
 
 <a name="getCalendarEvents"></a>
 # **getCalendarEvents**
-> List&lt;CalendarEvent&gt; getCalendarEvents(eventType, perPage, page)
+> List&lt;CalendarEvent&gt; getCalendarEvents(ifModifiedSince, eventType, perPage, page)
 
 List Calendar Events
 
-Returns a list of calendar events from the school calendar. We strongly recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of calendar events from the school calendar. We *strongly* recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
 
 ### Example
 ```java
@@ -1371,17 +1423,18 @@ Returns a list of calendar events from the school calendar. We strongly recommen
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-String eventType = "eventType_example"; // String | a calendar object type from the underlying MIS
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+String eventType = "eventType_example"; // String | Filter by a calendar object type from the underlying MIS
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<CalendarEvent> result = apiInstance.getCalendarEvents(eventType, perPage, page);
+    List<CalendarEvent> result = apiInstance.getCalendarEvents(ifModifiedSince, eventType, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getCalendarEvents");
@@ -1393,7 +1446,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventType** | **String**| a calendar object type from the underlying MIS | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **eventType** | **String**| Filter by a calendar object type from the underlying MIS | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1403,7 +1457,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1416,7 +1470,7 @@ Name | Type | Description  | Notes
 
 List Contacts
 
-Returns a list of contacts that match the given set of filters.
+Returns a list of contacts that match the given set of filters
 
 ### Example
 ```java
@@ -1429,15 +1483,15 @@ Returns a list of contacts that match the given set of filters.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer studentId = 56; // Integer | a student_id to filter by
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer studentId = 56; // Integer | Filter to the specified student
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Contact> result = apiInstance.getContacts(studentId, perPage, page);
     System.out.println(result);
@@ -1451,7 +1505,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **studentId** | **Integer**| a student_id to filter by | [optional]
+ **studentId** | **Integer**| Filter to the specified student | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1461,7 +1515,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1472,9 +1526,9 @@ Name | Type | Description  | Notes
 # **getDietaryNeeds**
 > List&lt;DietaryNeed&gt; getDietaryNeeds(perPage, page)
 
-Dietary Needs
+List Dietary Needs
 
-Returns a list of all the Dietary Needs defined by the school.
+Returns a list of all the Dietary Needs defined by the school
 
 ### Example
 ```java
@@ -1487,14 +1541,14 @@ Returns a list of all the Dietary Needs defined by the school.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<DietaryNeed> result = apiInstance.getDietaryNeeds(perPage, page);
     System.out.println(result);
@@ -1517,7 +1571,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1543,17 +1597,17 @@ Returns a list of exclusions. *By default, exclusions are returned that occurred
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer studentId = 56; // Integer | a student_id to filter by
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | the start date of the period to query
-OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | the end date of the period to query
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer studentId = 56; // Integer | Filter to the specified student
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Exclusion> result = apiInstance.getExclusions(studentId, startDate, endDate, perPage, page);
     System.out.println(result);
@@ -1567,9 +1621,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **studentId** | **Integer**| a student_id to filter by | [optional]
- **startDate** | **OffsetDateTime**| the start date of the period to query | [optional]
- **endDate** | **OffsetDateTime**| the end date of the period to query | [optional]
+ **studentId** | **Integer**| Filter to the specified student | [optional]
+ **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
+ **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1579,7 +1633,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1592,7 +1646,7 @@ Name | Type | Description  | Notes
 
 List Facets
 
-Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared.
+Returns a list of facets. The facet is used to reflect a different type of grade and allows 2 grades of the same assessment to be compared
 
 ### Example
 ```java
@@ -1605,14 +1659,14 @@ Returns a list of facets. The facet is used to reflect a different type of grade
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Facet> result = apiInstance.getFacets(perPage, page);
     System.out.println(result);
@@ -1635,7 +1689,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1648,7 +1702,7 @@ Name | Type | Description  | Notes
 
 List Grade Sets
 
-Returns a list of grade sets.
+Returns a list of grade sets
 
 ### Example
 ```java
@@ -1661,14 +1715,14 @@ Returns a list of grade sets.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<GradeSet> result = apiInstance.getGradeSets(perPage, page);
     System.out.println(result);
@@ -1691,20 +1745,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
-<a name="getLeftStaffMembers"></a>
-# **getLeftStaffMembers**
-> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications)
+<a name="getGroups"></a>
+# **getGroups**
+> List&lt;Group&gt; getGroups(ifModifiedSince, academicYearId, perPage, page)
 
-List Left Staff Members
+List Groups
 
-Returns a list of staff members who have left the school.  **Note:** The &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).&#39; 
+Returns a list of groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
 
 ### Example
 ```java
@@ -1717,16 +1771,76 @@ Returns a list of staff members who have left the school.  **Note:** The &#x60;I
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Boolean teachersOnly = true; // Boolean | return only staff who are teachers
-Boolean demographics = true; // Boolean | include demographics data
-Boolean qualifications = true; // Boolean | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
+try {
+    List<Group> result = apiInstance.getGroups(ifModifiedSince, academicYearId, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getGroups");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Group&gt;**](Group.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="getLeftStaffMembers"></a>
+# **getLeftStaffMembers**
+> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications)
+
+List Left Staff Members
+
+Returns a list of staff members who have left the school
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 try {
     List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications);
     System.out.println(result);
@@ -1740,10 +1854,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **teachersOnly** | **Boolean**| return only staff who are teachers | [optional]
- **demographics** | **Boolean**| include demographics data | [optional]
- **qualifications** | **Boolean**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
 ### Return type
 
@@ -1751,7 +1865,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1764,7 +1878,7 @@ Name | Type | Description  | Notes
 
 List Left Students
 
-&#39;Returns a list of students who have left the school.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).&#39; 
+Returns a list of students who have left the school
 
 ### Example
 ```java
@@ -1777,13 +1891,13 @@ List Left Students
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
 try {
     List<Student> result = apiInstance.getLeftStudents(ifModifiedSince);
     System.out.println(result);
@@ -1797,7 +1911,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
 
 ### Return type
 
@@ -1805,7 +1919,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1816,9 +1930,9 @@ Name | Type | Description  | Notes
 # **getMedicalConditions**
 > List&lt;MedicalCondition&gt; getMedicalConditions(perPage, page)
 
-Medical Conditions
+List Medical Conditions
 
-Returns a list of all the Medical Conditions defined by the school.
+Returns a list of all the Medical Conditions defined by the school
 
 ### Example
 ```java
@@ -1831,14 +1945,14 @@ Returns a list of all the Medical Conditions defined by the school.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<MedicalCondition> result = apiInstance.getMedicalConditions(perPage, page);
     System.out.println(result);
@@ -1861,7 +1975,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1870,11 +1984,11 @@ Name | Type | Description  | Notes
 
 <a name="getRegistrationGroupStudents"></a>
 # **getRegistrationGroupStudents**
-> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
 
 List Students for Registration Group
 
-Returns a list of all the students that are present in the registration group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of all the students that are present in the registration group identified by &#x60;group_id&#x60;
 
 ### Example
 ```java
@@ -1887,26 +2001,26 @@ Returns a list of all the students that are present in the registration group id
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
-Boolean demographics = true; // Boolean | include demographics data
-Boolean contacts = true; // Boolean | include contacts data
-Boolean senNeeds = true; // Boolean | include SEN needs data
-Boolean addresses = true; // Boolean | include student address data
-Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
-Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
-Boolean languages = true; // Boolean | include student language data
-Boolean photo = true; // Boolean | include student photo data
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Integer yearCode = 56; // Integer | Filter by school year
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean addresses = true; // Boolean | Include student address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getRegistrationGroupStudents");
@@ -1918,18 +2032,18 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
- **demographics** | **Boolean**| include demographics data | [optional]
- **contacts** | **Boolean**| include contacts data | [optional]
- **senNeeds** | **Boolean**| include SEN needs data | [optional]
- **addresses** | **Boolean**| include student address data | [optional]
- **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
- **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
- **languages** | **Boolean**| include student language data | [optional]
- **photo** | **Boolean**| include student photo data | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **yearCode** | **Integer**| Filter by school year | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **addresses** | **Boolean**| Include student address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
 
 ### Return type
 
@@ -1937,7 +2051,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -1948,9 +2062,9 @@ Name | Type | Description  | Notes
 # **getRegistrationGroups**
 > List&lt;RegistrationGroup&gt; getRegistrationGroups(ifModifiedSince, yearCode, date, academicYearId, perPage, page)
 
-List Registration Group
+List Registration Groups
 
-Returns a list of registration groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of registration groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
 
 ### Example
 ```java
@@ -1963,18 +2077,18 @@ Returns a list of registration groups that match the given set of filters.  If a
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Integer yearCode = 56; // Integer | Filter by school year
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<RegistrationGroup> result = apiInstance.getRegistrationGroups(ifModifiedSince, yearCode, date, academicYearId, perPage, page);
     System.out.println(result);
@@ -1988,10 +2102,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **yearCode** | **Integer**| Filter by school year | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2001,7 +2115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2014,7 +2128,7 @@ Name | Type | Description  | Notes
 
 List Results
 
-Returns a list of results for the student ID(s) specified by the students parameter.
+Returns a list of results for the student ID(s) specified by the students parameter
 
 ### Example
 ```java
@@ -2027,16 +2141,16 @@ Returns a list of results for the student ID(s) specified by the students parame
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Result> result = apiInstance.getResults(students, ifModifiedSince, perPage, page);
     System.out.println(result);
@@ -2050,8 +2164,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [default to new ArrayList&lt;Integer&gt;()]
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [default to new ArrayList&lt;Integer&gt;()]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2061,7 +2175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2070,11 +2184,11 @@ Name | Type | Description  | Notes
 
 <a name="getStaffAbsences"></a>
 # **getStaffAbsences**
-> List&lt;StaffAbsence&gt; getStaffAbsences(ifModifiedSince, staffMemberId, startDate, qualifications, perPage, page)
+> List&lt;StaffAbsence&gt; getStaffAbsences(staffMemberId, startDate, endDate, perPage, page)
 
 List Staff Absences
 
-Returns a list of staff member absences for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.absences&#x60; scope is required to access staff member absence information.
+Returns a list of staff member absences for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.absences&#x60; scope is required to access staff member absence information
 
 ### Example
 ```java
@@ -2087,20 +2201,19 @@ Returns a list of staff member absences for the school accociated with the provi
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Integer staffMemberId = 56; // Integer | show only absences fot the specified staff member
-OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | the start date of the period to query
-Integer qualifications = 56; // Integer | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer staffMemberId = 56; // Integer | Filter to the specified staff member
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffAbsence> result = apiInstance.getStaffAbsences(ifModifiedSince, staffMemberId, startDate, qualifications, perPage, page);
+    List<StaffAbsence> result = apiInstance.getStaffAbsences(staffMemberId, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getStaffAbsences");
@@ -2112,10 +2225,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **staffMemberId** | **Integer**| show only absences fot the specified staff member | [optional]
- **startDate** | **OffsetDateTime**| the start date of the period to query | [optional]
- **qualifications** | **Integer**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **staffMemberId** | **Integer**| Filter to the specified staff member | [optional]
+ **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
+ **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2125,7 +2237,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2134,11 +2246,11 @@ Name | Type | Description  | Notes
 
 <a name="getStaffContracts"></a>
 # **getStaffContracts**
-> List&lt;StaffContract&gt; getStaffContracts(ifModifiedSince, staffMemberId, date, roles, salaries, allowances, perPage, page)
+> List&lt;StaffContract&gt; getStaffContracts(staffMemberId, date, roles, salaries, allowances, perPage, page)
 
 List Staff Contracts
 
-Returns a list of staff member contracts for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.contracts&#x60; scope is required to access staff member contract information.
+Returns a list of staff member contracts for the school accociated with the provided &#x60;access_token&#x60;. A school level access token with the &#x60;staff_members.contracts&#x60; scope is required to access staff member contract information
 
 ### Example
 ```java
@@ -2151,22 +2263,21 @@ Returns a list of staff member contracts for the school accociated with the prov
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Integer staffMemberId = 56; // Integer | show only absences fot the specified staff member
-Boolean date = true; // Boolean | returns results for a specific date
-Boolean roles = true; // Boolean | return roles information along with a staff contract
-Boolean salaries = true; // Boolean | return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it)
-Boolean allowances = true; // Boolean | return allowances information along with a staff contract (requires staff_members.salaries scope)
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer staffMemberId = 56; // Integer | Filter to the specified staff member
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Boolean roles = true; // Boolean | Include role information along with a staff contract
+Boolean salaries = true; // Boolean | Include salaries information along with a staff contract (requires `staff_members.salaries` scope for full information - only the `hours_per_week`, `fte` and `weeks_per_year` fields are shown without it)
+Boolean allowances = true; // Boolean | Include allowances information along with a staff contract (requires `staff_members.salaries` scope)
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffContract> result = apiInstance.getStaffContracts(ifModifiedSince, staffMemberId, date, roles, salaries, allowances, perPage, page);
+    List<StaffContract> result = apiInstance.getStaffContracts(staffMemberId, date, roles, salaries, allowances, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getStaffContracts");
@@ -2178,12 +2289,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **staffMemberId** | **Integer**| show only absences fot the specified staff member | [optional]
- **date** | **Boolean**| returns results for a specific date | [optional]
- **roles** | **Boolean**| return roles information along with a staff contract | [optional]
- **salaries** | **Boolean**| return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) | [optional]
- **allowances** | **Boolean**| return allowances information along with a staff contract (requires staff_members.salaries scope) | [optional]
+ **staffMemberId** | **Integer**| Filter to the specified staff member | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **roles** | **Boolean**| Include role information along with a staff contract | [optional]
+ **salaries** | **Boolean**| Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it) | [optional]
+ **allowances** | **Boolean**| Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2193,7 +2303,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2206,7 +2316,7 @@ Name | Type | Description  | Notes
 
 List Staff Members
 
-Returns a list of staff members for the school accociated with the provided &#x60;access_token&#x60;.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of staff members for the school accociated with the provided &#x60;access_token&#x60;
 
 ### Example
 ```java
@@ -2219,18 +2329,18 @@ Returns a list of staff members for the school accociated with the provided &#x6
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Boolean teachersOnly = true; // Boolean | return only staff who are teachers
-Boolean demographics = true; // Boolean | include demographics data
-Boolean qualifications = true; // Boolean | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<StaffMember> result = apiInstance.getStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page);
     System.out.println(result);
@@ -2244,10 +2354,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **teachersOnly** | **Boolean**| return only staff who are teachers | [optional]
- **demographics** | **Boolean**| include demographics data | [optional]
- **qualifications** | **Boolean**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2257,7 +2367,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2270,7 +2380,7 @@ Name | Type | Description  | Notes
 
 List Students
 
-Returns a list of students for the school associated with the provided &#x60;access_token.&#x60; **Note:** the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of students for the school associated with the provided &#x60;access_token&#x60;
 
 ### Example
 ```java
@@ -2283,26 +2393,26 @@ Returns a list of students for the school associated with the provided &#x60;acc
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
-Boolean demographics = true; // Boolean | include demographics data
-Boolean contacts = true; // Boolean | include contacts data
-Boolean senNeeds = true; // Boolean | include SEN needs data
-Boolean addresses = true; // Boolean | include student address data
-Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
-Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
-Boolean languages = true; // Boolean | include student language data
-Boolean photo = true; // Boolean | include student photo data
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Integer yearCode = 56; // Integer | Filter by school year
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean addresses = true; // Boolean | Include student address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Student> result = apiInstance.getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
@@ -2316,18 +2426,18 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). | [optional] [default to new ArrayList&lt;Integer&gt;()]
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
- **demographics** | **Boolean**| include demographics data | [optional]
- **contacts** | **Boolean**| include contacts data | [optional]
- **senNeeds** | **Boolean**| include SEN needs data | [optional]
- **addresses** | **Boolean**| include student address data | [optional]
- **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
- **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
- **languages** | **Boolean**| include student language data | [optional]
- **photo** | **Boolean**| include student photo data | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional] [default to new ArrayList&lt;Integer&gt;()]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **yearCode** | **Integer**| Filter by school year | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **addresses** | **Boolean**| Include student address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2337,7 +2447,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2350,7 +2460,7 @@ Name | Type | Description  | Notes
 
 List Subjects
 
-Returns a list of the Assembly Platform&#39;s subjects.
+Returns a list of the Assembly Platform&#39;s subjects
 
 ### Example
 ```java
@@ -2363,14 +2473,14 @@ Returns a list of the Assembly Platform&#39;s subjects.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<Subject> result = apiInstance.getSubjects(perPage, page);
     System.out.println(result);
@@ -2393,7 +2503,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2402,11 +2512,11 @@ Name | Type | Description  | Notes
 
 <a name="getTeachingGroupStudents"></a>
 # **getTeachingGroupStudents**
-> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
 
 List Students for Teaching Group
 
-Returns a list of all the students that are present in the teaching group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of all the students that are present in the teaching group identified by &#x60;group_id&#x60;
 
 ### Example
 ```java
@@ -2419,24 +2529,27 @@ Returns a list of all the students that are present in the teaching group identi
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Boolean demographics = true; // Boolean | include demographics data
-Boolean contacts = true; // Boolean | include contacts data
-Boolean senNeeds = true; // Boolean | include SEN needs data
-Boolean addresses = true; // Boolean | include student address data
-Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
-Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
-Boolean languages = true; // Boolean | include student language data
-Boolean photo = true; // Boolean | include student photo data
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Integer yearCode = 56; // Integer | Filter by school year
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean addresses = true; // Boolean | Include student address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getTeachingGroupStudents");
@@ -2448,16 +2561,19 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **demographics** | **Boolean**| include demographics data | [optional]
- **contacts** | **Boolean**| include contacts data | [optional]
- **senNeeds** | **Boolean**| include SEN needs data | [optional]
- **addresses** | **Boolean**| include student address data | [optional]
- **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
- **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
- **languages** | **Boolean**| include student language data | [optional]
- **photo** | **Boolean**| include student photo data | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **yearCode** | **Integer**| Filter by school year | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **addresses** | **Boolean**| Include student address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
 
 ### Return type
 
@@ -2465,7 +2581,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2478,7 +2594,7 @@ Name | Type | Description  | Notes
 
 List Teaching Groups
 
-Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
 
 ### Example
 ```java
@@ -2491,19 +2607,19 @@ Returns a list of teaching groups that match the given set of filters.  If a dat
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-String subjectCode = "subjectCode_example"; // String | filter by subject
-Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+String subjectCode = "subjectCode_example"; // String | Filter by subject
+Integer yearCode = 56; // Integer | Filter by school year
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
     List<TeachingGroup> result = apiInstance.getTeachingGroups(ifModifiedSince, subjectCode, yearCode, date, academicYearId, perPage, page);
     System.out.println(result);
@@ -2517,11 +2633,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **subjectCode** | **String**| filter by subject | [optional]
- **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **subjectCode** | **String**| Filter by subject | [optional]
+ **yearCode** | **Integer**| Filter by school year | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2531,7 +2647,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2540,11 +2656,11 @@ Name | Type | Description  | Notes
 
 <a name="getYearGroupStudents"></a>
 # **getYearGroupStudents**
-> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
 
 List Students for Year Group
 
-Returns a list of all the students that are present in the year group identified by group_id.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of all the students that are present in the year group identified by &#x60;group_id&#x60;
 
 ### Example
 ```java
@@ -2557,26 +2673,25 @@ Returns a list of all the students that are present in the year group identified
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
-Boolean demographics = true; // Boolean | include demographics data
-Boolean contacts = true; // Boolean | include contacts data
-Boolean senNeeds = true; // Boolean | include SEN needs data
-Boolean addresses = true; // Boolean | include student address data
-Boolean care = true; // Boolean | include student care data (you must also supply the demographics parameter)
-Boolean everInCare = true; // Boolean | include whether the student has ever been in care (you must also supply the demographics parameter)
-Boolean languages = true; // Boolean | include student language data
-Boolean photo = true; // Boolean | include student photo data
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean addresses = true; // Boolean | Include student address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, academicYearId, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getYearGroupStudents");
@@ -2588,18 +2703,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
- **demographics** | **Boolean**| include demographics data | [optional]
- **contacts** | **Boolean**| include contacts data | [optional]
- **senNeeds** | **Boolean**| include SEN needs data | [optional]
- **addresses** | **Boolean**| include student address data | [optional]
- **care** | **Boolean**| include student care data (you must also supply the demographics parameter) | [optional]
- **everInCare** | **Boolean**| include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
- **languages** | **Boolean**| include student language data | [optional]
- **photo** | **Boolean**| include student photo data | [optional]
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **addresses** | **Boolean**| Include student address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
 
 ### Return type
 
@@ -2607,7 +2721,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2616,11 +2730,11 @@ Name | Type | Description  | Notes
 
 <a name="getYearGroups"></a>
 # **getYearGroups**
-> List&lt;YearGroup&gt; getYearGroups(ifModifiedSince, yearCode, date, academicYearId, perPage, page)
+> List&lt;YearGroup&gt; getYearGroups(ifModifiedSince, date, yearCode, academicYearId, perPage, page)
 
 List Year Groups
 
-Returns a list of year groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.  **Note:** Note the &#x60;If-Modified-Since&#x60; header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details). 
+Returns a list of year groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
 
 ### Example
 ```java
@@ -2633,20 +2747,20 @@ Returns a list of year groups that match the given set of filters.  If a date pa
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
-Integer yearCode = 56; // Integer | filter by school year (cannot be supplied at the same time as the students parameter)
-OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | returns results for a specific date
-Integer academicYearId = 56; // Integer | returns all groups and group memberships from the specified academic year
-Integer perPage = 100; // Integer | Number of results to return
-Integer page = 1; // Integer | Page number to return
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+String yearCode = "yearCode_example"; // String | Filter by school year
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<YearGroup> result = apiInstance.getYearGroups(ifModifiedSince, yearCode, date, academicYearId, perPage, page);
+    List<YearGroup> result = apiInstance.getYearGroups(ifModifiedSince, date, yearCode, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getYearGroups");
@@ -2658,10 +2772,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ifModifiedSince** | **OffsetDateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
- **yearCode** | **Integer**| filter by school year (cannot be supplied at the same time as the students parameter) | [optional]
- **date** | **OffsetDateTime**| returns results for a specific date | [optional]
- **academicYearId** | **Integer**| returns all groups and group memberships from the specified academic year | [optional]
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **yearCode** | **String**| Filter by school year | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2671,7 +2785,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2682,9 +2796,9 @@ Name | Type | Description  | Notes
 # **status**
 > SchoolStatus status()
 
-Get School Sync Status
+View School Sync Status
 
-Returns status for the school associated with the provided access_token.
+Returns status for the school associated with the provided &#x60;access_token&#x60;
 
 ### Example
 ```java
@@ -2697,10 +2811,10 @@ Returns status for the school associated with the provided access_token.
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 try {
@@ -2721,7 +2835,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 
@@ -2734,7 +2848,7 @@ This endpoint does not need any parameter.
 
 Update a Single Result
 
-Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
+Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response
 
 ### Example
 ```java
@@ -2747,13 +2861,13 @@ Once a result has been created, it can be updated on the Platform by passing the
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure HTTP basic authorization: bearerAuth
-HttpBasicAuth bearerAuth = (HttpBasicAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setUsername("YOUR USERNAME");
-bearerAuth.setPassword("YOUR PASSWORD");
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
-Integer id = 56; // Integer | id of the entity
+Integer id = 56; // Integer | Internal identifier of the entity
 ResultEntry resultEntry = new ResultEntry(); // ResultEntry | 
 try {
     Result result = apiInstance.updateResults(id, resultEntry);
@@ -2768,7 +2882,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| id of the entity |
+ **id** | **Integer**| Internal identifier of the entity |
  **resultEntry** | [**ResultEntry**](ResultEntry.md)|  | [optional]
 
 ### Return type
@@ -2777,7 +2891,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[SchoolToken](../README.md#SchoolToken)
 
 ### HTTP request headers
 

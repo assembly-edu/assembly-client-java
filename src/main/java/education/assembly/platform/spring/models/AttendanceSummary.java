@@ -22,11 +22,15 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * AttendanceSummary
+ * A statiscital summary of a student&#39;s attendance for an academic year.
  */
+@ApiModel(description = "A statiscital summary of a student's attendance for an academic year.")
 
 public class AttendanceSummary implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "attendance_summary";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -61,16 +65,34 @@ public class AttendanceSummary implements Serializable {
   @JsonProperty("unauthorised_absence_sessions")
   private Float unauthorisedAbsenceSessions = ;
 
+  public AttendanceSummary object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public AttendanceSummary id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -85,10 +107,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get studentId
+   * The ID of the student
    * @return studentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the student")
   public Integer getStudentId() {
     return studentId;
   }
@@ -103,10 +125,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get registrationGroupId
+   * The ID of the student&#39;s registration group
    * @return registrationGroupId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the student's registration group")
   public Integer getRegistrationGroupId() {
     return registrationGroupId;
   }
@@ -121,10 +143,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get academicYearId
+   * The ID of the academic year
    * @return academicYearId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the academic year")
   public Integer getAcademicYearId() {
     return academicYearId;
   }
@@ -139,10 +161,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get startDate
+   * Start date for the attendance summary
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Start date for the attendance summary")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -157,10 +179,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get endDate
+   * End date for the attendance summary
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "End date for the attendance summary")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -175,10 +197,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get possibleSessions
+   * Number of possible sessions that could have been attended
    * @return possibleSessions
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of possible sessions that could have been attended")
   public Float getPossibleSessions() {
     return possibleSessions;
   }
@@ -193,10 +215,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get attendedSessions
+   * Number of sessions with present mark recorded
    * @return attendedSessions
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of sessions with present mark recorded")
   public Float getAttendedSessions() {
     return attendedSessions;
   }
@@ -211,10 +233,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get lateSessions
+   * Number of sessions with late mark recorded
    * @return lateSessions
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of sessions with late mark recorded")
   public Float getLateSessions() {
     return lateSessions;
   }
@@ -229,10 +251,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get authorisedAbsenceSessions
+   * Number of sessions with authorised absence recorded
    * @return authorisedAbsenceSessions
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of sessions with authorised absence recorded")
   public Float getAuthorisedAbsenceSessions() {
     return authorisedAbsenceSessions;
   }
@@ -247,10 +269,10 @@ public class AttendanceSummary implements Serializable {
   }
 
    /**
-   * Get unauthorisedAbsenceSessions
+   * Number of sessions with unauthorised absence recorded
    * @return unauthorisedAbsenceSessions
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of sessions with unauthorised absence recorded")
   public Float getUnauthorisedAbsenceSessions() {
     return unauthorisedAbsenceSessions;
   }
@@ -269,7 +291,8 @@ public class AttendanceSummary implements Serializable {
       return false;
     }
     AttendanceSummary attendanceSummary = (AttendanceSummary) o;
-    return Objects.equals(this.id, attendanceSummary.id) &&
+    return Objects.equals(this.object, attendanceSummary.object) &&
+        Objects.equals(this.id, attendanceSummary.id) &&
         Objects.equals(this.studentId, attendanceSummary.studentId) &&
         Objects.equals(this.registrationGroupId, attendanceSummary.registrationGroupId) &&
         Objects.equals(this.academicYearId, attendanceSummary.academicYearId) &&
@@ -284,7 +307,7 @@ public class AttendanceSummary implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, studentId, registrationGroupId, academicYearId, startDate, endDate, possibleSessions, attendedSessions, lateSessions, authorisedAbsenceSessions, unauthorisedAbsenceSessions);
+    return Objects.hash(object, id, studentId, registrationGroupId, academicYearId, startDate, endDate, possibleSessions, attendedSessions, lateSessions, authorisedAbsenceSessions, unauthorisedAbsenceSessions);
   }
 
 
@@ -293,6 +316,7 @@ public class AttendanceSummary implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class AttendanceSummary {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    registrationGroupId: ").append(toIndentedString(registrationGroupId)).append("\n");

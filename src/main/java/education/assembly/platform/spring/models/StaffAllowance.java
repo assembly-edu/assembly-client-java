@@ -22,11 +22,18 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * StaffAllowance
+ * An allowance associated with a staff member.
  */
+@ApiModel(description = "An allowance associated with a staff member.")
 
 public class StaffAllowance implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "staff_allowance";
+
+  @JsonProperty("id")
+  private Integer id = ;
 
   @JsonProperty("additional_payment_type")
   private String additionalPaymentType = ;
@@ -40,16 +47,52 @@ public class StaffAllowance implements Serializable {
   @JsonProperty("end_date")
   private OffsetDateTime endDate = ;
 
+  public StaffAllowance object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
+  public StaffAllowance id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Internal stable ID
+   * @return id
+  **/
+  @ApiModelProperty(value = "Internal stable ID")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
   public StaffAllowance additionalPaymentType(String additionalPaymentType) {
     this.additionalPaymentType = additionalPaymentType;
     return this;
   }
 
    /**
-   * Get additionalPaymentType
+   * Type of additional payment
    * @return additionalPaymentType
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Type of additional payment")
   public String getAdditionalPaymentType() {
     return additionalPaymentType;
   }
@@ -64,10 +107,10 @@ public class StaffAllowance implements Serializable {
   }
 
    /**
-   * Get additionalPaymentAmount
+   * Amount of additional payment
    * @return additionalPaymentAmount
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Amount of additional payment")
   public Float getAdditionalPaymentAmount() {
     return additionalPaymentAmount;
   }
@@ -82,10 +125,10 @@ public class StaffAllowance implements Serializable {
   }
 
    /**
-   * Get startDate
+   * Start date of additional payment
    * @return startDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Start date of additional payment")
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -100,10 +143,10 @@ public class StaffAllowance implements Serializable {
   }
 
    /**
-   * Get endDate
+   * End date of additional payment
    * @return endDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "End date of additional payment")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -122,7 +165,9 @@ public class StaffAllowance implements Serializable {
       return false;
     }
     StaffAllowance staffAllowance = (StaffAllowance) o;
-    return Objects.equals(this.additionalPaymentType, staffAllowance.additionalPaymentType) &&
+    return Objects.equals(this.object, staffAllowance.object) &&
+        Objects.equals(this.id, staffAllowance.id) &&
+        Objects.equals(this.additionalPaymentType, staffAllowance.additionalPaymentType) &&
         Objects.equals(this.additionalPaymentAmount, staffAllowance.additionalPaymentAmount) &&
         Objects.equals(this.startDate, staffAllowance.startDate) &&
         Objects.equals(this.endDate, staffAllowance.endDate);
@@ -130,7 +175,7 @@ public class StaffAllowance implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalPaymentType, additionalPaymentAmount, startDate, endDate);
+    return Objects.hash(object, id, additionalPaymentType, additionalPaymentAmount, startDate, endDate);
   }
 
 
@@ -139,6 +184,8 @@ public class StaffAllowance implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffAllowance {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalPaymentType: ").append(toIndentedString(additionalPaymentType)).append("\n");
     sb.append("    additionalPaymentAmount: ").append(toIndentedString(additionalPaymentAmount)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");

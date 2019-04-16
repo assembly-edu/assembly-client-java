@@ -24,11 +24,15 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * StudentDemographics
+ * Demographic information about the student.
  */
+@ApiModel(description = "Demographic information about the student.")
 
 public class StudentDemographics implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "student_demographics";
 
   @JsonProperty("ethnicity_code")
   private String ethnicityCode = ;
@@ -63,9 +67,6 @@ public class StudentDemographics implements Serializable {
   @JsonProperty("is_fsm6")
   private Boolean isFsm6 = ;
 
-  @JsonProperty("looked_after")
-  private Boolean lookedAfter = ;
-
   @JsonProperty("in_care")
   private Boolean inCare = ;
 
@@ -78,16 +79,34 @@ public class StudentDemographics implements Serializable {
   @JsonProperty("sen_needs")
   private List<SenNeed> senNeeds = null;
 
+  public StudentDemographics object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public StudentDemographics ethnicityCode(String ethnicityCode) {
     this.ethnicityCode = ethnicityCode;
     return this;
   }
 
    /**
-   * Get ethnicityCode
+   * A detailed, Dfe standardised way of categorising the ethnicity of a student
    * @return ethnicityCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A detailed, Dfe standardised way of categorising the ethnicity of a student")
   public String getEthnicityCode() {
     return ethnicityCode;
   }
@@ -102,10 +121,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get ethnicityGroup
+   * A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
    * @return ethnicityGroup
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections")
   public String getEthnicityGroup() {
     return ethnicityGroup;
   }
@@ -120,10 +139,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get gender
+   * The gender of the student
    * @return gender
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The gender of the student")
   public String getGender() {
     return gender;
   }
@@ -138,10 +157,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get isPp
+   * Pupil Premium (PP) - schools receive extra funding for students who qualify as Pupil Premium. The includes any student who has qualified for Free School Meals (FSM) in the last 6 years, and any student in local-authority care
    * @return isPp
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Pupil Premium (PP) - schools receive extra funding for students who qualify as Pupil Premium. The includes any student who has qualified for Free School Meals (FSM) in the last 6 years, and any student in local-authority care")
   public Boolean isgetIsPp() {
     return isPp;
   }
@@ -156,10 +175,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get isEal
+   * English as an Additional Language (EAL) - this field will be true for a student whose first language is not English
    * @return isEal
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "English as an Additional Language (EAL) - this field will be true for a student whose first language is not English")
   public Boolean isgetIsEal() {
     return isEal;
   }
@@ -174,10 +193,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get senCategory
+   * Special Education Need (SEN) - indicates a student has learning difficulties and requires special education provision. Can be null for those not eligible
    * @return senCategory
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Special Education Need (SEN) - indicates a student has learning difficulties and requires special education provision. Can be null for those not eligible")
   public String getSenCategory() {
     return senCategory;
   }
@@ -192,10 +211,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get countryOfBirth
+   * The country of birth of the student
    * @return countryOfBirth
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The country of birth of the student")
   public String getCountryOfBirth() {
     return countryOfBirth;
   }
@@ -218,10 +237,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get nationalities
+   * The nationality or nationalities of the student
    * @return nationalities
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The nationality or nationalities of the student")
   public List<String> getNationalities() {
     return nationalities;
   }
@@ -236,10 +255,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get fsmReviewDate
+   * Free school meal review date -Review date for pupil&#39;s free school meal eligibility
    * @return fsmReviewDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Free school meal review date -Review date for pupil's free school meal eligibility")
   public String getFsmReviewDate() {
     return fsmReviewDate;
   }
@@ -254,10 +273,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get isFsm
+   * Free School Meals (FSM) - indicates if the student is eligible for free school meals
    * @return isFsm
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Free School Meals (FSM) - indicates if the student is eligible for free school meals")
   public Boolean isgetIsFsm() {
     return isFsm;
   }
@@ -272,10 +291,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get isFsm6
+   * Free School Meals 6 (FSM6) - indicates if the student has been eligible for free school meals within the last 6 years
    * @return isFsm6
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Free School Meals 6 (FSM6) - indicates if the student has been eligible for free school meals within the last 6 years")
   public Boolean isgetIsFsm6() {
     return isFsm6;
   }
@@ -284,34 +303,16 @@ public class StudentDemographics implements Serializable {
     this.isFsm6 = isFsm6;
   }
 
-  public StudentDemographics lookedAfter(Boolean lookedAfter) {
-    this.lookedAfter = lookedAfter;
-    return this;
-  }
-
-   /**
-   * Get lookedAfter
-   * @return lookedAfter
-  **/
-  @ApiModelProperty(value = "")
-  public Boolean isgetLookedAfter() {
-    return lookedAfter;
-  }
-
-  public void setLookedAfter(Boolean lookedAfter) {
-    this.lookedAfter = lookedAfter;
-  }
-
   public StudentDemographics inCare(Boolean inCare) {
     this.inCare = inCare;
     return this;
   }
 
    /**
-   * Get inCare
+   * Looked after status - indicates whether the student is &#39;looked after&#39; by the local authority
    * @return inCare
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Looked after status - indicates whether the student is 'looked after' by the local authority")
   public Boolean isgetInCare() {
     return inCare;
   }
@@ -326,10 +327,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get everInCare
+   * Ever in care status - indicates whether the student is either currently &#39;looked after&#39;, or has been at any point in the past
    * @return everInCare
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Ever in care status - indicates whether the student is either currently 'looked after', or has been at any point in the past")
   public Boolean isgetEverInCare() {
     return everInCare;
   }
@@ -344,10 +345,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get serviceChild
+   * Service Child - indicates whether the student has parent(s) who are Service personnel serving in regular military units of all forces and exercising parental care and responsibility
    * @return serviceChild
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Service Child - indicates whether the student has parent(s) who are Service personnel serving in regular military units of all forces and exercising parental care and responsibility")
   public Boolean isgetServiceChild() {
     return serviceChild;
   }
@@ -370,10 +371,10 @@ public class StudentDemographics implements Serializable {
   }
 
    /**
-   * Get senNeeds
+   * Information about a student&#39;s SEN Needs. This will only be returned if &#x60;&amp;sen_needs&#x3D;true&#x60; is included in your request
    * @return senNeeds
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Information about a student's SEN Needs. This will only be returned if `&sen_needs=true` is included in your request")
   public List<SenNeed> getSenNeeds() {
     return senNeeds;
   }
@@ -392,7 +393,8 @@ public class StudentDemographics implements Serializable {
       return false;
     }
     StudentDemographics studentDemographics = (StudentDemographics) o;
-    return Objects.equals(this.ethnicityCode, studentDemographics.ethnicityCode) &&
+    return Objects.equals(this.object, studentDemographics.object) &&
+        Objects.equals(this.ethnicityCode, studentDemographics.ethnicityCode) &&
         Objects.equals(this.ethnicityGroup, studentDemographics.ethnicityGroup) &&
         Objects.equals(this.gender, studentDemographics.gender) &&
         Objects.equals(this.isPp, studentDemographics.isPp) &&
@@ -403,7 +405,6 @@ public class StudentDemographics implements Serializable {
         Objects.equals(this.fsmReviewDate, studentDemographics.fsmReviewDate) &&
         Objects.equals(this.isFsm, studentDemographics.isFsm) &&
         Objects.equals(this.isFsm6, studentDemographics.isFsm6) &&
-        Objects.equals(this.lookedAfter, studentDemographics.lookedAfter) &&
         Objects.equals(this.inCare, studentDemographics.inCare) &&
         Objects.equals(this.everInCare, studentDemographics.everInCare) &&
         Objects.equals(this.serviceChild, studentDemographics.serviceChild) &&
@@ -412,7 +413,7 @@ public class StudentDemographics implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, lookedAfter, inCare, everInCare, serviceChild, senNeeds);
+    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, inCare, everInCare, serviceChild, senNeeds);
   }
 
 
@@ -421,6 +422,7 @@ public class StudentDemographics implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StudentDemographics {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    ethnicityCode: ").append(toIndentedString(ethnicityCode)).append("\n");
     sb.append("    ethnicityGroup: ").append(toIndentedString(ethnicityGroup)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
@@ -432,7 +434,6 @@ public class StudentDemographics implements Serializable {
     sb.append("    fsmReviewDate: ").append(toIndentedString(fsmReviewDate)).append("\n");
     sb.append("    isFsm: ").append(toIndentedString(isFsm)).append("\n");
     sb.append("    isFsm6: ").append(toIndentedString(isFsm6)).append("\n");
-    sb.append("    lookedAfter: ").append(toIndentedString(lookedAfter)).append("\n");
     sb.append("    inCare: ").append(toIndentedString(inCare)).append("\n");
     sb.append("    everInCare: ").append(toIndentedString(everInCare)).append("\n");
     sb.append("    serviceChild: ").append(toIndentedString(serviceChild)).append("\n");

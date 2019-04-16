@@ -51,7 +51,7 @@ public class AssemblyApiExample {
         AssemblyApi api = new AssemblyApi(client);
         BulkResultsBody bulkResultsBody = new BulkResultsBody(); // BulkResultsBody | 
         try {
-            ModelApiResponse result = api.bulkUpdateResults(bulkResultsBody);
+            BulkResultResponse result = api.bulkUpdateResults(bulkResultsBody);
             System.out.println(result);
         } catch (Exception e) {
             System.err.println("Exception when calling AssemblyApi#bulkUpdateResults");

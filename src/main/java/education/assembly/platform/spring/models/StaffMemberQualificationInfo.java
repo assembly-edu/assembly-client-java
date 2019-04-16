@@ -24,11 +24,15 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * StaffMemberQualificationInfo
+ * Qualification information about the staff member.
  */
+@ApiModel(description = "Qualification information about the staff member.")
 
 public class StaffMemberQualificationInfo implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "staff_qualification_info";
 
   @JsonProperty("teacher_number")
   private String teacherNumber = ;
@@ -45,16 +49,34 @@ public class StaffMemberQualificationInfo implements Serializable {
   @JsonProperty("qualifications")
   private List<StaffQualification> qualifications = null;
 
+  public StaffMemberQualificationInfo object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public StaffMemberQualificationInfo teacherNumber(String teacherNumber) {
     this.teacherNumber = teacherNumber;
     return this;
   }
 
    /**
-   * Get teacherNumber
+   * The DfE Teacher Reference number (also known as GTC number). For members of staff who have one this is a unique identifier
    * @return teacherNumber
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The DfE Teacher Reference number (also known as GTC number). For members of staff who have one this is a unique identifier")
   public String getTeacherNumber() {
     return teacherNumber;
   }
@@ -69,10 +91,10 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * Get qtStatus
+   * Whether or not the staff member holds Qualified Teacher Status
    * @return qtStatus
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Whether or not the staff member holds Qualified Teacher Status")
   public Boolean isgetQtStatus() {
     return qtStatus;
   }
@@ -87,10 +109,10 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * Get hltaStatus
+   * Whether or not the staff member holds Higher Level Teaching Assistant Status
    * @return hltaStatus
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Whether or not the staff member holds Higher Level Teaching Assistant Status")
   public Boolean isgetHltaStatus() {
     return hltaStatus;
   }
@@ -105,10 +127,10 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * Get qtsRoute
+   * The route by which a teacher obtains Qualified Teacher Status (e.g. the Graduate Teacher programme).
    * @return qtsRoute
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The route by which a teacher obtains Qualified Teacher Status (e.g. the Graduate Teacher programme).")
   public String getQtsRoute() {
     return qtsRoute;
   }
@@ -131,10 +153,10 @@ public class StaffMemberQualificationInfo implements Serializable {
   }
 
    /**
-   * Get qualifications
+   * A list of all qualifications/degrees completed by a staff member
    * @return qualifications
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of all qualifications/degrees completed by a staff member")
   public List<StaffQualification> getQualifications() {
     return qualifications;
   }
@@ -153,7 +175,8 @@ public class StaffMemberQualificationInfo implements Serializable {
       return false;
     }
     StaffMemberQualificationInfo staffMemberQualificationInfo = (StaffMemberQualificationInfo) o;
-    return Objects.equals(this.teacherNumber, staffMemberQualificationInfo.teacherNumber) &&
+    return Objects.equals(this.object, staffMemberQualificationInfo.object) &&
+        Objects.equals(this.teacherNumber, staffMemberQualificationInfo.teacherNumber) &&
         Objects.equals(this.qtStatus, staffMemberQualificationInfo.qtStatus) &&
         Objects.equals(this.hltaStatus, staffMemberQualificationInfo.hltaStatus) &&
         Objects.equals(this.qtsRoute, staffMemberQualificationInfo.qtsRoute) &&
@@ -162,7 +185,7 @@ public class StaffMemberQualificationInfo implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(teacherNumber, qtStatus, hltaStatus, qtsRoute, qualifications);
+    return Objects.hash(object, teacherNumber, qtStatus, hltaStatus, qtsRoute, qualifications);
   }
 
 
@@ -171,6 +194,7 @@ public class StaffMemberQualificationInfo implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StaffMemberQualificationInfo {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    teacherNumber: ").append(toIndentedString(teacherNumber)).append("\n");
     sb.append("    qtStatus: ").append(toIndentedString(qtStatus)).append("\n");
     sb.append("    hltaStatus: ").append(toIndentedString(hltaStatus)).append("\n");

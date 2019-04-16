@@ -22,8 +22,9 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * ResultEntry
+ * A result for a student to be created on the Platform
  */
+@ApiModel(description = "A result for a student to be created on the Platform")
 
 public class ResultEntry implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -46,10 +47,10 @@ public class ResultEntry implements Serializable {
   }
 
    /**
-   * Get studentId
+   * The ID of the student
    * @return studentId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the student")
   public Integer getStudentId() {
     return studentId;
   }
@@ -64,10 +65,10 @@ public class ResultEntry implements Serializable {
   }
 
    /**
-   * Get resultId
+   * The ID of the result
    * @return resultId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the result")
   public Integer getResultId() {
     return resultId;
   }
@@ -82,10 +83,10 @@ public class ResultEntry implements Serializable {
   }
 
    /**
-   * Get gradeId
+   * The ID of the grade
    * @return gradeId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The ID of the grade")
   public Integer getGradeId() {
     return gradeId;
   }
@@ -100,10 +101,10 @@ public class ResultEntry implements Serializable {
   }
 
    /**
-   * Get resultDate
+   * The date/time that this result was recorded
    * @return resultDate
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The date/time that this result was recorded")
   public OffsetDateTime getResultDate() {
     return resultDate;
   }

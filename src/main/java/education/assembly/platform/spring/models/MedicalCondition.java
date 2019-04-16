@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * MedicalCondition
+ * A medical condition defined in the MIS.
  */
+@ApiModel(description = "A medical condition defined in the MIS.")
 
 public class MedicalCondition implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "medical_condition";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -36,16 +40,34 @@ public class MedicalCondition implements Serializable {
   @JsonProperty("name")
   private String name = ;
 
+  public MedicalCondition object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
   public MedicalCondition id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -60,10 +82,10 @@ public class MedicalCondition implements Serializable {
   }
 
    /**
-   * Get code
+   * The code of the medical condition
    * @return code
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The code of the medical condition")
   public String getCode() {
     return code;
   }
@@ -78,10 +100,10 @@ public class MedicalCondition implements Serializable {
   }
 
    /**
-   * Get name
+   * The name of the medical condition
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The name of the medical condition")
   public String getName() {
     return name;
   }
@@ -100,14 +122,15 @@ public class MedicalCondition implements Serializable {
       return false;
     }
     MedicalCondition medicalCondition = (MedicalCondition) o;
-    return Objects.equals(this.id, medicalCondition.id) &&
+    return Objects.equals(this.object, medicalCondition.object) &&
+        Objects.equals(this.id, medicalCondition.id) &&
         Objects.equals(this.code, medicalCondition.code) &&
         Objects.equals(this.name, medicalCondition.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, name);
+    return Objects.hash(object, id, code, name);
   }
 
 
@@ -116,6 +139,7 @@ public class MedicalCondition implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class MedicalCondition {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

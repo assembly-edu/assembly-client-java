@@ -21,11 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Email
+ * An email address.
  */
+@ApiModel(description = "An email address.")
 
-public class Email implements Serializable {
+public class EmailInfo implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  @JsonProperty("object")
+  private String object = "email";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -33,22 +37,79 @@ public class Email implements Serializable {
   @JsonProperty("email")
   private String email = ;
 
+  /**
+   * The location associated with the email address
+   */
+  public enum TypeEnum {
+    HOME("Home"),
+    
+    WORK("Work"),
+    
+    OTHER("Other"),
+    
+    NULL("null");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
   @JsonProperty("type")
-  private String type = ;
+  private TypeEnum type = ;
 
   @JsonProperty("is_primary")
   private Boolean isPrimary = ;
 
-  public Email id(Integer id) {
+  public EmailInfo object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
+  public EmailInfo id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -57,16 +118,16 @@ public class Email implements Serializable {
     this.id = id;
   }
 
-  public Email email(String email) {
+  public EmailInfo email(String email) {
     this.email = email;
     return this;
   }
 
    /**
-   * Get email
+   * The email address
    * @return email
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The email address")
   public String getEmail() {
     return email;
   }
@@ -75,34 +136,34 @@ public class Email implements Serializable {
     this.email = email;
   }
 
-  public Email type(String type) {
+  public EmailInfo type(TypeEnum type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * The location associated with the email address
    * @return type
   **/
-  @ApiModelProperty(value = "")
-  public String getType() {
+  @ApiModelProperty(value = "The location associated with the email address")
+  public TypeEnum getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
-  public Email isPrimary(Boolean isPrimary) {
+  public EmailInfo isPrimary(Boolean isPrimary) {
     this.isPrimary = isPrimary;
     return this;
   }
 
    /**
-   * Get isPrimary
+   * Indicates whether this is the primary email address
    * @return isPrimary
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Indicates whether this is the primary email address")
   public Boolean isgetIsPrimary() {
     return isPrimary;
   }
@@ -120,24 +181,26 @@ public class Email implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Email email = (Email) o;
-    return Objects.equals(this.id, email.id) &&
-        Objects.equals(this.email, email.email) &&
-        Objects.equals(this.type, email.type) &&
-        Objects.equals(this.isPrimary, email.isPrimary);
+    EmailInfo emailInfo = (EmailInfo) o;
+    return Objects.equals(this.object, emailInfo.object) &&
+        Objects.equals(this.id, emailInfo.id) &&
+        Objects.equals(this.email, emailInfo.email) &&
+        Objects.equals(this.type, emailInfo.type) &&
+        Objects.equals(this.isPrimary, emailInfo.isPrimary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, email, type, isPrimary);
+    return Objects.hash(object, id, email, type, isPrimary);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Email {\n");
+    sb.append("class EmailInfo {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

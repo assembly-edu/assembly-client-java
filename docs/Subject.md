@@ -4,10 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**code** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
-**misSubjects** | [**List&lt;MisSubject&gt;**](MisSubject.md) |  |  [optional]
+**object** | **String** | Descriminator |  [optional]
+**id** | **Integer** | Internal stable ID |  [optional]
+**code** | **String** | Shortened code of subject |  [optional]
+**name** | **String** | Full name of subject |  [optional]
+**misSubjects** | [**List&lt;MisSubject&gt;**](MisSubject.md) | The MIS subjects that have been mapped to this Assembly Subject. |  [optional]
 
 
 
