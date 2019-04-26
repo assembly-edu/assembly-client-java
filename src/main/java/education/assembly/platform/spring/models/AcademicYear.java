@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.1.0
+ * assembly-client-java 1.2.341
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education

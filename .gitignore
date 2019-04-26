@@ -21,3 +21,4 @@ target
 build
 .openapi-generator
 .openapi-generator-ignore
+.version
