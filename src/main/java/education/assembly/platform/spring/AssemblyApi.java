@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.360
+ * assembly-client-java 1.2.363
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -1025,7 +1025,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
      * @param academicYearId Include all groups and group memberships from the specified academic year
@@ -1069,7 +1069,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
      * @param startDate The start date of the period to filter by
@@ -1119,7 +1119,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param eventType Filter by a calendar object type from the underlying MIS
      * @param perPage Number of results to return
      * @param page Page number to return
@@ -1356,7 +1356,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
      * @param page Page number to return
@@ -1400,7 +1400,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param teachersOnly Filter to staff who are teachers
      * @param demographics Include demographics data
      * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
@@ -1444,7 +1444,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
@@ -1519,7 +1519,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
      * @param demographics Include demographics data
@@ -1585,7 +1585,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param yearCode Filter by school year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param academicYearId Include all groups and group memberships from the specified academic year
@@ -1634,7 +1634,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Result&gt;
@@ -1772,7 +1772,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param teachersOnly Filter to staff who are teachers
      * @param demographics Include demographics data
      * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
@@ -1820,7 +1820,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
@@ -1922,7 +1922,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
@@ -1990,7 +1990,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param subjectCode Filter by subject
      * @param yearCode Filter by school year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
@@ -2041,7 +2041,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param demographics Include demographics data
      * @param contacts Include contacts data
@@ -2105,7 +2105,7 @@ public class AssemblyApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
      * @param academicYearId Include all groups and group memberships from the specified academic year

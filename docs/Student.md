@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **yearCode** | **String** | The year group the student currently belongs to |  [optional]
 **upn** | **String** | Unique Pupil Number (UPN) - a DfE-mandated 13-character code that identifies each pupil |  [optional]
 **formerUpn** | **String** | The previous UPN where a pupil has held another UPN whilst at a school |  [optional]
+**uln** | **String** | Unique Learner Number (ULN) - a LRS-mandated 10-character code that identifies each pupil |  [optional]
 **misId** | **String** | The ID of a student from the MIS |  [optional]
 **pan** | **String** | A student&#39;s \&quot;pupil admission number\&quot;. This field is often exposed in the front end of the MIS, and may be the same as &#x60;mis_id&#x60; |  [optional]
 **firstName** | **String** | The first name the student wishes to go by, may be the same as &#x60;legal_first_name&#x60; |  [optional]

@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.360
+ * assembly-client-java 1.2.363
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -51,6 +51,9 @@ public class Student implements Serializable {
 
   @JsonProperty("former_upn")
   private String formerUpn = ;
+
+  @JsonProperty("uln")
+  private String uln = ;
 
   @JsonProperty("mis_id")
   private String misId = ;
@@ -194,6 +197,24 @@ public class Student implements Serializable {
 
   public void setFormerUpn(String formerUpn) {
     this.formerUpn = formerUpn;
+  }
+
+  public Student uln(String uln) {
+    this.uln = uln;
+    return this;
+  }
+
+   /**
+   * Unique Learner Number (ULN) - a LRS-mandated 10-character code that identifies each pupil
+   * @return uln
+  **/
+  @ApiModelProperty(value = "Unique Learner Number (ULN) - a LRS-mandated 10-character code that identifies each pupil")
+  public String getUln() {
+    return uln;
+  }
+
+  public void setUln(String uln) {
+    this.uln = uln;
   }
 
   public Student misId(String misId) {
@@ -543,6 +564,7 @@ public class Student implements Serializable {
         Objects.equals(this.yearCode, student.yearCode) &&
         Objects.equals(this.upn, student.upn) &&
         Objects.equals(this.formerUpn, student.formerUpn) &&
+        Objects.equals(this.uln, student.uln) &&
         Objects.equals(this.misId, student.misId) &&
         Objects.equals(this.pan, student.pan) &&
         Objects.equals(this.firstName, student.firstName) &&
@@ -565,7 +587,7 @@ public class Student implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, yearCode, upn, formerUpn, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, address, languages, photo);
+    return Objects.hash(object, id, yearCode, upn, formerUpn, uln, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, address, languages, photo);
   }
 
 
@@ -579,6 +601,7 @@ public class Student implements Serializable {
     sb.append("    yearCode: ").append(toIndentedString(yearCode)).append("\n");
     sb.append("    upn: ").append(toIndentedString(upn)).append("\n");
     sb.append("    formerUpn: ").append(toIndentedString(formerUpn)).append("\n");
+    sb.append("    uln: ").append(toIndentedString(uln)).append("\n");
     sb.append("    misId: ").append(toIndentedString(misId)).append("\n");
     sb.append("    pan: ").append(toIndentedString(pan)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
