@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -28,11 +28,32 @@ import java.io.Serializable;
 public class StudentPhoto implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("object")
+  private String object = "photo";
+
   @JsonProperty("url")
   private String url = ;
 
   @JsonProperty("hash")
   private String hash = ;
+
+  public StudentPhoto object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
 
   public StudentPhoto url(String url) {
     this.url = url;
@@ -80,13 +101,14 @@ public class StudentPhoto implements Serializable {
       return false;
     }
     StudentPhoto studentPhoto = (StudentPhoto) o;
-    return Objects.equals(this.url, studentPhoto.url) &&
+    return Objects.equals(this.object, studentPhoto.object) &&
+        Objects.equals(this.url, studentPhoto.url) &&
         Objects.equals(this.hash, studentPhoto.hash);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, hash);
+    return Objects.hash(object, url, hash);
   }
 
 
@@ -95,6 +117,7 @@ public class StudentPhoto implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StudentPhoto {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    hash: ").append(toIndentedString(hash)).append("\n");
     sb.append("}");

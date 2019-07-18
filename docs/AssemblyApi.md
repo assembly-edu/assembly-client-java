@@ -16,10 +16,12 @@ Method | HTTP request | Description
 [**findGroup**](AssemblyApi.md#findGroup) | **GET** /groups/{id} | View a Group
 [**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
+[**findRoom**](AssemblyApi.md#findRoom) | **GET** /rooms/{id} | View a Room
 [**findSchool**](AssemblyApi.md#findSchool) | **GET** /school | View School Details
 [**findStaffMember**](AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
 [**findStudent**](AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
 [**findTeachingGroup**](AssemblyApi.md#findTeachingGroup) | **GET** /teaching_groups/{id} | View a Teaching Group
+[**findTimetable**](AssemblyApi.md#findTimetable) | **GET** /timetables/{id} | View a Timetable
 [**findYearGroup**](AssemblyApi.md#findYearGroup) | **GET** /year_groups/{id} | View a Year Group
 [**getAcademicYears**](AssemblyApi.md#getAcademicYears) | **GET** /academic_years | List Academic Years
 [**getAssessmentPointResults**](AssemblyApi.md#getAssessmentPointResults) | **GET** /assessment_points/{assessment_point_rank}/results | View Results for an Assessment Point
@@ -29,6 +31,7 @@ Method | HTTP request | Description
 [**getAttendanceSummaries**](AssemblyApi.md#getAttendanceSummaries) | **GET** /attendances/summaries | List Attendance Summaries
 [**getAttendances**](AssemblyApi.md#getAttendances) | **GET** /attendances | List Attendances
 [**getCalendarEvents**](AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | List Calendar Events
+[**getClosures**](AssemblyApi.md#getClosures) | **GET** /rooms/{id}/closures | List Closures For a Room
 [**getContacts**](AssemblyApi.md#getContacts) | **GET** /contacts | List Contacts
 [**getDietaryNeeds**](AssemblyApi.md#getDietaryNeeds) | **GET** /school/dietary_needs | List Dietary Needs
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
@@ -37,10 +40,12 @@ Method | HTTP request | Description
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
+[**getLessons**](AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 [**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | List Medical Conditions
 [**getRegistrationGroupStudents**](AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 [**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Groups
 [**getResults**](AssemblyApi.md#getResults) | **GET** /results | List Results
+[**getRooms**](AssemblyApi.md#getRooms) | **GET** /rooms | List Rooms
 [**getStaffAbsences**](AssemblyApi.md#getStaffAbsences) | **GET** /staff_absences | List Staff Absences
 [**getStaffContracts**](AssemblyApi.md#getStaffContracts) | **GET** /staff_contracts | List Staff Contracts
 [**getStaffMembers**](AssemblyApi.md#getStaffMembers) | **GET** /staff_members | List Staff Members
@@ -48,6 +53,7 @@ Method | HTTP request | Description
 [**getSubjects**](AssemblyApi.md#getSubjects) | **GET** /subjects | List Subjects
 [**getTeachingGroupStudents**](AssemblyApi.md#getTeachingGroupStudents) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
 [**getTeachingGroups**](AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | List Teaching Groups
+[**getTimetables**](AssemblyApi.md#getTimetables) | **GET** /timetables | List Timetables
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 [**status**](AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
@@ -704,6 +710,68 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="findRoom"></a>
+# **findRoom**
+> Room findRoom(id, ifModifiedSince, date, startDate, endDate)
+
+View a Room
+
+Returns a single room for the school associated with the provided &#x60;access_token&#x60;
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+String startDate = "startDate_example"; // String | The start date of the period to filter by
+String endDate = "endDate_example"; // String | The end date of the period to filter by
+try {
+    Room result = apiInstance.findRoom(id, ifModifiedSince, date, startDate, endDate);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#findRoom");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **String**| The start date of the period to filter by | [optional]
+ **endDate** | **String**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**Room**](Room.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="findSchool"></a>
 # **findSchool**
 > School findSchool()
@@ -814,7 +882,7 @@ Name | Type | Description  | Notes
 
 <a name="findStudent"></a>
 # **findStudent**
-> Student findStudent(id, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> Student findStudent(id, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
 
 View a Student
 
@@ -841,13 +909,14 @@ Integer id = 56; // Integer | Internal identifier of the entity
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
 try {
-    Student result = apiInstance.findStudent(id, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    Student result = apiInstance.findStudent(id, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findStudent");
@@ -863,6 +932,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -928,6 +998,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TeachingGroup**](TeachingGroup.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="findTimetable"></a>
+# **findTimetable**
+> Timetable&lt;Timetable&gt; findTimetable(id, ifModifiedSince, date, startDate, endDate)
+
+View a Timetable
+
+Returns an individual timetable for the given ID.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+String startDate = "startDate_example"; // String | The start date of the period to filter by
+String endDate = "endDate_example"; // String | The end date of the period to filter by
+try {
+    Timetable<Timetable> result = apiInstance.findTimetable(id, ifModifiedSince, date, startDate, endDate);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#findTimetable");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **String**| The start date of the period to filter by | [optional]
+ **endDate** | **String**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**Timetable&lt;Timetable&gt;**](Timetable.md)
 
 ### Authorization
 
@@ -1406,11 +1538,11 @@ Name | Type | Description  | Notes
 
 <a name="getCalendarEvents"></a>
 # **getCalendarEvents**
-> List&lt;CalendarEvent&gt; getCalendarEvents(ifModifiedSince, eventType, perPage, page)
+> List&lt;CalendarEvent&gt; getCalendarEvents(ifModifiedSince, type, perPage, page)
 
 List Calendar Events
 
-Returns a list of calendar events from the school calendar. We *strongly* recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
+Returns a list of calendar events from the school calendar. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
 
 ### Example
 ```java
@@ -1430,11 +1562,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-String eventType = "eventType_example"; // String | Filter by a calendar object type from the underlying MIS
+String type = "type_example"; // String | Filter by assessment point type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<CalendarEvent> result = apiInstance.getCalendarEvents(ifModifiedSince, eventType, perPage, page);
+    List<CalendarEvent> result = apiInstance.getCalendarEvents(ifModifiedSince, type, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getCalendarEvents");
@@ -1447,13 +1579,75 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **eventType** | **String**| Filter by a calendar object type from the underlying MIS | [optional]
+ **type** | **String**| Filter by assessment point type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
 [**List&lt;CalendarEvent&gt;**](CalendarEvent.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="getClosures"></a>
+# **getClosures**
+> List&lt;Closure&gt; getClosures(id, ifModifiedSince, date, startDate, endDate)
+
+List Closures For a Room
+
+Returns a list of room closures for the school associated with the provided &#x60;access_token&#x60;.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+String startDate = "startDate_example"; // String | The start date of the period to filter by
+String endDate = "endDate_example"; // String | The end date of the period to filter by
+try {
+    List<Closure> result = apiInstance.getClosures(id, ifModifiedSince, date, startDate, endDate);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getClosures");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **String**| The start date of the period to filter by | [optional]
+ **endDate** | **String**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**List&lt;Closure&gt;**](Closure.md)
 
 ### Authorization
 
@@ -1926,6 +2120,68 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="getLessons"></a>
+# **getLessons**
+> List&lt;Lesson&gt; getLessons(id, ifModifiedSince, date, startDate, endDate)
+
+List Lessons For a Room
+
+Returns a list of lessons in a room for the school associated with the provided &#x60;access_token&#x60;.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+String startDate = "startDate_example"; // String | The start date of the period to filter by
+String endDate = "endDate_example"; // String | The end date of the period to filter by
+try {
+    List<Lesson> result = apiInstance.getLessons(id, ifModifiedSince, date, startDate, endDate);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getLessons");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **String**| The start date of the period to filter by | [optional]
+ **endDate** | **String**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**List&lt;Lesson&gt;**](Lesson.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="getMedicalConditions"></a>
 # **getMedicalConditions**
 > List&lt;MedicalCondition&gt; getMedicalConditions(perPage, page)
@@ -1984,7 +2240,7 @@ Name | Type | Description  | Notes
 
 <a name="getRegistrationGroupStudents"></a>
 # **getRegistrationGroupStudents**
-> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
 
 List Students for Registration Group
 
@@ -2014,13 +2270,14 @@ Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getRegistrationGroupStudents");
@@ -2039,6 +2296,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2172,6 +2430,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List&lt;Result&gt;**](Result.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="getRooms"></a>
+# **getRooms**
+> List&lt;Room&gt; getRooms(ifModifiedSince, perPage, page)
+
+List Rooms
+
+Returns a list of rooms for the school associated with the provided &#x60;access_token&#x60;.
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
+try {
+    List<Room> result = apiInstance.getRooms(ifModifiedSince, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getRooms");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Room&gt;**](Room.md)
 
 ### Authorization
 
@@ -2376,7 +2692,7 @@ Name | Type | Description  | Notes
 
 <a name="getStudents"></a>
 # **getStudents**
-> List&lt;Student&gt; getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo, perPage, page)
+> List&lt;Student&gt; getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students
 
@@ -2406,6 +2722,7 @@ Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2414,7 +2731,7 @@ Boolean photo = true; // Boolean | Include student photo data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo, perPage, page);
+    List<Student> result = apiInstance.getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getStudents");
@@ -2433,6 +2750,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2512,7 +2830,7 @@ Name | Type | Description  | Notes
 
 <a name="getTeachingGroupStudents"></a>
 # **getTeachingGroupStudents**
-> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
 
 List Students for Teaching Group
 
@@ -2543,13 +2861,14 @@ Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getTeachingGroupStudents");
@@ -2569,6 +2888,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2594,7 +2914,7 @@ Name | Type | Description  | Notes
 
 List Teaching Groups
 
-Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
+Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date. 
 
 ### Example
 ```java
@@ -2654,9 +2974,67 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="getTimetables"></a>
+# **getTimetables**
+> List&lt;Timetable&gt; getTimetables(ifModifiedSince, perPage, page)
+
+List Timetables
+
+Returns a list of timetables that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date. 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
+try {
+    List<Timetable> result = apiInstance.getTimetables(ifModifiedSince, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getTimetables");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;Timetable&gt;**](Timetable.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="getYearGroupStudents"></a>
 # **getYearGroupStudents**
-> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
 
 List Students for Year Group
 
@@ -2685,13 +3063,14 @@ OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a spec
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getYearGroupStudents");
@@ -2709,6 +3088,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]

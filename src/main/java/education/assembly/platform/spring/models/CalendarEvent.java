@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,7 +16,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.CalendarEventMisType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.threeten.bp.OffsetDateTime;
@@ -36,6 +35,48 @@ public class CalendarEvent implements Serializable {
   @JsonProperty("id")
   private Integer id = ;
 
+  /**
+   * The type of the event
+   */
+  public enum TypeEnum {
+    EVENT("Event"),
+    
+    MEETING("Meeting"),
+    
+    INSET("Inset"),
+    
+    HOLIDAY("Holiday");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("type")
+  private TypeEnum type = ;
+
   @JsonProperty("name")
   private String name = ;
 
@@ -47,15 +88,6 @@ public class CalendarEvent implements Serializable {
 
   @JsonProperty("end_date")
   private OffsetDateTime endDate = ;
-
-  @JsonProperty("is_active")
-  private Boolean isActive = ;
-
-  @JsonProperty("is_recurrent")
-  private Boolean isRecurrent = ;
-
-  @JsonProperty("mis_type")
-  private CalendarEventMisType misType = null;
 
   public CalendarEvent object(String object) {
     this.object = object;
@@ -91,6 +123,24 @@ public class CalendarEvent implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public CalendarEvent type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The type of the event
+   * @return type
+  **/
+  @ApiModelProperty(value = "The type of the event")
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   public CalendarEvent name(String name) {
@@ -165,60 +215,6 @@ public class CalendarEvent implements Serializable {
     this.endDate = endDate;
   }
 
-  public CalendarEvent isActive(Boolean isActive) {
-    this.isActive = isActive;
-    return this;
-  }
-
-   /**
-   * Whether the event is active or not
-   * @return isActive
-  **/
-  @ApiModelProperty(value = "Whether the event is active or not")
-  public Boolean isgetIsActive() {
-    return isActive;
-  }
-
-  public void setIsActive(Boolean isActive) {
-    this.isActive = isActive;
-  }
-
-  public CalendarEvent isRecurrent(Boolean isRecurrent) {
-    this.isRecurrent = isRecurrent;
-    return this;
-  }
-
-   /**
-   * Whether the event recurs and (soon) details of recurrences
-   * @return isRecurrent
-  **/
-  @ApiModelProperty(value = "Whether the event recurs and (soon) details of recurrences")
-  public Boolean isgetIsRecurrent() {
-    return isRecurrent;
-  }
-
-  public void setIsRecurrent(Boolean isRecurrent) {
-    this.isRecurrent = isRecurrent;
-  }
-
-  public CalendarEvent misType(CalendarEventMisType misType) {
-    this.misType = misType;
-    return this;
-  }
-
-   /**
-   * Get misType
-   * @return misType
-  **/
-  @ApiModelProperty(value = "")
-  public CalendarEventMisType getMisType() {
-    return misType;
-  }
-
-  public void setMisType(CalendarEventMisType misType) {
-    this.misType = misType;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -231,18 +227,16 @@ public class CalendarEvent implements Serializable {
     CalendarEvent calendarEvent = (CalendarEvent) o;
     return Objects.equals(this.object, calendarEvent.object) &&
         Objects.equals(this.id, calendarEvent.id) &&
+        Objects.equals(this.type, calendarEvent.type) &&
         Objects.equals(this.name, calendarEvent.name) &&
         Objects.equals(this.description, calendarEvent.description) &&
         Objects.equals(this.startDate, calendarEvent.startDate) &&
-        Objects.equals(this.endDate, calendarEvent.endDate) &&
-        Objects.equals(this.isActive, calendarEvent.isActive) &&
-        Objects.equals(this.isRecurrent, calendarEvent.isRecurrent) &&
-        Objects.equals(this.misType, calendarEvent.misType);
+        Objects.equals(this.endDate, calendarEvent.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, description, startDate, endDate, isActive, isRecurrent, misType);
+    return Objects.hash(object, id, type, name, description, startDate, endDate);
   }
 
 
@@ -253,13 +247,11 @@ public class CalendarEvent implements Serializable {
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
-    sb.append("    isRecurrent: ").append(toIndentedString(isRecurrent)).append("\n");
-    sb.append("    misType: ").append(toIndentedString(misType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

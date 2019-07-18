@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -24,9 +24,9 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * A collection of results to bulk update ont he Platform
+ * A collection of results to bulk update on the Platform
  */
-@ApiModel(description = "A collection of results to bulk update ont he Platform")
+@ApiModel(description = "A collection of results to bulk update on the Platform")
 
 public class BulkResultsBody implements Serializable {
   private static final long serialVersionUID = 1L;

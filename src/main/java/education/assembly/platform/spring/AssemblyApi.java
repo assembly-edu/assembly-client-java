@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -22,18 +22,21 @@ import education.assembly.platform.spring.models.AttendanceSummary;
 import education.assembly.platform.spring.models.BulkResultResponse;
 import education.assembly.platform.spring.models.BulkResultsBody;
 import education.assembly.platform.spring.models.CalendarEvent;
+import education.assembly.platform.spring.models.Closure;
 import education.assembly.platform.spring.models.Contact;
 import education.assembly.platform.spring.models.DietaryNeed;
 import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
 import education.assembly.platform.spring.models.GradeSet;
 import education.assembly.platform.spring.models.Group;
+import education.assembly.platform.spring.models.Lesson;
 import education.assembly.platform.spring.models.MedicalCondition;
 import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
 import education.assembly.platform.spring.models.Result;
 import education.assembly.platform.spring.models.ResultBody;
 import education.assembly.platform.spring.models.ResultEntry;
+import education.assembly.platform.spring.models.Room;
 import education.assembly.platform.spring.models.School;
 import education.assembly.platform.spring.models.SchoolStatus;
 import education.assembly.platform.spring.models.StaffAbsence;
@@ -43,6 +46,7 @@ import education.assembly.platform.spring.models.StandardError;
 import education.assembly.platform.spring.models.Student;
 import education.assembly.platform.spring.models.Subject;
 import education.assembly.platform.spring.models.TeachingGroup;
+import education.assembly.platform.spring.models.Timetable;
 import education.assembly.platform.spring.models.YearGroup;
 
 import java.util.ArrayList;
@@ -575,6 +579,60 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * View a Room
+     * Returns a single room for the school associated with the provided &#x60;access_token&#x60;
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
+     * @return Room
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Room findRoom(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findRoom");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/rooms/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<Room> returnType = new ParameterizedTypeReference<Room>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * View School Details
      * Returns details for the school associated with the provided &#x60;access_token&#x60;
      * <p><b>200</b> - Success
@@ -667,6 +725,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
+     * @param emails translation missing: en.api.params.query.emails
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -675,7 +734,7 @@ public class AssemblyApi {
      * @return Student
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Student findStudent(Integer id, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public Student findStudent(Integer id, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -695,6 +754,7 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "emails", emails));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
@@ -756,6 +816,60 @@ public class AssemblyApi {
         String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<TeachingGroup> returnType = new ParameterizedTypeReference<TeachingGroup>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * View a Timetable
+     * Returns an individual timetable for the given ID.
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
+     * @return Timetable&lt;Timetable&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public Timetable<Timetable> findTimetable(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findTimetable");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/timetables/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<Timetable<Timetable>> returnType = new ParameterizedTypeReference<Timetable<Timetable>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
@@ -1112,7 +1226,7 @@ public class AssemblyApi {
     }
     /**
      * List Calendar Events
-     * Returns a list of calendar events from the school calendar. We *strongly* recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we&#39;ve exposed the raw types from the underlying MIS. As such, it&#39;s most likely that you&#39;ll mostly be interested in &#39;User&#39; events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
+     * Returns a list of calendar events from the school calendar. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
      * <p><b>200</b> - Success
      * <p><b>304</b> - Not Modified
      * <p><b>400</b> - Bad Request
@@ -1120,13 +1234,13 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-     * @param eventType Filter by a calendar object type from the underlying MIS
+     * @param type Filter by assessment point type
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;CalendarEvent&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<CalendarEvent> getCalendarEvents(OffsetDateTime ifModifiedSince, String eventType, Integer perPage, Integer page) throws RestClientException {
+    public List<CalendarEvent> getCalendarEvents(OffsetDateTime ifModifiedSince, String type, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/calendar_events").build().toUriString();
@@ -1135,7 +1249,7 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "event_type", eventType));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "type", type));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
@@ -1152,6 +1266,59 @@ public class AssemblyApi {
         String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<CalendarEvent>> returnType = new ParameterizedTypeReference<List<CalendarEvent>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Closures For a Room
+     * Returns a list of room closures for the school associated with the provided &#x60;access_token&#x60;.
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
+     * @return List&lt;Closure&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Closure> getClosures(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling getClosures");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/rooms/{id}/closures").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<Closure>> returnType = new ParameterizedTypeReference<List<Closure>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
@@ -1473,6 +1640,59 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Lessons For a Room
+     * Returns a list of lessons in a room for the school associated with the provided &#x60;access_token&#x60;.
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param startDate The start date of the period to filter by
+     * @param endDate The end date of the period to filter by
+     * @return List&lt;Lesson&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Lesson> getLessons(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling getLessons");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/rooms/{id}/lessons").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<Lesson>> returnType = new ParameterizedTypeReference<List<Lesson>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Medical Conditions
      * Returns a list of all the Medical Conditions defined by the school
      * <p><b>200</b> - Success
@@ -1525,6 +1745,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
+     * @param emails translation missing: en.api.params.query.emails
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -1533,7 +1754,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1555,6 +1776,7 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "emails", emails));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
@@ -1671,6 +1893,48 @@ public class AssemblyApi {
         String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<Result>> returnType = new ParameterizedTypeReference<List<Result>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List Rooms
+     * Returns a list of rooms for the school associated with the provided &#x60;access_token&#x60;.
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Room&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Room> getRooms(OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/rooms").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<Room>> returnType = new ParameterizedTypeReference<List<Room>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
@@ -1827,6 +2091,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
+     * @param emails translation missing: en.api.params.query.emails
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -1837,7 +2102,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getStudents(OffsetDateTime ifModifiedSince, List<Integer> students, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
+    public List<Student> getStudents(OffsetDateTime ifModifiedSince, List<Integer> students, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/students").build().toUriString();
@@ -1852,6 +2117,7 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "emails", emails));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
@@ -1929,6 +2195,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
+     * @param emails translation missing: en.api.params.query.emails
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -1937,7 +2204,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1960,6 +2227,7 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "emails", emails));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
@@ -1983,7 +2251,7 @@ public class AssemblyApi {
     }
     /**
      * List Teaching Groups
-     * Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. Additionally when a date parameter is provided &#x60;student_ids&#x60; and &#x60;supervior_ids&#x60; are restricted to only those students who were enrolled in the group on the given date. 
+     * Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date. 
      * <p><b>200</b> - Success
      * <p><b>304</b> - Not Modified
      * <p><b>400</b> - Bad Request
@@ -2032,6 +2300,48 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Timetables
+     * Returns a list of timetables that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date. 
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;Timetable&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Timetable> getTimetables(OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/timetables").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<Timetable>> returnType = new ParameterizedTypeReference<List<Timetable>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Students for Year Group
      * Returns a list of all the students that are present in the year group identified by &#x60;group_id&#x60;
      * <p><b>200</b> - Success
@@ -2046,6 +2356,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
+     * @param emails translation missing: en.api.params.query.emails
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2054,7 +2365,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -2075,6 +2386,7 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "emails", emails));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));

@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **demographics** | [**StudentDemographics**](StudentDemographics.md) |  |  [optional]
 **medical** | [**StudentMedical**](StudentMedical.md) |  |  [optional]
 **contacts** | [**List&lt;StudentContacts&gt;**](StudentContacts.md) | A list of contact IDs which are associated with this student, and their relationship |  [optional]
+**emails** | [**List&lt;EmailInfo&gt;**](EmailInfo.md) | A list of emails for the student |  [optional]
 **address** | [**StudentAddress**](StudentAddress.md) |  |  [optional]
 **languages** | [**StudentLanguages**](StudentLanguages.md) |  |  [optional]
 **photo** | [**StudentPhoto**](StudentPhoto.md) |  |  [optional]

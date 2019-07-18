@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.GroupMisSubject;
 import education.assembly.platform.spring.models.Supervisor;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -52,7 +53,11 @@ public class Group implements Serializable {
     
     TEACHINGGROUP("TeachingGroup"),
     
-    REGISTRATIONGROUP("RegistrationGroup");
+    REGISTRATIONGROUP("RegistrationGroup"),
+    
+    HOUSEGROUP("HouseGroup"),
+    
+    NONTEACHINGGROUP("NonTeachingGroup");
 
     private String value;
 
@@ -83,6 +88,9 @@ public class Group implements Serializable {
 
   @JsonProperty("type")
   private TypeEnum type = ;
+
+  @JsonProperty("mis_subject")
+  private GroupMisSubject misSubject = null;
 
   @JsonProperty("start_date")
   private OffsetDateTime startDate = ;
@@ -184,6 +192,24 @@ public class Group implements Serializable {
 
   public void setType(TypeEnum type) {
     this.type = type;
+  }
+
+  public Group misSubject(GroupMisSubject misSubject) {
+    this.misSubject = misSubject;
+    return this;
+  }
+
+   /**
+   * Get misSubject
+   * @return misSubject
+  **/
+  @ApiModelProperty(value = "")
+  public GroupMisSubject getMisSubject() {
+    return misSubject;
+  }
+
+  public void setMisSubject(GroupMisSubject misSubject) {
+    this.misSubject = misSubject;
   }
 
   public Group startDate(OffsetDateTime startDate) {
@@ -289,6 +315,7 @@ public class Group implements Serializable {
         Objects.equals(this.name, group.name) &&
         Objects.equals(this.code, group.code) &&
         Objects.equals(this.type, group.type) &&
+        Objects.equals(this.misSubject, group.misSubject) &&
         Objects.equals(this.startDate, group.startDate) &&
         Objects.equals(this.endDate, group.endDate) &&
         Objects.equals(this.supervisors, group.supervisors) &&
@@ -297,7 +324,7 @@ public class Group implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, code, type, startDate, endDate, supervisors, studentIds);
+    return Objects.hash(object, id, name, code, type, misSubject, startDate, endDate, supervisors, studentIds);
   }
 
 
@@ -311,6 +338,7 @@ public class Group implements Serializable {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    misSubject: ").append(toIndentedString(misSubject)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    supervisors: ").append(toIndentedString(supervisors)).append("\n");

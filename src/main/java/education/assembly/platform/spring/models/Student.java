@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.EmailInfo;
 import education.assembly.platform.spring.models.StudentAddress;
 import education.assembly.platform.spring.models.StudentContacts;
 import education.assembly.platform.spring.models.StudentDemographics;
@@ -99,6 +100,9 @@ public class Student implements Serializable {
 
   @JsonProperty("contacts")
   private List<StudentContacts> contacts = null;
+
+  @JsonProperty("emails")
+  private List<EmailInfo> emails = null;
 
   @JsonProperty("address")
   private StudentAddress address = null;
@@ -495,6 +499,32 @@ public class Student implements Serializable {
     this.contacts = contacts;
   }
 
+  public Student emails(List<EmailInfo> emails) {
+    this.emails = emails;
+    return this;
+  }
+
+  public Student addEmailsItem(EmailInfo emailsItem) {
+    if (this.emails == null) {
+      this.emails = new ArrayList<EmailInfo>();
+    }
+    this.emails.add(emailsItem);
+    return this;
+  }
+
+   /**
+   * A list of emails for the student
+   * @return emails
+  **/
+  @ApiModelProperty(value = "A list of emails for the student")
+  public List<EmailInfo> getEmails() {
+    return emails;
+  }
+
+  public void setEmails(List<EmailInfo> emails) {
+    this.emails = emails;
+  }
+
   public Student address(StudentAddress address) {
     this.address = address;
     return this;
@@ -580,6 +610,7 @@ public class Student implements Serializable {
         Objects.equals(this.demographics, student.demographics) &&
         Objects.equals(this.medical, student.medical) &&
         Objects.equals(this.contacts, student.contacts) &&
+        Objects.equals(this.emails, student.emails) &&
         Objects.equals(this.address, student.address) &&
         Objects.equals(this.languages, student.languages) &&
         Objects.equals(this.photo, student.photo);
@@ -587,7 +618,7 @@ public class Student implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, yearCode, upn, formerUpn, uln, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, address, languages, photo);
+    return Objects.hash(object, id, yearCode, upn, formerUpn, uln, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, emails, address, languages, photo);
   }
 
 
@@ -617,6 +648,7 @@ public class Student implements Serializable {
     sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
     sb.append("    medical: ").append(toIndentedString(medical)).append("\n");
     sb.append("    contacts: ").append(toIndentedString(contacts)).append("\n");
+    sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    languages: ").append(toIndentedString(languages)).append("\n");
     sb.append("    photo: ").append(toIndentedString(photo)).append("\n");

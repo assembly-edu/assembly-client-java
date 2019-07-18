@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.GroupMisSubjectSubject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
@@ -39,6 +40,9 @@ public class MisSubject implements Serializable {
 
   @JsonProperty("code")
   private String code = ;
+
+  @JsonProperty("subject")
+  private GroupMisSubjectSubject subject = null;
 
   public MisSubject object(String object) {
     this.object = object;
@@ -112,6 +116,24 @@ public class MisSubject implements Serializable {
     this.code = code;
   }
 
+  public MisSubject subject(GroupMisSubjectSubject subject) {
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @ApiModelProperty(value = "")
+  public GroupMisSubjectSubject getSubject() {
+    return subject;
+  }
+
+  public void setSubject(GroupMisSubjectSubject subject) {
+    this.subject = subject;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -125,12 +147,13 @@ public class MisSubject implements Serializable {
     return Objects.equals(this.object, misSubject.object) &&
         Objects.equals(this.id, misSubject.id) &&
         Objects.equals(this.name, misSubject.name) &&
-        Objects.equals(this.code, misSubject.code);
+        Objects.equals(this.code, misSubject.code) &&
+        Objects.equals(this.subject, misSubject.subject);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, code);
+    return Objects.hash(object, id, name, code, subject);
   }
 
 
@@ -143,6 +166,7 @@ public class MisSubject implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("}");
     return sb.toString();
   }

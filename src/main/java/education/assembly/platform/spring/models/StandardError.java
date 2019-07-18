@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * Error object. All propertires are optional, though typically an instance of this will have a concise &#x60;error&#x60; message and a &#x60;message&#x60; string with more detail
+ * Error object. All properties are optional, though typically an instance of this will have a concise &#x60;error&#x60; message and a &#x60;message&#x60; string with more detail
  */
-@ApiModel(description = "Error object. All propertires are optional, though typically an instance of this will have a concise `error` message and a `message` string with more detail")
+@ApiModel(description = "Error object. All properties are optional, though typically an instance of this will have a concise `error` message and a `message` string with more detail")
 
 public class StandardError implements Serializable {
   private static final long serialVersionUID = 1L;

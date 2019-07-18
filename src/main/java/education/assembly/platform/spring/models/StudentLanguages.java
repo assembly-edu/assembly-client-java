@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.368
+ * assembly-client-java 1.2.376
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -28,6 +28,9 @@ import java.io.Serializable;
 public class StudentLanguages implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("object")
+  private String object = "student_languages";
+
   @JsonProperty("home_language_code")
   private String homeLanguageCode = ;
 
@@ -45,6 +48,24 @@ public class StudentLanguages implements Serializable {
 
   @JsonProperty("proficiency_in_english_name")
   private String proficiencyInEnglishName = ;
+
+  public StudentLanguages object(String object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Descriminator
+   * @return object
+  **/
+  @ApiModelProperty(value = "Descriminator")
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
 
   public StudentLanguages homeLanguageCode(String homeLanguageCode) {
     this.homeLanguageCode = homeLanguageCode;
@@ -164,7 +185,8 @@ public class StudentLanguages implements Serializable {
       return false;
     }
     StudentLanguages studentLanguages = (StudentLanguages) o;
-    return Objects.equals(this.homeLanguageCode, studentLanguages.homeLanguageCode) &&
+    return Objects.equals(this.object, studentLanguages.object) &&
+        Objects.equals(this.homeLanguageCode, studentLanguages.homeLanguageCode) &&
         Objects.equals(this.homeLanguageName, studentLanguages.homeLanguageName) &&
         Objects.equals(this.firstLanguageCode, studentLanguages.firstLanguageCode) &&
         Objects.equals(this.firstLanguageName, studentLanguages.firstLanguageName) &&
@@ -174,7 +196,7 @@ public class StudentLanguages implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(homeLanguageCode, homeLanguageName, firstLanguageCode, firstLanguageName, proficiencyInEnglishCode, proficiencyInEnglishName);
+    return Objects.hash(object, homeLanguageCode, homeLanguageName, firstLanguageCode, firstLanguageName, proficiencyInEnglishCode, proficiencyInEnglishName);
   }
 
 
@@ -183,6 +205,7 @@ public class StudentLanguages implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class StudentLanguages {\n");
     
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    homeLanguageCode: ").append(toIndentedString(homeLanguageCode)).append("\n");
     sb.append("    homeLanguageName: ").append(toIndentedString(homeLanguageName)).append("\n");
     sb.append("    firstLanguageCode: ").append(toIndentedString(firstLanguageCode)).append("\n");

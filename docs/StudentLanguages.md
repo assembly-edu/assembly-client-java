@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**object** | **String** | Descriminator |  [optional]
 **homeLanguageCode** | **String** | The code of a student&#39;s home language |  [optional]
 **homeLanguageName** | **String** | The name of a student&#39;s home language |  [optional]
 **firstLanguageCode** | **String** | The code of a student&#39;s first language |  [optional]

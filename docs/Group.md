@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the group |  [optional]
 **code** | **String** | The code of the year that the group belongs to |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of group |  [optional]
+**misSubject** | [**GroupMisSubject**](GroupMisSubject.md) |  |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date of the group |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | The end date of the group |  [optional]
 **supervisors** | [**List&lt;Supervisor&gt;**](Supervisor.md) | The IDs of supervisors (staff members) associated with the group and their role |  [optional]
@@ -22,6 +23,8 @@ Name | Value
 YEARGROUP | &quot;YearGroup&quot;
 TEACHINGGROUP | &quot;TeachingGroup&quot;
 REGISTRATIONGROUP | &quot;RegistrationGroup&quot;
+HOUSEGROUP | &quot;HouseGroup&quot;
+NONTEACHINGGROUP | &quot;NonTeachingGroup&quot;
 
 
 
