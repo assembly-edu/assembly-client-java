@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **group** | [**LessonGroup**](LessonGroup.md) |  |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date of the lesson |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | The end date of the lesson |  [optional]
+**supervisors** | [**List&lt;TimetableSupervisors&gt;**](TimetableSupervisors.md) | The ID of a staff member who supervises a group and their role. |  [optional]
 **rooms** | [**List&lt;LessonRooms&gt;**](LessonRooms.md) | Provides details of the rooms that a lessons is assigned to |  [optional]
 
 
@@ -20,7 +21,7 @@ Name | Value
 SCHEDULED | &quot;Scheduled&quot;
 ROOMCOVER | &quot;RoomCover&quot;
 STAFFCOVER | &quot;StaffCover&quot;
-INVIGULATIONCOVER | &quot;InvigulationCover&quot;
+INVIGILATIONCOVER | &quot;InvigilationCover&quot;
 
 
 

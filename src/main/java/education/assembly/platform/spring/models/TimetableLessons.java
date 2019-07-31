@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.376
+ * assembly-client-java 1.2.379
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import education.assembly.platform.spring.models.LessonGroup;
 import education.assembly.platform.spring.models.LessonRooms;
+import education.assembly.platform.spring.models.TimetableSupervisors;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class TimetableLessons implements Serializable {
     
     STAFFCOVER("StaffCover"),
     
-    INVIGULATIONCOVER("InvigulationCover");
+    INVIGILATIONCOVER("InvigilationCover");
 
     private String value;
 
@@ -88,6 +89,9 @@ public class TimetableLessons implements Serializable {
 
   @JsonProperty("end_date")
   private OffsetDateTime endDate = ;
+
+  @JsonProperty("supervisors")
+  private List<TimetableSupervisors> supervisors = null;
 
   @JsonProperty("rooms")
   private List<LessonRooms> rooms = null;
@@ -200,6 +204,32 @@ public class TimetableLessons implements Serializable {
     this.endDate = endDate;
   }
 
+  public TimetableLessons supervisors(List<TimetableSupervisors> supervisors) {
+    this.supervisors = supervisors;
+    return this;
+  }
+
+  public TimetableLessons addSupervisorsItem(TimetableSupervisors supervisorsItem) {
+    if (this.supervisors == null) {
+      this.supervisors = new ArrayList<TimetableSupervisors>();
+    }
+    this.supervisors.add(supervisorsItem);
+    return this;
+  }
+
+   /**
+   * The ID of a staff member who supervises a group and their role.
+   * @return supervisors
+  **/
+  @ApiModelProperty(value = "The ID of a staff member who supervises a group and their role.")
+  public List<TimetableSupervisors> getSupervisors() {
+    return supervisors;
+  }
+
+  public void setSupervisors(List<TimetableSupervisors> supervisors) {
+    this.supervisors = supervisors;
+  }
+
   public TimetableLessons rooms(List<LessonRooms> rooms) {
     this.rooms = rooms;
     return this;
@@ -242,12 +272,13 @@ public class TimetableLessons implements Serializable {
         Objects.equals(this.group, timetableLessons.group) &&
         Objects.equals(this.startDate, timetableLessons.startDate) &&
         Objects.equals(this.endDate, timetableLessons.endDate) &&
+        Objects.equals(this.supervisors, timetableLessons.supervisors) &&
         Objects.equals(this.rooms, timetableLessons.rooms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, type, group, startDate, endDate, rooms);
+    return Objects.hash(object, id, type, group, startDate, endDate, supervisors, rooms);
   }
 
 
@@ -262,6 +293,7 @@ public class TimetableLessons implements Serializable {
     sb.append("    group: ").append(toIndentedString(group)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    supervisors: ").append(toIndentedString(supervisors)).append("\n");
     sb.append("    rooms: ").append(toIndentedString(rooms)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.376
+ * assembly-client-java 1.2.379
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -21,6 +21,7 @@ import education.assembly.platform.spring.models.StudentAddress;
 import education.assembly.platform.spring.models.StudentContacts;
 import education.assembly.platform.spring.models.StudentDemographics;
 import education.assembly.platform.spring.models.StudentLanguages;
+import education.assembly.platform.spring.models.StudentLearningAims;
 import education.assembly.platform.spring.models.StudentMedical;
 import education.assembly.platform.spring.models.StudentPhoto;
 import io.swagger.annotations.ApiModel;
@@ -109,6 +110,9 @@ public class Student implements Serializable {
 
   @JsonProperty("languages")
   private StudentLanguages languages = null;
+
+  @JsonProperty("learning_aims")
+  private StudentLearningAims learningAims = null;
 
   @JsonProperty("photo")
   private StudentPhoto photo = null;
@@ -561,6 +565,24 @@ public class Student implements Serializable {
     this.languages = languages;
   }
 
+  public Student learningAims(StudentLearningAims learningAims) {
+    this.learningAims = learningAims;
+    return this;
+  }
+
+   /**
+   * Get learningAims
+   * @return learningAims
+  **/
+  @ApiModelProperty(value = "")
+  public StudentLearningAims getLearningAims() {
+    return learningAims;
+  }
+
+  public void setLearningAims(StudentLearningAims learningAims) {
+    this.learningAims = learningAims;
+  }
+
   public Student photo(StudentPhoto photo) {
     this.photo = photo;
     return this;
@@ -613,12 +635,13 @@ public class Student implements Serializable {
         Objects.equals(this.emails, student.emails) &&
         Objects.equals(this.address, student.address) &&
         Objects.equals(this.languages, student.languages) &&
+        Objects.equals(this.learningAims, student.learningAims) &&
         Objects.equals(this.photo, student.photo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, yearCode, upn, formerUpn, uln, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, emails, address, languages, photo);
+    return Objects.hash(object, id, yearCode, upn, formerUpn, uln, misId, pan, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, dob, startDate, endDate, enrolmentStatus, demographics, medical, contacts, emails, address, languages, learningAims, photo);
   }
 
 
@@ -651,6 +674,7 @@ public class Student implements Serializable {
     sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    languages: ").append(toIndentedString(languages)).append("\n");
+    sb.append("    learningAims: ").append(toIndentedString(learningAims)).append("\n");
     sb.append("    photo: ").append(toIndentedString(photo)).append("\n");
     sb.append("}");
     return sb.toString();

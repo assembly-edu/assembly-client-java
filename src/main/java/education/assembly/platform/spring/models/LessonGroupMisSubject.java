@@ -21,15 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * An acceptable name and value for an assessment grade.
+ * A subject defined within the MIS.
  */
-@ApiModel(description = "An acceptable name and value for an assessment grade.")
+@ApiModel(description = "A subject defined within the MIS.")
 
-public class Grade implements Serializable {
+public class LessonGroupMisSubject implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
-  private String object = "grade";
+  private String object = "mis_subject";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -37,10 +37,10 @@ public class Grade implements Serializable {
   @JsonProperty("name")
   private String name = ;
 
-  @JsonProperty("value")
-  private Integer value = ;
+  @JsonProperty("code")
+  private String code = ;
 
-  public Grade object(String object) {
+  public LessonGroupMisSubject object(String object) {
     this.object = object;
     return this;
   }
@@ -58,16 +58,16 @@ public class Grade implements Serializable {
     this.object = object;
   }
 
-  public Grade id(Integer id) {
+  public LessonGroupMisSubject id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Internal stable ID. Results should be written back using the ID (as opposed to the &#x60;name&#x60;)
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "Internal stable ID. Results should be written back using the ID (as opposed to the `name`)")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -76,16 +76,16 @@ public class Grade implements Serializable {
     this.id = id;
   }
 
-  public Grade name(String name) {
+  public LessonGroupMisSubject name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * The name of the grade as a string
+   * The name of the subject in the MIS
    * @return name
   **/
-  @ApiModelProperty(value = "The name of the grade as a string")
+  @ApiModelProperty(value = "The name of the subject in the MIS")
   public String getName() {
     return name;
   }
@@ -94,22 +94,22 @@ public class Grade implements Serializable {
     this.name = name;
   }
 
-  public Grade value(Integer value) {
-    this.value = value;
+  public LessonGroupMisSubject code(String code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * The value of the grade as a number
-   * @return value
+   * The code of the subject in the MIS
+   * @return code
   **/
-  @ApiModelProperty(value = "The value of the grade as a number")
-  public Integer getValue() {
-    return value;
+  @ApiModelProperty(value = "The code of the subject in the MIS")
+  public String getCode() {
+    return code;
   }
 
-  public void setValue(Integer value) {
-    this.value = value;
+  public void setCode(String code) {
+    this.code = code;
   }
 
 
@@ -121,28 +121,28 @@ public class Grade implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Grade grade = (Grade) o;
-    return Objects.equals(this.object, grade.object) &&
-        Objects.equals(this.id, grade.id) &&
-        Objects.equals(this.name, grade.name) &&
-        Objects.equals(this.value, grade.value);
+    LessonGroupMisSubject lessonGroupMisSubject = (LessonGroupMisSubject) o;
+    return Objects.equals(this.object, lessonGroupMisSubject.object) &&
+        Objects.equals(this.id, lessonGroupMisSubject.id) &&
+        Objects.equals(this.name, lessonGroupMisSubject.name) &&
+        Objects.equals(this.code, lessonGroupMisSubject.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, value);
+    return Objects.hash(object, id, name, code);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Grade {\n");
+    sb.append("class LessonGroupMisSubject {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

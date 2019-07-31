@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**findFacet**](AssemblyApi.md#findFacet) | **GET** /facets/{id} | View a Facet
 [**findGradeSet**](AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
 [**findGroup**](AssemblyApi.md#findGroup) | **GET** /groups/{id} | View a Group
+[**findLearningAim**](AssemblyApi.md#findLearningAim) | **GET** /school/learning_aims/{id} | View a Post-16 Learning Aim
 [**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
 [**findRoom**](AssemblyApi.md#findRoom) | **GET** /rooms/{id} | View a Room
@@ -38,6 +39,7 @@ Method | HTTP request | Description
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 [**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
+[**getLearningAims**](AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
 [**getLessons**](AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
@@ -600,6 +602,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="findLearningAim"></a>
+# **findLearningAim**
+> LearningAim findLearningAim(id)
+
+View a Post-16 Learning Aim
+
+Returns a Post-16 Learning Aim retrieved by ID
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
+try {
+    LearningAim result = apiInstance.findLearningAim(id);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#findLearningAim");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+
+### Return type
+
+[**LearningAim**](LearningAim.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="findMedicalCondition"></a>
 # **findMedicalCondition**
 > MedicalCondition findMedicalCondition(id)
@@ -909,7 +965,7 @@ Integer id = 56; // Integer | Internal identifier of the entity
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
-Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
+Boolean emails = true; // Boolean | Include email addresses
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -932,7 +988,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
- **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -1010,7 +1066,7 @@ Name | Type | Description  | Notes
 
 <a name="findTimetable"></a>
 # **findTimetable**
-> Timetable&lt;Timetable&gt; findTimetable(id, ifModifiedSince, date, startDate, endDate)
+> Timetable findTimetable(id, ifModifiedSince, date, startDate, endDate)
 
 View a Timetable
 
@@ -1039,7 +1095,7 @@ String date = "date_example"; // String | Filter by a specific date, used as the
 String startDate = "startDate_example"; // String | The start date of the period to filter by
 String endDate = "endDate_example"; // String | The end date of the period to filter by
 try {
-    Timetable<Timetable> result = apiInstance.findTimetable(id, ifModifiedSince, date, startDate, endDate);
+    Timetable result = apiInstance.findTimetable(id, ifModifiedSince, date, startDate, endDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findTimetable");
@@ -1059,7 +1115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Timetable&lt;Timetable&gt;**](Timetable.md)
+[**Timetable**](Timetable.md)
 
 ### Authorization
 
@@ -2006,6 +2062,62 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="getLearningAims"></a>
+# **getLearningAims**
+> List&lt;LearningAim&gt; getLearningAims(perPage, page)
+
+List Post-16 Learning Aims
+
+Returns a list of Post-16 Learning Aims defined within the school
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
+try {
+    List<LearningAim> result = apiInstance.getLearningAims(perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getLearningAims");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;LearningAim&gt;**](LearningAim.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="getLeftStaffMembers"></a>
 # **getLeftStaffMembers**
 > List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications)
@@ -2270,7 +2382,7 @@ Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
-Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
+Boolean emails = true; // Boolean | Include email addresses
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2296,7 +2408,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
- **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2722,7 +2834,7 @@ Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
-Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
+Boolean emails = true; // Boolean | Include email addresses
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2750,7 +2862,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
- **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2861,7 +2973,7 @@ Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
-Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
+Boolean emails = true; // Boolean | Include email addresses
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2888,7 +3000,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
- **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -3063,7 +3175,7 @@ OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a spec
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
-Boolean emails = true; // Boolean | translation missing: en.api.params.query.emails
+Boolean emails = true; // Boolean | Include email addresses
 Boolean addresses = true; // Boolean | Include student address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -3088,7 +3200,7 @@ Name | Type | Description  | Notes
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
- **emails** | **Boolean**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
  **addresses** | **Boolean**| Include student address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]

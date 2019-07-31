@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>education.assembly</groupId>
   <artifactId>assembly-client-java</artifactId>
-  <version>1.2.376</version>
+  <version>1.2.379</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.2.376"
+compile "education.assembly:assembly-client-java:1.2.379"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.2.376.jar
+* target/assembly-client-java-1.2.379.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**findFacet**](docs/AssemblyApi.md#findFacet) | **GET** /facets/{id} | View a Facet
 *AssemblyApi* | [**findGradeSet**](docs/AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
 *AssemblyApi* | [**findGroup**](docs/AssemblyApi.md#findGroup) | **GET** /groups/{id} | View a Group
+*AssemblyApi* | [**findLearningAim**](docs/AssemblyApi.md#findLearningAim) | **GET** /school/learning_aims/{id} | View a Post-16 Learning Aim
 *AssemblyApi* | [**findMedicalCondition**](docs/AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 *AssemblyApi* | [**findRegistrationGroup**](docs/AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
 *AssemblyApi* | [**findRoom**](docs/AssemblyApi.md#findRoom) | **GET** /rooms/{id} | View a Room
@@ -132,6 +133,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getFacets**](docs/AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 *AssemblyApi* | [**getGradeSets**](docs/AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
 *AssemblyApi* | [**getGroups**](docs/AssemblyApi.md#getGroups) | **GET** /groups | List Groups
+*AssemblyApi* | [**getLearningAims**](docs/AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 *AssemblyApi* | [**getLeftStaffMembers**](docs/AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 *AssemblyApi* | [**getLeftStudents**](docs/AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
 *AssemblyApi* | [**getLessons**](docs/AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
@@ -177,8 +179,10 @@ Class | Method | HTTP request | Description
  - [Group](docs/Group.md)
  - [GroupMisSubject](docs/GroupMisSubject.md)
  - [GroupMisSubjectSubject](docs/GroupMisSubjectSubject.md)
+ - [LearningAim](docs/LearningAim.md)
  - [Lesson](docs/Lesson.md)
  - [LessonGroup](docs/LessonGroup.md)
+ - [LessonGroupMisSubject](docs/LessonGroupMisSubject.md)
  - [LessonRooms](docs/LessonRooms.md)
  - [Me](docs/Me.md)
  - [MeToken](docs/MeToken.md)
@@ -209,6 +213,7 @@ Class | Method | HTTP request | Description
  - [StudentContacts](docs/StudentContacts.md)
  - [StudentDemographics](docs/StudentDemographics.md)
  - [StudentLanguages](docs/StudentLanguages.md)
+ - [StudentLearningAims](docs/StudentLearningAims.md)
  - [StudentMedical](docs/StudentMedical.md)
  - [StudentMedicalCondition](docs/StudentMedicalCondition.md)
  - [StudentMedicalNote](docs/StudentMedicalNote.md)
@@ -224,6 +229,7 @@ Class | Method | HTTP request | Description
  - [TimetableStructure](docs/TimetableStructure.md)
  - [TimetableStructureDays](docs/TimetableStructureDays.md)
  - [TimetableStructurePeriods](docs/TimetableStructurePeriods.md)
+ - [TimetableSupervisors](docs/TimetableSupervisors.md)
  - [YearGroup](docs/YearGroup.md)
 
 

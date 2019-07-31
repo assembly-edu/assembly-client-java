@@ -16,28 +16,27 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.StudentContactRelationship;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * ContactStudents
+ * TimetableSupervisors
  */
 
-public class ContactStudents implements Serializable {
+public class TimetableSupervisors implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
-  private String object = "contact_student";
+  private String object = "supervisor";
 
-  @JsonProperty("student_id")
-  private Integer studentId = ;
+  @JsonProperty("staff_member_id")
+  private Integer staffMemberId = ;
 
-  @JsonProperty("relationship")
-  private StudentContactRelationship relationship = null;
+  @JsonProperty("role")
+  private String role = ;
 
-  public ContactStudents object(String object) {
+  public TimetableSupervisors object(String object) {
     this.object = object;
     return this;
   }
@@ -55,40 +54,40 @@ public class ContactStudents implements Serializable {
     this.object = object;
   }
 
-  public ContactStudents studentId(Integer studentId) {
-    this.studentId = studentId;
+  public TimetableSupervisors staffMemberId(Integer staffMemberId) {
+    this.staffMemberId = staffMemberId;
     return this;
   }
 
    /**
-   * The ID of a student this is a contact for
-   * @return studentId
+   * Internal stable ID of the staff member
+   * @return staffMemberId
   **/
-  @ApiModelProperty(value = "The ID of a student this is a contact for")
-  public Integer getStudentId() {
-    return studentId;
+  @ApiModelProperty(value = "Internal stable ID of the staff member")
+  public Integer getStaffMemberId() {
+    return staffMemberId;
   }
 
-  public void setStudentId(Integer studentId) {
-    this.studentId = studentId;
+  public void setStaffMemberId(Integer staffMemberId) {
+    this.staffMemberId = staffMemberId;
   }
 
-  public ContactStudents relationship(StudentContactRelationship relationship) {
-    this.relationship = relationship;
+  public TimetableSupervisors role(String role) {
+    this.role = role;
     return this;
   }
 
    /**
-   * Get relationship
-   * @return relationship
+   * The role of the staff member within the group
+   * @return role
   **/
-  @ApiModelProperty(value = "")
-  public StudentContactRelationship getRelationship() {
-    return relationship;
+  @ApiModelProperty(value = "The role of the staff member within the group")
+  public String getRole() {
+    return role;
   }
 
-  public void setRelationship(StudentContactRelationship relationship) {
-    this.relationship = relationship;
+  public void setRole(String role) {
+    this.role = role;
   }
 
 
@@ -100,26 +99,26 @@ public class ContactStudents implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ContactStudents contactStudents = (ContactStudents) o;
-    return Objects.equals(this.object, contactStudents.object) &&
-        Objects.equals(this.studentId, contactStudents.studentId) &&
-        Objects.equals(this.relationship, contactStudents.relationship);
+    TimetableSupervisors timetableSupervisors = (TimetableSupervisors) o;
+    return Objects.equals(this.object, timetableSupervisors.object) &&
+        Objects.equals(this.staffMemberId, timetableSupervisors.staffMemberId) &&
+        Objects.equals(this.role, timetableSupervisors.role);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, studentId, relationship);
+    return Objects.hash(object, staffMemberId, role);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ContactStudents {\n");
+    sb.append("class TimetableSupervisors {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
-    sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
-    sb.append("    relationship: ").append(toIndentedString(relationship)).append("\n");
+    sb.append("    staffMemberId: ").append(toIndentedString(staffMemberId)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("}");
     return sb.toString();
   }

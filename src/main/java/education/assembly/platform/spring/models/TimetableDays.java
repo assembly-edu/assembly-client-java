@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.376
+ * assembly-client-java 1.2.379
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -41,6 +41,9 @@ public class TimetableDays implements Serializable {
 
   @JsonProperty("long_name")
   private String longName = ;
+
+  @JsonProperty("display_order")
+  private Integer displayOrder = ;
 
   @JsonProperty("periods")
   private List<TimetablePeriods> periods = null;
@@ -117,6 +120,24 @@ public class TimetableDays implements Serializable {
     this.longName = longName;
   }
 
+  public TimetableDays displayOrder(Integer displayOrder) {
+    this.displayOrder = displayOrder;
+    return this;
+  }
+
+   /**
+   * The order in which days should be displayed
+   * @return displayOrder
+  **/
+  @ApiModelProperty(value = "The order in which days should be displayed")
+  public Integer getDisplayOrder() {
+    return displayOrder;
+  }
+
+  public void setDisplayOrder(Integer displayOrder) {
+    this.displayOrder = displayOrder;
+  }
+
   public TimetableDays periods(List<TimetablePeriods> periods) {
     this.periods = periods;
     return this;
@@ -157,12 +178,13 @@ public class TimetableDays implements Serializable {
         Objects.equals(this.id, timetableDays.id) &&
         Objects.equals(this.shortName, timetableDays.shortName) &&
         Objects.equals(this.longName, timetableDays.longName) &&
+        Objects.equals(this.displayOrder, timetableDays.displayOrder) &&
         Objects.equals(this.periods, timetableDays.periods);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, shortName, longName, periods);
+    return Objects.hash(object, id, shortName, longName, displayOrder, periods);
   }
 
 
@@ -175,6 +197,7 @@ public class TimetableDays implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    shortName: ").append(toIndentedString(shortName)).append("\n");
     sb.append("    longName: ").append(toIndentedString(longName)).append("\n");
+    sb.append("    displayOrder: ").append(toIndentedString(displayOrder)).append("\n");
     sb.append("    periods: ").append(toIndentedString(periods)).append("\n");
     sb.append("}");
     return sb.toString();

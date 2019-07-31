@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **emails** | [**List&lt;EmailInfo&gt;**](EmailInfo.md) | A list of emails for the student |  [optional]
 **address** | [**StudentAddress**](StudentAddress.md) |  |  [optional]
 **languages** | [**StudentLanguages**](StudentLanguages.md) |  |  [optional]
+**learningAims** | [**StudentLearningAims**](StudentLearningAims.md) |  |  [optional]
 **photo** | [**StudentPhoto**](StudentPhoto.md) |  |  [optional]
 
 

@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the group |  [optional]
 **code** | **String** | The code of the year that the group belongs to |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of group |  [optional]
-**misSubject** | [**GroupMisSubject**](GroupMisSubject.md) |  |  [optional]
+**misSubject** | [**LessonGroupMisSubject**](LessonGroupMisSubject.md) |  |  [optional]
+**subject** | [**GroupMisSubjectSubject**](GroupMisSubjectSubject.md) |  |  [optional]
 
 
 <a name="TypeEnum"></a>

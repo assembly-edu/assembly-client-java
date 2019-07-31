@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.376
+ * assembly-client-java 1.2.379
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -29,6 +29,7 @@ import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
 import education.assembly.platform.spring.models.GradeSet;
 import education.assembly.platform.spring.models.Group;
+import education.assembly.platform.spring.models.LearningAim;
 import education.assembly.platform.spring.models.Lesson;
 import education.assembly.platform.spring.models.MedicalCondition;
 import org.threeten.bp.OffsetDateTime;
@@ -492,6 +493,48 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * View a Post-16 Learning Aim
+     * Returns a Post-16 Learning Aim retrieved by ID
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - Not Found
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param id Internal identifier of the entity
+     * @return LearningAim
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public LearningAim findLearningAim(Integer id) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling findLearningAim");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("id", id);
+        String path = UriComponentsBuilder.fromPath("/school/learning_aims/{id}").buildAndExpand(uriVariables).toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<LearningAim> returnType = new ParameterizedTypeReference<LearningAim>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * View a Medical Condition
      * Returns a single medical condition for the given ID
      * <p><b>200</b> - Success
@@ -725,7 +768,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
-     * @param emails translation missing: en.api.params.query.emails
+     * @param emails Include email addresses
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -833,10 +876,10 @@ public class AssemblyApi {
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
-     * @return Timetable&lt;Timetable&gt;
+     * @return Timetable
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Timetable<Timetable> findTimetable(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+    public Timetable findTimetable(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -869,7 +912,7 @@ public class AssemblyApi {
 
         String[] authNames = new String[] { "SchoolToken" };
 
-        ParameterizedTypeReference<Timetable<Timetable>> returnType = new ParameterizedTypeReference<Timetable<Timetable>>() {};
+        ParameterizedTypeReference<Timetable> returnType = new ParameterizedTypeReference<Timetable>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
@@ -1559,6 +1602,43 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Post-16 Learning Aims
+     * Returns a list of Post-16 Learning Aims defined within the school
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;LearningAim&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<LearningAim> getLearningAims(Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/school/learning_aims").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<LearningAim>> returnType = new ParameterizedTypeReference<List<LearningAim>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Left Staff Members
      * Returns a list of staff members who have left the school
      * <p><b>200</b> - Success
@@ -1745,7 +1825,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
-     * @param emails translation missing: en.api.params.query.emails
+     * @param emails Include email addresses
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2091,7 +2171,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
-     * @param emails translation missing: en.api.params.query.emails
+     * @param emails Include email addresses
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2195,7 +2275,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
-     * @param emails translation missing: en.api.params.query.emails
+     * @param emails Include email addresses
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2356,7 +2436,7 @@ public class AssemblyApi {
      * @param demographics Include demographics data
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
-     * @param emails translation missing: en.api.params.query.emails
+     * @param emails Include email addresses
      * @param addresses Include student address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)

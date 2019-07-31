@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.376
+ * assembly-client-java 1.2.379
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
@@ -40,11 +39,14 @@ public class TimetableStructurePeriods implements Serializable {
   @JsonProperty("long_name")
   private String longName = ;
 
-  @JsonProperty("start_date")
-  private OffsetDateTime startDate = ;
+  @JsonProperty("start_time")
+  private String startTime = ;
 
-  @JsonProperty("end_date")
-  private OffsetDateTime endDate = ;
+  @JsonProperty("end_time")
+  private String endTime = ;
+
+  @JsonProperty("display_order")
+  private Integer displayOrder = ;
 
   public TimetableStructurePeriods object(String object) {
     this.object = object;
@@ -118,40 +120,58 @@ public class TimetableStructurePeriods implements Serializable {
     this.longName = longName;
   }
 
-  public TimetableStructurePeriods startDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
+  public TimetableStructurePeriods startTime(String startTime) {
+    this.startTime = startTime;
     return this;
   }
 
    /**
    * The start time of the period
-   * @return startDate
+   * @return startTime
   **/
   @ApiModelProperty(value = "The start time of the period")
-  public OffsetDateTime getStartDate() {
-    return startDate;
+  public String getStartTime() {
+    return startTime;
   }
 
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
   }
 
-  public TimetableStructurePeriods endDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
+  public TimetableStructurePeriods endTime(String endTime) {
+    this.endTime = endTime;
     return this;
   }
 
    /**
    * The end time of the period
-   * @return endDate
+   * @return endTime
   **/
   @ApiModelProperty(value = "The end time of the period")
-  public OffsetDateTime getEndDate() {
-    return endDate;
+  public String getEndTime() {
+    return endTime;
   }
 
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
+  public void setEndTime(String endTime) {
+    this.endTime = endTime;
+  }
+
+  public TimetableStructurePeriods displayOrder(Integer displayOrder) {
+    this.displayOrder = displayOrder;
+    return this;
+  }
+
+   /**
+   * The order in which periods should be displayed
+   * @return displayOrder
+  **/
+  @ApiModelProperty(value = "The order in which periods should be displayed")
+  public Integer getDisplayOrder() {
+    return displayOrder;
+  }
+
+  public void setDisplayOrder(Integer displayOrder) {
+    this.displayOrder = displayOrder;
   }
 
 
@@ -168,13 +188,14 @@ public class TimetableStructurePeriods implements Serializable {
         Objects.equals(this.id, timetableStructurePeriods.id) &&
         Objects.equals(this.shortName, timetableStructurePeriods.shortName) &&
         Objects.equals(this.longName, timetableStructurePeriods.longName) &&
-        Objects.equals(this.startDate, timetableStructurePeriods.startDate) &&
-        Objects.equals(this.endDate, timetableStructurePeriods.endDate);
+        Objects.equals(this.startTime, timetableStructurePeriods.startTime) &&
+        Objects.equals(this.endTime, timetableStructurePeriods.endTime) &&
+        Objects.equals(this.displayOrder, timetableStructurePeriods.displayOrder);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, shortName, longName, startDate, endDate);
+    return Objects.hash(object, id, shortName, longName, startTime, endTime, displayOrder);
   }
 
 
@@ -187,8 +208,9 @@ public class TimetableStructurePeriods implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    shortName: ").append(toIndentedString(shortName)).append("\n");
     sb.append("    longName: ").append(toIndentedString(longName)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    displayOrder: ").append(toIndentedString(displayOrder)).append("\n");
     sb.append("}");
     return sb.toString();
   }

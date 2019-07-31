@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.376
+ * assembly-client-java 1.2.379
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,7 +16,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.GroupMisSubject;
+import education.assembly.platform.spring.models.GroupMisSubjectSubject;
+import education.assembly.platform.spring.models.LessonGroupMisSubject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
@@ -86,7 +87,10 @@ public class LessonGroup implements Serializable {
   private TypeEnum type = ;
 
   @JsonProperty("mis_subject")
-  private GroupMisSubject misSubject = null;
+  private LessonGroupMisSubject misSubject = null;
+
+  @JsonProperty("subject")
+  private GroupMisSubjectSubject subject = null;
 
   public LessonGroup object(String object) {
     this.object = object;
@@ -178,7 +182,7 @@ public class LessonGroup implements Serializable {
     this.type = type;
   }
 
-  public LessonGroup misSubject(GroupMisSubject misSubject) {
+  public LessonGroup misSubject(LessonGroupMisSubject misSubject) {
     this.misSubject = misSubject;
     return this;
   }
@@ -188,12 +192,30 @@ public class LessonGroup implements Serializable {
    * @return misSubject
   **/
   @ApiModelProperty(value = "")
-  public GroupMisSubject getMisSubject() {
+  public LessonGroupMisSubject getMisSubject() {
     return misSubject;
   }
 
-  public void setMisSubject(GroupMisSubject misSubject) {
+  public void setMisSubject(LessonGroupMisSubject misSubject) {
     this.misSubject = misSubject;
+  }
+
+  public LessonGroup subject(GroupMisSubjectSubject subject) {
+    this.subject = subject;
+    return this;
+  }
+
+   /**
+   * Get subject
+   * @return subject
+  **/
+  @ApiModelProperty(value = "")
+  public GroupMisSubjectSubject getSubject() {
+    return subject;
+  }
+
+  public void setSubject(GroupMisSubjectSubject subject) {
+    this.subject = subject;
   }
 
 
@@ -211,12 +233,13 @@ public class LessonGroup implements Serializable {
         Objects.equals(this.name, lessonGroup.name) &&
         Objects.equals(this.code, lessonGroup.code) &&
         Objects.equals(this.type, lessonGroup.type) &&
-        Objects.equals(this.misSubject, lessonGroup.misSubject);
+        Objects.equals(this.misSubject, lessonGroup.misSubject) &&
+        Objects.equals(this.subject, lessonGroup.subject);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, code, type, misSubject);
+    return Objects.hash(object, id, name, code, type, misSubject, subject);
   }
 
 
@@ -231,6 +254,7 @@ public class LessonGroup implements Serializable {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    misSubject: ").append(toIndentedString(misSubject)).append("\n");
+    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("}");
     return sb.toString();
   }

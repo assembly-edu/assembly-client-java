@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | Internal stable ID |  [optional]
 **shortName** | **String** | The day short name |  [optional]
 **longName** | **String** | The day long name |  [optional]
+**displayOrder** | **Integer** | The order in which days should be displayed |  [optional]
 **periods** | [**List&lt;TimetableStructurePeriods&gt;**](TimetableStructurePeriods.md) | Provides details of the individual periods that make up the day |  [optional]
 
 
