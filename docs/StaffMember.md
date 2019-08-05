@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **legalLastName** | **String** | The legal first name of the staff member, may be the same as &#x60;legal_last_name&#x60; |  [optional]
 **formerLastName** | **String** | The former last name of the staff member, may be &#x60;null&#x60; |  [optional]
 **title** | **String** | The title of the staff member |  [optional]
+**salutation** | **String** | The salutation for the staff member |  [optional]
 **dob** | [**OffsetDateTime**](OffsetDateTime.md) | The staff member&#39;s date of birth |  [optional]
 **email** | **String** | The email address of the staff member. Deprecated in favour of &#x60;emails&#x60; |  [optional]
 **emails** | [**List&lt;EmailInfo&gt;**](EmailInfo.md) | The email addresses of the staff member. |  [optional]

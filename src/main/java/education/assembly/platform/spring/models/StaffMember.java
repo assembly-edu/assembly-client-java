@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.379
+ * assembly-client-java 1.2.381
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -67,6 +67,9 @@ public class StaffMember implements Serializable {
 
   @JsonProperty("title")
   private String title = ;
+
+  @JsonProperty("salutation")
+  private String salutation = ;
 
   @JsonProperty("dob")
   private OffsetDateTime dob = ;
@@ -296,6 +299,24 @@ public class StaffMember implements Serializable {
     this.title = title;
   }
 
+  public StaffMember salutation(String salutation) {
+    this.salutation = salutation;
+    return this;
+  }
+
+   /**
+   * The salutation for the staff member
+   * @return salutation
+  **/
+  @ApiModelProperty(value = "The salutation for the staff member")
+  public String getSalutation() {
+    return salutation;
+  }
+
+  public void setSalutation(String salutation) {
+    this.salutation = salutation;
+  }
+
   public StaffMember dob(OffsetDateTime dob) {
     this.dob = dob;
     return this;
@@ -513,6 +534,7 @@ public class StaffMember implements Serializable {
         Objects.equals(this.legalLastName, staffMember.legalLastName) &&
         Objects.equals(this.formerLastName, staffMember.formerLastName) &&
         Objects.equals(this.title, staffMember.title) &&
+        Objects.equals(this.salutation, staffMember.salutation) &&
         Objects.equals(this.dob, staffMember.dob) &&
         Objects.equals(this.email, staffMember.email) &&
         Objects.equals(this.emails, staffMember.emails) &&
@@ -527,7 +549,7 @@ public class StaffMember implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, dob, email, emails, telephoneNumbers, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
+    return Objects.hash(object, id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, salutation, dob, email, emails, telephoneNumbers, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
   }
 
 
@@ -547,6 +569,7 @@ public class StaffMember implements Serializable {
     sb.append("    legalLastName: ").append(toIndentedString(legalLastName)).append("\n");
     sb.append("    formerLastName: ").append(toIndentedString(formerLastName)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    salutation: ").append(toIndentedString(salutation)).append("\n");
     sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
