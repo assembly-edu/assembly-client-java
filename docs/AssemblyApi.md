@@ -1240,7 +1240,7 @@ Name | Type | Description  | Notes
 
 <a name="getAssessmentPointResults"></a>
 # **getAssessmentPointResults**
-> List&lt;Result&gt; getAssessmentPointResults(assessmentPointRank, students)
+> List&lt;Result&gt; getAssessmentPointResults(assessmentPointRank, students, perPage, page)
 
 View Results for an Assessment Point
 
@@ -1265,8 +1265,10 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer assessmentPointRank = 56; // Integer | The rank of the assessment point as an Integer
 List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Result> result = apiInstance.getAssessmentPointResults(assessmentPointRank, students);
+    List<Result> result = apiInstance.getAssessmentPointResults(assessmentPointRank, students, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAssessmentPointResults");
@@ -1280,6 +1282,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assessmentPointRank** | **Integer**| The rank of the assessment point as an Integer |
  **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [default to new ArrayList&lt;Integer&gt;()]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -1356,7 +1360,7 @@ Name | Type | Description  | Notes
 
 <a name="getAssessmentResults"></a>
 # **getAssessmentResults**
-> List&lt;Result&gt; getAssessmentResults(id, students)
+> List&lt;Result&gt; getAssessmentResults(id, students, perPage, page)
 
 View Results for an Assessment
 
@@ -1381,8 +1385,10 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Result> result = apiInstance.getAssessmentResults(id, students);
+    List<Result> result = apiInstance.getAssessmentResults(id, students, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAssessmentResults");
@@ -1396,6 +1402,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [default to new ArrayList&lt;Integer&gt;()]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -1468,7 +1476,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttendanceSummaries"></a>
 # **getAttendanceSummaries**
-> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId)
+> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId, perPage, page)
 
 List Attendance Summaries
 
@@ -1495,8 +1503,10 @@ OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filte
 Integer studentId = 56; // Integer | Filter to the specified student
 Integer registrationGroupId = 56; // Integer | ID of a registration group
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId);
+    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAttendanceSummaries");
@@ -1512,6 +1522,8 @@ Name | Type | Description  | Notes
  **studentId** | **Integer**| Filter to the specified student | [optional]
  **registrationGroupId** | **Integer**| ID of a registration group | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2120,7 +2132,7 @@ Name | Type | Description  | Notes
 
 <a name="getLeftStaffMembers"></a>
 # **getLeftStaffMembers**
-> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications)
+> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page)
 
 List Left Staff Members
 
@@ -2147,8 +2159,10 @@ OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filte
 Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications);
+    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLeftStaffMembers");
@@ -2164,6 +2178,8 @@ Name | Type | Description  | Notes
  **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
  **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2180,7 +2196,7 @@ Name | Type | Description  | Notes
 
 <a name="getLeftStudents"></a>
 # **getLeftStudents**
-> List&lt;Student&gt; getLeftStudents(ifModifiedSince)
+> List&lt;Student&gt; getLeftStudents(ifModifiedSince, perPage, page)
 
 List Left Students
 
@@ -2204,8 +2220,10 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getLeftStudents(ifModifiedSince);
+    List<Student> result = apiInstance.getLeftStudents(ifModifiedSince, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLeftStudents");
@@ -2218,6 +2236,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2234,7 +2254,7 @@ Name | Type | Description  | Notes
 
 <a name="getLessons"></a>
 # **getLessons**
-> List&lt;Lesson&gt; getLessons(id, ifModifiedSince, date, startDate, endDate)
+> List&lt;Lesson&gt; getLessons(id, ifModifiedSince, date, startDate, endDate, perPage, page)
 
 List Lessons For a Room
 
@@ -2262,8 +2282,10 @@ OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filte
 String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 String startDate = "startDate_example"; // String | The start date of the period to filter by
 String endDate = "endDate_example"; // String | The end date of the period to filter by
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Lesson> result = apiInstance.getLessons(id, ifModifiedSince, date, startDate, endDate);
+    List<Lesson> result = apiInstance.getLessons(id, ifModifiedSince, date, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLessons");
@@ -2280,6 +2302,8 @@ Name | Type | Description  | Notes
  **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **startDate** | **String**| The start date of the period to filter by | [optional]
  **endDate** | **String**| The end date of the period to filter by | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2352,7 +2376,7 @@ Name | Type | Description  | Notes
 
 <a name="getRegistrationGroupStudents"></a>
 # **getRegistrationGroupStudents**
-> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students for Registration Group
 
@@ -2388,8 +2412,10 @@ Boolean care = true; // Boolean | Include student care data (you must also suppl
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getRegistrationGroupStudents");
@@ -2414,6 +2440,8 @@ Name | Type | Description  | Notes
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
  **photo** | **Boolean**| Include student photo data | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2942,7 +2970,7 @@ Name | Type | Description  | Notes
 
 <a name="getTeachingGroupStudents"></a>
 # **getTeachingGroupStudents**
-> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students for Teaching Group
 
@@ -2979,8 +3007,10 @@ Boolean care = true; // Boolean | Include student care data (you must also suppl
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getTeachingGroupStudents");
@@ -3006,6 +3036,8 @@ Name | Type | Description  | Notes
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
  **photo** | **Boolean**| Include student photo data | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -3146,7 +3178,7 @@ Name | Type | Description  | Notes
 
 <a name="getYearGroupStudents"></a>
 # **getYearGroupStudents**
-> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students for Year Group
 
@@ -3181,8 +3213,10 @@ Boolean care = true; // Boolean | Include student care data (you must also suppl
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getYearGroupStudents");
@@ -3206,6 +3240,8 @@ Name | Type | Description  | Notes
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
  **photo** | **Boolean**| Include student photo data | [optional]
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
 
 ### Return type
 

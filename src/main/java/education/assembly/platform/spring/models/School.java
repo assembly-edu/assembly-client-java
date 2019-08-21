@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.381
+ * assembly-client-java 1.2.384
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -33,6 +33,9 @@ public class School implements Serializable {
 
   @JsonProperty("name")
   private String name = ;
+
+  @JsonProperty("slug")
+  private String slug = ;
 
   @JsonProperty("urn")
   private String urn = ;
@@ -101,6 +104,24 @@ public class School implements Serializable {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public School slug(String slug) {
+    this.slug = slug;
+    return this;
+  }
+
+   /**
+   * Assembly slug for the school
+   * @return slug
+  **/
+  @ApiModelProperty(value = "Assembly slug for the school")
+  public String getSlug() {
+    return slug;
+  }
+
+  public void setSlug(String slug) {
+    this.slug = slug;
   }
 
   public School urn(String urn) {
@@ -313,6 +334,7 @@ public class School implements Serializable {
     School school = (School) o;
     return Objects.equals(this.object, school.object) &&
         Objects.equals(this.name, school.name) &&
+        Objects.equals(this.slug, school.slug) &&
         Objects.equals(this.urn, school.urn) &&
         Objects.equals(this.misProvider, school.misProvider) &&
         Objects.equals(this.laCode, school.laCode) &&
@@ -328,7 +350,7 @@ public class School implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, name, urn, misProvider, laCode, laName, establishmentNumber, establishmentType, phase, street, town, postcode, headTeacher);
+    return Objects.hash(object, name, slug, urn, misProvider, laCode, laName, establishmentNumber, establishmentType, phase, street, town, postcode, headTeacher);
   }
 
 
@@ -339,6 +361,7 @@ public class School implements Serializable {
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    urn: ").append(toIndentedString(urn)).append("\n");
     sb.append("    misProvider: ").append(toIndentedString(misProvider)).append("\n");
     sb.append("    laCode: ").append(toIndentedString(laCode)).append("\n");

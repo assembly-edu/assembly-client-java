@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.381
+ * assembly-client-java 1.2.384
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -1007,10 +1007,12 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param assessmentPointRank The rank of the assessment point as an Integer
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Result> getAssessmentPointResults(Integer assessmentPointRank, List<Integer> students) throws RestClientException {
+    public List<Result> getAssessmentPointResults(Integer assessmentPointRank, List<Integer> students, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'assessmentPointRank' is set
@@ -1033,6 +1035,8 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1097,10 +1101,12 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Result> getAssessmentResults(Integer id, List<Integer> students) throws RestClientException {
+    public List<Result> getAssessmentResults(Integer id, List<Integer> students, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1123,6 +1129,8 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "students[]", students));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1186,10 +1194,12 @@ public class AssemblyApi {
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
      * @param academicYearId Include all groups and group memberships from the specified academic year
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;AttendanceSummary&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer academicYearId) throws RestClientException {
+    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/attendances/summaries").build().toUriString();
@@ -1201,6 +1211,8 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
@@ -1651,10 +1663,12 @@ public class AssemblyApi {
      * @param teachersOnly Filter to staff who are teachers
      * @param demographics Include demographics data
      * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean demographics, Boolean qualifications) throws RestClientException {
+    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_members/left").build().toUriString();
@@ -1666,6 +1680,8 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "teachers_only", teachersOnly));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
@@ -1692,10 +1708,12 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getLeftStudents(OffsetDateTime ifModifiedSince) throws RestClientException {
+    public List<Student> getLeftStudents(OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/students/left").build().toUriString();
@@ -1703,6 +1721,9 @@ public class AssemblyApi {
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
@@ -1733,10 +1754,12 @@ public class AssemblyApi {
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Lesson&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Lesson> getLessons(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+    public List<Lesson> getLessons(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1756,6 +1779,8 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
@@ -1831,10 +1856,12 @@ public class AssemblyApi {
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
      * @param photo Include student photo data
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1862,6 +1889,8 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
@@ -2281,10 +2310,12 @@ public class AssemblyApi {
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
      * @param photo Include student photo data
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -2313,6 +2344,8 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
@@ -2442,10 +2475,12 @@ public class AssemblyApi {
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
      * @param photo Include student photo data
+     * @param perPage Number of results to return
+     * @param page Page number to return
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -2472,6 +2507,8 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **String** | Descriminator |  [optional]
 **name** | **String** | Name of the school |  [optional]
+**slug** | **String** | Assembly slug for the school |  [optional]
 **urn** | **String** | Unique Reference Number (URN) of the school |  [optional]
 **misProvider** | **String** | Name of school&#39;s MIS provider |  [optional]
 **laCode** | **Integer** | The code of the local authority that the school belongs to |  [optional]
