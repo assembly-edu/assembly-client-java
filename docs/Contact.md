@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **String** | Descriminator |  [optional]
 **id** | **Integer** | Internal stable ID |  [optional]
+**misId** | **String** | The ID of the contact from the MIS |  [optional]
 **firstName** | **String** | The first name of the contact |  [optional]
 **middleName** | **String** | The middle name of the contact |  [optional]
 **lastName** | **String** | The last name of the contact |  [optional]

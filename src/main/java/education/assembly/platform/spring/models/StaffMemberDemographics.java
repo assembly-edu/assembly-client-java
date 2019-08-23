@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.404
+ * assembly-client-java 1.2.407
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -42,6 +42,9 @@ public class StaffMemberDemographics implements Serializable {
 
   @JsonProperty("disability")
   private String disability = ;
+
+  @JsonProperty("disability_cdoe")
+  private String disabilityCdoe = ;
 
   public StaffMemberDemographics object(String object) {
     this.object = object;
@@ -133,6 +136,24 @@ public class StaffMemberDemographics implements Serializable {
     this.disability = disability;
   }
 
+  public StaffMemberDemographics disabilityCdoe(String disabilityCdoe) {
+    this.disabilityCdoe = disabilityCdoe;
+    return this;
+  }
+
+   /**
+   * The disability status code of a staff member
+   * @return disabilityCdoe
+  **/
+  @ApiModelProperty(value = "The disability status code of a staff member")
+  public String getDisabilityCdoe() {
+    return disabilityCdoe;
+  }
+
+  public void setDisabilityCdoe(String disabilityCdoe) {
+    this.disabilityCdoe = disabilityCdoe;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -147,12 +168,13 @@ public class StaffMemberDemographics implements Serializable {
         Objects.equals(this.ethnicityCode, staffMemberDemographics.ethnicityCode) &&
         Objects.equals(this.ethnicityGroup, staffMemberDemographics.ethnicityGroup) &&
         Objects.equals(this.gender, staffMemberDemographics.gender) &&
-        Objects.equals(this.disability, staffMemberDemographics.disability);
+        Objects.equals(this.disability, staffMemberDemographics.disability) &&
+        Objects.equals(this.disabilityCdoe, staffMemberDemographics.disabilityCdoe);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, disability);
+    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, disability, disabilityCdoe);
   }
 
 
@@ -166,6 +188,7 @@ public class StaffMemberDemographics implements Serializable {
     sb.append("    ethnicityGroup: ").append(toIndentedString(ethnicityGroup)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    disability: ").append(toIndentedString(disability)).append("\n");
+    sb.append("    disabilityCdoe: ").append(toIndentedString(disabilityCdoe)).append("\n");
     sb.append("}");
     return sb.toString();
   }

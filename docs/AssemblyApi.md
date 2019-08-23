@@ -1091,9 +1091,9 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-String startDate = "startDate_example"; // String | The start date of the period to filter by
-String endDate = "endDate_example"; // String | The end date of the period to filter by
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 try {
     Timetable result = apiInstance.findTimetable(id, ifModifiedSince, date, startDate, endDate);
     System.out.println(result);
@@ -1109,9 +1109,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **startDate** | **String**| The start date of the period to filter by | [optional]
- **endDate** | **String**| The end date of the period to filter by | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
+ **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
 
 ### Return type
 
@@ -1691,9 +1691,9 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-String startDate = "startDate_example"; // String | The start date of the period to filter by
-String endDate = "endDate_example"; // String | The end date of the period to filter by
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 try {
     List<Closure> result = apiInstance.getClosures(id, ifModifiedSince, date, startDate, endDate);
     System.out.println(result);
@@ -1709,9 +1709,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **startDate** | **String**| The start date of the period to filter by | [optional]
- **endDate** | **String**| The end date of the period to filter by | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
+ **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
 
 ### Return type
 
@@ -2279,9 +2279,9 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-String startDate = "startDate_example"; // String | The start date of the period to filter by
-String endDate = "endDate_example"; // String | The end date of the period to filter by
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
+OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
@@ -2299,9 +2299,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **startDate** | **String**| The start date of the period to filter by | [optional]
- **endDate** | **String**| The end date of the period to filter by | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
+ **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 

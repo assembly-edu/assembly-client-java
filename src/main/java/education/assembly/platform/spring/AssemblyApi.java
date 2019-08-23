@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.404
+ * assembly-client-java 1.2.407
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -879,7 +879,7 @@ public class AssemblyApi {
      * @return Timetable
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Timetable findTimetable(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+    public Timetable findTimetable(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1340,7 +1340,7 @@ public class AssemblyApi {
      * @return List&lt;Closure&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Closure> getClosures(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+    public List<Closure> getClosures(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1759,7 +1759,7 @@ public class AssemblyApi {
      * @return List&lt;Lesson&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Lesson> getLessons(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate, Integer perPage, Integer page) throws RestClientException {
+    public List<Lesson> getLessons(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set

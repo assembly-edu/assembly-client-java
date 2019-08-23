@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.404
+ * assembly-client-java 1.2.407
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -49,6 +49,9 @@ public class StaffAbsence implements Serializable {
 
   @JsonProperty("absence_category")
   private String absenceCategory = ;
+
+  @JsonProperty("absence_category_code")
+  private String absenceCategoryCode = ;
 
   @JsonProperty("illness_category")
   private String illnessCategory = ;
@@ -182,6 +185,24 @@ public class StaffAbsence implements Serializable {
     this.absenceCategory = absenceCategory;
   }
 
+  public StaffAbsence absenceCategoryCode(String absenceCategoryCode) {
+    this.absenceCategoryCode = absenceCategoryCode;
+    return this;
+  }
+
+   /**
+   * The category code of the absence
+   * @return absenceCategoryCode
+  **/
+  @ApiModelProperty(value = "The category code of the absence")
+  public String getAbsenceCategoryCode() {
+    return absenceCategoryCode;
+  }
+
+  public void setAbsenceCategoryCode(String absenceCategoryCode) {
+    this.absenceCategoryCode = absenceCategoryCode;
+  }
+
   public StaffAbsence illnessCategory(String illnessCategory) {
     this.illnessCategory = illnessCategory;
     return this;
@@ -235,13 +256,14 @@ public class StaffAbsence implements Serializable {
         Objects.equals(this.endDate, staffAbsence.endDate) &&
         Objects.equals(this.workingDaysLost, staffAbsence.workingDaysLost) &&
         Objects.equals(this.absenceCategory, staffAbsence.absenceCategory) &&
+        Objects.equals(this.absenceCategoryCode, staffAbsence.absenceCategoryCode) &&
         Objects.equals(this.illnessCategory, staffAbsence.illnessCategory) &&
         Objects.equals(this.payRate, staffAbsence.payRate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, staffMemberId, startDate, endDate, workingDaysLost, absenceCategory, illnessCategory, payRate);
+    return Objects.hash(object, id, staffMemberId, startDate, endDate, workingDaysLost, absenceCategory, absenceCategoryCode, illnessCategory, payRate);
   }
 
 
@@ -257,6 +279,7 @@ public class StaffAbsence implements Serializable {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    workingDaysLost: ").append(toIndentedString(workingDaysLost)).append("\n");
     sb.append("    absenceCategory: ").append(toIndentedString(absenceCategory)).append("\n");
+    sb.append("    absenceCategoryCode: ").append(toIndentedString(absenceCategoryCode)).append("\n");
     sb.append("    illnessCategory: ").append(toIndentedString(illnessCategory)).append("\n");
     sb.append("    payRate: ").append(toIndentedString(payRate)).append("\n");
     sb.append("}");

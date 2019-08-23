@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.404
+ * assembly-client-java 1.2.407
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -38,6 +38,9 @@ public class Contact implements Serializable {
 
   @JsonProperty("id")
   private Integer id = ;
+
+  @JsonProperty("mis_id")
+  private String misId = ;
 
   @JsonProperty("first_name")
   private String firstName = ;
@@ -100,6 +103,24 @@ public class Contact implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Contact misId(String misId) {
+    this.misId = misId;
+    return this;
+  }
+
+   /**
+   * The ID of the contact from the MIS
+   * @return misId
+  **/
+  @ApiModelProperty(value = "The ID of the contact from the MIS")
+  public String getMisId() {
+    return misId;
+  }
+
+  public void setMisId(String misId) {
+    this.misId = misId;
   }
 
   public Contact firstName(String firstName) {
@@ -300,6 +321,7 @@ public class Contact implements Serializable {
     Contact contact = (Contact) o;
     return Objects.equals(this.object, contact.object) &&
         Objects.equals(this.id, contact.id) &&
+        Objects.equals(this.misId, contact.misId) &&
         Objects.equals(this.firstName, contact.firstName) &&
         Objects.equals(this.middleName, contact.middleName) &&
         Objects.equals(this.lastName, contact.lastName) &&
@@ -313,7 +335,7 @@ public class Contact implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, firstName, middleName, lastName, gender, title, salutation, emails, telephoneNumbers, students);
+    return Objects.hash(object, id, misId, firstName, middleName, lastName, gender, title, salutation, emails, telephoneNumbers, students);
   }
 
 
@@ -324,6 +346,7 @@ public class Contact implements Serializable {
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    misId: ").append(toIndentedString(misId)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    middleName: ").append(toIndentedString(middleName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
