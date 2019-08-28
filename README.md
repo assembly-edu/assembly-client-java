@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>education.assembly</groupId>
   <artifactId>assembly-client-java</artifactId>
-  <version>1.2.407</version>
+  <version>1.2.410</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.2.407"
+compile "education.assembly:assembly-client-java:1.2.410"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.2.407.jar
+* target/assembly-client-java-1.2.410.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -132,6 +132,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getExclusions**](docs/AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
 *AssemblyApi* | [**getFacets**](docs/AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 *AssemblyApi* | [**getGradeSets**](docs/AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
+*AssemblyApi* | [**getGroupStudents**](docs/AssemblyApi.md#getGroupStudents) | **GET** /groups/{id}/students | List Students for Group
 *AssemblyApi* | [**getGroups**](docs/AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 *AssemblyApi* | [**getLearningAims**](docs/AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 *AssemblyApi* | [**getLeftStaffMembers**](docs/AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members

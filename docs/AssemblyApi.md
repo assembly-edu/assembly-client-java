@@ -38,6 +38,7 @@ Method | HTTP request | Description
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 [**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
+[**getGroupStudents**](AssemblyApi.md#getGroupStudents) | **GET** /groups/{id}/students | List Students for Group
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 [**getLearningAims**](AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
@@ -550,7 +551,7 @@ Name | Type | Description  | Notes
 
 <a name="findGroup"></a>
 # **findGroup**
-> Group findGroup(id)
+> Group findGroup(id, date)
 
 View a Group
 
@@ -574,8 +575,9 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 try {
-    Group result = apiInstance.findGroup(id);
+    Group result = apiInstance.findGroup(id, date);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findGroup");
@@ -588,6 +590,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
 
 ### Return type
 
@@ -2014,9 +2017,89 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="getGroupStudents"></a>
+# **getGroupStudents**
+> List&lt;Student&gt; getGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
+
+List Students for Group
+
+Returns a list of all the students that are present in the group identified by &#x60;group_id&#x60;
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer id = 56; // Integer | Internal identifier of the entity
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+String yearCode = "yearCode_example"; // String | Filter by school year
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | Include email addresses
+Boolean addresses = true; // Boolean | Include student address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
+try {
+    List<Student> result = apiInstance.getGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getGroupStudents");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Internal identifier of the entity |
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+ **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **yearCode** | **String**| Filter by school year | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
+ **addresses** | **Boolean**| Include student address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
+
+### Return type
+
+[**List&lt;Student&gt;**](Student.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="getGroups"></a>
 # **getGroups**
-> List&lt;Group&gt; getGroups(ifModifiedSince, academicYearId, perPage, page)
+> List&lt;Group&gt; getGroups(ifModifiedSince, yearCode, date, academicYearId, type, perPage, page)
 
 List Groups
 
@@ -2040,11 +2123,14 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String yearCode = "yearCode_example"; // String | Filter by school year
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+String type = "type_example"; // String | Filter by assessment point type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Group> result = apiInstance.getGroups(ifModifiedSince, academicYearId, perPage, page);
+    List<Group> result = apiInstance.getGroups(ifModifiedSince, yearCode, date, academicYearId, type, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getGroups");
@@ -2057,7 +2143,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **yearCode** | **String**| Filter by school year | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+ **type** | **String**| Filter by assessment point type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2858,7 +2947,7 @@ AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-Integer yearCode = 56; // Integer | Filter by school year
+String yearCode = "yearCode_example"; // String | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
@@ -2886,7 +2975,7 @@ Name | Type | Description  | Notes
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional] [default to new ArrayList&lt;Integer&gt;()]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **yearCode** | **Integer**| Filter by school year | [optional]
+ **yearCode** | **String**| Filter by school year | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
