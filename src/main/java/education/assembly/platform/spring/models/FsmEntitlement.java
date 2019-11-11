@@ -16,35 +16,31 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.GroupMisSubjectSubject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * A subject defined within the MIS.
+ * A period of entitlement to Free School Meals
  */
-@ApiModel(description = "A subject defined within the MIS.")
+@ApiModel(description = "A period of entitlement to Free School Meals")
 
-public class MisSubject implements Serializable {
+public class FsmEntitlement implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
-  private String object = "mis_subject";
+  private String object = "fsm_entitlement";
 
   @JsonProperty("id")
   private Integer id = ;
 
-  @JsonProperty("name")
-  private String name = ;
+  @JsonProperty("start_date")
+  private String startDate = ;
 
-  @JsonProperty("code")
-  private String code = ;
+  @JsonProperty("end_date")
+  private String endDate = ;
 
-  @JsonProperty("subject")
-  private GroupMisSubjectSubject subject = null;
-
-  public MisSubject object(String object) {
+  public FsmEntitlement object(String object) {
     this.object = object;
     return this;
   }
@@ -62,7 +58,7 @@ public class MisSubject implements Serializable {
     this.object = object;
   }
 
-  public MisSubject id(Integer id) {
+  public FsmEntitlement id(Integer id) {
     this.id = id;
     return this;
   }
@@ -80,58 +76,40 @@ public class MisSubject implements Serializable {
     this.id = id;
   }
 
-  public MisSubject name(String name) {
-    this.name = name;
+  public FsmEntitlement startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * The name of the subject in the MIS
-   * @return name
+   * The start date for the entitlement
+   * @return startDate
   **/
-  @ApiModelProperty(value = "The name of the subject in the MIS")
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "The start date for the entitlement")
+  public String getStartDate() {
+    return startDate;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
-  public MisSubject code(String code) {
-    this.code = code;
+  public FsmEntitlement endDate(String endDate) {
+    this.endDate = endDate;
     return this;
   }
 
    /**
-   * The code of the subject in the MIS
-   * @return code
+   * The end date for the entitlement
+   * @return endDate
   **/
-  @ApiModelProperty(value = "The code of the subject in the MIS")
-  public String getCode() {
-    return code;
+  @ApiModelProperty(value = "The end date for the entitlement")
+  public String getEndDate() {
+    return endDate;
   }
 
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public MisSubject subject(GroupMisSubjectSubject subject) {
-    this.subject = subject;
-    return this;
-  }
-
-   /**
-   * Get subject
-   * @return subject
-  **/
-  @ApiModelProperty(value = "")
-  public GroupMisSubjectSubject getSubject() {
-    return subject;
-  }
-
-  public void setSubject(GroupMisSubjectSubject subject) {
-    this.subject = subject;
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
   }
 
 
@@ -143,30 +121,28 @@ public class MisSubject implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MisSubject misSubject = (MisSubject) o;
-    return Objects.equals(this.object, misSubject.object) &&
-        Objects.equals(this.id, misSubject.id) &&
-        Objects.equals(this.name, misSubject.name) &&
-        Objects.equals(this.code, misSubject.code) &&
-        Objects.equals(this.subject, misSubject.subject);
+    FsmEntitlement fsmEntitlement = (FsmEntitlement) o;
+    return Objects.equals(this.object, fsmEntitlement.object) &&
+        Objects.equals(this.id, fsmEntitlement.id) &&
+        Objects.equals(this.startDate, fsmEntitlement.startDate) &&
+        Objects.equals(this.endDate, fsmEntitlement.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, code, subject);
+    return Objects.hash(object, id, startDate, endDate);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MisSubject {\n");
+    sb.append("class FsmEntitlement {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

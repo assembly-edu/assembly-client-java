@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **gender** | **String** | The gender of the contact |  [optional]
 **title** | **String** | The title of the contact |  [optional]
 **salutation** | **String** | The salutation for the contact |  [optional]
+**address** | [**ContactAddress**](ContactAddress.md) |  |  [optional]
 **emails** | [**List&lt;EmailInfo&gt;**](EmailInfo.md) | A list of emails for the contact |  [optional]
 **telephoneNumbers** | [**List&lt;TelephoneNumberInfo&gt;**](TelephoneNumberInfo.md) | A list of telephone numbers for the contact |  [optional]
 **students** | [**List&lt;ContactStudents&gt;**](ContactStudents.md) | A list of student IDs which are associated with this contact, and their relationship |  [optional]

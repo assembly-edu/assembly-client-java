@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | Internal stable ID |  [optional]
 **studentId** | **Integer** | The ID of the student |  [optional]
 **registrationGroupId** | **Integer** | The ID of the student&#39;s registration group |  [optional]
+**groupId** | **Integer** | The ID of the group that the attendance summary is attached to (requires &#x60;groups&#x60; scope) |  [optional]
 **academicYearId** | **Integer** | The ID of the academic year |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Start date for the attendance summary |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | End date for the attendance summary |  [optional]

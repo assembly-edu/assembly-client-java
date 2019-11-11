@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.424
+ * assembly-client-java 1.2.432
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -721,12 +721,13 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
+     * @param addresses Include address data
      * @param demographics Include demographics data
      * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @return StaffMember
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public StaffMember findStaffMember(Integer id, Boolean demographics, Boolean qualifications) throws RestClientException {
+    public StaffMember findStaffMember(Integer id, Boolean addresses, Boolean demographics, Boolean qualifications) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -743,6 +744,7 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
 
@@ -772,7 +774,7 @@ public class AssemblyApi {
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
      * @param emails Include email addresses
-     * @param addresses Include student address data
+     * @param addresses Include address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
@@ -1062,7 +1064,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param yearCode Filter by school year
-     * @param type Filter by assessment point type
+     * @param type Filter by type
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;AssessmentPoint&gt;
@@ -1196,13 +1198,14 @@ public class AssemblyApi {
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
+     * @param groupId Filter to the specified group
      * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;AttendanceSummary&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer groupId, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/attendances/summaries").build().toUriString();
@@ -1213,6 +1216,7 @@ public class AssemblyApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "group_id", groupId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
@@ -1244,6 +1248,7 @@ public class AssemblyApi {
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
+     * @param groupId Filter to the specified group
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
      * @param perPage Number of results to return
@@ -1251,7 +1256,7 @@ public class AssemblyApi {
      * @return List&lt;Attendance&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Attendance> getAttendances(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
+    public List<Attendance> getAttendances(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer groupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/attendances").build().toUriString();
@@ -1262,6 +1267,7 @@ public class AssemblyApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "registration_group_id", registrationGroupId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "group_id", groupId));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
@@ -1292,7 +1298,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-     * @param type Filter by assessment point type
+     * @param type Filter by type
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;CalendarEvent&gt;
@@ -1388,12 +1394,13 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param studentId Filter to the specified student
+     * @param addresses Include address data
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Contact&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Contact> getContacts(Integer studentId, Integer perPage, Integer page) throws RestClientException {
+    public List<Contact> getContacts(Integer studentId, Boolean addresses, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/contacts").build().toUriString();
@@ -1403,6 +1410,7 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "student_id", studentId));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
@@ -1590,7 +1598,7 @@ public class AssemblyApi {
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
      * @param emails Include email addresses
-     * @param addresses Include student address data
+     * @param addresses Include address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
@@ -1656,7 +1664,7 @@ public class AssemblyApi {
      * @param yearCode Filter by school year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param academicYearId Include all groups and group memberships from the specified academic year
-     * @param type Filter by assessment point type
+     * @param type Filter by type
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Group&gt;
@@ -1741,6 +1749,7 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param teachersOnly Filter to staff who are teachers
+     * @param addresses Include address data
      * @param demographics Include demographics data
      * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @param perPage Number of results to return
@@ -1748,7 +1757,7 @@ public class AssemblyApi {
      * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
+    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean addresses, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_members/left").build().toUriString();
@@ -1758,6 +1767,7 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "teachers_only", teachersOnly));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
@@ -1931,7 +1941,7 @@ public class AssemblyApi {
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
      * @param emails Include email addresses
-     * @param addresses Include student address data
+     * @param addresses Include address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
@@ -2227,6 +2237,7 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param teachersOnly Filter to staff who are teachers
+     * @param addresses Include address data
      * @param demographics Include demographics data
      * @param qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope)
      * @param perPage Number of results to return
@@ -2234,7 +2245,7 @@ public class AssemblyApi {
      * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffMember> getStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
+    public List<StaffMember> getStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean addresses, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_members").build().toUriString();
@@ -2244,6 +2255,7 @@ public class AssemblyApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "teachers_only", teachersOnly));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "qualifications", qualifications));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
@@ -2281,7 +2293,7 @@ public class AssemblyApi {
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
      * @param emails Include email addresses
-     * @param addresses Include student address data
+     * @param addresses Include address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
@@ -2385,7 +2397,7 @@ public class AssemblyApi {
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
      * @param emails Include email addresses
-     * @param addresses Include student address data
+     * @param addresses Include address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data
@@ -2550,7 +2562,7 @@ public class AssemblyApi {
      * @param contacts Include contacts data
      * @param senNeeds Include SEN needs data
      * @param emails Include email addresses
-     * @param addresses Include student address data
+     * @param addresses Include address data
      * @param care Include student care data (you must also supply the demographics parameter)
      * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
      * @param languages Include student language data

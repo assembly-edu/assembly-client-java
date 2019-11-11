@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.424
+ * assembly-client-java 1.2.432
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.FsmEntitlement;
 import education.assembly.platform.spring.models.SenNeed;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -66,6 +67,9 @@ public class StudentDemographics implements Serializable {
 
   @JsonProperty("is_fsm6")
   private Boolean isFsm6 = ;
+
+  @JsonProperty("fsm_history")
+  private List<FsmEntitlement> fsmHistory = null;
 
   @JsonProperty("in_care")
   private Boolean inCare = ;
@@ -303,6 +307,32 @@ public class StudentDemographics implements Serializable {
     this.isFsm6 = isFsm6;
   }
 
+  public StudentDemographics fsmHistory(List<FsmEntitlement> fsmHistory) {
+    this.fsmHistory = fsmHistory;
+    return this;
+  }
+
+  public StudentDemographics addFsmHistoryItem(FsmEntitlement fsmHistoryItem) {
+    if (this.fsmHistory == null) {
+      this.fsmHistory = new ArrayList<FsmEntitlement>();
+    }
+    this.fsmHistory.add(fsmHistoryItem);
+    return this;
+  }
+
+   /**
+   * Free School Meal (FSM) entitlement history
+   * @return fsmHistory
+  **/
+  @ApiModelProperty(value = "Free School Meal (FSM) entitlement history")
+  public List<FsmEntitlement> getFsmHistory() {
+    return fsmHistory;
+  }
+
+  public void setFsmHistory(List<FsmEntitlement> fsmHistory) {
+    this.fsmHistory = fsmHistory;
+  }
+
   public StudentDemographics inCare(Boolean inCare) {
     this.inCare = inCare;
     return this;
@@ -405,6 +435,7 @@ public class StudentDemographics implements Serializable {
         Objects.equals(this.fsmReviewDate, studentDemographics.fsmReviewDate) &&
         Objects.equals(this.isFsm, studentDemographics.isFsm) &&
         Objects.equals(this.isFsm6, studentDemographics.isFsm6) &&
+        Objects.equals(this.fsmHistory, studentDemographics.fsmHistory) &&
         Objects.equals(this.inCare, studentDemographics.inCare) &&
         Objects.equals(this.everInCare, studentDemographics.everInCare) &&
         Objects.equals(this.serviceChild, studentDemographics.serviceChild) &&
@@ -413,7 +444,7 @@ public class StudentDemographics implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, inCare, everInCare, serviceChild, senNeeds);
+    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, fsmHistory, inCare, everInCare, serviceChild, senNeeds);
   }
 
 
@@ -434,6 +465,7 @@ public class StudentDemographics implements Serializable {
     sb.append("    fsmReviewDate: ").append(toIndentedString(fsmReviewDate)).append("\n");
     sb.append("    isFsm: ").append(toIndentedString(isFsm)).append("\n");
     sb.append("    isFsm6: ").append(toIndentedString(isFsm6)).append("\n");
+    sb.append("    fsmHistory: ").append(toIndentedString(fsmHistory)).append("\n");
     sb.append("    inCare: ").append(toIndentedString(inCare)).append("\n");
     sb.append("    everInCare: ").append(toIndentedString(everInCare)).append("\n");
     sb.append("    serviceChild: ").append(toIndentedString(serviceChild)).append("\n");

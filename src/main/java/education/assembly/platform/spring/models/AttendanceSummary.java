@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.424
+ * assembly-client-java 1.2.432
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -40,6 +40,9 @@ public class AttendanceSummary implements Serializable {
 
   @JsonProperty("registration_group_id")
   private Integer registrationGroupId = ;
+
+  @JsonProperty("group_id")
+  private Integer groupId = ;
 
   @JsonProperty("academic_year_id")
   private Integer academicYearId = ;
@@ -135,6 +138,24 @@ public class AttendanceSummary implements Serializable {
 
   public void setRegistrationGroupId(Integer registrationGroupId) {
     this.registrationGroupId = registrationGroupId;
+  }
+
+  public AttendanceSummary groupId(Integer groupId) {
+    this.groupId = groupId;
+    return this;
+  }
+
+   /**
+   * The ID of the group that the attendance summary is attached to (requires &#x60;groups&#x60; scope)
+   * @return groupId
+  **/
+  @ApiModelProperty(value = "The ID of the group that the attendance summary is attached to (requires `groups` scope)")
+  public Integer getGroupId() {
+    return groupId;
+  }
+
+  public void setGroupId(Integer groupId) {
+    this.groupId = groupId;
   }
 
   public AttendanceSummary academicYearId(Integer academicYearId) {
@@ -295,6 +316,7 @@ public class AttendanceSummary implements Serializable {
         Objects.equals(this.id, attendanceSummary.id) &&
         Objects.equals(this.studentId, attendanceSummary.studentId) &&
         Objects.equals(this.registrationGroupId, attendanceSummary.registrationGroupId) &&
+        Objects.equals(this.groupId, attendanceSummary.groupId) &&
         Objects.equals(this.academicYearId, attendanceSummary.academicYearId) &&
         Objects.equals(this.startDate, attendanceSummary.startDate) &&
         Objects.equals(this.endDate, attendanceSummary.endDate) &&
@@ -307,7 +329,7 @@ public class AttendanceSummary implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, studentId, registrationGroupId, academicYearId, startDate, endDate, possibleSessions, attendedSessions, lateSessions, authorisedAbsenceSessions, unauthorisedAbsenceSessions);
+    return Objects.hash(object, id, studentId, registrationGroupId, groupId, academicYearId, startDate, endDate, possibleSessions, attendedSessions, lateSessions, authorisedAbsenceSessions, unauthorisedAbsenceSessions);
   }
 
 
@@ -320,6 +342,7 @@ public class AttendanceSummary implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    registrationGroupId: ").append(toIndentedString(registrationGroupId)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    academicYearId: ").append(toIndentedString(academicYearId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");

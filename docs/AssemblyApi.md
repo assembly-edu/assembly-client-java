@@ -883,7 +883,7 @@ This endpoint does not need any parameter.
 
 <a name="findStaffMember"></a>
 # **findStaffMember**
-> StaffMember findStaffMember(id, demographics, qualifications)
+> StaffMember findStaffMember(id, addresses, demographics, qualifications)
 
 View a Staff Member
 
@@ -907,10 +907,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
+Boolean addresses = true; // Boolean | Include address data
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 try {
-    StaffMember result = apiInstance.findStaffMember(id, demographics, qualifications);
+    StaffMember result = apiInstance.findStaffMember(id, addresses, demographics, qualifications);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findStaffMember");
@@ -923,6 +924,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
+ **addresses** | **Boolean**| Include address data | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
  **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
@@ -969,7 +971,7 @@ Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
 Boolean emails = true; // Boolean | Include email addresses
-Boolean addresses = true; // Boolean | Include student address data
+Boolean addresses = true; // Boolean | Include address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
@@ -992,7 +994,7 @@ Name | Type | Description  | Notes
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
  **emails** | **Boolean**| Include email addresses | [optional]
- **addresses** | **Boolean**| Include student address data | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
@@ -1327,7 +1329,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer yearCode = 56; // Integer | Filter by school year
-String type = "type_example"; // String | Filter by assessment point type
+String type = "type_example"; // String | Filter by type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
@@ -1344,7 +1346,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **yearCode** | **Integer**| Filter by school year | [optional]
- **type** | **String**| Filter by assessment point type | [optional]
+ **type** | **String**| Filter by type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1479,7 +1481,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttendanceSummaries"></a>
 # **getAttendanceSummaries**
-> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId, perPage, page)
+> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, groupId, academicYearId, perPage, page)
 
 List Attendance Summaries
 
@@ -1505,11 +1507,12 @@ AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer studentId = 56; // Integer | Filter to the specified student
 Integer registrationGroupId = 56; // Integer | ID of a registration group
+Integer groupId = 56; // Integer | Filter to the specified group
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, academicYearId, perPage, page);
+    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, groupId, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAttendanceSummaries");
@@ -1524,6 +1527,7 @@ Name | Type | Description  | Notes
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **studentId** | **Integer**| Filter to the specified student | [optional]
  **registrationGroupId** | **Integer**| ID of a registration group | [optional]
+ **groupId** | **Integer**| Filter to the specified group | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
@@ -1543,7 +1547,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttendances"></a>
 # **getAttendances**
-> List&lt;Attendance&gt; getAttendances(ifModifiedSince, studentId, registrationGroupId, startDate, endDate, perPage, page)
+> List&lt;Attendance&gt; getAttendances(ifModifiedSince, studentId, registrationGroupId, groupId, startDate, endDate, perPage, page)
 
 List Attendances
 
@@ -1569,12 +1573,13 @@ AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer studentId = 56; // Integer | Filter to the specified student
 Integer registrationGroupId = 56; // Integer | ID of a registration group
+Integer groupId = 56; // Integer | Filter to the specified group
 OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
 OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Attendance> result = apiInstance.getAttendances(ifModifiedSince, studentId, registrationGroupId, startDate, endDate, perPage, page);
+    List<Attendance> result = apiInstance.getAttendances(ifModifiedSince, studentId, registrationGroupId, groupId, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAttendances");
@@ -1589,6 +1594,7 @@ Name | Type | Description  | Notes
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **studentId** | **Integer**| Filter to the specified student | [optional]
  **registrationGroupId** | **Integer**| ID of a registration group | [optional]
+ **groupId** | **Integer**| Filter to the specified group | [optional]
  **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
  **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
@@ -1633,7 +1639,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-String type = "type_example"; // String | Filter by assessment point type
+String type = "type_example"; // String | Filter by type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
@@ -1650,7 +1656,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **type** | **String**| Filter by assessment point type | [optional]
+ **type** | **String**| Filter by type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -1731,7 +1737,7 @@ Name | Type | Description  | Notes
 
 <a name="getContacts"></a>
 # **getContacts**
-> List&lt;Contact&gt; getContacts(studentId, perPage, page)
+> List&lt;Contact&gt; getContacts(studentId, addresses, perPage, page)
 
 List Contacts
 
@@ -1755,10 +1761,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer studentId = 56; // Integer | Filter to the specified student
+Boolean addresses = true; // Boolean | Include address data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Contact> result = apiInstance.getContacts(studentId, perPage, page);
+    List<Contact> result = apiInstance.getContacts(studentId, addresses, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getContacts");
@@ -1771,6 +1778,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **studentId** | **Integer**| Filter to the specified student | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2051,7 +2059,7 @@ Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
 Boolean emails = true; // Boolean | Include email addresses
-Boolean addresses = true; // Boolean | Include student address data
+Boolean addresses = true; // Boolean | Include address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
@@ -2078,7 +2086,7 @@ Name | Type | Description  | Notes
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
  **emails** | **Boolean**| Include email addresses | [optional]
- **addresses** | **Boolean**| Include student address data | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
@@ -2126,7 +2134,7 @@ OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filte
 String yearCode = "yearCode_example"; // String | Filter by school year
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
-String type = "type_example"; // String | Filter by assessment point type
+String type = "type_example"; // String | Filter by type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
@@ -2146,7 +2154,7 @@ Name | Type | Description  | Notes
  **yearCode** | **String**| Filter by school year | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
- **type** | **String**| Filter by assessment point type | [optional]
+ **type** | **String**| Filter by type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2221,7 +2229,7 @@ Name | Type | Description  | Notes
 
 <a name="getLeftStaffMembers"></a>
 # **getLeftStaffMembers**
-> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page)
+> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page)
 
 List Left Staff Members
 
@@ -2246,12 +2254,13 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
+Boolean addresses = true; // Boolean | Include address data
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page);
+    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLeftStaffMembers");
@@ -2265,6 +2274,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
  **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
@@ -2496,7 +2506,7 @@ Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
 Boolean emails = true; // Boolean | Include email addresses
-Boolean addresses = true; // Boolean | Include student address data
+Boolean addresses = true; // Boolean | Include address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
@@ -2524,7 +2534,7 @@ Name | Type | Description  | Notes
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
  **emails** | **Boolean**| Include email addresses | [optional]
- **addresses** | **Boolean**| Include student address data | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
@@ -2857,7 +2867,7 @@ Name | Type | Description  | Notes
 
 <a name="getStaffMembers"></a>
 # **getStaffMembers**
-> List&lt;StaffMember&gt; getStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page)
+> List&lt;StaffMember&gt; getStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page)
 
 List Staff Members
 
@@ -2882,12 +2892,13 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
+Boolean addresses = true; // Boolean | Include address data
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffMember> result = apiInstance.getStaffMembers(ifModifiedSince, teachersOnly, demographics, qualifications, perPage, page);
+    List<StaffMember> result = apiInstance.getStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getStaffMembers");
@@ -2901,6 +2912,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
  **qualifications** | **Boolean**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
@@ -2952,7 +2964,7 @@ Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
 Boolean emails = true; // Boolean | Include email addresses
-Boolean addresses = true; // Boolean | Include student address data
+Boolean addresses = true; // Boolean | Include address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
@@ -2980,7 +2992,7 @@ Name | Type | Description  | Notes
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
  **emails** | **Boolean**| Include email addresses | [optional]
- **addresses** | **Boolean**| Include student address data | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
@@ -3091,7 +3103,7 @@ Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
 Boolean emails = true; // Boolean | Include email addresses
-Boolean addresses = true; // Boolean | Include student address data
+Boolean addresses = true; // Boolean | Include address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
@@ -3120,7 +3132,7 @@ Name | Type | Description  | Notes
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
  **emails** | **Boolean**| Include email addresses | [optional]
- **addresses** | **Boolean**| Include student address data | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]
@@ -3297,7 +3309,7 @@ Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
 Boolean senNeeds = true; // Boolean | Include SEN needs data
 Boolean emails = true; // Boolean | Include email addresses
-Boolean addresses = true; // Boolean | Include student address data
+Boolean addresses = true; // Boolean | Include address data
 Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
 Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
 Boolean languages = true; // Boolean | Include student language data
@@ -3324,7 +3336,7 @@ Name | Type | Description  | Notes
  **contacts** | **Boolean**| Include contacts data | [optional]
  **senNeeds** | **Boolean**| Include SEN needs data | [optional]
  **emails** | **Boolean**| Include email addresses | [optional]
- **addresses** | **Boolean**| Include student address data | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
  **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
  **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **Boolean**| Include student language data | [optional]

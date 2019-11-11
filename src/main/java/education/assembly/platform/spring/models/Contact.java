@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.424
+ * assembly-client-java 1.2.432
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import education.assembly.platform.spring.models.ContactAddress;
 import education.assembly.platform.spring.models.ContactStudents;
 import education.assembly.platform.spring.models.EmailInfo;
 import education.assembly.platform.spring.models.TelephoneNumberInfo;
@@ -59,6 +60,9 @@ public class Contact implements Serializable {
 
   @JsonProperty("salutation")
   private String salutation = ;
+
+  @JsonProperty("address")
+  private ContactAddress address = null;
 
   @JsonProperty("emails")
   private List<EmailInfo> emails = null;
@@ -231,6 +235,24 @@ public class Contact implements Serializable {
     this.salutation = salutation;
   }
 
+  public Contact address(ContactAddress address) {
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Get address
+   * @return address
+  **/
+  @ApiModelProperty(value = "")
+  public ContactAddress getAddress() {
+    return address;
+  }
+
+  public void setAddress(ContactAddress address) {
+    this.address = address;
+  }
+
   public Contact emails(List<EmailInfo> emails) {
     this.emails = emails;
     return this;
@@ -328,6 +350,7 @@ public class Contact implements Serializable {
         Objects.equals(this.gender, contact.gender) &&
         Objects.equals(this.title, contact.title) &&
         Objects.equals(this.salutation, contact.salutation) &&
+        Objects.equals(this.address, contact.address) &&
         Objects.equals(this.emails, contact.emails) &&
         Objects.equals(this.telephoneNumbers, contact.telephoneNumbers) &&
         Objects.equals(this.students, contact.students);
@@ -335,7 +358,7 @@ public class Contact implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, misId, firstName, middleName, lastName, gender, title, salutation, emails, telephoneNumbers, students);
+    return Objects.hash(object, id, misId, firstName, middleName, lastName, gender, title, salutation, address, emails, telephoneNumbers, students);
   }
 
 
@@ -353,6 +376,7 @@ public class Contact implements Serializable {
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    salutation: ").append(toIndentedString(salutation)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    telephoneNumbers: ").append(toIndentedString(telephoneNumbers)).append("\n");
     sb.append("    students: ").append(toIndentedString(students)).append("\n");

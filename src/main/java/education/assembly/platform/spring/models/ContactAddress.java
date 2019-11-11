@@ -21,11 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * The address of the student
+ * The address of the contact
  */
-@ApiModel(description = "The address of the student")
+@ApiModel(description = "The address of the contact")
 
-public class StudentAddress implements Serializable {
+public class ContactAddress implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
@@ -49,7 +49,7 @@ public class StudentAddress implements Serializable {
   @JsonProperty("postcode")
   private String postcode = ;
 
-  public StudentAddress object(String object) {
+  public ContactAddress object(String object) {
     this.object = object;
     return this;
   }
@@ -67,7 +67,7 @@ public class StudentAddress implements Serializable {
     this.object = object;
   }
 
-  public StudentAddress addressLine1(String addressLine1) {
+  public ContactAddress addressLine1(String addressLine1) {
     this.addressLine1 = addressLine1;
     return this;
   }
@@ -85,7 +85,7 @@ public class StudentAddress implements Serializable {
     this.addressLine1 = addressLine1;
   }
 
-  public StudentAddress addressLine2(String addressLine2) {
+  public ContactAddress addressLine2(String addressLine2) {
     this.addressLine2 = addressLine2;
     return this;
   }
@@ -103,7 +103,7 @@ public class StudentAddress implements Serializable {
     this.addressLine2 = addressLine2;
   }
 
-  public StudentAddress townCity(String townCity) {
+  public ContactAddress townCity(String townCity) {
     this.townCity = townCity;
     return this;
   }
@@ -121,7 +121,7 @@ public class StudentAddress implements Serializable {
     this.townCity = townCity;
   }
 
-  public StudentAddress county(String county) {
+  public ContactAddress county(String county) {
     this.county = county;
     return this;
   }
@@ -139,7 +139,7 @@ public class StudentAddress implements Serializable {
     this.county = county;
   }
 
-  public StudentAddress country(String country) {
+  public ContactAddress country(String country) {
     this.country = country;
     return this;
   }
@@ -157,7 +157,7 @@ public class StudentAddress implements Serializable {
     this.country = country;
   }
 
-  public StudentAddress postcode(String postcode) {
+  public ContactAddress postcode(String postcode) {
     this.postcode = postcode;
     return this;
   }
@@ -184,14 +184,14 @@ public class StudentAddress implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StudentAddress studentAddress = (StudentAddress) o;
-    return Objects.equals(this.object, studentAddress.object) &&
-        Objects.equals(this.addressLine1, studentAddress.addressLine1) &&
-        Objects.equals(this.addressLine2, studentAddress.addressLine2) &&
-        Objects.equals(this.townCity, studentAddress.townCity) &&
-        Objects.equals(this.county, studentAddress.county) &&
-        Objects.equals(this.country, studentAddress.country) &&
-        Objects.equals(this.postcode, studentAddress.postcode);
+    ContactAddress contactAddress = (ContactAddress) o;
+    return Objects.equals(this.object, contactAddress.object) &&
+        Objects.equals(this.addressLine1, contactAddress.addressLine1) &&
+        Objects.equals(this.addressLine2, contactAddress.addressLine2) &&
+        Objects.equals(this.townCity, contactAddress.townCity) &&
+        Objects.equals(this.county, contactAddress.county) &&
+        Objects.equals(this.country, contactAddress.country) &&
+        Objects.equals(this.postcode, contactAddress.postcode);
   }
 
   @Override
@@ -203,7 +203,7 @@ public class StudentAddress implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StudentAddress {\n");
+    sb.append("class ContactAddress {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    addressLine1: ").append(toIndentedString(addressLine1)).append("\n");

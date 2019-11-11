@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.424
+ * assembly-client-java 1.2.432
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -40,6 +40,9 @@ public class Attendance implements Serializable {
 
   @JsonProperty("registration_group_id")
   private Integer registrationGroupId = ;
+
+  @JsonProperty("group_id")
+  private Integer groupId = ;
 
   @JsonProperty("session_date")
   private OffsetDateTime sessionDate = ;
@@ -116,16 +119,34 @@ public class Attendance implements Serializable {
   }
 
    /**
-   * The ID of the subject that the attendance is attached to
+   * The ID of the registration group that the attendance is attached to
    * @return registrationGroupId
   **/
-  @ApiModelProperty(value = "The ID of the subject that the attendance is attached to")
+  @ApiModelProperty(value = "The ID of the registration group that the attendance is attached to")
   public Integer getRegistrationGroupId() {
     return registrationGroupId;
   }
 
   public void setRegistrationGroupId(Integer registrationGroupId) {
     this.registrationGroupId = registrationGroupId;
+  }
+
+  public Attendance groupId(Integer groupId) {
+    this.groupId = groupId;
+    return this;
+  }
+
+   /**
+   * The ID of the group that the attendance is attached to (requires &#x60;groups&#x60; scope)
+   * @return groupId
+  **/
+  @ApiModelProperty(value = "The ID of the group that the attendance is attached to (requires `groups` scope)")
+  public Integer getGroupId() {
+    return groupId;
+  }
+
+  public void setGroupId(Integer groupId) {
+    this.groupId = groupId;
   }
 
   public Attendance sessionDate(OffsetDateTime sessionDate) {
@@ -232,6 +253,7 @@ public class Attendance implements Serializable {
         Objects.equals(this.id, attendance.id) &&
         Objects.equals(this.studentId, attendance.studentId) &&
         Objects.equals(this.registrationGroupId, attendance.registrationGroupId) &&
+        Objects.equals(this.groupId, attendance.groupId) &&
         Objects.equals(this.sessionDate, attendance.sessionDate) &&
         Objects.equals(this.sessionName, attendance.sessionName) &&
         Objects.equals(this.attendanceMark, attendance.attendanceMark) &&
@@ -241,7 +263,7 @@ public class Attendance implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, studentId, registrationGroupId, sessionDate, sessionName, attendanceMark, minutesLate, comments);
+    return Objects.hash(object, id, studentId, registrationGroupId, groupId, sessionDate, sessionName, attendanceMark, minutesLate, comments);
   }
 
 
@@ -254,6 +276,7 @@ public class Attendance implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    registrationGroupId: ").append(toIndentedString(registrationGroupId)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    sessionDate: ").append(toIndentedString(sessionDate)).append("\n");
     sb.append("    sessionName: ").append(toIndentedString(sessionName)).append("\n");
     sb.append("    attendanceMark: ").append(toIndentedString(attendanceMark)).append("\n");

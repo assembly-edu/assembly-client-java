@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.424
+ * assembly-client-java 1.2.432
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import education.assembly.platform.spring.models.EmailInfo;
+import education.assembly.platform.spring.models.StaffMemberAddress;
 import education.assembly.platform.spring.models.StaffMemberDemographics;
 import education.assembly.platform.spring.models.StaffMemberQualificationInfo;
 import education.assembly.platform.spring.models.TelephoneNumberInfo;
@@ -73,6 +74,9 @@ public class StaffMember implements Serializable {
 
   @JsonProperty("dob")
   private OffsetDateTime dob = ;
+
+  @JsonProperty("address")
+  private StaffMemberAddress address = null;
 
   @JsonProperty("email")
   private String email = ;
@@ -335,6 +339,24 @@ public class StaffMember implements Serializable {
     this.dob = dob;
   }
 
+  public StaffMember address(StaffMemberAddress address) {
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Get address
+   * @return address
+  **/
+  @ApiModelProperty(value = "")
+  public StaffMemberAddress getAddress() {
+    return address;
+  }
+
+  public void setAddress(StaffMemberAddress address) {
+    this.address = address;
+  }
+
   public StaffMember email(String email) {
     this.email = email;
     return this;
@@ -536,6 +558,7 @@ public class StaffMember implements Serializable {
         Objects.equals(this.title, staffMember.title) &&
         Objects.equals(this.salutation, staffMember.salutation) &&
         Objects.equals(this.dob, staffMember.dob) &&
+        Objects.equals(this.address, staffMember.address) &&
         Objects.equals(this.email, staffMember.email) &&
         Objects.equals(this.emails, staffMember.emails) &&
         Objects.equals(this.telephoneNumbers, staffMember.telephoneNumbers) &&
@@ -549,7 +572,7 @@ public class StaffMember implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, salutation, dob, email, emails, telephoneNumbers, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
+    return Objects.hash(object, id, misId, staffCode, firstName, legalFirstName, middleName, lastName, legalLastName, formerLastName, title, salutation, dob, address, email, emails, telephoneNumbers, isTeachingStaff, includedInCensus, startDate, endDate, demographics, qualificationInfo);
   }
 
 
@@ -571,6 +594,7 @@ public class StaffMember implements Serializable {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    salutation: ").append(toIndentedString(salutation)).append("\n");
     sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    telephoneNumbers: ").append(toIndentedString(telephoneNumbers)).append("\n");
