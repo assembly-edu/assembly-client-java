@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.432
+ * assembly-client-java 1.2.436
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,7 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.ResultEntry;
+import education.assembly.platform.spring.models.ResultUpdate;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -32,16 +32,16 @@ public class BulkResultsBody implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("results")
-  private List<ResultEntry> results = null;
+  private List<ResultUpdate> results = null;
 
-  public BulkResultsBody results(List<ResultEntry> results) {
+  public BulkResultsBody results(List<ResultUpdate> results) {
     this.results = results;
     return this;
   }
 
-  public BulkResultsBody addResultsItem(ResultEntry resultsItem) {
+  public BulkResultsBody addResultsItem(ResultUpdate resultsItem) {
     if (this.results == null) {
-      this.results = new ArrayList<ResultEntry>();
+      this.results = new ArrayList<ResultUpdate>();
     }
     this.results.add(resultsItem);
     return this;
@@ -52,11 +52,11 @@ public class BulkResultsBody implements Serializable {
    * @return results
   **/
   @ApiModelProperty(value = "")
-  public List<ResultEntry> getResults() {
+  public List<ResultUpdate> getResults() {
     return results;
   }
 
-  public void setResults(List<ResultEntry> results) {
+  public void setResults(List<ResultUpdate> results) {
     this.results = results;
   }
 

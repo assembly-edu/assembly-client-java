@@ -21,15 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * A room
+ * A student&#39;s SEN Provision information
  */
-@ApiModel(description = "A room")
+@ApiModel(description = "A student's SEN Provision information")
 
-public class Room implements Serializable {
+public class SenCategory implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
-  private String object = "room";
+  private String object = "sen_category";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -37,16 +37,16 @@ public class Room implements Serializable {
   @JsonProperty("code")
   private String code = ;
 
-  @JsonProperty("name")
-  private String name = ;
-
   @JsonProperty("description")
   private String description = ;
 
-  @JsonProperty("maximum_capacity")
-  private Integer maximumCapacity = ;
+  @JsonProperty("start_date")
+  private String startDate = ;
 
-  public Room object(String object) {
+  @JsonProperty("end_date")
+  private String endDate = ;
+
+  public SenCategory object(String object) {
     this.object = object;
     return this;
   }
@@ -64,7 +64,7 @@ public class Room implements Serializable {
     this.object = object;
   }
 
-  public Room id(Integer id) {
+  public SenCategory id(Integer id) {
     this.id = id;
     return this;
   }
@@ -82,16 +82,16 @@ public class Room implements Serializable {
     this.id = id;
   }
 
-  public Room code(String code) {
+  public SenCategory code(String code) {
     this.code = code;
     return this;
   }
 
    /**
-   * Room code
+   * The code of the sen category
    * @return code
   **/
-  @ApiModelProperty(value = "Room code")
+  @ApiModelProperty(value = "The code of the sen category")
   public String getCode() {
     return code;
   }
@@ -100,34 +100,16 @@ public class Room implements Serializable {
     this.code = code;
   }
 
-  public Room name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Room name
-   * @return name
-  **/
-  @ApiModelProperty(value = "Room name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Room description(String description) {
+  public SenCategory description(String description) {
     this.description = description;
     return this;
   }
 
    /**
-   * Room description
+   * The description of the sen category
    * @return description
   **/
-  @ApiModelProperty(value = "Room description")
+  @ApiModelProperty(value = "The description of the sen category")
   public String getDescription() {
     return description;
   }
@@ -136,22 +118,40 @@ public class Room implements Serializable {
     this.description = description;
   }
 
-  public Room maximumCapacity(Integer maximumCapacity) {
-    this.maximumCapacity = maximumCapacity;
+  public SenCategory startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * Maximum capacity of the room
-   * @return maximumCapacity
+   * The start date
+   * @return startDate
   **/
-  @ApiModelProperty(value = "Maximum capacity of the room")
-  public Integer getMaximumCapacity() {
-    return maximumCapacity;
+  @ApiModelProperty(value = "The start date")
+  public String getStartDate() {
+    return startDate;
   }
 
-  public void setMaximumCapacity(Integer maximumCapacity) {
-    this.maximumCapacity = maximumCapacity;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
+  public SenCategory endDate(String endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * The end date
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "The end date")
+  public String getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
   }
 
 
@@ -163,32 +163,32 @@ public class Room implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Room room = (Room) o;
-    return Objects.equals(this.object, room.object) &&
-        Objects.equals(this.id, room.id) &&
-        Objects.equals(this.code, room.code) &&
-        Objects.equals(this.name, room.name) &&
-        Objects.equals(this.description, room.description) &&
-        Objects.equals(this.maximumCapacity, room.maximumCapacity);
+    SenCategory senCategory = (SenCategory) o;
+    return Objects.equals(this.object, senCategory.object) &&
+        Objects.equals(this.id, senCategory.id) &&
+        Objects.equals(this.code, senCategory.code) &&
+        Objects.equals(this.description, senCategory.description) &&
+        Objects.equals(this.startDate, senCategory.startDate) &&
+        Objects.equals(this.endDate, senCategory.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, code, name, description, maximumCapacity);
+    return Objects.hash(object, id, code, description, startDate, endDate);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Room {\n");
+    sb.append("class SenCategory {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    maximumCapacity: ").append(toIndentedString(maximumCapacity)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

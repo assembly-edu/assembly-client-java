@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.432
+ * assembly-client-java 1.2.436
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -17,6 +17,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import education.assembly.platform.spring.models.FsmEntitlement;
+import education.assembly.platform.spring.models.PpEntitlement;
+import education.assembly.platform.spring.models.SenCategory;
 import education.assembly.platform.spring.models.SenNeed;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -47,11 +49,17 @@ public class StudentDemographics implements Serializable {
   @JsonProperty("is_pp")
   private Boolean isPp = ;
 
+  @JsonProperty("pp_history")
+  private List<PpEntitlement> ppHistory = null;
+
   @JsonProperty("is_eal")
   private Boolean isEal = ;
 
   @JsonProperty("sen_category")
   private String senCategory = ;
+
+  @JsonProperty("sen_category_history")
+  private List<SenCategory> senCategoryHistory = null;
 
   @JsonProperty("country_of_birth")
   private String countryOfBirth = ;
@@ -173,6 +181,32 @@ public class StudentDemographics implements Serializable {
     this.isPp = isPp;
   }
 
+  public StudentDemographics ppHistory(List<PpEntitlement> ppHistory) {
+    this.ppHistory = ppHistory;
+    return this;
+  }
+
+  public StudentDemographics addPpHistoryItem(PpEntitlement ppHistoryItem) {
+    if (this.ppHistory == null) {
+      this.ppHistory = new ArrayList<PpEntitlement>();
+    }
+    this.ppHistory.add(ppHistoryItem);
+    return this;
+  }
+
+   /**
+   * Pupil Premium (PP) entitlement history
+   * @return ppHistory
+  **/
+  @ApiModelProperty(value = "Pupil Premium (PP) entitlement history")
+  public List<PpEntitlement> getPpHistory() {
+    return ppHistory;
+  }
+
+  public void setPpHistory(List<PpEntitlement> ppHistory) {
+    this.ppHistory = ppHistory;
+  }
+
   public StudentDemographics isEal(Boolean isEal) {
     this.isEal = isEal;
     return this;
@@ -207,6 +241,32 @@ public class StudentDemographics implements Serializable {
 
   public void setSenCategory(String senCategory) {
     this.senCategory = senCategory;
+  }
+
+  public StudentDemographics senCategoryHistory(List<SenCategory> senCategoryHistory) {
+    this.senCategoryHistory = senCategoryHistory;
+    return this;
+  }
+
+  public StudentDemographics addSenCategoryHistoryItem(SenCategory senCategoryHistoryItem) {
+    if (this.senCategoryHistory == null) {
+      this.senCategoryHistory = new ArrayList<SenCategory>();
+    }
+    this.senCategoryHistory.add(senCategoryHistoryItem);
+    return this;
+  }
+
+   /**
+   * Special Education Need (SEN) category history
+   * @return senCategoryHistory
+  **/
+  @ApiModelProperty(value = "Special Education Need (SEN) category history")
+  public List<SenCategory> getSenCategoryHistory() {
+    return senCategoryHistory;
+  }
+
+  public void setSenCategoryHistory(List<SenCategory> senCategoryHistory) {
+    this.senCategoryHistory = senCategoryHistory;
   }
 
   public StudentDemographics countryOfBirth(String countryOfBirth) {
@@ -428,8 +488,10 @@ public class StudentDemographics implements Serializable {
         Objects.equals(this.ethnicityGroup, studentDemographics.ethnicityGroup) &&
         Objects.equals(this.gender, studentDemographics.gender) &&
         Objects.equals(this.isPp, studentDemographics.isPp) &&
+        Objects.equals(this.ppHistory, studentDemographics.ppHistory) &&
         Objects.equals(this.isEal, studentDemographics.isEal) &&
         Objects.equals(this.senCategory, studentDemographics.senCategory) &&
+        Objects.equals(this.senCategoryHistory, studentDemographics.senCategoryHistory) &&
         Objects.equals(this.countryOfBirth, studentDemographics.countryOfBirth) &&
         Objects.equals(this.nationalities, studentDemographics.nationalities) &&
         Objects.equals(this.fsmReviewDate, studentDemographics.fsmReviewDate) &&
@@ -444,7 +506,7 @@ public class StudentDemographics implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, isPp, isEal, senCategory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, fsmHistory, inCare, everInCare, serviceChild, senNeeds);
+    return Objects.hash(object, ethnicityCode, ethnicityGroup, gender, isPp, ppHistory, isEal, senCategory, senCategoryHistory, countryOfBirth, nationalities, fsmReviewDate, isFsm, isFsm6, fsmHistory, inCare, everInCare, serviceChild, senNeeds);
   }
 
 
@@ -458,8 +520,10 @@ public class StudentDemographics implements Serializable {
     sb.append("    ethnicityGroup: ").append(toIndentedString(ethnicityGroup)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    isPp: ").append(toIndentedString(isPp)).append("\n");
+    sb.append("    ppHistory: ").append(toIndentedString(ppHistory)).append("\n");
     sb.append("    isEal: ").append(toIndentedString(isEal)).append("\n");
     sb.append("    senCategory: ").append(toIndentedString(senCategory)).append("\n");
+    sb.append("    senCategoryHistory: ").append(toIndentedString(senCategoryHistory)).append("\n");
     sb.append("    countryOfBirth: ").append(toIndentedString(countryOfBirth)).append("\n");
     sb.append("    nationalities: ").append(toIndentedString(nationalities)).append("\n");
     sb.append("    fsmReviewDate: ").append(toIndentedString(fsmReviewDate)).append("\n");

@@ -22,15 +22,18 @@ import org.threeten.bp.OffsetDateTime;
 import java.io.Serializable;
 
 /**
- * A result for a student to be created on the Platform
+ * A result for a student to be updated on the Platform
  */
-@ApiModel(description = "A result for a student to be created on the Platform")
+@ApiModel(description = "A result for a student to be updated on the Platform")
 
-public class ResultEntry implements Serializable {
+public class ResultUpdate implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("student_id")
   private Integer studentId = ;
+
+  @JsonProperty("result_id")
+  private Integer resultId = ;
 
   @JsonProperty("grade_id")
   private Integer gradeId = ;
@@ -38,7 +41,7 @@ public class ResultEntry implements Serializable {
   @JsonProperty("result_date")
   private OffsetDateTime resultDate = ;
 
-  public ResultEntry studentId(Integer studentId) {
+  public ResultUpdate studentId(Integer studentId) {
     this.studentId = studentId;
     return this;
   }
@@ -56,7 +59,25 @@ public class ResultEntry implements Serializable {
     this.studentId = studentId;
   }
 
-  public ResultEntry gradeId(Integer gradeId) {
+  public ResultUpdate resultId(Integer resultId) {
+    this.resultId = resultId;
+    return this;
+  }
+
+   /**
+   * The ID of the result
+   * @return resultId
+  **/
+  @ApiModelProperty(value = "The ID of the result")
+  public Integer getResultId() {
+    return resultId;
+  }
+
+  public void setResultId(Integer resultId) {
+    this.resultId = resultId;
+  }
+
+  public ResultUpdate gradeId(Integer gradeId) {
     this.gradeId = gradeId;
     return this;
   }
@@ -74,7 +95,7 @@ public class ResultEntry implements Serializable {
     this.gradeId = gradeId;
   }
 
-  public ResultEntry resultDate(OffsetDateTime resultDate) {
+  public ResultUpdate resultDate(OffsetDateTime resultDate) {
     this.resultDate = resultDate;
     return this;
   }
@@ -101,24 +122,26 @@ public class ResultEntry implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResultEntry resultEntry = (ResultEntry) o;
-    return Objects.equals(this.studentId, resultEntry.studentId) &&
-        Objects.equals(this.gradeId, resultEntry.gradeId) &&
-        Objects.equals(this.resultDate, resultEntry.resultDate);
+    ResultUpdate resultUpdate = (ResultUpdate) o;
+    return Objects.equals(this.studentId, resultUpdate.studentId) &&
+        Objects.equals(this.resultId, resultUpdate.resultId) &&
+        Objects.equals(this.gradeId, resultUpdate.gradeId) &&
+        Objects.equals(this.resultDate, resultUpdate.resultDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(studentId, gradeId, resultDate);
+    return Objects.hash(studentId, resultId, gradeId, resultDate);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResultEntry {\n");
+    sb.append("class ResultUpdate {\n");
     
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
+    sb.append("    resultId: ").append(toIndentedString(resultId)).append("\n");
     sb.append("    gradeId: ").append(toIndentedString(gradeId)).append("\n");
     sb.append("    resultDate: ").append(toIndentedString(resultDate)).append("\n");
     sb.append("}");

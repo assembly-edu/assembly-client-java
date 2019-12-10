@@ -3473,7 +3473,7 @@ This endpoint does not need any parameter.
 
 <a name="updateResults"></a>
 # **updateResults**
-> Result updateResults(id, resultEntry)
+> Result updateResults(id, resultUpdate)
 
 Update a Single Result
 
@@ -3497,9 +3497,9 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
-ResultEntry resultEntry = new ResultEntry(); // ResultEntry | 
+ResultUpdate resultUpdate = new ResultUpdate(); // ResultUpdate | 
 try {
-    Result result = apiInstance.updateResults(id, resultEntry);
+    Result result = apiInstance.updateResults(id, resultUpdate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#updateResults");
@@ -3512,7 +3512,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
- **resultEntry** | [**ResultEntry**](ResultEntry.md)|  | [optional]
+ **resultUpdate** | [**ResultUpdate**](ResultUpdate.md)|  | [optional]
 
 ### Return type
 

@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>education.assembly</groupId>
   <artifactId>assembly-client-java</artifactId>
-  <version>1.2.432</version>
+  <version>1.2.436</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.2.432"
+compile "education.assembly:assembly-client-java:1.2.436"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.2.432.jar
+* target/assembly-client-java-1.2.436.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -191,13 +191,16 @@ Class | Method | HTTP request | Description
  - [MeToken](docs/MeToken.md)
  - [MedicalCondition](docs/MedicalCondition.md)
  - [MisSubject](docs/MisSubject.md)
+ - [PpEntitlement](docs/PpEntitlement.md)
  - [RegistrationGroup](docs/RegistrationGroup.md)
  - [Result](docs/Result.md)
  - [ResultBody](docs/ResultBody.md)
  - [ResultEntry](docs/ResultEntry.md)
+ - [ResultUpdate](docs/ResultUpdate.md)
  - [Room](docs/Room.md)
  - [School](docs/School.md)
  - [SchoolStatus](docs/SchoolStatus.md)
+ - [SenCategory](docs/SenCategory.md)
  - [SenNeed](docs/SenNeed.md)
  - [StaffAbsence](docs/StaffAbsence.md)
  - [StaffAllowance](docs/StaffAllowance.md)

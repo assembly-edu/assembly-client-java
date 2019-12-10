@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.432
+ * assembly-client-java 1.2.436
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
 import education.assembly.platform.spring.models.Result;
 import education.assembly.platform.spring.models.ResultBody;
-import education.assembly.platform.spring.models.ResultEntry;
+import education.assembly.platform.spring.models.ResultUpdate;
 import education.assembly.platform.spring.models.Room;
 import education.assembly.platform.spring.models.School;
 import education.assembly.platform.spring.models.SchoolStatus;
@@ -2706,12 +2706,12 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param resultEntry The resultEntry parameter
+     * @param resultUpdate The resultUpdate parameter
      * @return Result
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Result updateResults(Integer id, ResultEntry resultEntry) throws RestClientException {
-        Object postBody = resultEntry;
+    public Result updateResults(Integer id, ResultUpdate resultUpdate) throws RestClientException {
+        Object postBody = resultUpdate;
         
         // verify the required parameter 'id' is set
         if (id == null) {

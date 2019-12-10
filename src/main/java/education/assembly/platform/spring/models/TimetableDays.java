@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.432
+ * assembly-client-java 1.2.436
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -21,6 +21,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.LocalDate;
 import java.io.Serializable;
 
 /**
@@ -44,6 +45,9 @@ public class TimetableDays implements Serializable {
 
   @JsonProperty("display_order")
   private Integer displayOrder = ;
+
+  @JsonProperty("occurs_on")
+  private List<LocalDate> occursOn = null;
 
   @JsonProperty("periods")
   private List<TimetablePeriods> periods = null;
@@ -138,6 +142,32 @@ public class TimetableDays implements Serializable {
     this.displayOrder = displayOrder;
   }
 
+  public TimetableDays occursOn(List<LocalDate> occursOn) {
+    this.occursOn = occursOn;
+    return this;
+  }
+
+  public TimetableDays addOccursOnItem(LocalDate occursOnItem) {
+    if (this.occursOn == null) {
+      this.occursOn = new ArrayList<LocalDate>();
+    }
+    this.occursOn.add(occursOnItem);
+    return this;
+  }
+
+   /**
+   * An array of dates for when the timetabled day occurs.
+   * @return occursOn
+  **/
+  @ApiModelProperty(value = "An array of dates for when the timetabled day occurs.")
+  public List<LocalDate> getOccursOn() {
+    return occursOn;
+  }
+
+  public void setOccursOn(List<LocalDate> occursOn) {
+    this.occursOn = occursOn;
+  }
+
   public TimetableDays periods(List<TimetablePeriods> periods) {
     this.periods = periods;
     return this;
@@ -179,12 +209,13 @@ public class TimetableDays implements Serializable {
         Objects.equals(this.shortName, timetableDays.shortName) &&
         Objects.equals(this.longName, timetableDays.longName) &&
         Objects.equals(this.displayOrder, timetableDays.displayOrder) &&
+        Objects.equals(this.occursOn, timetableDays.occursOn) &&
         Objects.equals(this.periods, timetableDays.periods);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, shortName, longName, displayOrder, periods);
+    return Objects.hash(object, id, shortName, longName, displayOrder, occursOn, periods);
   }
 
 
@@ -198,6 +229,7 @@ public class TimetableDays implements Serializable {
     sb.append("    shortName: ").append(toIndentedString(shortName)).append("\n");
     sb.append("    longName: ").append(toIndentedString(longName)).append("\n");
     sb.append("    displayOrder: ").append(toIndentedString(displayOrder)).append("\n");
+    sb.append("    occursOn: ").append(toIndentedString(occursOn)).append("\n");
     sb.append("    periods: ").append(toIndentedString(periods)).append("\n");
     sb.append("}");
     return sb.toString();

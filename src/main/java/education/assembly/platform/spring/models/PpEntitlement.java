@@ -21,26 +21,26 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * An acceptable name and value for an assessment grade.
+ * A period of entitlement to Pupil Premium
  */
-@ApiModel(description = "An acceptable name and value for an assessment grade.")
+@ApiModel(description = "A period of entitlement to Pupil Premium")
 
-public class Grade implements Serializable {
+public class PpEntitlement implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
-  private String object = "grade";
+  private String object = "pp_entitlement";
 
   @JsonProperty("id")
   private Integer id = ;
 
-  @JsonProperty("name")
-  private String name = ;
+  @JsonProperty("start_date")
+  private String startDate = ;
 
-  @JsonProperty("value")
-  private Integer value = ;
+  @JsonProperty("end_date")
+  private String endDate = ;
 
-  public Grade object(String object) {
+  public PpEntitlement object(String object) {
     this.object = object;
     return this;
   }
@@ -58,16 +58,16 @@ public class Grade implements Serializable {
     this.object = object;
   }
 
-  public Grade id(Integer id) {
+  public PpEntitlement id(Integer id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Internal stable ID. Results should be written back using the ID (as opposed to the &#x60;name&#x60;)
+   * Internal stable ID
    * @return id
   **/
-  @ApiModelProperty(value = "Internal stable ID. Results should be written back using the ID (as opposed to the `name`)")
+  @ApiModelProperty(value = "Internal stable ID")
   public Integer getId() {
     return id;
   }
@@ -76,40 +76,40 @@ public class Grade implements Serializable {
     this.id = id;
   }
 
-  public Grade name(String name) {
-    this.name = name;
+  public PpEntitlement startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * The name of the grade as a string
-   * @return name
+   * The start date for the entitlement
+   * @return startDate
   **/
-  @ApiModelProperty(value = "The name of the grade as a string")
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "The start date for the entitlement")
+  public String getStartDate() {
+    return startDate;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
-  public Grade value(Integer value) {
-    this.value = value;
+  public PpEntitlement endDate(String endDate) {
+    this.endDate = endDate;
     return this;
   }
 
    /**
-   * The value of the grade as a number
-   * @return value
+   * The end date for the entitlement
+   * @return endDate
   **/
-  @ApiModelProperty(value = "The value of the grade as a number")
-  public Integer getValue() {
-    return value;
+  @ApiModelProperty(value = "The end date for the entitlement")
+  public String getEndDate() {
+    return endDate;
   }
 
-  public void setValue(Integer value) {
-    this.value = value;
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
   }
 
 
@@ -121,28 +121,28 @@ public class Grade implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Grade grade = (Grade) o;
-    return Objects.equals(this.object, grade.object) &&
-        Objects.equals(this.id, grade.id) &&
-        Objects.equals(this.name, grade.name) &&
-        Objects.equals(this.value, grade.value);
+    PpEntitlement ppEntitlement = (PpEntitlement) o;
+    return Objects.equals(this.object, ppEntitlement.object) &&
+        Objects.equals(this.id, ppEntitlement.id) &&
+        Objects.equals(this.startDate, ppEntitlement.startDate) &&
+        Objects.equals(this.endDate, ppEntitlement.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, value);
+    return Objects.hash(object, id, startDate, endDate);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Grade {\n");
+    sb.append("class PpEntitlement {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

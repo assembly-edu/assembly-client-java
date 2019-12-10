@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.432
+ * assembly-client-java 1.2.436
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -49,6 +49,9 @@ public class TimetableStructure implements Serializable {
 
   @JsonProperty("end_date")
   private OffsetDateTime endDate = ;
+
+  @JsonProperty("weeks")
+  private Integer weeks = ;
 
   @JsonProperty("days_per_week")
   private Integer daysPerWeek = ;
@@ -167,6 +170,24 @@ public class TimetableStructure implements Serializable {
     this.endDate = endDate;
   }
 
+  public TimetableStructure weeks(Integer weeks) {
+    this.weeks = weeks;
+    return this;
+  }
+
+   /**
+   * The number of weeks in the timetable cycle
+   * @return weeks
+  **/
+  @ApiModelProperty(value = "The number of weeks in the timetable cycle")
+  public Integer getWeeks() {
+    return weeks;
+  }
+
+  public void setWeeks(Integer weeks) {
+    this.weeks = weeks;
+  }
+
   public TimetableStructure daysPerWeek(Integer daysPerWeek) {
     this.daysPerWeek = daysPerWeek;
     return this;
@@ -245,6 +266,7 @@ public class TimetableStructure implements Serializable {
         Objects.equals(this.description, timetableStructure.description) &&
         Objects.equals(this.startDate, timetableStructure.startDate) &&
         Objects.equals(this.endDate, timetableStructure.endDate) &&
+        Objects.equals(this.weeks, timetableStructure.weeks) &&
         Objects.equals(this.daysPerWeek, timetableStructure.daysPerWeek) &&
         Objects.equals(this.periodsPerDay, timetableStructure.periodsPerDay) &&
         Objects.equals(this.days, timetableStructure.days);
@@ -252,7 +274,7 @@ public class TimetableStructure implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, name, description, startDate, endDate, daysPerWeek, periodsPerDay, days);
+    return Objects.hash(object, id, name, description, startDate, endDate, weeks, daysPerWeek, periodsPerDay, days);
   }
 
 
@@ -267,6 +289,7 @@ public class TimetableStructure implements Serializable {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    weeks: ").append(toIndentedString(weeks)).append("\n");
     sb.append("    daysPerWeek: ").append(toIndentedString(daysPerWeek)).append("\n");
     sb.append("    periodsPerDay: ").append(toIndentedString(periodsPerDay)).append("\n");
     sb.append("    days: ").append(toIndentedString(days)).append("\n");

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **description** | **String** | The description of the timetable cycle |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date of the timetable cycle |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | The end date of the timetable cycle |  [optional]
+**weeks** | **Integer** | The number of weeks in the timetable cycle |  [optional]
 **daysPerWeek** | **Integer** | Number of days per week |  [optional]
 **periodsPerDay** | **Integer** | Number of periods per day |  [optional]
 **days** | [**List&lt;TimetableDays&gt;**](TimetableDays.md) | Provides details of the individual days that make up the timetable |  [optional]

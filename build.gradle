@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'education.assembly'
-version = '1.2.432'
+version = '1.2.436'
 
 buildscript {
     repositories {
