@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.436
+ * assembly-client-java 1.2.450
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -39,6 +39,12 @@ public class GroupMisSubjectSubject implements Serializable {
 
   @JsonProperty("name")
   private String name = ;
+
+  @JsonProperty("alt_name")
+  private String altName = ;
+
+  @JsonProperty("alt_code")
+  private String altCode = ;
 
   public GroupMisSubjectSubject object(String object) {
     this.object = object;
@@ -112,6 +118,42 @@ public class GroupMisSubjectSubject implements Serializable {
     this.name = name;
   }
 
+  public GroupMisSubjectSubject altName(String altName) {
+    this.altName = altName;
+    return this;
+  }
+
+   /**
+   * An alternative name for the subject in the MIS
+   * @return altName
+  **/
+  @ApiModelProperty(value = "An alternative name for the subject in the MIS")
+  public String getAltName() {
+    return altName;
+  }
+
+  public void setAltName(String altName) {
+    this.altName = altName;
+  }
+
+  public GroupMisSubjectSubject altCode(String altCode) {
+    this.altCode = altCode;
+    return this;
+  }
+
+   /**
+   * An alternative code for the subject in the MIS
+   * @return altCode
+  **/
+  @ApiModelProperty(value = "An alternative code for the subject in the MIS")
+  public String getAltCode() {
+    return altCode;
+  }
+
+  public void setAltCode(String altCode) {
+    this.altCode = altCode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -125,12 +167,14 @@ public class GroupMisSubjectSubject implements Serializable {
     return Objects.equals(this.object, groupMisSubjectSubject.object) &&
         Objects.equals(this.id, groupMisSubjectSubject.id) &&
         Objects.equals(this.code, groupMisSubjectSubject.code) &&
-        Objects.equals(this.name, groupMisSubjectSubject.name);
+        Objects.equals(this.name, groupMisSubjectSubject.name) &&
+        Objects.equals(this.altName, groupMisSubjectSubject.altName) &&
+        Objects.equals(this.altCode, groupMisSubjectSubject.altCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, code, name);
+    return Objects.hash(object, id, code, name, altName, altCode);
   }
 
 
@@ -143,6 +187,8 @@ public class GroupMisSubjectSubject implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    altName: ").append(toIndentedString(altName)).append("\n");
+    sb.append("    altCode: ").append(toIndentedString(altCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

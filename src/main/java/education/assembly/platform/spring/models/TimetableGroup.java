@@ -16,8 +16,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.LessonGroupMisSubject;
 import education.assembly.platform.spring.models.MisSubjectSubject;
+import education.assembly.platform.spring.models.TimetableGroupMisSubject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
@@ -27,7 +27,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "A grouping of students. A teaching or registration group for example.")
 
-public class LessonGroup implements Serializable {
+public class TimetableGroup implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
@@ -87,12 +87,12 @@ public class LessonGroup implements Serializable {
   private TypeEnum type = ;
 
   @JsonProperty("mis_subject")
-  private LessonGroupMisSubject misSubject = null;
+  private TimetableGroupMisSubject misSubject = null;
 
   @JsonProperty("subject")
   private MisSubjectSubject subject = null;
 
-  public LessonGroup object(String object) {
+  public TimetableGroup object(String object) {
     this.object = object;
     return this;
   }
@@ -110,7 +110,7 @@ public class LessonGroup implements Serializable {
     this.object = object;
   }
 
-  public LessonGroup id(Integer id) {
+  public TimetableGroup id(Integer id) {
     this.id = id;
     return this;
   }
@@ -128,7 +128,7 @@ public class LessonGroup implements Serializable {
     this.id = id;
   }
 
-  public LessonGroup name(String name) {
+  public TimetableGroup name(String name) {
     this.name = name;
     return this;
   }
@@ -146,7 +146,7 @@ public class LessonGroup implements Serializable {
     this.name = name;
   }
 
-  public LessonGroup code(String code) {
+  public TimetableGroup code(String code) {
     this.code = code;
     return this;
   }
@@ -164,7 +164,7 @@ public class LessonGroup implements Serializable {
     this.code = code;
   }
 
-  public LessonGroup type(TypeEnum type) {
+  public TimetableGroup type(TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -182,7 +182,7 @@ public class LessonGroup implements Serializable {
     this.type = type;
   }
 
-  public LessonGroup misSubject(LessonGroupMisSubject misSubject) {
+  public TimetableGroup misSubject(TimetableGroupMisSubject misSubject) {
     this.misSubject = misSubject;
     return this;
   }
@@ -192,15 +192,15 @@ public class LessonGroup implements Serializable {
    * @return misSubject
   **/
   @ApiModelProperty(value = "")
-  public LessonGroupMisSubject getMisSubject() {
+  public TimetableGroupMisSubject getMisSubject() {
     return misSubject;
   }
 
-  public void setMisSubject(LessonGroupMisSubject misSubject) {
+  public void setMisSubject(TimetableGroupMisSubject misSubject) {
     this.misSubject = misSubject;
   }
 
-  public LessonGroup subject(MisSubjectSubject subject) {
+  public TimetableGroup subject(MisSubjectSubject subject) {
     this.subject = subject;
     return this;
   }
@@ -227,14 +227,14 @@ public class LessonGroup implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LessonGroup lessonGroup = (LessonGroup) o;
-    return Objects.equals(this.object, lessonGroup.object) &&
-        Objects.equals(this.id, lessonGroup.id) &&
-        Objects.equals(this.name, lessonGroup.name) &&
-        Objects.equals(this.code, lessonGroup.code) &&
-        Objects.equals(this.type, lessonGroup.type) &&
-        Objects.equals(this.misSubject, lessonGroup.misSubject) &&
-        Objects.equals(this.subject, lessonGroup.subject);
+    TimetableGroup timetableGroup = (TimetableGroup) o;
+    return Objects.equals(this.object, timetableGroup.object) &&
+        Objects.equals(this.id, timetableGroup.id) &&
+        Objects.equals(this.name, timetableGroup.name) &&
+        Objects.equals(this.code, timetableGroup.code) &&
+        Objects.equals(this.type, timetableGroup.type) &&
+        Objects.equals(this.misSubject, timetableGroup.misSubject) &&
+        Objects.equals(this.subject, timetableGroup.subject);
   }
 
   @Override
@@ -246,7 +246,7 @@ public class LessonGroup implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LessonGroup {\n");
+    sb.append("class TimetableGroup {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

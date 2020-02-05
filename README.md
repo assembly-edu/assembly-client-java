@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>education.assembly</groupId>
   <artifactId>assembly-client-java</artifactId>
-  <version>1.2.436</version>
+  <version>1.2.450</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.2.436"
+compile "education.assembly:assembly-client-java:1.2.450"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.2.436.jar
+* target/assembly-client-java-1.2.450.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getLeftStudents**](docs/AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
 *AssemblyApi* | [**getLessons**](docs/AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 *AssemblyApi* | [**getMedicalConditions**](docs/AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | List Medical Conditions
+*AssemblyApi* | [**getMisSubjects**](docs/AssemblyApi.md#getMisSubjects) | **GET** /mis_subjects | List MIS Subjects
 *AssemblyApi* | [**getRegistrationGroupStudents**](docs/AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 *AssemblyApi* | [**getRegistrationGroups**](docs/AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Groups
 *AssemblyApi* | [**getResults**](docs/AssemblyApi.md#getResults) | **GET** /results | List Results
@@ -191,6 +192,7 @@ Class | Method | HTTP request | Description
  - [MeToken](docs/MeToken.md)
  - [MedicalCondition](docs/MedicalCondition.md)
  - [MisSubject](docs/MisSubject.md)
+ - [MisSubjectSubject](docs/MisSubjectSubject.md)
  - [PpEntitlement](docs/PpEntitlement.md)
  - [RegistrationGroup](docs/RegistrationGroup.md)
  - [Result](docs/Result.md)
@@ -231,6 +233,8 @@ Class | Method | HTTP request | Description
  - [TelephoneNumberInfo](docs/TelephoneNumberInfo.md)
  - [Timetable](docs/Timetable.md)
  - [TimetableDays](docs/TimetableDays.md)
+ - [TimetableGroup](docs/TimetableGroup.md)
+ - [TimetableGroupMisSubject](docs/TimetableGroupMisSubject.md)
  - [TimetableLessons](docs/TimetableLessons.md)
  - [TimetablePeriods](docs/TimetablePeriods.md)
  - [TimetableStructure](docs/TimetableStructure.md)

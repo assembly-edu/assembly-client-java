@@ -1,5 +1,5 @@
 
-# LessonGroup
+# TimetableGroup
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the group |  [optional]
 **code** | **String** | The code of the year that the group belongs to |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of group |  [optional]
-**misSubject** | [**LessonGroupMisSubject**](LessonGroupMisSubject.md) |  |  [optional]
+**misSubject** | [**TimetableGroupMisSubject**](TimetableGroupMisSubject.md) |  |  [optional]
 **subject** | [**MisSubjectSubject**](MisSubjectSubject.md) |  |  [optional]
 
 

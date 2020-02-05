@@ -45,6 +45,7 @@ Method | HTTP request | Description
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
 [**getLessons**](AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 [**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | List Medical Conditions
+[**getMisSubjects**](AssemblyApi.md#getMisSubjects) | **GET** /mis_subjects | List MIS Subjects
 [**getRegistrationGroupStudents**](AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 [**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Groups
 [**getResults**](AssemblyApi.md#getResults) | **GET** /results | List Results
@@ -2463,6 +2464,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List&lt;MedicalCondition&gt;**](MedicalCondition.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+<a name="getMisSubjects"></a>
+# **getMisSubjects**
+> List&lt;MisSubject&gt; getMisSubjects(perPage, page)
+
+List MIS Subjects
+
+Returns a list of the schools&#39;s mis subjects
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+Integer perPage = 50; // Integer | Number of results to return
+Integer page = 5; // Integer | Page number to return
+try {
+    List<MisSubject> result = apiInstance.getMisSubjects(perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getMisSubjects");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
+ **page** | **Integer**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**List&lt;MisSubject&gt;**](MisSubject.md)
 
 ### Authorization
 

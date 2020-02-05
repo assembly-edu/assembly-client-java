@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 **id** | **Integer** | Internal stable ID |  [optional]
 **name** | **String** | The name of the subject in the MIS |  [optional]
 **code** | **String** | The code of the subject in the MIS |  [optional]
-**subject** | [**GroupMisSubjectSubject**](GroupMisSubjectSubject.md) |  |  [optional]
+**altName** | **String** | An alternative name for the subject in the MIS |  [optional]
+**altCode** | **String** | An alternative code for the subject in the MIS |  [optional]
+**subject** | [**MisSubjectSubject**](MisSubjectSubject.md) |  |  [optional]
 
 
 

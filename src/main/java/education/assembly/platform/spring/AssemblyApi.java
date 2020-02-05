@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.436
+ * assembly-client-java 1.2.450
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -32,6 +32,7 @@ import education.assembly.platform.spring.models.Group;
 import education.assembly.platform.spring.models.LearningAim;
 import education.assembly.platform.spring.models.Lesson;
 import education.assembly.platform.spring.models.MedicalCondition;
+import education.assembly.platform.spring.models.MisSubject;
 import org.threeten.bp.OffsetDateTime;
 import education.assembly.platform.spring.models.RegistrationGroup;
 import education.assembly.platform.spring.models.Result;
@@ -1922,6 +1923,43 @@ public class AssemblyApi {
         String[] authNames = new String[] { "SchoolToken" };
 
         ParameterizedTypeReference<List<MedicalCondition>> returnType = new ParameterizedTypeReference<List<MedicalCondition>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
+     * List MIS Subjects
+     * Returns a list of the schools&#39;s mis subjects
+     * <p><b>200</b> - Success
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param perPage Number of results to return
+     * @param page Page number to return
+     * @return List&lt;MisSubject&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<MisSubject> getMisSubjects(Integer perPage, Integer page) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/mis_subjects").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<MisSubject>> returnType = new ParameterizedTypeReference<List<MisSubject>>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**

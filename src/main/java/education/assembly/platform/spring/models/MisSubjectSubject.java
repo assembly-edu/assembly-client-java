@@ -21,15 +21,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * A room
+ * An Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school&#39;s MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.
  */
-@ApiModel(description = "A room")
+@ApiModel(description = "An Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school's MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.")
 
-public class Room implements Serializable {
+public class MisSubjectSubject implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
-  private String object = "room";
+  private String object = "subject";
 
   @JsonProperty("id")
   private Integer id = ;
@@ -40,13 +40,7 @@ public class Room implements Serializable {
   @JsonProperty("name")
   private String name = ;
 
-  @JsonProperty("description")
-  private String description = ;
-
-  @JsonProperty("maximum_capacity")
-  private Integer maximumCapacity = ;
-
-  public Room object(String object) {
+  public MisSubjectSubject object(String object) {
     this.object = object;
     return this;
   }
@@ -64,7 +58,7 @@ public class Room implements Serializable {
     this.object = object;
   }
 
-  public Room id(Integer id) {
+  public MisSubjectSubject id(Integer id) {
     this.id = id;
     return this;
   }
@@ -82,16 +76,16 @@ public class Room implements Serializable {
     this.id = id;
   }
 
-  public Room code(String code) {
+  public MisSubjectSubject code(String code) {
     this.code = code;
     return this;
   }
 
    /**
-   * Room code
+   * Shortened code of subject
    * @return code
   **/
-  @ApiModelProperty(value = "Room code")
+  @ApiModelProperty(value = "Shortened code of subject")
   public String getCode() {
     return code;
   }
@@ -100,58 +94,22 @@ public class Room implements Serializable {
     this.code = code;
   }
 
-  public Room name(String name) {
+  public MisSubjectSubject name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Room name
+   * Full name of subject
    * @return name
   **/
-  @ApiModelProperty(value = "Room name")
+  @ApiModelProperty(value = "Full name of subject")
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public Room description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Room description
-   * @return description
-  **/
-  @ApiModelProperty(value = "Room description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public Room maximumCapacity(Integer maximumCapacity) {
-    this.maximumCapacity = maximumCapacity;
-    return this;
-  }
-
-   /**
-   * Maximum capacity of the room
-   * @return maximumCapacity
-  **/
-  @ApiModelProperty(value = "Maximum capacity of the room")
-  public Integer getMaximumCapacity() {
-    return maximumCapacity;
-  }
-
-  public void setMaximumCapacity(Integer maximumCapacity) {
-    this.maximumCapacity = maximumCapacity;
   }
 
 
@@ -163,32 +121,28 @@ public class Room implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Room room = (Room) o;
-    return Objects.equals(this.object, room.object) &&
-        Objects.equals(this.id, room.id) &&
-        Objects.equals(this.code, room.code) &&
-        Objects.equals(this.name, room.name) &&
-        Objects.equals(this.description, room.description) &&
-        Objects.equals(this.maximumCapacity, room.maximumCapacity);
+    MisSubjectSubject misSubjectSubject = (MisSubjectSubject) o;
+    return Objects.equals(this.object, misSubjectSubject.object) &&
+        Objects.equals(this.id, misSubjectSubject.id) &&
+        Objects.equals(this.code, misSubjectSubject.code) &&
+        Objects.equals(this.name, misSubjectSubject.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, code, name, description, maximumCapacity);
+    return Objects.hash(object, id, code, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Room {\n");
+    sb.append("class MisSubjectSubject {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    maximumCapacity: ").append(toIndentedString(maximumCapacity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

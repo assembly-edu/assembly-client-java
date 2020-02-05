@@ -25,7 +25,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "A subject defined within the MIS.")
 
-public class LessonGroupMisSubject implements Serializable {
+public class TimetableGroupMisSubject implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("object")
@@ -46,7 +46,7 @@ public class LessonGroupMisSubject implements Serializable {
   @JsonProperty("alt_code")
   private String altCode = ;
 
-  public LessonGroupMisSubject object(String object) {
+  public TimetableGroupMisSubject object(String object) {
     this.object = object;
     return this;
   }
@@ -64,7 +64,7 @@ public class LessonGroupMisSubject implements Serializable {
     this.object = object;
   }
 
-  public LessonGroupMisSubject id(Integer id) {
+  public TimetableGroupMisSubject id(Integer id) {
     this.id = id;
     return this;
   }
@@ -82,7 +82,7 @@ public class LessonGroupMisSubject implements Serializable {
     this.id = id;
   }
 
-  public LessonGroupMisSubject name(String name) {
+  public TimetableGroupMisSubject name(String name) {
     this.name = name;
     return this;
   }
@@ -100,7 +100,7 @@ public class LessonGroupMisSubject implements Serializable {
     this.name = name;
   }
 
-  public LessonGroupMisSubject code(String code) {
+  public TimetableGroupMisSubject code(String code) {
     this.code = code;
     return this;
   }
@@ -118,16 +118,16 @@ public class LessonGroupMisSubject implements Serializable {
     this.code = code;
   }
 
-  public LessonGroupMisSubject altName(String altName) {
+  public TimetableGroupMisSubject altName(String altName) {
     this.altName = altName;
     return this;
   }
 
    /**
-   * An alternative name for the subject in the MIS
+   * An alternative name of the subject in the MIS
    * @return altName
   **/
-  @ApiModelProperty(value = "An alternative name for the subject in the MIS")
+  @ApiModelProperty(value = "An alternative name of the subject in the MIS")
   public String getAltName() {
     return altName;
   }
@@ -136,16 +136,16 @@ public class LessonGroupMisSubject implements Serializable {
     this.altName = altName;
   }
 
-  public LessonGroupMisSubject altCode(String altCode) {
+  public TimetableGroupMisSubject altCode(String altCode) {
     this.altCode = altCode;
     return this;
   }
 
    /**
-   * An alternative code for the subject in the MIS
+   * An alternative of the subject in the MIS
    * @return altCode
   **/
-  @ApiModelProperty(value = "An alternative code for the subject in the MIS")
+  @ApiModelProperty(value = "An alternative of the subject in the MIS")
   public String getAltCode() {
     return altCode;
   }
@@ -163,13 +163,13 @@ public class LessonGroupMisSubject implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LessonGroupMisSubject lessonGroupMisSubject = (LessonGroupMisSubject) o;
-    return Objects.equals(this.object, lessonGroupMisSubject.object) &&
-        Objects.equals(this.id, lessonGroupMisSubject.id) &&
-        Objects.equals(this.name, lessonGroupMisSubject.name) &&
-        Objects.equals(this.code, lessonGroupMisSubject.code) &&
-        Objects.equals(this.altName, lessonGroupMisSubject.altName) &&
-        Objects.equals(this.altCode, lessonGroupMisSubject.altCode);
+    TimetableGroupMisSubject timetableGroupMisSubject = (TimetableGroupMisSubject) o;
+    return Objects.equals(this.object, timetableGroupMisSubject.object) &&
+        Objects.equals(this.id, timetableGroupMisSubject.id) &&
+        Objects.equals(this.name, timetableGroupMisSubject.name) &&
+        Objects.equals(this.code, timetableGroupMisSubject.code) &&
+        Objects.equals(this.altName, timetableGroupMisSubject.altName) &&
+        Objects.equals(this.altCode, timetableGroupMisSubject.altCode);
   }
 
   @Override
@@ -181,7 +181,7 @@ public class LessonGroupMisSubject implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LessonGroupMisSubject {\n");
+    sb.append("class TimetableGroupMisSubject {\n");
     
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

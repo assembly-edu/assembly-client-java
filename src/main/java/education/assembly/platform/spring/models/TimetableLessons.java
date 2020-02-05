@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.436
+ * assembly-client-java 1.2.450
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -16,8 +16,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import education.assembly.platform.spring.models.LessonGroup;
 import education.assembly.platform.spring.models.LessonRooms;
+import education.assembly.platform.spring.models.TimetableGroup;
 import education.assembly.platform.spring.models.TimetableSupervisors;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -82,7 +82,7 @@ public class TimetableLessons implements Serializable {
   private TypeEnum type = ;
 
   @JsonProperty("group")
-  private LessonGroup group = null;
+  private TimetableGroup group = null;
 
   @JsonProperty("start_date")
   private OffsetDateTime startDate = ;
@@ -150,7 +150,7 @@ public class TimetableLessons implements Serializable {
     this.type = type;
   }
 
-  public TimetableLessons group(LessonGroup group) {
+  public TimetableLessons group(TimetableGroup group) {
     this.group = group;
     return this;
   }
@@ -160,11 +160,11 @@ public class TimetableLessons implements Serializable {
    * @return group
   **/
   @ApiModelProperty(value = "")
-  public LessonGroup getGroup() {
+  public TimetableGroup getGroup() {
     return group;
   }
 
-  public void setGroup(LessonGroup group) {
+  public void setGroup(TimetableGroup group) {
     this.group = group;
   }
 
