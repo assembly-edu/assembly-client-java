@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.450
+ * assembly-client-java 1.2.463
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -57,7 +57,9 @@ public class Group implements Serializable {
     
     HOUSEGROUP("HouseGroup"),
     
-    NONTEACHINGGROUP("NonTeachingGroup");
+    NONTEACHINGGROUP("NonTeachingGroup"),
+    
+    USERGROUP("UserGroup");
 
     private String value;
 

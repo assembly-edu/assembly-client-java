@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>education.assembly</groupId>
   <artifactId>assembly-client-java</artifactId>
-  <version>1.2.450</version>
+  <version>1.2.463</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.2.450"
+compile "education.assembly:assembly-client-java:1.2.463"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.2.450.jar
+* target/assembly-client-java-1.2.463.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssemblyApi* | [**bulkUpdateResults**](docs/AssemblyApi.md#bulkUpdateResults) | **PATCH** /results | Update Multiple Results
 *AssemblyApi* | [**createResult**](docs/AssemblyApi.md#createResult) | **POST** /results | Write Results
+*AssemblyApi* | [**deauthorize**](docs/AssemblyApi.md#deauthorize) | **POST** /school/deauthorize | Deauthorize School
 *AssemblyApi* | [**findAcademicYear**](docs/AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
 *AssemblyApi* | [**findAssessment**](docs/AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 *AssemblyApi* | [**findAssessmentGradeSet**](docs/AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -155,6 +156,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getYearGroupStudents**](docs/AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 *AssemblyApi* | [**getYearGroups**](docs/AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 *AssemblyApi* | [**status**](docs/AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
+*AssemblyApi* | [**sync**](docs/AssemblyApi.md#sync) | **POST** /school/sync | Request a School Sync
 *AssemblyApi* | [**updateResults**](docs/AssemblyApi.md#updateResults) | **PATCH** /results/{id} | Update a Single Result
 
 

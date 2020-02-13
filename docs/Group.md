@@ -25,6 +25,7 @@ TEACHINGGROUP | &quot;TeachingGroup&quot;
 REGISTRATIONGROUP | &quot;RegistrationGroup&quot;
 HOUSEGROUP | &quot;HouseGroup&quot;
 NONTEACHINGGROUP | &quot;NonTeachingGroup&quot;
+USERGROUP | &quot;UserGroup&quot;
 
 
 
