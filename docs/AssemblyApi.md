@@ -39,6 +39,7 @@ Method | HTTP request | Description
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 [**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
+[**getGroupEnrolments**](AssemblyApi.md#getGroupEnrolments) | **GET** /groups/enrolments | List Group Enrolments
 [**getGroupStudents**](AssemblyApi.md#getGroupStudents) | **GET** /groups/{id}/students | List Students for Group
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 [**getLearningAims**](AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
@@ -823,7 +824,7 @@ Name | Type | Description  | Notes
 
 <a name="findRoom"></a>
 # **findRoom**
-> Room findRoom(id, ifModifiedSince, date, startDate, endDate)
+> Room findRoom(id, date, startDate, endDate)
 
 View a Room
 
@@ -847,12 +848,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 String startDate = "startDate_example"; // String | The start date of the period to filter by
 String endDate = "endDate_example"; // String | The end date of the period to filter by
 try {
-    Room result = apiInstance.findRoom(id, ifModifiedSince, date, startDate, endDate);
+    Room result = apiInstance.findRoom(id, date, startDate, endDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findRoom");
@@ -865,7 +865,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
- **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **startDate** | **String**| The start date of the period to filter by | [optional]
  **endDate** | **String**| The end date of the period to filter by | [optional]
@@ -1123,7 +1122,7 @@ Name | Type | Description  | Notes
 
 <a name="findTimetable"></a>
 # **findTimetable**
-> Timetable findTimetable(id, ifModifiedSince, date, startDate, endDate)
+> Timetable findTimetable(id, date, startDate, endDate)
 
 View a Timetable
 
@@ -1147,12 +1146,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
 OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 try {
-    Timetable result = apiInstance.findTimetable(id, ifModifiedSince, date, startDate, endDate);
+    Timetable result = apiInstance.findTimetable(id, date, startDate, endDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#findTimetable");
@@ -1165,7 +1163,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
- **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
  **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
@@ -1533,7 +1530,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttendanceSummaries"></a>
 # **getAttendanceSummaries**
-> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, groupId, academicYearId, perPage, page)
+> List&lt;AttendanceSummary&gt; getAttendanceSummaries(ifModifiedSince, ifNoneMatch, studentId, registrationGroupId, groupId, academicYearId, perPage, page)
 
 List Attendance Summaries
 
@@ -1557,6 +1554,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer studentId = 56; // Integer | Filter to the specified student
 Integer registrationGroupId = 56; // Integer | ID of a registration group
 Integer groupId = 56; // Integer | Filter to the specified group
@@ -1564,7 +1562,7 @@ Integer academicYearId = 56; // Integer | Include all groups and group membershi
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, studentId, registrationGroupId, groupId, academicYearId, perPage, page);
+    List<AttendanceSummary> result = apiInstance.getAttendanceSummaries(ifModifiedSince, ifNoneMatch, studentId, registrationGroupId, groupId, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAttendanceSummaries");
@@ -1577,6 +1575,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **studentId** | **Integer**| Filter to the specified student | [optional]
  **registrationGroupId** | **Integer**| ID of a registration group | [optional]
  **groupId** | **Integer**| Filter to the specified group | [optional]
@@ -1599,7 +1598,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttendances"></a>
 # **getAttendances**
-> List&lt;Attendance&gt; getAttendances(ifModifiedSince, studentId, registrationGroupId, groupId, startDate, endDate, perPage, page)
+> List&lt;Attendance&gt; getAttendances(ifModifiedSince, ifNoneMatch, studentId, registrationGroupId, groupId, startDate, endDate, perPage, page)
 
 List Attendances
 
@@ -1623,6 +1622,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer studentId = 56; // Integer | Filter to the specified student
 Integer registrationGroupId = 56; // Integer | ID of a registration group
 Integer groupId = 56; // Integer | Filter to the specified group
@@ -1631,7 +1631,7 @@ OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date 
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Attendance> result = apiInstance.getAttendances(ifModifiedSince, studentId, registrationGroupId, groupId, startDate, endDate, perPage, page);
+    List<Attendance> result = apiInstance.getAttendances(ifModifiedSince, ifNoneMatch, studentId, registrationGroupId, groupId, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getAttendances");
@@ -1644,6 +1644,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **studentId** | **Integer**| Filter to the specified student | [optional]
  **registrationGroupId** | **Integer**| ID of a registration group | [optional]
  **groupId** | **Integer**| Filter to the specified group | [optional]
@@ -1667,7 +1668,7 @@ Name | Type | Description  | Notes
 
 <a name="getCalendarEvents"></a>
 # **getCalendarEvents**
-> List&lt;CalendarEvent&gt; getCalendarEvents(ifModifiedSince, type, perPage, page)
+> List&lt;CalendarEvent&gt; getCalendarEvents(ifModifiedSince, ifNoneMatch, type, perPage, page)
 
 List Calendar Events
 
@@ -1691,11 +1692,12 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 String type = "type_example"; // String | Filter by type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<CalendarEvent> result = apiInstance.getCalendarEvents(ifModifiedSince, type, perPage, page);
+    List<CalendarEvent> result = apiInstance.getCalendarEvents(ifModifiedSince, ifNoneMatch, type, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getCalendarEvents");
@@ -1708,6 +1710,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **type** | **String**| Filter by type | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
@@ -1727,7 +1730,7 @@ Name | Type | Description  | Notes
 
 <a name="getClosures"></a>
 # **getClosures**
-> List&lt;Closure&gt; getClosures(id, ifModifiedSince, date, startDate, endDate)
+> List&lt;Closure&gt; getClosures(id, date, startDate, endDate)
 
 List Closures For a Room
 
@@ -1751,12 +1754,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
 OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 try {
-    List<Closure> result = apiInstance.getClosures(id, ifModifiedSince, date, startDate, endDate);
+    List<Closure> result = apiInstance.getClosures(id, date, startDate, endDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getClosures");
@@ -1769,7 +1771,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
- **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
  **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
@@ -2077,9 +2078,71 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
+<a name="getGroupEnrolments"></a>
+# **getGroupEnrolments**
+> List&lt;Enrolment&gt; getGroupEnrolments(ifModifiedSince, ifNoneMatch, groups, date, academicYearId)
+
+List Group Enrolments
+
+Returns a list of group enrolments that match the given set of filters.  If a date parameter is provided then the list of group enrolments returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. If an &#x60;academic_year_id&#x60; is supplied all enrolments are returned. 
+
+### Example
+```java
+// Import classes:
+//import education.assembly.platform.spring.ApiClient;
+//import education.assembly.platform.spring.ApiException;
+//import education.assembly.platform.spring.Configuration;
+//import education.assembly.platform.spring.auth.*;
+//import education.assembly.platform.spring.AssemblyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: SchoolToken
+HttpBasicAuth SchoolToken = (HttpBasicAuth) defaultClient.getAuthentication("SchoolToken");
+SchoolToken.setUsername("YOUR USERNAME");
+SchoolToken.setPassword("YOUR PASSWORD");
+
+AssemblyApi apiInstance = new AssemblyApi();
+OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+List<Integer> groups = Arrays.asList(); // List<Integer> | ID(s) of the group(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
+try {
+    List<Enrolment> result = apiInstance.getGroupEnrolments(ifModifiedSince, ifNoneMatch, groups, date, academicYearId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AssemblyApi#getGroupEnrolments");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **groups** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the group(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional] [default to new ArrayList&lt;Integer&gt;()]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
+
+### Return type
+
+[**List&lt;Enrolment&gt;**](Enrolment.md)
+
+### Authorization
+
+[SchoolToken](../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
 <a name="getGroupStudents"></a>
 # **getGroupStudents**
-> List&lt;Student&gt; getGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
+> List&lt;Student&gt; getGroupStudents(id, ifModifiedSince, ifNoneMatch, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo)
 
 List Students for Group
 
@@ -2104,6 +2167,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
 String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 String yearCode = "yearCode_example"; // String | Filter by school year
@@ -2117,7 +2181,7 @@ Boolean everInCare = true; // Boolean | Include whether the student has ever bee
 Boolean languages = true; // Boolean | Include student language data
 Boolean photo = true; // Boolean | Include student photo data
 try {
-    List<Student> result = apiInstance.getGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
+    List<Student> result = apiInstance.getGroupStudents(id, ifModifiedSince, ifNoneMatch, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getGroupStudents");
@@ -2131,6 +2195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
  **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **yearCode** | **String**| Filter by school year | [optional]
@@ -2159,7 +2224,7 @@ Name | Type | Description  | Notes
 
 <a name="getGroups"></a>
 # **getGroups**
-> List&lt;Group&gt; getGroups(ifModifiedSince, yearCode, date, academicYearId, type, perPage, page)
+> List&lt;Group&gt; getGroups(ifModifiedSince, ifNoneMatch, yearCode, date, academicYearId, type, perPage, page)
 
 List Groups
 
@@ -2183,6 +2248,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 String yearCode = "yearCode_example"; // String | Filter by school year
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
@@ -2190,7 +2256,7 @@ String type = "type_example"; // String | Filter by type
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Group> result = apiInstance.getGroups(ifModifiedSince, yearCode, date, academicYearId, type, perPage, page);
+    List<Group> result = apiInstance.getGroups(ifModifiedSince, ifNoneMatch, yearCode, date, academicYearId, type, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getGroups");
@@ -2203,6 +2269,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **yearCode** | **String**| Filter by school year | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
@@ -2281,7 +2348,7 @@ Name | Type | Description  | Notes
 
 <a name="getLeftStaffMembers"></a>
 # **getLeftStaffMembers**
-> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page)
+> List&lt;StaffMember&gt; getLeftStaffMembers(ifModifiedSince, ifNoneMatch, teachersOnly, addresses, demographics, qualifications, perPage, page)
 
 List Left Staff Members
 
@@ -2305,6 +2372,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
 Boolean addresses = true; // Boolean | Include address data
 Boolean demographics = true; // Boolean | Include demographics data
@@ -2312,7 +2380,7 @@ Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT r
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page);
+    List<StaffMember> result = apiInstance.getLeftStaffMembers(ifModifiedSince, ifNoneMatch, teachersOnly, addresses, demographics, qualifications, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLeftStaffMembers");
@@ -2325,6 +2393,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
  **addresses** | **Boolean**| Include address data | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
@@ -2347,7 +2416,7 @@ Name | Type | Description  | Notes
 
 <a name="getLeftStudents"></a>
 # **getLeftStudents**
-> List&lt;Student&gt; getLeftStudents(ifModifiedSince, perPage, page)
+> List&lt;Student&gt; getLeftStudents(ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Left Students
 
@@ -2371,10 +2440,20 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+Boolean demographics = true; // Boolean | Include demographics data
+Boolean contacts = true; // Boolean | Include contacts data
+Boolean senNeeds = true; // Boolean | Include SEN needs data
+Boolean emails = true; // Boolean | Include email addresses
+Boolean addresses = true; // Boolean | Include address data
+Boolean care = true; // Boolean | Include student care data (you must also supply the demographics parameter)
+Boolean everInCare = true; // Boolean | Include whether the student has ever been in care (you must also supply the demographics parameter)
+Boolean languages = true; // Boolean | Include student language data
+Boolean photo = true; // Boolean | Include student photo data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getLeftStudents(ifModifiedSince, perPage, page);
+    List<Student> result = apiInstance.getLeftStudents(ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLeftStudents");
@@ -2387,6 +2466,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **demographics** | **Boolean**| Include demographics data | [optional]
+ **contacts** | **Boolean**| Include contacts data | [optional]
+ **senNeeds** | **Boolean**| Include SEN needs data | [optional]
+ **emails** | **Boolean**| Include email addresses | [optional]
+ **addresses** | **Boolean**| Include address data | [optional]
+ **care** | **Boolean**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **everInCare** | **Boolean**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **Boolean**| Include student language data | [optional]
+ **photo** | **Boolean**| Include student photo data | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2405,7 +2494,7 @@ Name | Type | Description  | Notes
 
 <a name="getLessons"></a>
 # **getLessons**
-> List&lt;Lesson&gt; getLessons(id, ifModifiedSince, date, startDate, endDate, perPage, page)
+> List&lt;Lesson&gt; getLessons(id, date, startDate, endDate, perPage, page)
 
 List Lessons For a Room
 
@@ -2429,14 +2518,13 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
-OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | The start date of the period to filter by
 OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | The end date of the period to filter by
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Lesson> result = apiInstance.getLessons(id, ifModifiedSince, date, startDate, endDate, perPage, page);
+    List<Lesson> result = apiInstance.getLessons(id, date, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getLessons");
@@ -2449,7 +2537,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
- **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **startDate** | **OffsetDateTime**| The start date of the period to filter by | [optional]
  **endDate** | **OffsetDateTime**| The end date of the period to filter by | [optional]
@@ -2583,7 +2670,7 @@ Name | Type | Description  | Notes
 
 <a name="getRegistrationGroupStudents"></a>
 # **getRegistrationGroupStudents**
-> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
+> List&lt;Student&gt; getRegistrationGroupStudents(id, ifModifiedSince, ifNoneMatch, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students for Registration Group
 
@@ -2608,6 +2695,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Integer yearCode = 56; // Integer | Filter by school year
 Boolean demographics = true; // Boolean | Include demographics data
@@ -2622,7 +2710,7 @@ Boolean photo = true; // Boolean | Include student photo data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
+    List<Student> result = apiInstance.getRegistrationGroupStudents(id, ifModifiedSince, ifNoneMatch, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getRegistrationGroupStudents");
@@ -2636,6 +2724,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **yearCode** | **Integer**| Filter by school year | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
@@ -2665,7 +2754,7 @@ Name | Type | Description  | Notes
 
 <a name="getRegistrationGroups"></a>
 # **getRegistrationGroups**
-> List&lt;RegistrationGroup&gt; getRegistrationGroups(ifModifiedSince, yearCode, date, academicYearId, perPage, page)
+> List&lt;RegistrationGroup&gt; getRegistrationGroups(ifModifiedSince, ifNoneMatch, yearCode, date, academicYearId, perPage, page)
 
 List Registration Groups
 
@@ -2689,13 +2778,14 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer yearCode = 56; // Integer | Filter by school year
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<RegistrationGroup> result = apiInstance.getRegistrationGroups(ifModifiedSince, yearCode, date, academicYearId, perPage, page);
+    List<RegistrationGroup> result = apiInstance.getRegistrationGroups(ifModifiedSince, ifNoneMatch, yearCode, date, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getRegistrationGroups");
@@ -2708,6 +2798,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **yearCode** | **Integer**| Filter by school year | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
@@ -2729,7 +2820,7 @@ Name | Type | Description  | Notes
 
 <a name="getResults"></a>
 # **getResults**
-> List&lt;Result&gt; getResults(students, ifModifiedSince, perPage, page)
+> List&lt;Result&gt; getResults(students, ifModifiedSince, ifNoneMatch, perPage, page)
 
 List Results
 
@@ -2754,10 +2845,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Result> result = apiInstance.getResults(students, ifModifiedSince, perPage, page);
+    List<Result> result = apiInstance.getResults(students, ifModifiedSince, ifNoneMatch, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getResults");
@@ -2771,6 +2863,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [default to new ArrayList&lt;Integer&gt;()]
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2789,7 +2882,7 @@ Name | Type | Description  | Notes
 
 <a name="getRooms"></a>
 # **getRooms**
-> List&lt;Room&gt; getRooms(ifModifiedSince, perPage, page)
+> List&lt;Room&gt; getRooms(ifModifiedSince, ifNoneMatch, perPage, page)
 
 List Rooms
 
@@ -2813,10 +2906,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Room> result = apiInstance.getRooms(ifModifiedSince, perPage, page);
+    List<Room> result = apiInstance.getRooms(ifModifiedSince, ifNoneMatch, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getRooms");
@@ -2829,6 +2923,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -2975,7 +3070,7 @@ Name | Type | Description  | Notes
 
 <a name="getStaffMembers"></a>
 # **getStaffMembers**
-> List&lt;StaffMember&gt; getStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page)
+> List&lt;StaffMember&gt; getStaffMembers(ifModifiedSince, ifNoneMatch, teachersOnly, addresses, demographics, qualifications, perPage, page)
 
 List Staff Members
 
@@ -2999,6 +3094,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Boolean teachersOnly = true; // Boolean | Filter to staff who are teachers
 Boolean addresses = true; // Boolean | Include address data
 Boolean demographics = true; // Boolean | Include demographics data
@@ -3006,7 +3102,7 @@ Boolean qualifications = true; // Boolean | Include HLTA status, QT status, QT r
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<StaffMember> result = apiInstance.getStaffMembers(ifModifiedSince, teachersOnly, addresses, demographics, qualifications, perPage, page);
+    List<StaffMember> result = apiInstance.getStaffMembers(ifModifiedSince, ifNoneMatch, teachersOnly, addresses, demographics, qualifications, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getStaffMembers");
@@ -3019,6 +3115,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachersOnly** | **Boolean**| Filter to staff who are teachers | [optional]
  **addresses** | **Boolean**| Include address data | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
@@ -3041,7 +3138,7 @@ Name | Type | Description  | Notes
 
 <a name="getStudents"></a>
 # **getStudents**
-> List&lt;Student&gt; getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
+> List&lt;Student&gt; getStudents(ifModifiedSince, ifNoneMatch, students, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students
 
@@ -3065,6 +3162,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 List<Integer> students = Arrays.asList(); // List<Integer> | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 String yearCode = "yearCode_example"; // String | Filter by school year
@@ -3080,7 +3178,7 @@ Boolean photo = true; // Boolean | Include student photo data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getStudents(ifModifiedSince, students, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
+    List<Student> result = apiInstance.getStudents(ifModifiedSince, ifNoneMatch, students, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getStudents");
@@ -3093,6 +3191,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **students** | [**List&lt;Integer&gt;**](Integer.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional] [default to new ArrayList&lt;Integer&gt;()]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **yearCode** | **String**| Filter by school year | [optional]
@@ -3179,7 +3278,7 @@ Name | Type | Description  | Notes
 
 <a name="getTeachingGroupStudents"></a>
 # **getTeachingGroupStudents**
-> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
+> List&lt;Student&gt; getTeachingGroupStudents(id, ifModifiedSince, ifNoneMatch, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students for Teaching Group
 
@@ -3204,6 +3303,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
 String date = "date_example"; // String | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Integer yearCode = 56; // Integer | Filter by school year
@@ -3219,7 +3319,7 @@ Boolean photo = true; // Boolean | Include student photo data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
+    List<Student> result = apiInstance.getTeachingGroupStudents(id, ifModifiedSince, ifNoneMatch, academicYearId, date, yearCode, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getTeachingGroupStudents");
@@ -3233,6 +3333,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]
  **date** | **String**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **yearCode** | **Integer**| Filter by school year | [optional]
@@ -3263,7 +3364,7 @@ Name | Type | Description  | Notes
 
 <a name="getTeachingGroups"></a>
 # **getTeachingGroups**
-> List&lt;TeachingGroup&gt; getTeachingGroups(ifModifiedSince, subjectCode, yearCode, date, academicYearId, perPage, page)
+> List&lt;TeachingGroup&gt; getTeachingGroups(ifModifiedSince, ifNoneMatch, subjectCode, yearCode, date, academicYearId, perPage, page)
 
 List Teaching Groups
 
@@ -3287,6 +3388,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 String subjectCode = "subjectCode_example"; // String | Filter by subject
 Integer yearCode = 56; // Integer | Filter by school year
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
@@ -3294,7 +3396,7 @@ Integer academicYearId = 56; // Integer | Include all groups and group membershi
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<TeachingGroup> result = apiInstance.getTeachingGroups(ifModifiedSince, subjectCode, yearCode, date, academicYearId, perPage, page);
+    List<TeachingGroup> result = apiInstance.getTeachingGroups(ifModifiedSince, ifNoneMatch, subjectCode, yearCode, date, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getTeachingGroups");
@@ -3307,6 +3409,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **subjectCode** | **String**| Filter by subject | [optional]
  **yearCode** | **Integer**| Filter by school year | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
@@ -3329,7 +3432,7 @@ Name | Type | Description  | Notes
 
 <a name="getTimetables"></a>
 # **getTimetables**
-> List&lt;Timetable&gt; getTimetables(ifModifiedSince, perPage, page)
+> List&lt;Timetable&gt; getTimetables(ifModifiedSince, ifNoneMatch, perPage, page)
 
 List Timetables
 
@@ -3353,10 +3456,11 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Timetable> result = apiInstance.getTimetables(ifModifiedSince, perPage, page);
+    List<Timetable> result = apiInstance.getTimetables(ifModifiedSince, ifNoneMatch, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getTimetables");
@@ -3369,6 +3473,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **perPage** | **Integer**| Number of results to return | [optional] [default to 100]
  **page** | **Integer**| Page number to return | [optional] [default to 1]
 
@@ -3387,7 +3492,7 @@ Name | Type | Description  | Notes
 
 <a name="getYearGroupStudents"></a>
 # **getYearGroupStudents**
-> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
+> List&lt;Student&gt; getYearGroupStudents(id, ifModifiedSince, ifNoneMatch, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page)
 
 List Students for Year Group
 
@@ -3412,6 +3517,7 @@ SchoolToken.setPassword("YOUR PASSWORD");
 AssemblyApi apiInstance = new AssemblyApi();
 Integer id = 56; // Integer | Internal identifier of the entity
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 Boolean demographics = true; // Boolean | Include demographics data
 Boolean contacts = true; // Boolean | Include contacts data
@@ -3425,7 +3531,7 @@ Boolean photo = true; // Boolean | Include student photo data
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
+    List<Student> result = apiInstance.getYearGroupStudents(id, ifModifiedSince, ifNoneMatch, date, demographics, contacts, senNeeds, emails, addresses, care, everInCare, languages, photo, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getYearGroupStudents");
@@ -3439,6 +3545,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**| Internal identifier of the entity |
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **demographics** | **Boolean**| Include demographics data | [optional]
  **contacts** | **Boolean**| Include contacts data | [optional]
@@ -3467,7 +3574,7 @@ Name | Type | Description  | Notes
 
 <a name="getYearGroups"></a>
 # **getYearGroups**
-> List&lt;YearGroup&gt; getYearGroups(ifModifiedSince, date, yearCode, academicYearId, perPage, page)
+> List&lt;YearGroup&gt; getYearGroups(ifModifiedSince, ifNoneMatch, date, yearCode, academicYearId, perPage, page)
 
 List Year Groups
 
@@ -3491,13 +3598,14 @@ SchoolToken.setPassword("YOUR PASSWORD");
 
 AssemblyApi apiInstance = new AssemblyApi();
 OffsetDateTime ifModifiedSince = new OffsetDateTime(); // OffsetDateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+String ifNoneMatch = "ifNoneMatch_example"; // String | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 OffsetDateTime date = new OffsetDateTime(); // OffsetDateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 String yearCode = "yearCode_example"; // String | Filter by school year
 Integer academicYearId = 56; // Integer | Include all groups and group memberships from the specified academic year
 Integer perPage = 50; // Integer | Number of results to return
 Integer page = 5; // Integer | Page number to return
 try {
-    List<YearGroup> result = apiInstance.getYearGroups(ifModifiedSince, date, yearCode, academicYearId, perPage, page);
+    List<YearGroup> result = apiInstance.getYearGroups(ifModifiedSince, ifNoneMatch, date, yearCode, academicYearId, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AssemblyApi#getYearGroups");
@@ -3510,6 +3618,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ifModifiedSince** | **OffsetDateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **ifNoneMatch** | **String**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **OffsetDateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **yearCode** | **String**| Filter by school year | [optional]
  **academicYearId** | **Integer**| Include all groups and group memberships from the specified academic year | [optional]

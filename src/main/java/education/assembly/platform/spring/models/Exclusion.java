@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.463
+ * assembly-client-java 1.2.470
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -82,6 +82,12 @@ public class Exclusion implements Serializable {
 
   @JsonProperty("exclusion_reason")
   private String exclusionReason = ;
+
+  @JsonProperty("exclusion_reason_2")
+  private String exclusionReason2 = ;
+
+  @JsonProperty("exclusion_reason_3")
+  private String exclusionReason3 = ;
 
   @JsonProperty("start_date")
   private OffsetDateTime startDate = ;
@@ -186,6 +192,42 @@ public class Exclusion implements Serializable {
 
   public void setExclusionReason(String exclusionReason) {
     this.exclusionReason = exclusionReason;
+  }
+
+  public Exclusion exclusionReason2(String exclusionReason2) {
+    this.exclusionReason2 = exclusionReason2;
+    return this;
+  }
+
+   /**
+   * The second possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS
+   * @return exclusionReason2
+  **/
+  @ApiModelProperty(value = "The second possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS")
+  public String getExclusionReason2() {
+    return exclusionReason2;
+  }
+
+  public void setExclusionReason2(String exclusionReason2) {
+    this.exclusionReason2 = exclusionReason2;
+  }
+
+  public Exclusion exclusionReason3(String exclusionReason3) {
+    this.exclusionReason3 = exclusionReason3;
+    return this;
+  }
+
+   /**
+   * The third possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS
+   * @return exclusionReason3
+  **/
+  @ApiModelProperty(value = "The third possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS")
+  public String getExclusionReason3() {
+    return exclusionReason3;
+  }
+
+  public void setExclusionReason3(String exclusionReason3) {
+    this.exclusionReason3 = exclusionReason3;
   }
 
   public Exclusion startDate(OffsetDateTime startDate) {
@@ -293,6 +335,8 @@ public class Exclusion implements Serializable {
         Objects.equals(this.studentId, exclusion.studentId) &&
         Objects.equals(this.exclusionType, exclusion.exclusionType) &&
         Objects.equals(this.exclusionReason, exclusion.exclusionReason) &&
+        Objects.equals(this.exclusionReason2, exclusion.exclusionReason2) &&
+        Objects.equals(this.exclusionReason3, exclusion.exclusionReason3) &&
         Objects.equals(this.startDate, exclusion.startDate) &&
         Objects.equals(this.startSession, exclusion.startSession) &&
         Objects.equals(this.endDate, exclusion.endDate) &&
@@ -302,7 +346,7 @@ public class Exclusion implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, studentId, exclusionType, exclusionReason, startDate, startSession, endDate, endSession, exclusionLength);
+    return Objects.hash(object, id, studentId, exclusionType, exclusionReason, exclusionReason2, exclusionReason3, startDate, startSession, endDate, endSession, exclusionLength);
   }
 
 
@@ -316,6 +360,8 @@ public class Exclusion implements Serializable {
     sb.append("    studentId: ").append(toIndentedString(studentId)).append("\n");
     sb.append("    exclusionType: ").append(toIndentedString(exclusionType)).append("\n");
     sb.append("    exclusionReason: ").append(toIndentedString(exclusionReason)).append("\n");
+    sb.append("    exclusionReason2: ").append(toIndentedString(exclusionReason2)).append("\n");
+    sb.append("    exclusionReason3: ").append(toIndentedString(exclusionReason3)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    startSession: ").append(toIndentedString(startSession)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **studentId** | **Integer** | The ID of the student that the exclusion is attached to |  [optional]
 **exclusionType** | [**ExclusionTypeEnum**](#ExclusionTypeEnum) | The exclusions type, where &#x60;Reinstated&#x60; may be from a fixed term or permanent exclusion |  [optional]
 **exclusionReason** | **String** | The exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS |  [optional]
+**exclusionReason2** | **String** | The second possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS |  [optional]
+**exclusionReason3** | **String** | The third possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS |  [optional]
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date on which the exclusions starts |  [optional]
 **startSession** | **String** | The session (AM/PM) in which the exclusion starts |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date on which the exclusion ends |  [optional]

@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.463
+ * assembly-client-java 1.2.470
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -25,6 +25,7 @@ import education.assembly.platform.spring.models.CalendarEvent;
 import education.assembly.platform.spring.models.Closure;
 import education.assembly.platform.spring.models.Contact;
 import education.assembly.platform.spring.models.DietaryNeed;
+import education.assembly.platform.spring.models.Enrolment;
 import education.assembly.platform.spring.models.Exclusion;
 import education.assembly.platform.spring.models.Facet;
 import education.assembly.platform.spring.models.GradeSet;
@@ -661,21 +662,19 @@ public class AssemblyApi {
      * View a Room
      * Returns a single room for the school associated with the provided &#x60;access_token&#x60;
      * <p><b>200</b> - Success
-     * <p><b>304</b> - Not Modified
      * <p><b>400</b> - Bad Request
      * <p><b>401</b> - Unauthorized
      * <p><b>404</b> - Not Found
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
      * @return Room
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Room findRoom(Integer id, OffsetDateTime ifModifiedSince, String date, String startDate, String endDate) throws RestClientException {
+    public Room findRoom(Integer id, String date, String startDate, String endDate) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -695,9 +694,6 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -903,21 +899,19 @@ public class AssemblyApi {
      * View a Timetable
      * Returns an individual timetable for the given ID.
      * <p><b>200</b> - Success
-     * <p><b>304</b> - Not Modified
      * <p><b>400</b> - Bad Request
      * <p><b>401</b> - Unauthorized
      * <p><b>404</b> - Not Found
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
      * @return Timetable
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public Timetable findTimetable(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate) throws RestClientException {
+    public Timetable findTimetable(Integer id, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -937,9 +931,6 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1229,6 +1220,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
      * @param groupId Filter to the specified group
@@ -1238,7 +1230,7 @@ public class AssemblyApi {
      * @return List&lt;AttendanceSummary&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer groupId, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+    public List<AttendanceSummary> getAttendanceSummaries(OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer studentId, Integer registrationGroupId, Integer groupId, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/attendances/summaries").build().toUriString();
@@ -1256,6 +1248,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1279,6 +1273,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param studentId Filter to the specified student
      * @param registrationGroupId ID of a registration group
      * @param groupId Filter to the specified group
@@ -1289,7 +1284,7 @@ public class AssemblyApi {
      * @return List&lt;Attendance&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Attendance> getAttendances(OffsetDateTime ifModifiedSince, Integer studentId, Integer registrationGroupId, Integer groupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
+    public List<Attendance> getAttendances(OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer studentId, Integer registrationGroupId, Integer groupId, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/attendances").build().toUriString();
@@ -1308,6 +1303,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1331,13 +1328,14 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param type Filter by type
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;CalendarEvent&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<CalendarEvent> getCalendarEvents(OffsetDateTime ifModifiedSince, String type, Integer perPage, Integer page) throws RestClientException {
+    public List<CalendarEvent> getCalendarEvents(OffsetDateTime ifModifiedSince, String ifNoneMatch, String type, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/calendar_events").build().toUriString();
@@ -1352,6 +1350,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1369,20 +1369,18 @@ public class AssemblyApi {
      * List Closures For a Room
      * Returns a list of room closures for the school associated with the provided &#x60;access_token&#x60;.
      * <p><b>200</b> - Success
-     * <p><b>304</b> - Not Modified
      * <p><b>400</b> - Bad Request
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
      * @return List&lt;Closure&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Closure> getClosures(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate) throws RestClientException {
+    public List<Closure> getClosures(Integer id, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1402,9 +1400,6 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "start_date", startDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1614,6 +1609,53 @@ public class AssemblyApi {
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
     /**
+     * List Group Enrolments
+     * Returns a list of group enrolments that match the given set of filters.  If a date parameter is provided then the list of group enrolments returned is filtered to only those where the provided date falls between the groups &#x60;start_date&#x60; and &#x60;end_date&#x60;. If an &#x60;academic_year_id&#x60; is supplied all enrolments are returned. 
+     * <p><b>200</b> - Success
+     * <p><b>304</b> - Not Modified
+     * <p><b>400</b> - Bad Request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>406</b> - Unsupported Version
+     * <p><b>429</b> - Too Many Requests
+     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param groups ID(s) of the group(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param academicYearId Include all groups and group memberships from the specified academic year
+     * @return List&lt;Enrolment&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public List<Enrolment> getGroupEnrolments(OffsetDateTime ifModifiedSince, String ifNoneMatch, List<Integer> groups, OffsetDateTime date, Integer academicYearId) throws RestClientException {
+        Object postBody = null;
+        
+        String path = UriComponentsBuilder.fromPath("/groups/enrolments").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        queryParams.putAll(apiClient.parameterToMultiValueMap(ApiClient.CollectionFormat.valueOf("multi".toUpperCase()), "groups[]", groups));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "academic_year_id", academicYearId));
+
+        if (ifModifiedSince != null)
+        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+
+        final String[] accepts = { 
+            "application/vnd.assembly+json; version=1.1"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = { };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "SchoolToken" };
+
+        ParameterizedTypeReference<List<Enrolment>> returnType = new ParameterizedTypeReference<List<Enrolment>>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+    /**
      * List Students for Group
      * Returns a list of all the students that are present in the group identified by &#x60;group_id&#x60;
      * <p><b>200</b> - Success
@@ -1624,6 +1666,7 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
@@ -1639,7 +1682,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, String yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
+    public List<Student> getGroupStudents(Integer id, OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer academicYearId, String date, String yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1671,6 +1714,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1694,6 +1739,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param yearCode Filter by school year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param academicYearId Include all groups and group memberships from the specified academic year
@@ -1703,7 +1749,7 @@ public class AssemblyApi {
      * @return List&lt;Group&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Group> getGroups(OffsetDateTime ifModifiedSince, String yearCode, OffsetDateTime date, Integer academicYearId, String type, Integer perPage, Integer page) throws RestClientException {
+    public List<Group> getGroups(OffsetDateTime ifModifiedSince, String ifNoneMatch, String yearCode, OffsetDateTime date, Integer academicYearId, String type, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/groups").build().toUriString();
@@ -1721,6 +1767,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1781,6 +1829,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param teachersOnly Filter to staff who are teachers
      * @param addresses Include address data
      * @param demographics Include demographics data
@@ -1790,7 +1839,7 @@ public class AssemblyApi {
      * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean addresses, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
+    public List<StaffMember> getLeftStaffMembers(OffsetDateTime ifModifiedSince, String ifNoneMatch, Boolean teachersOnly, Boolean addresses, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_members/left").build().toUriString();
@@ -1808,6 +1857,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -1831,12 +1882,22 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
+     * @param demographics Include demographics data
+     * @param contacts Include contacts data
+     * @param senNeeds Include SEN needs data
+     * @param emails Include email addresses
+     * @param addresses Include address data
+     * @param care Include student care data (you must also supply the demographics parameter)
+     * @param everInCare Include whether the student has ever been in care (you must also supply the demographics parameter)
+     * @param languages Include student language data
+     * @param photo Include student photo data
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getLeftStudents(OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+    public List<Student> getLeftStudents(OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/students/left").build().toUriString();
@@ -1845,6 +1906,16 @@ public class AssemblyApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "date", date));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "demographics", demographics));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "contacts", contacts));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "sen_needs", senNeeds));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "emails", emails));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "addresses", addresses));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "care", care));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "ever_in_care", everInCare));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "languages", languages));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "photo", photo));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
 
@@ -1867,13 +1938,11 @@ public class AssemblyApi {
      * List Lessons For a Room
      * Returns a list of lessons in a room for the school associated with the provided &#x60;access_token&#x60;.
      * <p><b>200</b> - Success
-     * <p><b>304</b> - Not Modified
      * <p><b>400</b> - Bad Request
      * <p><b>401</b> - Unauthorized
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
-     * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param startDate The start date of the period to filter by
      * @param endDate The end date of the period to filter by
@@ -1882,7 +1951,7 @@ public class AssemblyApi {
      * @return List&lt;Lesson&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Lesson> getLessons(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
+    public List<Lesson> getLessons(Integer id, OffsetDateTime date, OffsetDateTime startDate, OffsetDateTime endDate, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -1904,9 +1973,6 @@ public class AssemblyApi {
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "end_date", endDate));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "per_page", perPage));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
-
-        if (ifModifiedSince != null)
-        headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2005,6 +2071,7 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
      * @param demographics Include demographics data
@@ -2021,7 +2088,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
+    public List<Student> getRegistrationGroupStudents(Integer id, OffsetDateTime ifModifiedSince, String ifNoneMatch, OffsetDateTime date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -2054,6 +2121,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2077,6 +2146,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param yearCode Filter by school year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param academicYearId Include all groups and group memberships from the specified academic year
@@ -2085,7 +2155,7 @@ public class AssemblyApi {
      * @return List&lt;RegistrationGroup&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<RegistrationGroup> getRegistrationGroups(OffsetDateTime ifModifiedSince, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+    public List<RegistrationGroup> getRegistrationGroups(OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/registration_groups").build().toUriString();
@@ -2102,6 +2172,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2126,12 +2198,13 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Result&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Result> getResults(List<Integer> students, OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+    public List<Result> getResults(List<Integer> students, OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'students' is set
@@ -2151,6 +2224,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2174,12 +2249,13 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Room&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Room> getRooms(OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+    public List<Room> getRooms(OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/rooms").build().toUriString();
@@ -2193,6 +2269,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2306,6 +2384,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param teachersOnly Filter to staff who are teachers
      * @param addresses Include address data
      * @param demographics Include demographics data
@@ -2315,7 +2394,7 @@ public class AssemblyApi {
      * @return List&lt;StaffMember&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<StaffMember> getStaffMembers(OffsetDateTime ifModifiedSince, Boolean teachersOnly, Boolean addresses, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
+    public List<StaffMember> getStaffMembers(OffsetDateTime ifModifiedSince, String ifNoneMatch, Boolean teachersOnly, Boolean addresses, Boolean demographics, Boolean qualifications, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/staff_members").build().toUriString();
@@ -2333,6 +2412,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2356,6 +2437,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
@@ -2373,7 +2455,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getStudents(OffsetDateTime ifModifiedSince, List<Integer> students, OffsetDateTime date, String yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
+    public List<Student> getStudents(OffsetDateTime ifModifiedSince, String ifNoneMatch, List<Integer> students, OffsetDateTime date, String yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/students").build().toUriString();
@@ -2399,6 +2481,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2460,6 +2544,7 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param academicYearId Include all groups and group memberships from the specified academic year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
@@ -2477,7 +2562,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
+    public List<Student> getTeachingGroupStudents(Integer id, OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer academicYearId, String date, Integer yearCode, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -2511,6 +2596,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2534,6 +2621,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param subjectCode Filter by subject
      * @param yearCode Filter by school year
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
@@ -2543,7 +2631,7 @@ public class AssemblyApi {
      * @return List&lt;TeachingGroup&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<TeachingGroup> getTeachingGroups(OffsetDateTime ifModifiedSince, String subjectCode, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+    public List<TeachingGroup> getTeachingGroups(OffsetDateTime ifModifiedSince, String ifNoneMatch, String subjectCode, Integer yearCode, OffsetDateTime date, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/teaching_groups").build().toUriString();
@@ -2561,6 +2649,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2584,12 +2674,13 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param perPage Number of results to return
      * @param page Page number to return
      * @return List&lt;Timetable&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Timetable> getTimetables(OffsetDateTime ifModifiedSince, Integer perPage, Integer page) throws RestClientException {
+    public List<Timetable> getTimetables(OffsetDateTime ifModifiedSince, String ifNoneMatch, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/timetables").build().toUriString();
@@ -2603,6 +2694,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2627,6 +2720,7 @@ public class AssemblyApi {
      * <p><b>429</b> - Too Many Requests
      * @param id Internal identifier of the entity
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param demographics Include demographics data
      * @param contacts Include contacts data
@@ -2642,7 +2736,7 @@ public class AssemblyApi {
      * @return List&lt;Student&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
+    public List<Student> getYearGroupStudents(Integer id, OffsetDateTime ifModifiedSince, String ifNoneMatch, OffsetDateTime date, Boolean demographics, Boolean contacts, Boolean senNeeds, Boolean emails, Boolean addresses, Boolean care, Boolean everInCare, Boolean languages, Boolean photo, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'id' is set
@@ -2674,6 +2768,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"
@@ -2697,6 +2793,7 @@ public class AssemblyApi {
      * <p><b>406</b> - Unsupported Version
      * <p><b>429</b> - Too Many Requests
      * @param ifModifiedSince Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+     * @param ifNoneMatch Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
      * @param date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable
      * @param yearCode Filter by school year
      * @param academicYearId Include all groups and group memberships from the specified academic year
@@ -2705,7 +2802,7 @@ public class AssemblyApi {
      * @return List&lt;YearGroup&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public List<YearGroup> getYearGroups(OffsetDateTime ifModifiedSince, OffsetDateTime date, String yearCode, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
+    public List<YearGroup> getYearGroups(OffsetDateTime ifModifiedSince, String ifNoneMatch, OffsetDateTime date, String yearCode, Integer academicYearId, Integer perPage, Integer page) throws RestClientException {
         Object postBody = null;
         
         String path = UriComponentsBuilder.fromPath("/year_groups").build().toUriString();
@@ -2722,6 +2819,8 @@ public class AssemblyApi {
 
         if (ifModifiedSince != null)
         headerParams.add("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
+        if (ifNoneMatch != null)
+        headerParams.add("If-None-Match", apiClient.parameterToString(ifNoneMatch));
 
         final String[] accepts = { 
             "application/vnd.assembly+json; version=1.1"

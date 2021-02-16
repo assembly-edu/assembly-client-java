@@ -5,7 +5,7 @@
     <artifactId>assembly-client-java</artifactId>
     <packaging>jar</packaging>
     <name>assembly-client-java</name>
-    <version>1.2.463</version>
+    <version>1.2.470</version>
     <url>http://developers.assembly.education</url>
     <description>Java Client for the Assembly Platform, using the RestTemplate library from the Spring Framework</description>
     <scm>
