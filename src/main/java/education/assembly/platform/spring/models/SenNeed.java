@@ -1,5 +1,5 @@
 /*
- * assembly-client-java 1.2.470
+ * assembly-client-java 1.2.471
  *
  * Copyright (c) 2018 Assembly
  * http://assembly.education
@@ -37,11 +37,11 @@ public class SenNeed implements Serializable {
   @JsonProperty("start_date")
   private String startDate = ;
 
-  @JsonProperty("sen_need_code")
-  private String senNeedCode = ;
+  @JsonProperty("sen_need_type_code")
+  private String senNeedTypeCode = ;
 
-  @JsonProperty("sen_need_name")
-  private String senNeedName = ;
+  @JsonProperty("sen_need_type_name")
+  private String senNeedTypeName = ;
 
   @JsonProperty("sen_broad_need_type_code")
   private String senBroadNeedTypeCode = ;
@@ -106,40 +106,40 @@ public class SenNeed implements Serializable {
     this.startDate = startDate;
   }
 
-  public SenNeed senNeedCode(String senNeedCode) {
-    this.senNeedCode = senNeedCode;
+  public SenNeed senNeedTypeCode(String senNeedTypeCode) {
+    this.senNeedTypeCode = senNeedTypeCode;
     return this;
   }
 
    /**
    * The code of the sen need
-   * @return senNeedCode
+   * @return senNeedTypeCode
   **/
   @ApiModelProperty(value = "The code of the sen need")
-  public String getSenNeedCode() {
-    return senNeedCode;
+  public String getSenNeedTypeCode() {
+    return senNeedTypeCode;
   }
 
-  public void setSenNeedCode(String senNeedCode) {
-    this.senNeedCode = senNeedCode;
+  public void setSenNeedTypeCode(String senNeedTypeCode) {
+    this.senNeedTypeCode = senNeedTypeCode;
   }
 
-  public SenNeed senNeedName(String senNeedName) {
-    this.senNeedName = senNeedName;
+  public SenNeed senNeedTypeName(String senNeedTypeName) {
+    this.senNeedTypeName = senNeedTypeName;
     return this;
   }
 
    /**
    * The name of the sen need
-   * @return senNeedName
+   * @return senNeedTypeName
   **/
   @ApiModelProperty(value = "The name of the sen need")
-  public String getSenNeedName() {
-    return senNeedName;
+  public String getSenNeedTypeName() {
+    return senNeedTypeName;
   }
 
-  public void setSenNeedName(String senNeedName) {
-    this.senNeedName = senNeedName;
+  public void setSenNeedTypeName(String senNeedTypeName) {
+    this.senNeedTypeName = senNeedTypeName;
   }
 
   public SenNeed senBroadNeedTypeCode(String senBroadNeedTypeCode) {
@@ -209,8 +209,8 @@ public class SenNeed implements Serializable {
     return Objects.equals(this.object, senNeed.object) &&
         Objects.equals(this.id, senNeed.id) &&
         Objects.equals(this.startDate, senNeed.startDate) &&
-        Objects.equals(this.senNeedCode, senNeed.senNeedCode) &&
-        Objects.equals(this.senNeedName, senNeed.senNeedName) &&
+        Objects.equals(this.senNeedTypeCode, senNeed.senNeedTypeCode) &&
+        Objects.equals(this.senNeedTypeName, senNeed.senNeedTypeName) &&
         Objects.equals(this.senBroadNeedTypeCode, senNeed.senBroadNeedTypeCode) &&
         Objects.equals(this.senBroadNeedTypeName, senNeed.senBroadNeedTypeName) &&
         Objects.equals(this.priority, senNeed.priority);
@@ -218,7 +218,7 @@ public class SenNeed implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, id, startDate, senNeedCode, senNeedName, senBroadNeedTypeCode, senBroadNeedTypeName, priority);
+    return Objects.hash(object, id, startDate, senNeedTypeCode, senNeedTypeName, senBroadNeedTypeCode, senBroadNeedTypeName, priority);
   }
 
 
@@ -230,8 +230,8 @@ public class SenNeed implements Serializable {
     sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    senNeedCode: ").append(toIndentedString(senNeedCode)).append("\n");
-    sb.append("    senNeedName: ").append(toIndentedString(senNeedName)).append("\n");
+    sb.append("    senNeedTypeCode: ").append(toIndentedString(senNeedTypeCode)).append("\n");
+    sb.append("    senNeedTypeName: ").append(toIndentedString(senNeedTypeName)).append("\n");
     sb.append("    senBroadNeedTypeCode: ").append(toIndentedString(senBroadNeedTypeCode)).append("\n");
     sb.append("    senBroadNeedTypeName: ").append(toIndentedString(senBroadNeedTypeName)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");

@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>education.assembly</groupId>
   <artifactId>assembly-client-java</artifactId>
-  <version>1.2.470</version>
+  <version>1.2.471</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "education.assembly:assembly-client-java:1.2.470"
+compile "education.assembly:assembly-client-java:1.2.471"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/assembly-client-java-1.2.470.jar
+* target/assembly-client-java-1.2.471.jar
 * target/lib/*.jar
 
 ## Getting Started
